@@ -98,7 +98,7 @@ export default function Contact() {
       </section>
 
       {/* Calendly Booking */}
-      <section className="py-16 relative">
+      <section id="book-call" className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -3,7 +3,7 @@ import { Hero } from "../components/hero";
 import { Button } from "../components/button";
 import { Card, GlassCard } from "../components/card";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
 import { X } from "lucide-react";
@@ -918,10 +918,10 @@ export default function CaseStudyDetail() {
               Let's discuss how we can deliver similar results for your organization.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact">
+              <Link to="/contact#book-call">
                 <Button variant="primary" size="large">
-                  Start a Conversation
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Book 30 Min Discovery Call
                 </Button>
               </Link>
               <Link to="/case-studies">
