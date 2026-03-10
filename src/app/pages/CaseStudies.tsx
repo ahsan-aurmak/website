@@ -164,32 +164,6 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      {/* KPI Summary */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { value: "8", label: "Delivery programmes demonstrating UX-led product development." },
-              { value: "4", label: "Industry sectors: Enterprise Technology, Financial Services, Public Sector, and Automotive." },
-              { value: "100%", label: "Case studies mapped to measurable business outcomes." }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-3">
-                  {stat.value}
-                </div>
-                <p className="text-slate-400">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Band */}
       <section className="py-16 relative">
