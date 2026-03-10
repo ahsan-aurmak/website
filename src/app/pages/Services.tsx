@@ -137,8 +137,8 @@ export default function Services() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1534944757601-b8aeaa6acd67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9qZWN0JTIwZGVsaXZlcnklMjB0aW1lbGluZSUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NzI4OTk3NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Project delivery workspace"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1080"
+                  alt="Enterprise delivery and analytics dashboard"
                   className="w-full h-full object-cover"
                 />
               </div>
