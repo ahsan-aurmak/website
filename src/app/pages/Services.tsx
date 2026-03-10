@@ -137,8 +137,8 @@ export default function Services() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1080"
-                  alt="Enterprise delivery and analytics dashboard"
+                  src={`${import.meta.env.BASE_URL}delivery_discipline_futuristic.png`}
+                  alt="AURMAK Disciplined Project Delivery Dashboard"
                   className="w-full h-full object-cover"
                 />
               </div>
