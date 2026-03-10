@@ -1,7 +1,6 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
 import { MapPin, CheckCircle, Calendar } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
 import { Button } from "../components/button";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
@@ -167,17 +166,10 @@ export default function Contact() {
                   Requirement
                 </span>
               </h2>
-              <p className="text-slate-400 text-lg mb-8">
+              <p className="text-slate-400 text-lg">
                 Provide your requirements and we will connect you with the appropriate regional lead and delivery team.
               </p>
 
-              <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1599949104055-2d04026aee1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXR3b3JrJTIwaW5mcmFzdHJ1Y3R1cmUlMjBzZXJ2ZXJzJTIwZGF0YWNlbnRlcnxlbnwxfHx8fDE3NzI4OTk3NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Network infrastructure datacenter"
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </motion.div>
 
             <motion.div
@@ -255,7 +247,7 @@ export default function Contact() {
                         required
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors pr-10 appearance-none"
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -268,14 +260,14 @@ export default function Contact() {
 
                     <div>
                       <label className="block text-slate-300 text-sm font-medium mb-2">
-                        Project Brief *
+                        Message *
                       </label>
                       <textarea
                         required
                         rows={5}
                         value={formData.brief}
                         onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
-                        placeholder="Summarise your objective, constraints, and expected timeline."
+                        placeholder="Tell us about your business, what you're looking to achieve, and any timelines or constraints."
                         className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                       />
                     </div>
