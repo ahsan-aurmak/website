@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
+import { PopupModal } from "react-calendly";
 import { X } from "lucide-react";
 
 // Metrikus case study images
@@ -84,6 +85,7 @@ export default function CaseStudyDetail() {
   const slug = location.pathname.replace("/", "");
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const caseData: Record<string, any> = {
     "case-study-metrikus-smart-building": {
@@ -918,12 +920,13 @@ export default function CaseStudyDetail() {
               Let's discuss how we can deliver similar results for your organization.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact#book-call">
-                <Button variant="primary" size="large">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book 30 Min Discovery Call
-                </Button>
-              </Link>
+              <button
+                onClick={() => setIsCalendlyOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-cyan-500/25"
+              >
+                <Calendar className="w-5 h-5" />
+                Book 30 Min Discovery Call
+              </button>
               <Link to="/case-studies">
                 <Button variant="secondary" size="large">
                   <ArrowLeft className="w-5 h-5 mr-2" />
@@ -973,6 +976,19 @@ export default function CaseStudyDetail() {
             </motion.div>
           </div>
         </motion.div>
+      )}
+      {isCalendlyOpen && (
+        <PopupModal
+          url="https://calendly.com/ahsan-jalil-aurmak/30min"
+          onModalClose={() => setIsCalendlyOpen(false)}
+          open={isCalendlyOpen}
+          rootElement={document.body}
+          pageSettings={{
+            backgroundColor: '0f172a',
+            primaryColor: '06b6d4',
+            textColor: 'f1f5f9'
+          }}
+        />
       )}
     </div>
   );
