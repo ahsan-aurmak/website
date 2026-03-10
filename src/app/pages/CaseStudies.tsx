@@ -12,6 +12,7 @@ export default function CaseStudies() {
 
   const cases = [
     {
+      client: "Metrikus",
       sector: "enterprise technology",
       meta: "Real Estate · United Kingdom",
       title: "Smart Building Platform",
@@ -20,6 +21,7 @@ export default function CaseStudies() {
       path: "/case-study-metrikus-smart-building"
     },
     {
+      client: "Cutover",
       sector: "enterprise technology",
       meta: "B2B SaaS · United Kingdom",
       title: "Orchestration and Execution Management Platform",
@@ -28,6 +30,7 @@ export default function CaseStudies() {
       path: "/case-study-cutover-orchestration"
     },
     {
+      client: "Royal Bank of Scotland",
       sector: "financial services",
       meta: "Financial Services · United Kingdom",
       title: "Premium Customer Travel Bookings Portal",
@@ -36,41 +39,46 @@ export default function CaseStudies() {
       path: "/case-study-rbs-travel-portal"
     },
     {
+      client: "Cisco",
       sector: "enterprise technology",
       meta: "Cybersecurity · United States",
-      title: "Cisco Stealthwatch Educational Portal",
+      title: "Stealthwatch Educational Portal",
       summary: "B2B educational web portal designed to educate CIO/CTO-level users about network threat detection. Conducted focus groups with enterprise decision-makers and created innovative UI increasing engagement by 3x.",
       kpis: ["10 CIO/CTO-level focus group participants", "75%+ Usability success rate", "3x Above-fold real estate increase"],
       path: "/case-study-cisco-stealthwatch"
     },
     {
+      client: "Al Jazeera",
       sector: "public sector",
       meta: "Media & Broadcasting · Qatar",
-      title: "Al Jazeera IT Service Management (ITSM) Platform",
+      title: "IT Service Management (ITSM) Platform",
       summary: "Migrated from ServiceNow to Jira Service Desk with complete UX redesign. Led stakeholder workshops and delivered intuitive platform design resulting in 50% signup increase in first month.",
       kpis: ["50% Signup increase first month", "100% Clutter removal", "ServiceNow to Jira SD migration"],
       path: "/case-study-al-jazeera-itsm"
     },
     {
+      client: "Castrol",
       sector: "automotive",
       meta: "Automotive Services · United Kingdom",
-      title: "Castrol CarLounge Garage Experience",
+      title: "CarLounge Garage Experience",
       summary: "End-to-end consumer and garage platform introducing UX to the company. Conducted design sprints, created comprehensive journey maps, and delivered platform securing £4.5m funding.",
       kpis: ["2,000+ Garages signed up globally", "80% Customer satisfaction increase", "£4.5m Funding secured"],
       path: "/case-study-castrol-carlounge"
     },
     {
+      client: "GTT Communications",
       sector: "enterprise technology",
       meta: "Cloud Infrastructure · United Kingdom",
-      title: "GTT Virtual Data Centre (VDC) SaaS/IaaS Platform",
+      title: "Virtual Data Centre (VDC) SaaS/IaaS Platform",
       summary: "AWS/Azure-like cloud infrastructure platform designed to be user-friendly for non-technical users. Conducted 4 rounds of usability testing reaching 80% approval and attracting users from competitor platforms.",
       kpis: ["4 Usability testing rounds", "80% Approval rate achieved", "AWS/Azure users attracted"],
       path: "/case-study-gtt-saas-iaas"
     },
     {
+      client: "Dubai Trade",
       sector: "public sector",
       meta: "E-Government · United Arab Emirates",
-      title: "Dubai Trade Smart Government Portal",
+      title: "Smart Government Portal",
       summary: "Research-led UX for Dubai Smart Government unifying Dubai Customs, DP World, and JAFZA services. Grouped 700+ services into 5 primary categories through card sorting and user shadowing.",
       kpis: ["700+ Services unified", "5 User personas identified", "100% Stakeholder sign-off"],
       path: "/case-study-dubai-trade"
@@ -129,7 +137,12 @@ export default function CaseStudies() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="h-full flex flex-col">
-                  <div className="text-cyan-400 text-sm font-medium mb-3">{caseStudy.meta}</div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-cyan-400 text-sm font-medium">{caseStudy.meta}</div>
+                    <div className="text-xs font-semibold bg-slate-700 border border-slate-600 text-slate-200 px-3 py-1 rounded-full">
+                      {caseStudy.client}
+                    </div>
+                  </div>
                   <h3 className="text-2xl font-bold text-slate-100 mb-3">{caseStudy.title}</h3>
                   <p className="text-slate-400 mb-4 flex-1">{caseStudy.summary}</p>
                   <div className="space-y-2 mb-6 pb-6 border-b border-slate-800">
