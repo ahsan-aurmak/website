@@ -19,7 +19,7 @@ export function SEO({
   ogType = 'website',
   keywords = 'AI integration, industrial automation, SaaS development, building management systems, legacy modernization, enterprise technology',
   schema,
-  noIndex = true, // Default to noindex until production launch
+  noIndex = false, // Allow indexing in production
 }: SEOProps) {
   const fullTitle = title.includes('AURMAK') ? title : `${title} | AURMAK`;
   const siteUrl = 'https://www.aurmak.com';
