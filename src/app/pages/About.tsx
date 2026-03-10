@@ -128,8 +128,8 @@ export default function About() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1765734482991-7c60829a0bff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBjb21tYW5kJTIwY2VudGVyJTIwb3BlcmF0aW9uc3xlbnwxfHx8fDE3NzI4OTk3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Modern command center operations"
+                  src="/global_hq_futuristic.png"
+                  alt="AURMAK Global Command Center connecting London, Dubai, and Lahore"
                   className="w-full h-full object-cover"
                 />
               </div>
