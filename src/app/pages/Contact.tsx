@@ -154,40 +154,42 @@ export default function Contact() {
       {/* Contact Form */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Discuss Your{" "}
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Requirement
-                </span>
-              </h2>
-              <p className="text-slate-400 text-lg">
-                Provide your requirements and we will connect you with the appropriate regional lead and delivery team.
-              </p>
 
-            </motion.div>
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Discuss Your{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Requirement
+              </span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              Provide your requirements and we will connect you with the appropriate regional lead and delivery team.
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="border border-slate-700/50 rounded-2xl p-8">
-                {status === "success" ? (
-                  <div className="text-center py-12">
-                    <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-green-400 mb-2">Enquiry Submitted Successfully</h3>
-                    <p className="text-slate-400">
-                      Our team will contact you shortly.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="border border-slate-700/50 rounded-2xl p-8 lg:p-12">
+              {status === "success" ? (
+                <div className="text-center py-12">
+                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-green-400 mb-2">Enquiry Submitted Successfully</h3>
+                  <p className="text-slate-400">Our team will contact you shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Row 1: Name + Email */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="fullName" className="block text-slate-300 text-sm font-medium mb-2">
                         Full Name *
@@ -204,7 +206,6 @@ export default function Contact() {
                         autoComplete="name"
                       />
                     </div>
-
                     <div>
                       <label htmlFor="email" className="block text-slate-300 text-sm font-medium mb-2">
                         Email Address *
@@ -222,7 +223,10 @@ export default function Contact() {
                         inputMode="email"
                       />
                     </div>
+                  </div>
 
+                  {/* Row 2: Company + Service */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="company" className="block text-slate-300 text-sm font-medium mb-2">
                         Company Name
@@ -238,7 +242,6 @@ export default function Contact() {
                         autoComplete="organization"
                       />
                     </div>
-
                     <div>
                       <label className="block text-slate-300 text-sm font-medium mb-2">
                         Service Requirement *
@@ -247,7 +250,7 @@ export default function Contact() {
                         required
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors pr-10 appearance-none"
+                        className="w-full px-4 py-3 pr-10 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors appearance-none"
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -257,33 +260,36 @@ export default function Contact() {
                         ))}
                       </select>
                     </div>
+                  </div>
 
-                    <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">
-                        Message *
-                      </label>
-                      <textarea
-                        required
-                        rows={5}
-                        value={formData.brief}
-                        onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
-                        placeholder="Tell us about your business, what you're looking to achieve, and any timelines or constraints."
-                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
-                      />
-                    </div>
+                  {/* Row 3: Message full-width */}
+                  <div>
+                    <label className="block text-slate-300 text-sm font-medium mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      required
+                      rows={6}
+                      value={formData.brief}
+                      onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
+                      placeholder="Tell us about your business, what you're looking to achieve, and any timelines or constraints."
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                    />
+                  </div>
 
+                  <div className="flex justify-end">
                     <Button
                       type="submit"
                       disabled={status === "loading"}
-                      className="w-full"
+                      className="px-12"
                     >
                       {status === "loading" ? "Submitting..." : "Submit Enquiry"}
                     </Button>
-                  </form>
-                )}
-              </div>
-            </motion.div>
-          </div>
+                  </div>
+                </form>
+              )}
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
