@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 import { Linkedin } from "lucide-react";
 import { Link } from "react-router";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
-// import ahsanPhoto from "figma:asset/ac251f02a15fe8c2fa114e0c6715434297fd7bb0.png";
-// import umerPhoto from "figma:asset/c51d4711944f49a9db2afb099cbacc1d351c4b1f.png";
+import ahsanPhoto from "../../assets/ahsan.jpg";
+import umerPhoto from "../../assets/umar.jpeg";
 import masoodPhoto from "figma:asset/179a43f3ad15df719e7ed737dee335f392a63f77.png";
-// import khurramPhoto from "figma:asset/3f43403ed64485597e30ae74ae8e2d35586f44df.png";
+import khurramPhoto from "../../assets/khurram.jpeg";
 
 export default function Team() {
   const team = [
@@ -23,21 +23,21 @@ export default function Team() {
       name: "Ahsan Jalil",
       bio: "Product strategy leader with 18+ years driving user-centered innovation across SaaS and enterprise applications, transforming complex systems into intuitive digital experiences that deliver measurable business results.",
       linkedin: "https://www.linkedin.com/in/vertage/",
-      photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=256&q=80"
+      photo: ahsanPhoto
     },
     {
       role: "Chief Operating Officer",
       name: "Umer Jalil",
       bio: "Project management executive with 15+ years executing complex, critical projects across oil & gas and manufacturing sectors, specializing in end-to-end delivery governance, stakeholder engagement, and supply chain operations.",
       linkedin: "https://www.linkedin.com/in/umar-jalil/",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=256&q=80"
+      photo: umerPhoto
     },
     {
       role: "Managing Director",
       name: "Khurram Sultan",
       bio: "Business development and operations transformation consultant with 12+ years of UK leadership experience across logistics, construction, and professional services, specializing in operational excellence and sustainable growth strategies.",
       linkedin: "https://www.linkedin.com/in/khuram-sultan-555a893a4/",
-      photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=256&q=80"
+      photo: khurramPhoto
     }
   ];
 
