@@ -1,10 +1,11 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { MapPin, CheckCircle } from "lucide-react";
+import { MapPin, CheckCircle, Calendar } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
 import { Button } from "../components/button";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { InlineWidget } from "react-calendly";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -96,6 +97,60 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* Calendly Booking */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
+              <Calendar className="w-4 h-4 text-cyan-400" />
+              <span className="text-cyan-400 text-sm font-medium">Prefer to talk first?</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Book a{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Discovery Call
+              </span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              30 minutes with a senior team member. No sales pitch — just a structured conversation about your priorities and how we can help.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden border border-slate-700/50 bg-white"
+          >
+            <InlineWidget
+              url="https://calendly.com/ahsan-jalil-aurmak/30min"
+              styles={{ height: "700px", minWidth: "320px" }}
+              pageSettings={{
+                backgroundColor: '0f172a',
+                hideEventTypeDetails: false,
+                hideLandingPageDetails: false,
+                primaryColor: '06b6d4',
+                textColor: 'f1f5f9'
+              }}
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center gap-6 py-4">
+          <div className="flex-1 h-px bg-slate-800" />
+          <span className="text-slate-500 text-sm font-medium">or send us a message</span>
+          <div className="flex-1 h-px bg-slate-800" />
+        </div>
+      </div>
 
       {/* Contact Form */}
       <section className="py-16 relative">
