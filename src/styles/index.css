@@ -22,6 +22,9 @@
 }
 
 /* Fix: remove unwanted scrollbar inside Calendly popup modal */
+.calendly-overlay {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
 .calendly-overlay .calendly-popup {
   overflow: hidden !important;
 }
