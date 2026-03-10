@@ -126,7 +126,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden border border-slate-700/50 bg-white"
+            className="rounded-2xl overflow-hidden border border-slate-700/50"
           >
             <InlineWidget
               url="https://calendly.com/ahsan-jalil-aurmak/30min"
