@@ -1,0 +1,175 @@
+import { Hero } from "../components/hero";
+import { motion } from "motion/react";
+import { Users, Target, Globe2, Award, Zap, Code2, Heart, Rocket } from "lucide-react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
+
+export default function About() {
+  const offices = [
+    {
+      icon: Globe2,
+      city: "London",
+      description: "Strategic headquarters for governance, commercial direction, and portfolio-level decision-making."
+    },
+    {
+      icon: Award,
+      city: "Dubai",
+      description: "Regional execution and client coordination centre for GCC programmes and enterprise implementation."
+    },
+    {
+      icon: Code2,
+      city: "Lahore",
+      description: "Engineering and integration hub delivering software builds, modernisation programmes, and quality assurance."
+    }
+  ];
+
+  const modelPoints = [
+    "International governance standards anchored in London and Dubai.",
+    "Disciplined engineering delivery led from Lahore.",
+    "Integrated strategy and execution model under shared leadership oversight.",
+    "Operational maturity supported by established UK and UAE parent foundations."
+  ];
+
+  return (
+    <div>
+      <SEO
+        title="About AURMAK - Global Vision & Leadership"
+        description="AURMAK combines strategic leadership in London and Dubai with disciplined engineering execution from Lahore. Enterprise AI integration and industrial automation provider with 15+ years of combined experience."
+        canonical="https://www.aurmak.com/about"
+        keywords="about AURMAK, technology company, global offices, London Dubai Lahore, enterprise technology provider, AI automation company"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" }
+        ])}
+      />
+      <Hero
+        eyebrow="About AURMAK"
+        title="Global Vision."
+        lead="AURMAK is a technology company backed by an established international technology group. We combine strategic leadership in London and Dubai with disciplined engineering execution from Lahore to deliver transformation with clear ownership."
+        badge="🌍 Global Presence"
+      />
+
+      {/* Regional Offices */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Three Centres.{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                One Vision.
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {offices.map((office, index) => (
+              <motion.div
+                key={office.city}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+              >
+                <div className="h-full text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <office.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-100 mb-4">{office.city}</h3>
+                  <p className="text-slate-400">{office.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Model Section */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Global HQ /{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Local Delivery
+                </span>
+              </h2>
+              <div className="space-y-4">
+                {modelPoints.map((point, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <Heart className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-slate-300">{point}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1765734482991-7c60829a0bff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBjb21tYW5kJTIwY2VudGVyJTIwb3BlcmF0aW9uc3xlbnwxfHx8fDE3NzI4OTk3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Modern command center operations"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
+            {[
+              { value: "3", label: "Global Offices" },
+              { value: "15+", label: "Years Combined Experience" },
+              { value: "100+", label: "Projects Delivered" },
+              { value: "24/7", label: "Support Coverage" }
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-slate-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,102 @@
+import { Hero } from "../components/hero";
+import { Card } from "../components/card";
+import { motion } from "motion/react";
+
+export default function Terms() {
+  return (
+    <div>
+      <Hero
+        eyebrow="Legal"
+        title="Terms & Conditions"
+        lead="By using this website, you agree to these terms and applicable laws and regulations."
+      />
+
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <Card>
+              <h2 className="text-2xl font-bold mb-4">Use of Website</h2>
+              <div className="text-slate-400 space-y-4">
+                <p>
+                  By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. The materials contained on this website are provided for general information only.
+                </p>
+                <p>
+                  You may not:
+                </p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Use this website in any way that causes damage to the website or impairs user access</li>
+                  <li>Use this website in any unlawful manner or for any unlawful purpose</li>
+                  <li>Attempt to gain unauthorised access to any portion or feature of the website</li>
+                  <li>Modify, copy, distribute, transmit, display, perform, reproduce, publish, or create derivative works from any materials</li>
+                  <li>Use automated systems or software to extract data from this website (screen scraping)</li>
+                </ul>
+                <p>
+                  We reserve the right to refuse service, terminate accounts, or remove or edit content in our sole discretion.
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <h2 className="text-2xl font-bold mb-4">Intellectual Property</h2>
+              <div className="text-slate-400 space-y-4">
+                <p>
+                  All content, materials, information, and intellectual property on this website, including but not limited to text, graphics, logos, images, software, and design, are owned by or licensed to AURMAK and are protected by copyright, trademark, and other intellectual property laws.
+                </p>
+                <p>
+                  Unless otherwise stated, AURMAK and/or its licensors own the intellectual property rights for all material on this website. You may view, download, and print pages from the website for your own personal use, subject to restrictions set in these terms and conditions.
+                </p>
+                <p>
+                  You must not:
+                </p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Republish material from this website without proper attribution</li>
+                  <li>Sell, rent, or sub-license material from the website</li>
+                  <li>Reproduce, duplicate, or copy material for commercial purposes</li>
+                  <li>Redistribute content from AURMAK without explicit permission</li>
+                </ul>
+              </div>
+            </Card>
+
+            <Card>
+              <h2 className="text-2xl font-bold mb-4">Liability</h2>
+              <div className="text-slate-400 space-y-4">
+                <p>
+                  The information on this website is provided on an "as is" basis. To the fullest extent permitted by law, AURMAK:
+                </p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Excludes all representations and warranties relating to this website and its contents</li>
+                  <li>Excludes all liability for damages arising out of or in connection with your use of this website</li>
+                  <li>Does not warrant that the website will be constantly available or available at all</li>
+                  <li>Reserves the right to discontinue or alter any or all of the website services without notice</li>
+                </ul>
+                <p>
+                  Nothing in these terms and conditions will limit or exclude our liability for death or personal injury resulting from negligence, fraud, or any liability that cannot be excluded or limited by applicable law.
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <h2 className="text-2xl font-bold mb-4">Contact</h2>
+              <div className="text-slate-400">
+                <p>
+                  For legal enquiries or questions about these terms, contact:{" "}
+                  <a href="mailto:info@aurmak.com" className="text-cyan-400 hover:underline">
+                    info@aurmak.com
+                  </a>
+                </p>
+                <p className="mt-4 text-slate-500 text-sm">
+                  Arabic version available through language switch (AR) in the footer.
+                </p>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
