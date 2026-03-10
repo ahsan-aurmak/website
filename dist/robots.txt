@@ -1,0 +1,19 @@
+# AURMAK Robots.txt
+# STAGING/DEVELOPMENT - DO NOT INDEX
+# Remove this blocking once deployed to production domain
+
+User-agent: *
+Disallow: /
+
+# Block all search engines until production launch
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+# Sitemap location (for future use when site goes live)
+# Sitemap: https://www.aurmak.com/sitemap.xml
