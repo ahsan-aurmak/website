@@ -128,7 +128,7 @@ export default function About() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="/global_hq_futuristic.png"
+                  src={`${import.meta.env.BASE_URL}global_hq_futuristic.png`}
                   alt="AURMAK Global Command Center connecting London, Dubai, and Lahore"
                   className="w-full h-full object-cover"
                 />
