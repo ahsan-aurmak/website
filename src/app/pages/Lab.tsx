@@ -118,8 +118,8 @@ export default function Lab() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1761195696590-3490ea770aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwYXV0b21hdGlvbiUyMHRlY2hub2xvZ3klMjBmYWN0b3J5fGVufDF8fHx8MTc3Mjg5OTc0Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Industrial automation technology"
+                  src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.png`}
+                  alt="AURMAK Venture Lab - Research and Development Focus Areas"
                   className="w-full h-full object-cover"
                 />
               </div>
