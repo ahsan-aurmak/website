@@ -20,3 +20,14 @@
 .bg-gradient-radial {
   background-image: radial-gradient(var(--tw-gradient-stops));
 }
+
+/* Fix: remove unwanted scrollbar inside Calendly popup modal */
+.calendly-overlay .calendly-popup {
+  overflow: hidden !important;
+}
+.calendly-overlay .calendly-popup iframe {
+  scrollbar-width: none !important;
+}
+.calendly-overlay .calendly-popup iframe::-webkit-scrollbar {
+  display: none !important;
+}
