@@ -156,8 +156,8 @@ export default function Solutions() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1763038311036-6d18805537e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGFuYWx5dGljcyUyMGRhc2hib2FyZCUyMGNoYXJ0c3xlbnwxfHx8fDE3NzI4ODc4MzR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Business analytics dashboard"
+                  src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
+                  alt="AURMAK Deployment Contexts - Cloud, Edge, and Data Center Infrastructure"
                   className="w-full h-full object-cover"
                 />
               </div>
