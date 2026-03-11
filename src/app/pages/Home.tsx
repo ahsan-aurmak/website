@@ -5,7 +5,7 @@ import { HeroGradientMesh } from "../components/gradient-mesh";
 import { OfficeClock } from "../components/office-clock";
 import { Button } from "../components/button";
 import { SEO, organizationSchema } from "../components/seo";
-import { Link } from "react-router";
+import { HeroCaseShowcase } from "../components/hero-case-showcase";
 
 export default function Home() {
   const services = [
@@ -120,78 +120,7 @@ export default function Home() {
             </div>
 
             {/* Right side - Visual element */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="relative hidden lg:block"
-            >
-              <div className="relative">
-                {/* Main card */}
-                <motion.div
-                  animate={{ y: [0, -20, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center"
-                    >
-                      <Brain className="w-6 h-6 text-white" />
-                    </motion.div>
-                    <div>
-                      <div className="text-slate-200 font-semibold">AI Processing</div>
-                      <div className="text-slate-400 text-sm">Real-time analytics</div>
-                    </div>
-                  </div>
-                  
-                  {/* Fake progress bars */}
-                  <div className="space-y-4">
-                    {[
-                      { label: "Model Training", value: 95, color: "cyan" },
-                      { label: "Data Processing", value: 87, color: "blue" },
-                      { label: "Optimization", value: 92, color: "purple" },
-                    ].map((item, i) => (
-                      <div key={item.label}>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="text-slate-300">{item.label}</span>
-                          <span className="text-cyan-400">{item.value}%</span>
-                        </div>
-                        <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${item.value}%` }}
-                            transition={{ delay: 1 + i * 0.2, duration: 1, ease: "easeOut" }}
-                            className={`h-full bg-gradient-to-r from-${item.color}-500 to-${item.color}-600 rounded-full`}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Floating badges */}
-                <motion.div
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute -top-6 -right-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl px-6 py-4 shadow-xl shadow-cyan-500/30"
-                >
-                  <div className="text-white text-3xl font-bold">99.9%</div>
-                  <div className="text-cyan-100 text-sm">Uptime</div>
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-6 -left-6 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl px-6 py-4 shadow-xl shadow-purple-500/30"
-                >
-                  <div className="text-white text-3xl font-bold">24/7</div>
-                  <div className="text-purple-100 text-sm">Support</div>
-                </motion.div>
-              </div>
-            </motion.div>
+            <HeroCaseShowcase />
           </div>
         </div>
       </section>

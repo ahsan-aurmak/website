@@ -1,10 +1,9 @@
 import { useLocation, Link } from "react-router";
 import { Hero } from "../components/hero";
 import { Button } from "../components/button";
-import { Card, GlassCard } from "../components/card";
+import { GlassCard } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { X } from "lucide-react";
@@ -371,71 +370,6 @@ export default function CaseStudyDetail() {
           "Discovery phase understanding product functionality and competitive differentiation",
           "High-fidelity prototype with innovative header marquee component",
           "Usability testing validating navigation, content discoverability, and CTA positioning"
-        ]
-      }
-    },
-    "case-study-aljazeera-itsm": {
-      kicker: "Qatar · Media & Broadcasting · Enterprise IT Service Management",
-      title: "Al Jazeera ITSM Platform",
-      lead: "Al Jazeera Media Network needed a comprehensive IT Service Management platform to handle over 500 service requests across their global broadcasting operations. We designed an end-to-end solution supporting multiple request types, workflow automation, and stakeholder collaboration.",
-      metrics: [
-        { value: "500+", label: "service types supported" },
-        { value: "Multi-scenario", label: "workflow automation" },
-        { value: "Global", label: "broadcast operations" }
-      ],
-      snapshot: [
-        { label: "Client", value: "Media & Broadcasting Network" },
-        { label: "Location", value: "Qatar" },
-        { label: "Industry", value: "International Media & Broadcasting" },
-        { label: "Platform", value: "Enterprise ITSM Solution" }
-      ],
-      challenge: "Al Jazeera's global broadcasting operations required a robust ITSM platform to manage 500+ different service request types. The platform needed to support complex workflows, multi-scenario approvals, stakeholder collaboration, and seamless integration with existing broadcasting infrastructure.",
-      solution: "We designed a comprehensive ITSM platform with intelligent workflow routing, multi-scenario support, and intuitive request management. The solution included detailed journey mapping from current to proposed states, wireframes supporting complex scenarios, and a complete design approach validated through stakeholder workshops.",
-      businessOutcomes: [
-        "500+ service request types supported with intelligent routing",
-        "Multi-scenario workflow automation reducing manual processing",
-        "Comprehensive journey mapping from current to future state",
-        "Successful stakeholder validation through collaborative workshops"
-      ],
-      images: [
-        {
-          src: alJazeeraPlatform,
-          alt: "ITSM platform interface supporting global broadcast operations",
-          caption: "Al Jazeera Support Platform"
-        },
-        {
-          src: alJazeeraServiceRequests,
-          alt: "Service request management with intelligent workflow routing",
-          caption: "Service Request Management"
-        },
-        {
-          src: alJazeeraWireframes,
-          alt: "Multi-scenario wireframes supporting complex workflows",
-          caption: "Multi-Scenario Workflows"
-        },
-        {
-          src: alJazeeraProductFlow,
-          alt: "Product flow diagrams showing request routing logic",
-          caption: "Product Flow Architecture"
-        },
-        {
-          src: alJazeeraDesignStrategy,
-          alt: "Design strategy framework for ITSM platform",
-          caption: "Design Strategy"
-        },
-        {
-          src: alJazeeraWorkshop,
-          alt: "UX workshop sessions with stakeholders defining approach",
-          caption: "Stakeholder Workshops"
-        }
-      ],
-      projectDetails: {
-        scope: "Complete ITSM platform design for global media operations including strategy workshops, journey mapping, workflow design, and comprehensive wireframing for 500+ service types.",
-        approach: [
-          "UX workshop sessions defining product design approach with stakeholders",
-          "Journey mapping showing current vs. proposed customer experience",
-          "Product flow and information architecture for complex request routing",
-          "Wireframes supporting multiple approval scenarios and stakeholder collaboration"
         ]
       }
     },
