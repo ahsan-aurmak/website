@@ -5,13 +5,31 @@ import { Sparkles } from "lucide-react";
 
 interface HeroProps {
   eyebrow?: string;
+  kicker?: string;
   title: string | ReactNode;
   lead: string;
   children?: ReactNode;
   badge?: string;
+  align?: "left" | "center";
+  size?: "default" | "large";
 }
 
-export function Hero({ eyebrow, title, lead, children, badge }: HeroProps) {
+export function Hero({
+  eyebrow,
+  kicker,
+  title,
+  lead,
+  children,
+  badge,
+  align = "left",
+  size = "default",
+}: HeroProps) {
+  const eyebrowText = eyebrow || kicker;
+  const alignmentClassName = align === "center" ? "max-w-5xl mx-auto text-center" : "max-w-4xl";
+  const titleClassName = size === "large"
+    ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+    : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl";
+
   return (
     <section className="relative py-16 sm:py-20 lg:py-32 overflow-hidden min-h-[70vh] lg:min-h-[90vh] flex items-center">
       {/* Animated background elements */}
@@ -30,9 +48,9 @@ export function Hero({ eyebrow, title, lead, children, badge }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl"
+          className={alignmentClassName}
         >
-          {eyebrow && (
+          {eyebrowText && (
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -40,7 +58,7 @@ export function Hero({ eyebrow, title, lead, children, badge }: HeroProps) {
               className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium backdrop-blur-sm"
             >
               <Sparkles className="w-4 h-4" />
-              {eyebrow}
+              {eyebrowText}
             </motion.div>
           )}
           
@@ -48,7 +66,7 @@ export function Hero({ eyebrow, title, lead, children, badge }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight"
+            className={`${titleClassName} font-bold mb-6 leading-tight`}
           >
             {title}
           </motion.h1>
@@ -57,7 +75,7 @@ export function Hero({ eyebrow, title, lead, children, badge }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-8 max-w-3xl"
+            className={`text-xl md:text-2xl text-slate-300 leading-relaxed mb-8 ${align === "center" ? "max-w-4xl mx-auto" : "max-w-3xl"}`}
           >
             {lead}
           </motion.p>

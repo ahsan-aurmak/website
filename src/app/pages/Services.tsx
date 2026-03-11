@@ -38,13 +38,12 @@ export default function Services() {
     "Performance tracking aligned to agreed commercial and operational outcomes."
   ];
 
-  const diagramLabels = ["Data Layer", "AI Services", "BMS", "Enterprise Operations Dashboard"];
-
   return (
     <div>
       <SEO
         title="Structured Delivery - Enterprise Solutions"
         description="We deliver through defined frameworks that align business objectives, architecture decisions, and accountable implementation."
+        canonical="https://www.aurmak.com/services"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" }

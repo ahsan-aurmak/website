@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { buildCanonicalUrl, isIndexingEnabled, SITE_NAME } from "../lib/site";
 
 interface SEOProps {
   title: string;
@@ -8,22 +9,25 @@ interface SEOProps {
   ogType?: string;
   keywords?: string;
   schema?: object;
-  noIndex?: boolean; // Allow override for specific pages
+  breadcrumbSchema?: object;
+  noIndex?: boolean;
 }
 
 export function SEO({
   title,
   description,
   canonical = '',
-  ogImage = 'https://www.aurmak.com/og-image.jpg',
+  ogImage = buildCanonicalUrl('/global_hq_futuristic.png'),
   ogType = 'website',
   keywords = 'AI integration, industrial automation, SaaS development, building management systems, legacy modernization, enterprise technology',
   schema,
-  noIndex = false, // Allow indexing in production
+  breadcrumbSchema,
+  noIndex = false,
 }: SEOProps) {
-  const fullTitle = title.includes('AURMAK') ? title : `${title} | AURMAK`;
-  const siteUrl = 'https://www.aurmak.com';
-  const canonicalUrl = canonical || siteUrl;
+  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const canonicalUrl = canonical || buildCanonicalUrl('/');
+  const effectiveNoIndex = noIndex || !isIndexingEnabled();
+  const schemas = [schema, breadcrumbSchema].filter(Boolean);
 
   return (
     <Helmet>
@@ -36,20 +40,18 @@ export function SEO({
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* STAGING/DEV: Prevent indexing until production launch */}
-      {noIndex && (
+      {/* Staging remains blocked until the live domain is explicitly enabled. */}
+      {effectiveNoIndex && (
         <>
-          <meta name="robots" content="noindex, nofollow" />
-          <meta name="googlebot" content="noindex, nofollow" />
-          <meta name="bingbot" content="noindex, nofollow" />
+          <meta name="robots" content="noindex, nofollow, noarchive" />
+          <meta name="googlebot" content="noindex, nofollow, noarchive" />
         </>
       )}
 
-      {/* PRODUCTION: Enable indexing (set noIndex={false}) */}
-      {!noIndex && (
+      {!effectiveNoIndex && (
         <>
-          <meta name="robots" content="index, follow" />
-          <meta name="googlebot" content="index, follow" />
+          <meta name="robots" content="index, follow, max-image-preview:large" />
+          <meta name="googlebot" content="index, follow, max-image-preview:large" />
         </>
       )}
 
@@ -59,7 +61,8 @@ export function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:site_name" content="AURMAK" />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:image:alt" content={fullTitle} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
@@ -69,11 +72,11 @@ export function SEO({
       <meta property="twitter:image" content={ogImage} />
 
       {/* Schema.org JSON-LD */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
+      {schemas.map((item, index) => (
+        <script key={`schema-${index}`} type="application/ld+json">
+          {JSON.stringify(item)}
         </script>
-      )}
+      ))}
     </Helmet>
   );
 }
@@ -82,9 +85,9 @@ export function SEO({
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "AURMAK",
-  "url": "https://www.aurmak.com",
-  "logo": "https://www.aurmak.com/logo.png",
+  "name": SITE_NAME,
+  "url": buildCanonicalUrl("/"),
+  "logo": buildCanonicalUrl("/aurmak-logo.svg"),
   "description": "Enterprise AI integration, SaaS development, and industrial automation solutions provider",
   "slogan": "Partnerships Built to Last",
   "foundingDate": "2001",
@@ -98,21 +101,22 @@ export const organizationSchema = {
       "addressLocality": "London",
       "addressRegion": "England",
       "addressCountry": "GB",
-      "description": "Strategic headquarters for governance and portfolio-level decision-making"
+      "streetAddress": "124 City Road",
+      "postalCode": "EC1V 2NX"
     },
     {
       "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
+      "addressLocality": "Ajman",
+      "addressRegion": "Ajman",
       "addressCountry": "AE",
-      "description": "Regional execution and client coordination centre for GCC programmes"
+      "streetAddress": "BLA-507, Block A, Ajman Main Boulevard"
     },
     {
       "@type": "PostalAddress",
       "addressLocality": "Lahore",
       "addressRegion": "Punjab",
       "addressCountry": "PK",
-      "description": "Engineering and integration hub for software delivery"
+      "streetAddress": "306 Tipu Block, Bahria Town"
     }
   ],
   "sameAs": [
@@ -172,7 +176,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": `https://www.aurmak.com${item.url}`
+      "item": buildCanonicalUrl(item.url)
     }))
   };
 }

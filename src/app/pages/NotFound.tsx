@@ -2,12 +2,19 @@ import { Button } from "../components/button";
 import { motion } from "motion/react";
 import { Home, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router";
+import { SEO } from "../components/seo";
 
 export default function NotFound() {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
+      <SEO
+        title="Page Not Found"
+        description="The page you requested could not be found."
+        canonical="https://www.aurmak.com/404"
+        noIndex
+      />
       <div className="text-center max-w-2xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

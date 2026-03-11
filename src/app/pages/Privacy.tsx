@@ -1,10 +1,20 @@
 import { Hero } from "../components/hero";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Privacy() {
   return (
     <div>
+      <SEO
+        title="Privacy Policy"
+        description="Read AURMAK's privacy policy covering enquiries, recruitment submissions, data handling, retention, and contact details."
+        canonical="https://www.aurmak.com/privacy"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Privacy Policy", url: "/privacy" }
+        ])}
+      />
       <Hero
         eyebrow="Legal"
         title="Privacy Policy"

@@ -1,10 +1,20 @@
 import { Hero } from "../components/hero";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Terms() {
   return (
     <div>
+      <SEO
+        title="Terms and Conditions"
+        description="Review AURMAK's website terms and conditions, including permitted use, intellectual property, and liability provisions."
+        canonical="https://www.aurmak.com/terms"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Terms", url: "/terms" }
+        ])}
+      />
       <Hero
         eyebrow="Legal"
         title="Terms & Conditions"

@@ -1,10 +1,20 @@
 import { Hero } from "../components/hero";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Cookies() {
   return (
     <div>
+      <SEO
+        title="Cookies Policy"
+        description="Review AURMAK's cookies policy, including essential cookies, analytics usage, and visitor cookie controls."
+        canonical="https://www.aurmak.com/cookies"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Cookies Policy", url: "/cookies" }
+        ])}
+      />
       <Hero
         eyebrow="Legal"
         title="Cookies Policy"

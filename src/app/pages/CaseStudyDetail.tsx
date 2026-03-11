@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucid
 import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { X } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 // Metrikus case study images
 import metrikusSpaceDashboard from "figma:asset/d4ea28b0c5e977adeccbec0ba6c83e335b3ef577.png";
@@ -645,11 +646,17 @@ export default function CaseStudyDetail() {
     }
   };
 
-  const data = caseData[slug] || caseData["case-study-aljazeera-itsm"]; // Fallback for Al Jazeera slug variation
+  const data = caseData[slug] || caseData["case-study-al-jazeera-itsm"];
 
   if (!data) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
+        <SEO
+          title="Case Study Not Found"
+          description="The requested case study could not be found."
+          canonical="https://www.aurmak.com/case-studies"
+          noIndex
+        />
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Case Study Not Found</h1>
           <Link to="/case-studies">
@@ -662,6 +669,17 @@ export default function CaseStudyDetail() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <SEO
+        title={data.title}
+        description={data.lead}
+        canonical={`https://www.aurmak.com/${slug}`}
+        ogImage={data.images?.[0]?.src}
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Case Studies", url: "/case-studies" },
+          { name: data.title, url: `/${slug}` }
+        ])}
+      />
       {/* Hero Section */}
       <Hero
         kicker={data.kicker}

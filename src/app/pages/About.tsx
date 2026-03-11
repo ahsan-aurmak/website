@@ -1,6 +1,6 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { Users, Target, Globe2, Award, Zap, Code2, Heart, Rocket } from "lucide-react";
+import { Globe2, Award, Code2, Heart } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
@@ -34,9 +34,8 @@ export default function About() {
     <div>
       <SEO
         title="About AURMAK - Global Vision & Leadership"
-        description="AURMAK combines strategic leadership in London and Dubai with disciplined engineering execution from Lahore. Enterprise AI integration and industrial automation provider with 15+ years of combined experience."
+        description="AURMAK combines strategic leadership in London and Dubai with disciplined engineering execution from Lahore for enterprise AI integration, product delivery, and industrial digitisation."
         canonical="https://www.aurmak.com/about"
-        keywords="about AURMAK, technology company, global offices, London Dubai Lahore, enterprise technology provider, AI automation company"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "About", url: "/about" }

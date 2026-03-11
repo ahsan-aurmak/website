@@ -3,6 +3,7 @@ import { Button } from "../components/button";
 import { Card, GlassCard } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Briefcase } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Careers() {
   const roles = [
@@ -45,6 +46,15 @@ export default function Careers() {
 
   return (
     <div>
+      <SEO
+        title="Careers at AURMAK"
+        description="Explore current AURMAK roles across product engineering and enterprise architecture, with structured application details and regional location information."
+        canonical="https://www.aurmak.com/careers"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Careers", url: "/careers" }
+        ])}
+      />
       <Hero
         eyebrow="Careers"
         title="Careers at AURMAK."
@@ -104,7 +114,7 @@ export default function Careers() {
                       {role.model}
                     </div>
                   </div>
-                  <Button to={`/job-detail?job=${role.slug}`} variant="ghost" className="w-full justify-between">
+                  <Button to={`/careers/${role.slug}`} variant="ghost" className="w-full justify-between">
                     View Role & Apply
                     <ArrowRight className="w-4 h-4" />
                   </Button>

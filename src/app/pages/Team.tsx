@@ -44,11 +44,12 @@ export default function Team() {
   return (
     <div>
       <SEO
-        title="Team - Vertage"
-        description="Meet our expert leadership team at Vertage, driving innovation and excellence in AI and industrial automation."
+        title="Leadership Team"
+        description="Meet the AURMAK leadership team overseeing product strategy, operational delivery, and engineering execution across London, Ajman, and Lahore."
+        canonical="https://www.aurmak.com/team"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
-          { name: "About Us", url: "/about" },
+          { name: "About", url: "/about" },
           { name: "Team", url: "/team" }
         ])}
       />

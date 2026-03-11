@@ -41,6 +41,7 @@ export const router = createBrowserRouter([
       { path: "lab", Component: Lab },
       { path: "team", Component: Team },
       { path: "careers", Component: Careers },
+      { path: "careers/:jobSlug", Component: JobDetail },
       { path: "job-detail", Component: JobDetail },
       { path: "contact", Component: Contact },
       { path: "privacy", Component: Privacy },

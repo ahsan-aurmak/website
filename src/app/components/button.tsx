@@ -7,6 +7,7 @@ interface ButtonProps {
   to?: string;
   onClick?: () => void;
   variant?: "primary" | "secondary" | "ghost";
+  size?: "default" | "large";
   type?: "button" | "submit";
   disabled?: boolean;
   className?: string;
@@ -17,19 +18,24 @@ export function Button({
   to, 
   onClick, 
   variant = "primary",
+  size = "default",
   type = "button",
   disabled = false,
   className = ""
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group whitespace-nowrap w-full sm:w-auto";
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group whitespace-nowrap w-full sm:w-auto";
   
   const variants = {
     primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-xl hover:shadow-cyan-500/30",
     secondary: "bg-slate-800 text-slate-100 border border-slate-700 hover:bg-slate-700 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10",
     ghost: "text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50"
   };
+  const sizes = {
+    default: "px-6 py-3",
+    large: "px-8 py-4 text-base",
+  };
 
-  const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;
+  const combinedClassName = `${baseStyles} ${sizes[size]} ${variants[variant]} ${className}`;
 
   const ButtonContent = ({ children }: { children: ReactNode }) => (
     <>

@@ -3,6 +3,7 @@ import { Button } from "../components/button";
 import { Card, GlassCard } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowRight, Shield, FileCheck, GitBranch, Users, TestTube, Database } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function HowWeWork() {
   const stages = [
@@ -79,6 +80,15 @@ export default function HowWeWork() {
 
   return (
     <div>
+      <SEO
+        title="How We Work"
+        description="Learn AURMAK's seven-stage delivery model covering discovery, audit, roadmap, pilot, rollout, governance, and long-term support."
+        canonical="https://www.aurmak.com/how-we-work"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "How We Work", url: "/how-we-work" }
+        ])}
+      />
       <Hero
         eyebrow="Delivery Framework"
         title="How We Work."

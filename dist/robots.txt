@@ -1,28 +1,3 @@
-# AURMAK Robots.txt
-# PRODUCTION - ALLOW INDEXING
-
+# Default static fallback: keep the site blocked until the live host is explicitly enabled.
 User-agent: *
-Allow: /
-
-# Block admin areas (if any)
-Disallow: /admin/
-Disallow: /api/
-
-# Sitemap location
-Sitemap: https://www.aurmak.com/sitemap.xml
-
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
-# Specific rules for major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-# Sitemap location (for future use when site goes live)
-# Sitemap: https://www.aurmak.com/sitemap.xml
+Disallow: /

@@ -3,6 +3,7 @@ import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Insights() {
   const [activeFilter, setActiveFilter] = useState("all topics");
@@ -46,6 +47,15 @@ export default function Insights() {
 
   return (
     <div>
+      <SEO
+        title="Insights"
+        description="Browse AURMAK's selected insights on enterprise SaaS, UX strategy, design validation, and delivery practices."
+        canonical="https://www.aurmak.com/insights"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Insights", url: "/insights" }
+        ])}
+      />
       <Hero
         eyebrow="Insights"
         title="Business Strategy Through Design."

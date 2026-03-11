@@ -1,5 +1,4 @@
 import { useTimezoneTime } from "../hooks/useTimezoneTime";
-import { Clock } from "lucide-react";
 
 interface OfficeClockProps {
   offsetHours: number;

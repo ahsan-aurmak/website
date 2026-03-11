@@ -1,8 +1,9 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { Brain, Code2, Server, Zap, ArrowRight, Cpu, Network, Database, CheckCircle2 } from "lucide-react";
+import { Brain, Server, Zap, Database, CheckCircle2 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { GlassCard } from "../components/card";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Solutions() {
   const domains = [
@@ -45,6 +46,15 @@ export default function Solutions() {
 
   return (
     <div>
+      <SEO
+        title="Solutions"
+        description="AURMAK builds industrial digitisation, real estate, and enterprise operations platforms that improve visibility, control, and delivery outcomes."
+        canonical="https://www.aurmak.com/solutions"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Solutions", url: "/solutions" }
+        ])}
+      />
       <Hero
         eyebrow="Solutions"
         title="Industrial Digitisation."

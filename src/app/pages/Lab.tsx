@@ -1,8 +1,9 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { Cpu, Zap, Eye, Globe2, CheckCircle2 } from "lucide-react";
+import { Cpu, Zap, Eye, CheckCircle2 } from "lucide-react";
 import { GlassCard } from "../components/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Lab() {
   const principles = [
@@ -32,6 +33,15 @@ export default function Lab() {
 
   return (
     <div>
+      <SEO
+        title="Venture Lab"
+        description="The AURMAK Lab develops practical experiments in predictive maintenance, enterprise AI interfaces, facility performance modelling, and integration accelerators."
+        canonical="https://www.aurmak.com/lab"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Lab", url: "/lab" }
+        ])}
+      />
       <Hero
         eyebrow="The Lab"
         title="The Venture Lab."

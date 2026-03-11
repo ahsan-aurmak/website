@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useState } from "react";
+import { useLocation, useParams } from "react-router";
 import { Hero } from "../components/hero";
 import { Button } from "../components/button";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowLeft, Upload, CheckCircle } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function JobDetail() {
+  const { jobSlug: routeJobSlug } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const jobSlug = searchParams.get("job");
+  const jobSlug = routeJobSlug || searchParams.get("job");
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -128,6 +130,12 @@ export default function JobDetail() {
   if (!job) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEO
+          title="Role Not Found"
+          description="The requested role could not be found."
+          canonical="https://www.aurmak.com/careers"
+          noIndex
+        />
         <div className="text-center max-w-md">
           <h1 className="text-3xl font-bold mb-4">Role Not Found</h1>
           <p className="text-slate-400 mb-6">
@@ -141,6 +149,16 @@ export default function JobDetail() {
 
   return (
     <div>
+      <SEO
+        title={`${job.title} Careers`}
+        description={job.lead}
+        canonical={`https://www.aurmak.com/careers/${jobSlug}`}
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Careers", url: "/careers" },
+          { name: job.title, url: `/careers/${jobSlug}` }
+        ])}
+      />
       <Hero
         eyebrow="Structured Opportunity"
         title={job.title}

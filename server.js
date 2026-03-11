@@ -11,13 +11,74 @@ const app = express();
 const isProduction = process.env.NODE_ENV === "production";
 const host = process.env.HOST || "127.0.0.1";
 const port = Number(process.env.PORT || 4173);
-const basePath = "/website";
 const distDir = path.resolve(__dirname, "dist");
+const publicDir = path.resolve(__dirname, "public");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const defaultContactTo = "info@aurmak.com";
+const liveHostnames = new Set(["aurmak.com", "www.aurmak.com"]);
+const knownStaticRoutes = new Set([
+  "/",
+  "/about",
+  "/services",
+  "/how-we-work",
+  "/solutions",
+  "/case-studies",
+  "/insights",
+  "/lab",
+  "/team",
+  "/careers",
+  "/contact",
+  "/privacy",
+  "/cookies",
+  "/terms",
+]);
+const knownCaseStudyRoutes = new Set([
+  "/case-study-metrikus-smart-building",
+  "/case-study-cutover-orchestration",
+  "/case-study-rbs-travel-portal",
+  "/case-study-cisco-stealthwatch",
+  "/case-study-al-jazeera-itsm",
+  "/case-study-castrol-carlounge",
+  "/case-study-gtt-saas-iaas",
+  "/case-study-dubai-trade",
+]);
+const knownCareerRoutes = new Set([
+  "/careers/senior-ai-product-engineer",
+  "/careers/enterprise-solutions-architect",
+  "/careers/full-stack-product-engineer",
+]);
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+
+function isIndexingEnabledForHost(hostname = "") {
+  const normalizedHostname = hostname.toLowerCase();
+  const allowIndexing = (process.env.ALLOW_INDEXING ?? process.env.VITE_ALLOW_INDEXING) === "true";
+
+  return allowIndexing && liveHostnames.has(normalizedHostname);
+}
+
+function isKnownAppRoute(pathname) {
+  return (
+    knownStaticRoutes.has(pathname) ||
+    knownCaseStudyRoutes.has(pathname) ||
+    knownCareerRoutes.has(pathname)
+  );
+}
+
+function isHtmlRoute(pathname) {
+  if (
+    pathname.startsWith("/@vite") ||
+    pathname.startsWith("/@react-refresh") ||
+    pathname.startsWith("/@fs/") ||
+    pathname.startsWith("/src/") ||
+    pathname.startsWith("/node_modules/")
+  ) {
+    return false;
+  }
+
+  return pathname === "/" || !path.extname(pathname);
+}
 
 function stripAngles(value) {
   return String(value ?? "").replace(/[<>]/g, "").trim();
@@ -204,15 +265,93 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-app.get("/", (_req, res) => {
-  res.redirect(302, `${basePath}/`);
+app.use((req, res, next) => {
+  const indexingEnabled = isIndexingEnabledForHost(req.hostname);
+
+  res.locals.indexingEnabled = indexingEnabled;
+
+  if (!indexingEnabled) {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+  }
+
+  next();
 });
 
-if (isProduction) {
-  app.use(basePath, express.static(distDir, { index: false }));
+app.get("/robots.txt", (req, res) => {
+  const body = res.locals.indexingEnabled
+    ? "User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://www.aurmak.com/sitemap.xml\n"
+    : "User-agent: *\nDisallow: /\n";
 
-  app.get(/^\/website(?:\/.*)?$/, (_req, res) => {
-    res.sendFile(path.join(distDir, "index.html"));
+  res.type("text/plain").send(body);
+});
+
+app.get("/sitemap.xml", async (_req, res, next) => {
+  if (!res.locals.indexingEnabled) {
+    res.status(404).type("text/plain").send("Not found.");
+    return;
+  }
+
+  try {
+    const sitemapPath = isProduction
+      ? path.join(distDir, "sitemap.xml")
+      : path.join(publicDir, "sitemap.xml");
+    const sitemap = await fs.readFile(sitemapPath, "utf8");
+
+    res.type("application/xml").send(sitemap);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/job-detail", (req, res) => {
+  const slug = typeof req.query.job === "string" ? req.query.job : "";
+
+  if (slug && knownCareerRoutes.has(`/careers/${slug}`)) {
+    res.redirect(301, `/careers/${slug}`);
+    return;
+  }
+
+  res.redirect(302, "/careers");
+});
+
+async function renderAppShell(req, res, next, vite) {
+  const routeExists = isKnownAppRoute(req.path);
+  const statusCode = routeExists ? 200 : 404;
+
+  if (statusCode === 404) {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+  }
+
+  try {
+    if (isProduction) {
+      res.status(statusCode).sendFile(path.join(distDir, "index.html"));
+      return;
+    }
+
+    const templatePath = path.resolve(__dirname, "index.html");
+    const template = await fs.readFile(templatePath, "utf8");
+    const html = await vite.transformIndexHtml(req.originalUrl, template);
+
+    res.status(statusCode).setHeader("Content-Type", "text/html");
+    res.end(html);
+  } catch (error) {
+    if (vite) {
+      vite.ssrFixStacktrace(error);
+    }
+    next(error);
+  }
+}
+
+if (isProduction) {
+  app.use(express.static(distDir, { index: false }));
+
+  app.get(/^\/(?:.*)?$/, (req, res, next) => {
+    if (!isHtmlRoute(req.path) || req.path.startsWith("/api/")) {
+      next();
+      return;
+    }
+
+    renderAppShell(req, res, next);
   });
 } else {
   const vite = await createViteServer({
@@ -222,17 +361,13 @@ if (isProduction) {
     appType: "custom",
   });
 
-  app.get(/^\/website(?:\/.*)?$/, async (req, res, next) => {
-    try {
-      const templatePath = path.resolve(__dirname, "index.html");
-      const template = await fs.readFile(templatePath, "utf8");
-      const html = await vite.transformIndexHtml(req.originalUrl, template);
-      res.status(200).setHeader("Content-Type", "text/html");
-      res.end(html);
-    } catch (error) {
-      vite.ssrFixStacktrace(error);
-      next(error);
+  app.get(/^\/(?:.*)?$/, (req, res, next) => {
+    if (!isHtmlRoute(req.path) || req.path.startsWith("/api/")) {
+      next();
+      return;
     }
+
+    renderAppShell(req, res, next, vite);
   });
 
   app.use(vite.middlewares);
@@ -244,7 +379,7 @@ app.use((req, res) => {
     return;
   }
 
-  res.redirect(302, `${basePath}/`);
+  res.status(404).send("Not found.");
 });
 
 app.use((error, req, res, _next) => {
@@ -259,5 +394,5 @@ app.use((error, req, res, _next) => {
 });
 
 app.listen(port, host, () => {
-  console.log(`AURMAK server running at http://${host}:${port}${basePath}/`);
+  console.log(`AURMAK server running at http://${host}:${port}/`);
 });

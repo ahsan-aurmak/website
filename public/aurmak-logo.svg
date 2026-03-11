@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">AURMAK Logo</title>
+  <desc id="desc">AURMAK wordmark on a dark gradient background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0b1220" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)" />
+  <path d="M152 356 238 156h36l86 200h-45l-18-45h-82l-18 45zm79-82h52l-26-66z" fill="#f8fafc" />
+  <path d="M110 112h292" stroke="url(#accent)" stroke-width="18" stroke-linecap="round" />
+  <path d="M110 400h292" stroke="url(#accent)" stroke-width="18" stroke-linecap="round" opacity="0.7" />
+</svg>

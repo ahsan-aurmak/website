@@ -4,6 +4,7 @@ import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function CaseStudies() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -91,6 +92,15 @@ export default function CaseStudies() {
 
   return (
     <div>
+      <SEO
+        title="Case Studies"
+        description="Review AURMAK case studies across enterprise technology, financial services, public sector, and automotive programmes with measurable delivery outcomes."
+        canonical="https://www.aurmak.com/case-studies"
+        schema={generateBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Case Studies", url: "/case-studies" }
+        ])}
+      />
       <Hero
         eyebrow="Case Studies"
         title="Case Studies."
