@@ -12,10 +12,12 @@ export default function Contact() {
     email: "",
     company: "",
     service: "",
-    brief: ""
+    brief: "",
+    website: ""
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const offices = [
     { country: "United Kingdom", address: "124 City Road, London, EC1V 2NX." },
@@ -34,11 +36,36 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
-    // Mock submission
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Unable to submit your enquiry right now.");
+      }
+
       setStatus("success");
-    }, 2000);
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        service: "",
+        brief: "",
+        website: ""
+      });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Unable to submit your enquiry right now.");
+    }
   };
 
   return (
@@ -188,6 +215,19 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="sr-only" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    />
+                  </div>
+
                   {/* Row 1: Name + Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -283,6 +323,12 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                     />
                   </div>
+
+                  {status === "error" && (
+                    <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                      {errorMessage}
+                    </div>
+                  )}
 
                   <div className="flex justify-end">
                     <Button
