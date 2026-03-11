@@ -2,7 +2,6 @@ import { Outlet, useLocation } from "react-router";
 import { Navigation } from "../components/navigation";
 import { Footer } from "../components/footer";
 import { CursorFollower, ScrollProgress } from "../components/cursor-follower";
-import { ChatBot } from "../components/chatbot";
 import { StagingBanner } from "../components/staging-banner";
 import { useEffect } from "react";
 
@@ -45,7 +44,6 @@ export default function Root() {
         <Outlet />
       </main>
       <Footer />
-      <ChatBot />
     </div>
   );
 }
