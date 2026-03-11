@@ -3,6 +3,7 @@ import { Navigation } from "../components/navigation";
 import { Footer } from "../components/footer";
 import { CursorFollower, ScrollProgress } from "../components/cursor-follower";
 import { StagingBanner } from "../components/staging-banner";
+import { CookieConsent } from "../components/cookie-consent";
 import { useEffect } from "react";
 
 export default function Root() {
@@ -44,6 +45,7 @@ export default function Root() {
         <Outlet />
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }
