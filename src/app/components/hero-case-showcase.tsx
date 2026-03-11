@@ -5,25 +5,64 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 
 const cases = [
   {
-    client: "Castrol",
-    sector: "Automotive · UK",
-    title: "CarLounge Garage Experience",
-    kpi: "£4.5m",
-    kpiLabel: "Funding Secured",
-    sub: "80% customer satisfaction increase",
+    client: "Metrikus",
+    sector: "Real Estate · UK",
+    title: "Smart Building Platform",
+    kpi: "45%",
+    kpiLabel: "Faster Insights",
+    sub: "62% increase in user engagement",
+    color: "from-emerald-400 to-green-600",
+    glow: "shadow-emerald-500/40",
+    dot: "bg-emerald-400",
+    emoji: "🏢",
+    path: "/case-study-metrikus-smart-building",
+  },
+  {
+    client: "Cutover",
+    sector: "Enterprise Software · UK",
+    title: "Change Orchestration Platform",
+    kpi: "100%",
+    kpiLabel: "Task Success",
+    sub: "44 participants usability tested",
+    color: "from-blue-400 to-cyan-600",
+    glow: "shadow-blue-500/40",
+    dot: "bg-blue-400",
+    emoji: "⚙️",
+    path: "/case-study-cutover-orchestration",
+  },
+  {
+    client: "RBS",
+    sector: "Financial Services · UK",
+    title: "Premium Travel Portal",
+    kpi: "4",
+    kpiLabel: "Travel Categories",
+    sub: "Full mobile + web platforms",
+    color: "from-blue-600 to-indigo-800",
+    glow: "shadow-blue-600/40",
+    dot: "bg-blue-500",
+    emoji: "🏦",
+    path: "/case-study-rbs-travel-portal",
+  },
+  {
+    client: "Cisco",
+    sector: "Cybersecurity · US",
+    title: "Stealthwatch Educational Portal",
+    kpi: "3×",
+    kpiLabel: "Content Reach",
+    sub: "75%+ usability success rate",
     color: "from-cyan-500 to-blue-600",
     glow: "shadow-cyan-500/40",
     dot: "bg-cyan-400",
-    emoji: "🚗",
-    path: "/case-study-castrol-carlounge",
+    emoji: "🔐",
+    path: "/case-study-cisco-stealthwatch",
   },
   {
     client: "Al Jazeera",
     sector: "Media · Qatar",
     title: "IT Service Management Platform",
-    kpi: "50%",
-    kpiLabel: "Signup Increase",
-    sub: "First month after launch",
+    kpi: "500+",
+    kpiLabel: "Services Supported",
+    sub: "Global broadcast operations",
     color: "from-violet-500 to-purple-700",
     glow: "shadow-violet-500/40",
     dot: "bg-violet-400",
@@ -31,9 +70,35 @@ const cases = [
     path: "/case-study-al-jazeera-itsm",
   },
   {
+    client: "Castrol",
+    sector: "Automotive · UAE",
+    title: "CarLounge Experience",
+    kpi: "5-Day",
+    kpiLabel: "Design Sprint",
+    sub: "End-to-end mobile journey",
+    color: "from-green-500 to-emerald-700",
+    glow: "shadow-emerald-500/40",
+    dot: "bg-emerald-400",
+    emoji: "🚗",
+    path: "/case-study-castrol-carlounge",
+  },
+  {
+    client: "GTT",
+    sector: "Cloud Infrastructure · US",
+    title: "Enterprise SaaS/IaaS Platform",
+    kpi: "80%",
+    kpiLabel: "Approval Rating",
+    sub: "4 rounds of usability testing",
+    color: "from-orange-500 to-red-600",
+    glow: "shadow-orange-500/40",
+    dot: "bg-orange-400",
+    emoji: "☁️",
+    path: "/case-study-gtt-saas-iaas",
+  },
+  {
     client: "Dubai Trade",
     sector: "E-Government · UAE",
-    title: "Smart Government Portal",
+    title: "Government Portal",
     kpi: "700+",
     kpiLabel: "Services Unified",
     sub: "100% stakeholder sign-off",
@@ -43,26 +108,13 @@ const cases = [
     emoji: "🏛️",
     path: "/case-study-dubai-trade",
   },
-  {
-    client: "Cisco",
-    sector: "Cybersecurity · US",
-    title: "Stealthwatch Educational Portal",
-    kpi: "3×",
-    kpiLabel: "Engagement Increase",
-    sub: "75%+ usability success rate",
-    color: "from-emerald-500 to-teal-600",
-    glow: "shadow-emerald-500/40",
-    dot: "bg-emerald-400",
-    emoji: "🔐",
-    path: "/case-study-cisco-stealthwatch",
-  },
 ];
 
 const orbitals = [
   { text: "100% Task Success", sub: "Cutover · UK", delay: 0 },
-  { text: "2,000+ Garages", sub: "Castrol · Global", delay: 0.8 },
+  { text: "Smart City UX", sub: "Dubai · UAE", delay: 0.8 },
   { text: "45% Faster Insights", sub: "Metrikus · UK", delay: 1.6 },
-  { text: "80% Approval Rate", sub: "GTT · UK", delay: 2.4 },
+  { text: "Global Scale", sub: "Castrol · Global", delay: 2.4 },
 ];
 
 export function HeroCaseShowcase() {
@@ -112,10 +164,10 @@ export function HeroCaseShowcase() {
             y: { duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: o.delay },
           }}
           className={`absolute text-xs font-medium bg-slate-800/80 backdrop-blur border border-slate-700/60 text-slate-200 px-3 py-2 rounded-xl shadow-lg whitespace-nowrap z-20 hidden md:block ${
-            i === 0 ? "-top-12 right-24" :
-            i === 1 ? "top-32 -right-12" :
-            i === 2 ? "-bottom-12 right-20" :
-            "bottom-32 -left-12"
+            i === 0 ? "-top-16 right-32" :
+            i === 1 ? "top-40 -right-20" :
+            i === 2 ? "-bottom-16 right-28" :
+            "bottom-40 -left-20"
           }`}
         >
           <span className="text-cyan-400 font-semibold">{o.text}</span>
@@ -212,7 +264,7 @@ export function HeroCaseShowcase() {
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-5 -left-6 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl px-5 py-3 shadow-xl shadow-purple-500/30 z-10"
+          className="absolute -bottom-5 -left-4 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl px-5 py-3 shadow-xl shadow-purple-500/30 z-30 lg:-left-12"
         >
           <div className="text-purple-100 text-[10px] uppercase tracking-widest mb-0.5">Offices in</div>
           <div className="text-white text-sm font-bold leading-tight whitespace-nowrap">London · Dubai · Lahore</div>
@@ -222,7 +274,7 @@ export function HeroCaseShowcase() {
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute top-4 -right-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl px-5 py-3 shadow-xl shadow-cyan-500/30 z-10"
+          className="absolute top-32 -right-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl px-5 py-3 shadow-xl shadow-cyan-500/30 z-30 lg:top-12 lg:-right-12"
         >
           <div className="text-cyan-100 text-[10px] uppercase tracking-widest mb-0.5">Clients include</div>
           <div className="text-white text-sm font-bold leading-tight whitespace-nowrap">Cisco · Castrol · Al Jazeera</div>
