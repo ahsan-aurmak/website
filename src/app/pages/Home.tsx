@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { ArrowRight, Brain, Code2, Sparkles, Cpu, Network, Rocket } from "lucide-react";
 import { Feature3DCard } from "../components/tilt-card";
 import { HeroGradientMesh } from "../components/gradient-mesh";
-import { OfficeClock } from "../components/office-clock";
 import { Button } from "../components/button";
 import { SEO, organizationSchema } from "../components/seo";
 import { HeroCaseShowcase } from "../components/hero-case-showcase";
@@ -247,8 +246,8 @@ export default function Home() {
                 Delivery Network
               </span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Operating centres in London, Dubai, and Lahore providing 24/7 coverage and local expertise.
+            <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+              Local leadership and delivery teams across London, Dubai, and Lahore, supporting programmes that span the UK, Middle East, Europe, North America, and South Asia.
             </p>
           </motion.div>
 
@@ -260,27 +259,21 @@ export default function Home() {
                 country: "United Kingdom", 
                 flag: "🇬🇧", 
                 gradient: "from-cyan-500 to-blue-600",
-                timezone: "GMT+0",
-                timezoneOffset: 0,
-                coverage: "Europe, Americas"
+                coverage: "Supporting the UK, Europe, and North America"
               },
               { 
                 city: "Dubai", 
                 country: "United Arab Emirates", 
                 flag: "🇦🇪", 
                 gradient: "from-blue-500 to-purple-600",
-                timezone: "GMT+4",
-                timezoneOffset: 4,
-                coverage: "Middle East, Africa"
+                coverage: "Supporting the Middle East and Africa"
               },
               { 
                 city: "Lahore", 
                 country: "Pakistan", 
                 flag: "🇵🇰", 
                 gradient: "from-purple-500 to-pink-600",
-                timezone: "GMT+5",
-                timezoneOffset: 5,
-                coverage: "Asia, Pacific"
+                coverage: "Supporting South Asia and APAC"
               },
             ].map((office, index) => (
               <motion.div
@@ -300,22 +293,20 @@ export default function Home() {
                   {/* Animated gradient background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${office.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   
-                  <div className="relative z-10 flex gap-6 items-start">
-                    {/* Left side - Text content */}
-                    <div className="flex-1">
-                      {/* Flag Icon */}
-                      <div className="text-7xl mb-6">{office.flag}</div>
-                      
-                      {/* City Name */}
-                      <h3 className="text-3xl font-bold text-slate-100 mb-2">{office.city}</h3>
-                      
-                      {/* Country */}
-                      <p className="text-slate-400 mb-6 text-lg">{office.country}</p>
+                  <div className="relative z-10">
+                    <div className="mb-6 flex items-start gap-4">
+                      <div className="text-4xl leading-none">{office.flag}</div>
+                      <div>
+                        <h3 className="text-3xl font-bold text-slate-100 mb-2">{office.city}</h3>
+                        <p className="text-slate-400 text-lg">{office.country}</p>
+                      </div>
                     </div>
 
-                    {/* Right side - Analogue Clock */}
-                    <div className="flex-shrink-0">
-                      <OfficeClock offsetHours={office.timezoneOffset} gradient={office.gradient} />
+                    <div className="rounded-2xl border border-slate-700/60 bg-slate-950/30 p-4">
+                      <div className="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">
+                        Regional Coverage
+                      </div>
+                      <p className="text-slate-300 leading-7">{office.coverage}</p>
                     </div>
                   </div>
                 </div>
