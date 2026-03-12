@@ -136,39 +136,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      {/* Stats Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {[
-              { value: "3", label: "Global Offices" },
-              { value: "15+", label: "Years Combined Experience" },
-              { value: "100+", label: "Projects Delivered" },
-              { value: "24/7", label: "Support Coverage" }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-slate-400">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

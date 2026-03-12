@@ -100,7 +100,7 @@ export default function Terms() {
                   </a>
                 </p>
                 <p className="mt-4 text-slate-500 text-sm">
-                  Arabic version available through language switch (AR) in the footer.
+                  Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>
             </Card>

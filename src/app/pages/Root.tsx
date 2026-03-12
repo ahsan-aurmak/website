@@ -40,7 +40,7 @@ export default function Root() {
       />
 
       <Navigation />
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10 pt-20 pb-20">
         <StagingBanner />
         <Outlet />
       </main>

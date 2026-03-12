@@ -94,7 +94,7 @@ export default function Cookies() {
                   .
                 </p>
                 <p className="mt-6 text-slate-500 text-sm">
-                  Arabic version available through language switch (AR) in the footer.
+                  Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>
             </Card>

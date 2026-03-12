@@ -59,12 +59,6 @@ export function Footer() {
                 className="h-10 w-auto"
               />
             </motion.div>
-            <p className="text-slate-400 text-sm mb-4">
-              London | Dubai | Lahore
-            </p>
-            <p className="text-slate-500 text-xs">
-              Partnerships Built to Last
-            </p>
           </div>
 
           {/* Quick Links */}
@@ -127,7 +121,7 @@ export function Footer() {
                 onClick={handleArabicClick}
                 className="px-3 py-1 bg-slate-800 text-slate-400 hover:bg-slate-700 rounded text-sm font-medium transition-colors"
               >
-                AR
+                العربية
               </button>
             </div>
             {showArabicMessage && (

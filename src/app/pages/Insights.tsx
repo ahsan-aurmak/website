@@ -62,7 +62,7 @@ export default function Insights() {
       </section>
 
       {/* Insight Cards */}
-      <section className="py-8 relative">
+      <section className="pt-8 pb-20 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredInsights.map((insight, index) => (
@@ -87,33 +87,6 @@ export default function Insights() {
                     </div>
                   </Card>
                 </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Insights KPI Row */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { value: "4", label: "First-party insights now published directly on AURMAK." },
-              { value: "SaaS", label: "Primary focus: Enterprise SaaS product development and scaling." },
-              { value: "100%", label: "ROI-focused insights for product leaders and executives." }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-3">
-                  {stat.value}
-                </div>
-                <p className="text-slate-400">{stat.label}</p>
               </motion.div>
             ))}
           </div>
