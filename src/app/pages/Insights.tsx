@@ -73,15 +73,15 @@ export default function Insights() {
                 transition={{ delay: index * 0.08 }}
               >
                 <Link to={`/insights/${insight.slug}`} className="block h-full">
-                  <Card className="h-full group">
+                  <Card className="h-full group flex flex-col">
                     <div className="text-cyan-400 text-xs uppercase tracking-wide font-medium mb-3">
                       {insight.topic}
                     </div>
                     <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
                       {insight.title}
                     </h3>
-                    <p className="text-slate-400 mb-4">{insight.excerpt}</p>
-                    <div className="flex items-center justify-between text-slate-500 text-sm border-t border-slate-800 pt-4">
+                    <p className="text-slate-400 mb-4 flex-1">{insight.excerpt}</p>
+                    <div className="mt-auto flex items-center justify-between text-slate-500 text-sm border-t border-slate-800 pt-4">
                       <span>{insight.meta}</span>
                       <ArrowRight className="w-4 h-4 group-hover:text-cyan-400 transition-colors" />
                     </div>

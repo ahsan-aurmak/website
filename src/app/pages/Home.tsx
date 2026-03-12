@@ -37,14 +37,14 @@ export default function Home() {
   ];
 
   const clients = [
-    { name: "Cisco", style: "font-bold" },
-    { name: "Al Jazeera", style: "font-semibold" },
-    { name: "Castrol", style: "font-bold" },
-    { name: "RBS", style: "font-bold tracking-wider" },
-    { name: "Metrikus", style: "font-semibold" },
-    { name: "Cutover", style: "font-semibold" },
-    { name: "GTT", style: "font-bold tracking-widest" },
-    { name: "Dubai Trade", style: "font-semibold" },
+    "Cisco",
+    "Al Jazeera",
+    "Castrol",
+    "RBS",
+    "Metrikus",
+    "Cutover",
+    "GTT",
+    "Dubai Trade",
   ];
 
   return (
@@ -140,35 +140,32 @@ export default function Home() {
                 Industry Leaders
               </span>
             </h2>
-            <p className="text-slate-400 text-lg">
-              Delivering transformative solutions across diverse sectors
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              Selected experience across enterprise SaaS, infrastructure, media, operations, and digital platforms.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden"
+            className="mx-auto max-w-6xl"
           >
-            {/* Scrolling clients */}
-            <div className="flex gap-8">
-              <motion.div
-                animate={{ x: [0, "-50%"] }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-                className="flex gap-8 flex-shrink-0"
-              >
-                {[...clients, ...clients].map((client, index) => (
-                  <div
-                    key={`${client.name}-${index}`}
-                    className="flex items-center justify-center px-14 py-10 bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-sm border border-slate-700/30 rounded-2xl min-w-[200px] sm:min-w-[280px] h-[160px] hover:border-cyan-500/30 transition-colors group"
-                  >
-                    <span className={`text-slate-200 text-xl sm:text-2xl whitespace-nowrap ${client.style} group-hover:text-cyan-400 transition-colors`}>
-                      {client.name}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {clients.map((client, index) => (
+                <motion.div
+                  key={client}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex min-h-[92px] items-center justify-center rounded-[22px] border border-white/6 bg-white/[0.02] px-5 py-6 text-center backdrop-blur-sm"
+                >
+                  <span className="text-base font-medium tracking-[0.18em] text-slate-400 sm:text-lg">
+                    {client}
+                  </span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

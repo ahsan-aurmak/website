@@ -24,17 +24,17 @@ export const insightArticles: InsightArticle[] = [
   {
     slug: "scaling-enterprise-saas-design-patterns",
     topic: "product development",
-    title: "Scaling Enterprise SaaS: Design Patterns That Drive Adoption",
-    excerpt: "Cross-device consistency, user research, and disciplined feature prioritisation help SaaS teams build products that feel coherent, useful, and ready to scale.",
+    title: "Scaling Enterprise SaaS: Product Patterns That Drive Adoption",
+    excerpt: "Cross-device consistency, customer evidence, and disciplined prioritisation help SaaS teams build products that are easier to adopt, easier to trust, and easier to scale.",
     meta: "Product Strategy · 7 min read",
     readTime: "7 min read",
     publishedDate: "2025-12-04",
     sections: [
       {
-        heading: "Strong SaaS design starts with the user",
+        heading: "Strong SaaS products start with adoption",
         paragraphs: [
           "Since the dot-com boom of the 1990s, the software as a service model has changed how businesses deliver products, build brands, and increase revenue. Early SaaS applications were often heavy on text and light on interface design. Today, users expect much more. They want products that are easy to learn, easy to trust, and easy to use across the full lifecycle of adoption.",
-          "That expectation creates pressure on design teams. A weak design process does not just lead to a less attractive interface. It can undermine satisfaction, slow adoption, and limit the long-term value of the product. In practice, the strongest SaaS experiences usually come from three habits: maintaining cross-device consistency, grounding decisions in user research, and resisting feature creep."
+          "That expectation creates pressure on product teams. A weak product process does not just lead to a less attractive interface. It can undermine confidence, slow adoption, and limit the long-term value of the platform. In practice, the strongest SaaS products usually come from three habits: maintaining cross-device consistency, grounding decisions in customer evidence, and resisting feature creep."
         ]
       },
       {
@@ -81,9 +81,9 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "User research reveals where the real gaps are",
+        heading: "Customer evidence reveals where growth gets blocked",
         paragraphs: [
-          "Teams that do not understand their users' goals, pain points, and behaviours are much more likely to create awkward products. Strong SaaS companies tend to avoid this by building customer-led design processes. Slack is a good example of a product that has improved steadily by listening carefully to workflows, feedback, and usability signals over time.",
+          "Teams that do not understand customer goals, friction points, and behaviours are much more likely to create awkward products. Strong SaaS companies tend to avoid this by building customer-led product processes. Slack is a good example of a product that has improved steadily by listening carefully to workflows, feedback, and behavioural signals over time.",
           "Useful research starts by understanding what users are trying to accomplish at different stages of the journey. The method matters less than the quality of the questions. Asking only what is not working rarely gets to the heart of the problem. Asking about decision-making, workflow, performance expectations, and success criteria usually produces much better design direction."
         ],
         bullets: [
@@ -93,7 +93,7 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "Research can prevent expensive overengineering",
+        heading: "Evidence can prevent expensive overengineering",
         paragraphs: [
           "In one redesign programme I led, a cloud-hosted collaborative automation platform had originally been built for engineers. As the focus shifted toward product management teams in financial services, we found that many of the existing features no longer aligned with how the new audience wanted to work.",
           "Research showed that these teams were comfortable organising planning tasks in spreadsheet-style environments such as Excel. Although our platform already supported many of the same jobs, users wanted more direct control over tables and cell-level editing. That insight helped us refine the interface without rebuilding the entire platform around the wrong assumptions."
@@ -133,23 +133,23 @@ export const insightArticles: InsightArticle[] = [
       "User research helps teams uncover the real workflow and decision-making needs behind product friction.",
       "Protecting core functionality early is one of the most effective ways to avoid feature creep as a SaaS product grows."
     ],
-    ctaTitle: "Need a sharper SaaS product experience?",
-    ctaBody: "We help SaaS teams align product strategy, UX, and delivery so growth does not come at the cost of clarity, adoption, or usability."
+    ctaTitle: "Need a sharper SaaS product strategy?",
+    ctaBody: "We help SaaS teams align product strategy, service clarity, and delivery so growth does not come at the cost of adoption, trust, or operational simplicity."
   },
   {
     slug: "ux-barriers-saas-revenue-growth",
     topic: "product development",
-    title: "Overcoming UX Barriers That Block SaaS Revenue Growth",
-    excerpt: "SaaS design comes with industry-specific constraints, and teams that ignore them often create products that are harder to adopt, harder to scale, and harder to improve.",
+    title: "Product Friction That Slows SaaS Growth",
+    excerpt: "SaaS comes with industry-specific constraints, and teams that ignore them often create products that are harder to adopt, harder to scale, and harder to improve.",
     meta: "Revenue Strategy · 8 min read",
     readTime: "8 min read",
     publishedDate: "2023-03-20",
     sections: [
       {
-        heading: "SaaS design challenges are different from other product work",
+        heading: "SaaS product challenges are different from other product work",
         paragraphs: [
-          "Product and UX design vary from industry to industry. A designer can be highly effective in one context and then find it much harder to create impact in another. That is not always about skill. Often it comes down to how the industry operates and what the product environment demands.",
-          "SaaS is one of those environments. Product designers working on SaaS applications face a set of challenges that are different from many other digital products. The mix of technical dependency, feature depth, scale, security requirements, and constant iteration can make even straightforward design decisions more complex than they first appear."
+          "Product work varies from industry to industry. A team can be highly effective in one context and then find it much harder to create impact in another. That is not always about skill. Often it comes down to how the industry operates and what the product environment demands.",
+          "SaaS is one of those environments. Teams building SaaS applications face a set of challenges that are different from many other digital products. The mix of technical dependency, feature depth, scale, security requirements, and constant iteration can make even straightforward product decisions more complex than they first appear."
         ]
       },
       {
@@ -172,10 +172,10 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "Usability has to come before aesthetics",
+        heading: "Operational clarity has to come before visual polish",
         paragraphs: [
-          "In SaaS, usability is rarely a nice-to-have. It is the thing that determines whether the product can actually do its job. Visual polish matters, but it should not take priority over whether users can complete tasks, understand the system, and move through workflows with confidence.",
-          "This is particularly important in products that are already complex. If the foundation is unclear, stronger visuals will not fix the experience. Designers need to establish functional clarity first and then build visual refinement on top of it."
+          "In SaaS, clarity is rarely a nice-to-have. It is what determines whether the product can actually do its job. Visual polish matters, but it should not take priority over whether people can complete tasks, understand the system, and move through workflows with confidence.",
+          "This is particularly important in products that are already complex. If the foundation is unclear, stronger visuals will not fix the experience. Teams need to establish functional clarity first and then build visual refinement on top of it."
         ]
       },
       {
@@ -252,23 +252,23 @@ export const insightArticles: InsightArticle[] = [
       "The strongest products stay close to real user needs and resist drifting into feature-led design.",
       "Commercial pressure, tech constraints, and organisational complexity all need active design judgment, not passive acceptance."
     ],
-    ctaTitle: "Need stronger product design in a SaaS environment?",
-    ctaBody: "We help SaaS teams cut through complexity, validate what matters, and shape products that work for users, stakeholders, and the business."
+    ctaTitle: "Need a clearer SaaS growth model?",
+    ctaBody: "We help SaaS teams cut through complexity, validate what matters, and shape products that work for customers, stakeholders, and the business."
   },
   {
     slug: "integrating-ux-into-agile-delivery",
     topic: "product development",
-    title: "Integrating UX into Agile Without Slowing Down Delivery",
-    excerpt: "UX should work with Agile, but forcing UX into an existing sprint plan from day one usually leads to weak decisions, rushed outputs, and the wrong expectations.",
+    title: "Getting Product Discovery to Work With Agile Delivery",
+    excerpt: "Discovery should work with Agile, but forcing it into an existing sprint plan from day one usually leads to weak decisions, rushed outputs, and the wrong expectations.",
     meta: "Delivery Strategy · 5 min read",
     readTime: "5 min read",
     publishedDate: "2020-02-29",
     sections: [
       {
-        heading: "UX and Agile are not the same thing",
+        heading: "Discovery and Agile are not the same thing",
         paragraphs: [
-          "Every day, job adverts appear asking UX professionals to work inside an Agile delivery environment as if that alone proves a team understands how design should operate. In practice, that assumption is often poorly thought through. Asking UX to follow Agile rituals and sprint deliverables from day one is usually a sign that the organisation does not fully understand what UX is or how it creates value.",
-          "That does not mean UX should be separated from Agile completely. It means the relationship needs to be handled properly. When teams understand where UX connects with Agile, life gets easier for designers, developers, stakeholders, and users. When they do not, the product tends to suffer."
+          "Every day, job adverts appear asking product designers to work inside an Agile delivery environment as if that alone proves a team understands how discovery should operate. In practice, that assumption is often poorly thought through. Asking discovery work to follow Agile rituals and sprint deliverables from day one is usually a sign that the organisation does not fully understand how product decisions should be shaped.",
+          "That does not mean discovery should be separated from Agile completely. It means the relationship needs to be handled properly. When teams understand where discovery connects with Agile, life gets easier for designers, developers, stakeholders, and users. When they do not, the product tends to suffer."
         ]
       },
       {
@@ -279,7 +279,7 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "The first problem is confusion between UX and UI",
+        heading: "The first problem is confusion between discovery and interface work",
         paragraphs: [
           "Many businesses still do not distinguish clearly between UX and UI. They say they need UX when what they really want is someone to produce interface designs, tidy up screens, or deliver wireframes on a schedule.",
           "That confusion matters because UX is not only about visual output. It is about understanding the problem, identifying the right direction, validating it with users, and then translating that into something the team can build with confidence."
@@ -293,7 +293,7 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "UX is not a list of deliverables",
+        heading: "Discovery is not a list of deliverables",
         paragraphs: [
           "One of the biggest misconceptions in this setup is the idea that UX is mainly about deliverables. Businesses often ask for wireframes, flows, or information architecture within the current sprint as though those artefacts are the work itself.",
           "They are not. UX begins with understanding the problem, exploring possible solutions, validating them with users, and only then moving into the outputs that support delivery. When teams skip straight to deliverables, they are often creating polished versions of untested assumptions."
@@ -307,14 +307,14 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "UX should inform the plan, not be trapped by it",
+        heading: "Discovery should inform the plan, not be trapped by it",
         paragraphs: [
           "The practical answer is not complicated. Do not force UX to follow an existing delivery plan that was created without valid design outcomes. Let the UX work reach a grounded direction first, then use that outcome to shape the Agile development plan.",
           "This does not slow delivery in the long run. It usually makes it stronger. Development can then move with clearer intent, fewer false starts, and better alignment between business goals and user needs."
         ]
       },
       {
-        heading: "Agile works better when the team respects how UX operates",
+        heading: "Agile works better when the team respects how discovery operates",
         paragraphs: [
           "UX and Agile can work well together, but only when teams stop treating design as a sprint-based service function. Agile is useful for structuring delivery. UX is useful for making sure the team is solving the right problem in the right way.",
           "When those responsibilities are connected properly, products improve. When they are blurred, everyone ends up moving quickly toward decisions that were not ready."
@@ -326,22 +326,22 @@ export const insightArticles: InsightArticle[] = [
       "UX needs room to understand and validate the problem before delivery plans are locked.",
       "Agile works best when it follows sound UX thinking instead of replacing it."
     ],
-    ctaTitle: "Trying to align UX and delivery?",
-    ctaBody: "We help delivery teams build practical operating models where design strengthens sprint execution instead of competing with it."
+    ctaTitle: "Trying to align discovery and delivery?",
+    ctaBody: "We help delivery teams build practical operating models where discovery strengthens sprint execution instead of competing with it."
   },
   {
     slug: "ux-testing-business-risk",
     topic: "design & testing",
-    title: "Why Inadequate UX Testing Creates Business Risk",
-    excerpt: "There is design without testing, and then there is design with the wrong testing. Both can lead to serious failure when the stakes are high.",
+    title: "Why Weak Validation Creates Business Risk",
+    excerpt: "There is delivery without testing, and then there is delivery with the wrong testing. Both can lead to serious failure when the stakes are high.",
     meta: "Risk Management · 4 min read",
     readTime: "4 min read",
     publishedDate: "2020-06-14",
     sections: [
       {
-        heading: "Poor testing can be just as dangerous as no testing",
+        heading: "Poor validation can be just as dangerous as no validation",
         paragraphs: [
-          "There is design without testing, and then there is design with the wrong testing. Both are dangerous. That applies whether you are working on a digital application, a machine, or any system people rely on in real life.",
+          "There is delivery without testing, and then there is delivery with the wrong testing. Both are dangerous. That applies whether you are working on a digital application, a machine, or any system people rely on in real life.",
           "Alongside UX, I have always been interested in aviation, and there are few better examples of the cost of inadequate testing than the Comet disaster. It is an extreme case, but it makes the point clearly: if a new design is not tested rigorously enough, the consequences can be far greater than product failure."
         ]
       },
@@ -379,10 +379,10 @@ export const insightArticles: InsightArticle[] = [
         ]
       },
       {
-        heading: "The design lesson is bigger than any one industry",
+        heading: "The lesson is bigger than any one industry",
         paragraphs: [
-          "Whether you are an engineer, scientist, product designer, or UX designer, the responsibility is similar. If you do not test your design properly, or if you test it with the wrong users and assumptions, you are not only risking product failure. In some cases, you are risking serious harm.",
-          "That is why testing should never be treated as a final checkpoint or a formality. It is part of design itself. Good design is not only about ideas. It is about proving those ideas hold up in the conditions that matter."
+          "Whether you are an engineer, scientist, product leader, or designer, the responsibility is similar. If you do not validate a decision properly, or if you validate it with the wrong users and assumptions, you are not only risking product failure. In some cases, you are risking serious harm.",
+          "That is why validation should never be treated as a final checkpoint or a formality. It is part of responsible product decision-making. Good products are not only about ideas. They are about proving those ideas hold up in the conditions that matter."
         ]
       }
     ],
@@ -392,7 +392,7 @@ export const insightArticles: InsightArticle[] = [
       "Testing is part of responsible design, especially when people depend on the outcome."
     ],
     ctaTitle: "Need stronger validation before rollout?",
-    ctaBody: "We help teams test critical workflows early so design decisions are grounded in real user behavior, not internal assumptions."
+    ctaBody: "We help teams validate critical workflows early so product decisions are grounded in real behaviour, not internal assumptions."
   }
 ];
 
