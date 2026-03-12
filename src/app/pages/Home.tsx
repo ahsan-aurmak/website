@@ -253,26 +253,26 @@ export default function Home() {
 
           {/* Office locations - Main Feature */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+              {[
               { 
                 city: "London", 
                 country: "United Kingdom", 
-                flag: "🇬🇧", 
                 gradient: "from-cyan-500 to-blue-600",
+                background: "linear-gradient(135deg, rgba(220,38,38,0.32) 0%, rgba(220,38,38,0.32) 16%, rgba(255,255,255,0.16) 16%, rgba(255,255,255,0.16) 24%, rgba(37,99,235,0.26) 24%, rgba(37,99,235,0.26) 100%), linear-gradient(45deg, rgba(37,99,235,0.20) 0%, rgba(37,99,235,0.20) 42%, rgba(255,255,255,0.12) 42%, rgba(255,255,255,0.12) 50%, rgba(220,38,38,0.24) 50%, rgba(220,38,38,0.24) 58%, rgba(37,99,235,0.20) 58%, rgba(37,99,235,0.20) 100%)",
                 coverage: "Supporting the UK, Europe, and North America"
               },
               { 
                 city: "Dubai", 
                 country: "United Arab Emirates", 
-                flag: "🇦🇪", 
                 gradient: "from-blue-500 to-purple-600",
+                background: "linear-gradient(90deg, rgba(220,38,38,0.32) 0%, rgba(220,38,38,0.32) 22%, transparent 22%, transparent 100%), linear-gradient(180deg, rgba(34,197,94,0.24) 0%, rgba(34,197,94,0.24) 33%, rgba(255,255,255,0.14) 33%, rgba(255,255,255,0.14) 66%, rgba(15,23,42,0.20) 66%, rgba(15,23,42,0.20) 100%)",
                 coverage: "Supporting the Middle East and Africa"
               },
               { 
                 city: "Lahore", 
                 country: "Pakistan", 
-                flag: "🇵🇰", 
                 gradient: "from-purple-500 to-pink-600",
+                background: "linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.18) 18%, rgba(34,197,94,0.26) 18%, rgba(34,197,94,0.26) 100%), radial-gradient(circle at 72% 34%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.14) 10%, transparent 10%), radial-gradient(circle at 77% 38%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.10) 7%, transparent 7%)",
                 coverage: "Supporting South Asia and APAC"
               },
             ].map((office, index) => (
@@ -289,17 +289,16 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${office.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-3xl`}></div>
                 
                 {/* Card */}
-                <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden h-full">
-                  {/* Animated gradient background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${office.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className="relative border border-slate-700/50 rounded-3xl p-8 hover:border-cyan-500/40 transition-all duration-300 overflow-hidden h-full bg-slate-900/85 backdrop-blur-xl">
+                  <div className="absolute inset-0 opacity-95" style={{ backgroundImage: office.background }} />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.34),transparent_38%)]" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${office.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className="absolute inset-[1px] rounded-[calc(1.5rem-1px)] bg-slate-950/60" />
                   
                   <div className="relative z-10">
-                    <div className="mb-6 flex items-start gap-4">
-                      <div className="text-4xl leading-none">{office.flag}</div>
-                      <div>
-                        <h3 className="text-3xl font-bold text-slate-100 mb-2">{office.city}</h3>
-                        <p className="text-slate-400 text-lg">{office.country}</p>
-                      </div>
+                    <div className="mb-6">
+                      <h3 className="text-3xl font-bold text-slate-100 mb-2">{office.city}</h3>
+                      <p className="text-slate-400 text-lg">{office.country}</p>
                     </div>
 
                     <div className="rounded-2xl border border-slate-700/60 bg-slate-950/30 p-4">
