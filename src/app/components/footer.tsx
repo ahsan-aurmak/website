@@ -1,12 +1,9 @@
 import { Link } from "react-router";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "motion/react";
-import { useState } from "react";
 import logo from "figma:asset/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 
 export function Footer() {
-  const [showArabicMessage, setShowArabicMessage] = useState(false);
-
   const footerLinks = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -34,11 +31,6 @@ export function Footer() {
   ];
 
   const currentYear = new Date().getFullYear();
-
-  const handleArabicClick = () => {
-    setShowArabicMessage(true);
-    setTimeout(() => setShowArabicMessage(false), 3000);
-  };
 
   return (
     <footer className="relative bg-slate-900 border-t border-slate-800">
@@ -113,27 +105,6 @@ export function Footer() {
                 </motion.a>
               ))}
             </div>
-            <div className="flex space-x-2">
-              <button className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded text-sm font-medium">
-                EN
-              </button>
-              <button
-                onClick={handleArabicClick}
-                className="px-3 py-1 bg-slate-800 text-slate-400 hover:bg-slate-700 rounded text-sm font-medium transition-colors"
-              >
-                العربية
-              </button>
-            </div>
-            {showArabicMessage && (
-              <motion.p
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="text-slate-400 text-xs mt-2"
-              >
-                Arabic version coming soon.
-              </motion.p>
-            )}
           </div>
         </div>
 

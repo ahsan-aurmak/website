@@ -8,6 +8,7 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [showArabicMessage, setShowArabicMessage] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -63,6 +64,11 @@ export function Navigation() {
   const isParentActive = (link: typeof navLinks[0]) => {
     if (!link.submenu) return location.pathname === link.path;
     return link.submenu.some(sublink => location.pathname === sublink.path);
+  };
+
+  const handleArabicClick = () => {
+    setShowArabicMessage(true);
+    setTimeout(() => setShowArabicMessage(false), 3000);
   };
 
   return (
@@ -161,6 +167,30 @@ export function Navigation() {
             ))}
           </div>
 
+          <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center rounded-full border border-slate-800 bg-slate-900/70 p-1 backdrop-blur">
+              <button className="rounded-full bg-cyan-500/20 px-3 py-1.5 text-sm font-medium text-cyan-400">
+                EN
+              </button>
+              <button
+                onClick={handleArabicClick}
+                className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400"
+              >
+                العربية
+              </button>
+            </div>
+            {showArabicMessage && (
+              <motion.p
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-xs text-slate-400"
+              >
+                Arabic version coming soon.
+              </motion.p>
+            )}
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -193,6 +223,24 @@ export function Navigation() {
                 style={{ zIndex: 50 }}
               >
                 <div className="p-4 space-y-2">
+                  <div className="mb-3 flex items-center justify-between rounded-lg border border-slate-700 bg-slate-900/70 p-3">
+                    <div className="flex items-center rounded-full border border-slate-700 bg-slate-800/80 p-1">
+                      <button className="rounded-full bg-cyan-500/20 px-3 py-1.5 text-sm font-medium text-cyan-400">
+                        EN
+                      </button>
+                      <button
+                        onClick={handleArabicClick}
+                        className="rounded-full px-3 py-1.5 text-sm font-medium text-slate-300 transition-colors hover:text-cyan-400"
+                      >
+                        العربية
+                      </button>
+                    </div>
+                    {showArabicMessage && (
+                      <span className="ml-3 text-right text-xs text-slate-400">
+                        Coming soon
+                      </span>
+                    )}
+                  </div>
                   {navLinks.map((link) => (
                     <div key={link.label}>
                       {link.submenu ? (
