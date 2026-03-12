@@ -8,6 +8,7 @@ import Solutions from "./pages/Solutions";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import Insights from "./pages/Insights";
+import InsightArticle from "./pages/InsightArticle";
 import Lab from "./pages/Lab";
 import Team from "./pages/Team";
 import Careers from "./pages/Careers";
@@ -38,6 +39,7 @@ export const router = createBrowserRouter([
       { path: "case-study-gtt-saas-iaas", Component: CaseStudyDetail },
       { path: "case-study-dubai-trade", Component: CaseStudyDetail },
       { path: "insights", Component: Insights },
+      { path: "insights/:slug", Component: InsightArticle },
       { path: "lab", Component: Lab },
       { path: "team", Component: Team },
       { path: "careers", Component: Careers },
