@@ -180,7 +180,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16">
-            <div className="max-w-6xl mx-auto">
+            <div className="mx-auto">
               <div className="rounded-[28px] border border-slate-800/70 bg-slate-900/45 backdrop-blur-sm overflow-hidden px-6 py-8 md:px-8 md:py-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -243,25 +243,26 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
+            className="mx-auto"
           >
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl md:text-5xl font-bold mb-5">
-                  Global{" "}
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    Delivery. Proven Execution.
-                  </span>
-                </h2>
-                <p className="text-slate-400 text-lg leading-8">
-                  A delivery model built around regional presence, disciplined execution, and measurable enterprise outcomes.
-                </p>
-              </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-10"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-5">
+                Global{" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Delivery. Proven Execution.
+                </span>
+              </h2>
+              <p className="text-slate-400 text-lg leading-8 max-w-none">
+                A delivery model built around regional presence, disciplined execution, and measurable enterprise outcomes.
+              </p>
+            </motion.div>
 
+            <div>
               <div className="border-t border-slate-800">
                 {[
                   {
@@ -289,15 +290,15 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.08 }}
-                    className="grid gap-3 border-b border-slate-800 py-6 sm:grid-cols-[180px_120px_minmax(0,1fr)] sm:items-start sm:gap-6"
+                    className="grid gap-4 border-b border-slate-800 py-7 sm:grid-cols-[220px_140px_minmax(0,1fr)] sm:items-start sm:gap-8"
                   >
-                    <div className="text-xs uppercase tracking-[0.22em] text-slate-500 pt-1">
+                    <div className="pt-1 text-sm uppercase tracking-[0.18em] text-slate-500">
                       {item.title}
                     </div>
-                    <div className={`text-4xl font-bold leading-none bg-gradient-to-r ${item.accent} bg-clip-text text-transparent`}>
+                    <div className={`text-5xl md:text-6xl font-bold leading-none bg-gradient-to-r ${item.accent} bg-clip-text text-transparent`}>
                       {item.value}
                     </div>
-                    <p className="text-slate-300 leading-8">
+                    <p className="text-lg text-slate-300 leading-8">
                       {item.description}
                     </p>
                   </motion.div>
@@ -323,7 +324,7 @@ export default function Home() {
                 Industry Leaders
               </span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="text-slate-400 text-lg max-w-none mx-auto">
               Selected experience across enterprise SaaS, infrastructure, media, operations, and digital platforms.
             </p>
           </motion.div>
@@ -332,7 +333,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-6xl"
+            className="mx-auto"
           >
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {clients.map((client, index) => (
@@ -369,7 +370,7 @@ export default function Home() {
 
       <section className="py-20 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+          <div className="mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -411,7 +412,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-7xl mx-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden"
+            className="mx-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden"
           >
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
