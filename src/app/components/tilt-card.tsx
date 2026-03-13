@@ -96,7 +96,7 @@ export function Feature3DCard({
   badge,
 }: Feature3DCardProps) {
   return (
-    <TiltCard>
+    <TiltCard className="h-full">
       <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 relative overflow-hidden h-full">
         {/* Background image if provided */}
         {image && (
@@ -108,15 +108,14 @@ export function Feature3DCard({
         {/* Gradient overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`} />
 
-        <div className="relative z-10">
-          {/* Badge - with fixed height container for alignment */}
-          <div className="h-8 mb-4">
-            {badge && (
+        <div className="relative z-10 flex h-full flex-col">
+          {badge && (
+            <div className="mb-4">
               <div className="inline-flex items-center px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-medium">
                 {badge}
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Icon */}
           <div
@@ -134,7 +133,7 @@ export function Feature3DCard({
             {title}
           </h3>
           <p
-            className="text-slate-400 leading-relaxed"
+            className="text-slate-400 leading-relaxed flex-1"
             style={{ transform: "translateZ(40px)" }}
           >
             {description}

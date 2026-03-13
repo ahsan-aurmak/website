@@ -23,7 +23,7 @@ export function Button({
   disabled = false,
   className = ""
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group whitespace-nowrap w-full sm:w-auto";
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group whitespace-nowrap w-full sm:w-auto";
   
   const variants = {
     primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-xl hover:shadow-cyan-500/30",
@@ -54,6 +54,7 @@ export function Button({
     
     return (
       <motion.div 
+        className="inline-flex w-full sm:w-auto"
         whileHover={{ scale: disabled ? 1 : 1.05 }} 
         whileTap={{ scale: disabled ? 1 : 0.95 }}
       >

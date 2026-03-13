@@ -146,7 +146,6 @@ export default function HowWeWork() {
           </div>
         </div>
       </section>
-
       {/* Trust Markers */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">

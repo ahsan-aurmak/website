@@ -125,7 +125,6 @@ export default function Solutions() {
           </div>
         </div>
       </section>
-
       {/* Deployment Contexts */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
