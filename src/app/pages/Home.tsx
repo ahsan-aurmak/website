@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Brain, Code2, Sparkles, Network, Rocket } from "lucide-react";
+import { ArrowRight, Brain, Code2, Network, Rocket } from "lucide-react";
 import { Feature3DCard } from "../components/tilt-card";
 import { HeroGradientMesh } from "../components/gradient-mesh";
 import { Button } from "../components/button";
@@ -82,20 +82,10 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium mb-8 backdrop-blur-sm"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  Welcome to the Future of Business
-                </motion.div>
-                
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.2 }}
                   className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-[1.1]"
                 >
                   Built to{" "}
@@ -107,7 +97,7 @@ export default function Home() {
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.3 }}
                   className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
                 >
                   We design and deliver enterprise systems that power modern operations, from SaaS platforms and digital infrastructure to AI-enabled automation.
@@ -116,7 +106,7 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
+                  transition={{ delay: 0.4 }}
                   className="flex flex-wrap gap-4"
                 >
                   <Button to="/contact">

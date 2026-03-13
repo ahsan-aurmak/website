@@ -165,9 +165,9 @@ export function HeroCaseShowcase() {
           }}
           className={`absolute text-xs font-medium bg-slate-800/80 backdrop-blur border border-slate-700/60 text-slate-200 px-3 py-2 rounded-xl shadow-lg whitespace-nowrap z-20 hidden md:block ${
             i === 0 ? "-top-16 right-32" :
-            i === 1 ? "top-40 -right-20" :
+            i === 1 ? "top-40 -right-8" :
             i === 2 ? "-bottom-16 right-28" :
-            "bottom-40 -left-20"
+            "bottom-40 -left-8"
           }`}
         >
           <span className="text-cyan-400 font-semibold">{o.text}</span>
