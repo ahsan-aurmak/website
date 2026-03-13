@@ -1,5 +1,6 @@
 import { useRef, useState, ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { Link } from "react-router";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -85,6 +86,7 @@ interface Feature3DCardProps {
   gradient?: string;
   image?: string;
   badge?: string;
+  to?: string;
 }
 
 export function Feature3DCard({
@@ -94,52 +96,63 @@ export function Feature3DCard({
   gradient = "from-cyan-500 to-blue-600",
   image,
   badge,
+  to,
 }: Feature3DCardProps) {
-  return (
-    <TiltCard className="h-full">
-      <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 relative overflow-hidden h-full">
-        {/* Background image if provided */}
-        {image && (
-          <div className="absolute inset-0 opacity-10">
-            <img src={image} alt="" className="w-full h-full object-cover" />
+  const cardContent = (
+    <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 relative overflow-hidden h-full">
+      {/* Background image if provided */}
+      {image && (
+        <div className="absolute inset-0 opacity-10">
+          <img src={image} alt="" className="w-full h-full object-cover" />
+        </div>
+      )}
+
+      {/* Gradient overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`} />
+
+      <div className="relative z-10 flex h-full flex-col">
+        {badge && (
+          <div className="mb-4">
+            <div className="inline-flex items-center px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-medium">
+              {badge}
+            </div>
           </div>
         )}
 
-        {/* Gradient overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`} />
-
-        <div className="relative z-10 flex h-full flex-col">
-          {badge && (
-            <div className="mb-4">
-              <div className="inline-flex items-center px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-medium">
-                {badge}
-              </div>
-            </div>
-          )}
-
-          {/* Icon */}
-          <div
-            className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
-            style={{ transform: "translateZ(80px)" }}
-          >
-            <Icon className="w-8 h-8 text-white" />
-          </div>
-
-          {/* Content */}
-          <h3
-            className="text-2xl font-bold text-slate-100 mb-3"
-            style={{ transform: "translateZ(60px)" }}
-          >
-            {title}
-          </h3>
-          <p
-            className="text-slate-400 leading-relaxed flex-1"
-            style={{ transform: "translateZ(40px)" }}
-          >
-            {description}
-          </p>
+        {/* Icon */}
+        <div
+          className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+          style={{ transform: "translateZ(80px)" }}
+        >
+          <Icon className="w-8 h-8 text-white" />
         </div>
+
+        {/* Content */}
+        <h3
+          className="text-2xl font-bold text-slate-100 mb-3"
+          style={{ transform: "translateZ(60px)" }}
+        >
+          {title}
+        </h3>
+        <p
+          className="text-slate-400 leading-relaxed flex-1"
+          style={{ transform: "translateZ(40px)" }}
+        >
+          {description}
+        </p>
       </div>
+    </div>
+  );
+
+  return (
+    <TiltCard className="h-full">
+      {to ? (
+        <Link to={to} className="block h-full cursor-pointer">
+          {cardContent}
+        </Link>
+      ) : (
+        cardContent
+      )}
     </TiltCard>
   );
 }

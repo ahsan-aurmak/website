@@ -13,18 +13,21 @@ export default function Home() {
       title: "Enterprise SaaS Platforms", 
       description: "Design and development of scalable SaaS products built to support complex enterprise operations at scale.",
       gradient: "from-cyan-500 to-blue-600",
+      to: "/services",
     },
     { 
       icon: Network, 
       title: "Digital Infrastructure & Automation", 
       description: "Modernising legacy systems and building reliable digital infrastructure for more connected, efficient operations.",
       gradient: "from-blue-500 to-purple-600",
+      to: "/services",
     },
     { 
       icon: Brain, 
       title: "AI-Enabled Operational Intelligence", 
       description: "Applying AI and data models to improve operational visibility, decision-making, and performance.",
       gradient: "from-purple-500 to-pink-600",
+      to: "/services",
     },
   ];
 
