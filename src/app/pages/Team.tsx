@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { Linkedin } from "lucide-react";
 import { Link } from "react-router";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
-import ahsanPhoto from "../../assets/ahsan.jpg";
 import umerPhoto from "../../assets/umar.jpeg";
 import masoodPhoto from "figma:asset/179a43f3ad15df719e7ed737dee335f392a63f77.png";
 import khurramPhoto from "../../assets/khurram.jpeg";
@@ -17,13 +16,6 @@ export default function Team() {
       bio: "Veteran engineering executive with 30 years of leadership experience including full P&L responsibility across power generation, manufacturing operations, and large-scale infrastructure projects.",
       linkedin: "https://www.linkedin.com/in/masood-zafar-7b45582a/",
       photo: masoodPhoto
-    },
-    {
-      role: "Chief Product Officer",
-      name: "Ahsan Jalil",
-      bio: "Product strategy leader with 18+ years driving user-centered innovation across SaaS and enterprise applications, transforming complex systems into intuitive digital experiences that deliver measurable business results.",
-      linkedin: "https://www.linkedin.com/in/vertage/",
-      photo: ahsanPhoto
     },
     {
       role: "Chief Operating Officer",
