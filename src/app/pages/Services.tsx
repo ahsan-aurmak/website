@@ -1,5 +1,5 @@
 import { Hero } from "../components/hero";
-import { Card, GlassCard } from "../components/card";
+import { GlassCard } from "../components/card";
 import { Button } from "../components/button";
 import { motion } from "motion/react";
 import { Cloud, RefreshCw, Brain, Building, CheckCircle2, ArrowRight, HelpCircle } from "lucide-react";
@@ -12,22 +12,22 @@ export default function Services() {
     {
       icon: Cloud,
       title: "SaaS Product Development",
-      description: "Building enterprise SaaS products through defined delivery models that reduce risk and accelerate validated market entry."
+      description: "Design and development of scalable SaaS platforms for enterprise operations."
     },
     {
       icon: RefreshCw,
       title: "Legacy System Modernisation",
-      description: "Modernising legacy environments to improve security posture, scalability, and operational reliability."
+      description: "Improving reliability and scalability across legacy systems and infrastructure."
     },
     {
       icon: Brain,
       title: "AI Integration",
-      description: "Implementing AI capabilities within governed models to improve decision speed, process quality, and operational control."
+      description: "Applying AI to improve operational visibility, automation, and decision-making."
     },
     {
       icon: Building,
       title: "Building Management Systems",
-      description: "Deploying building and facility automation systems that improve energy performance, monitoring, and infrastructure oversight."
+      description: "Design and integration of intelligent building systems that improve operational visibility and infrastructure performance."
     }
   ];
 
@@ -41,8 +41,8 @@ export default function Services() {
   return (
     <div>
       <SEO
-        title="Structured Delivery - Enterprise Solutions"
-        description="We deliver through defined frameworks that align business objectives, architecture decisions, and accountable implementation."
+        title="Enterprise Systems. Built and Delivered."
+        description="Our teams design, build, and modernise the technology platforms organisations rely on to operate, scale, and make decisions."
         canonical="https://www.aurmak.com/services"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -52,10 +52,14 @@ export default function Services() {
 
       <Hero
         eyebrow="Services"
-        title="Structured Delivery."
-        lead="We deliver through defined frameworks that align business objectives, architecture decisions, and accountable implementation."
-        badge="💼 Enterprise Solutions"
-      />
+        title="Enterprise Systems. Built and Delivered."
+        lead="Our teams design, build, and modernise the technology platforms organisations rely on to operate, scale, and make decisions, from SaaS and AI integration to digital infrastructure and operational intelligence."
+      >
+        <Button to="/contact">
+          Start a Conversation
+          <ArrowRight className="ml-2 w-4 h-4" />
+        </Button>
+      </Hero>
 
       {/* Core Service Pillars */}
       <section className="py-16 relative">
@@ -67,11 +71,14 @@ export default function Services() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold">
-              Core Service{" "}
+              Technology Systems That{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Pillars
+                Power Modern Operations
               </span>
             </h2>
+            <p className="mt-4 text-slate-400 text-lg max-w-3xl mx-auto">
+              Our engineering capabilities focus on building, modernising, and integrating enterprise technology systems.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -106,9 +113,9 @@ export default function Services() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Delivery{" "}
+                Structured Enterprise{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Discipline
+                  Delivery
                 </span>
               </h2>
               <div className="space-y-4">
@@ -148,22 +155,33 @@ export default function Services() {
       {/* Framework Cards */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full">
-                <h2 className="text-2xl font-bold text-slate-100 mb-4">How We Work</h2>
-                <p className="text-slate-400 mb-6">
-                  Our delivery method covers discovery, audit, roadmap, pilot, rollout, governance, and long-term support with clear accountability at each stage.
+              <div className="h-full rounded-[28px] border border-slate-800/70 bg-gradient-to-br from-slate-900/80 to-slate-950/80 p-8 md:p-10 backdrop-blur-sm">
+                <div className="mb-6 h-px w-20 bg-gradient-to-r from-cyan-400 to-blue-500" />
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-4">Our Delivery Approach</h2>
+                <p className="max-w-2xl text-lg leading-8 text-slate-400 mb-8">
+                  Projects move through structured stages: discovery, architecture, pilot, rollout, and long-term support, with clear accountability at every step.
                 </p>
+                <div className="flex flex-wrap gap-3 text-sm text-slate-500 mb-8">
+                  {["Discovery", "Architecture", "Pilot", "Rollout", "Long-Term Support"].map((stage) => (
+                    <span
+                      key={stage}
+                      className="rounded-full border border-slate-800 bg-slate-900/70 px-3 py-1.5"
+                    >
+                      {stage}
+                    </span>
+                  ))}
+                </div>
                 <Button to="/how-we-work">
-                  View Framework
+                  How We Work
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </Card>
+              </div>
             </motion.div>
 
             <motion.div
@@ -172,12 +190,22 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <Card className="h-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border-cyan-500/20">
-                <h3 className="text-xl font-bold text-slate-100 mb-4">Built for Enterprise Confidence</h3>
-                <p className="text-slate-400">
-                  Security practices, compliance awareness, QA discipline, and formal data handling controls are embedded in every engagement.
+              <div className="h-full rounded-[28px] border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 p-8 md:p-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-100 mb-6">Enterprise-Grade Standards</h3>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {["Security", "Compliance", "QA Discipline", "Data Governance"].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/8 bg-slate-950/35 px-4 py-4 text-sm font-medium text-slate-200"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-lg leading-8 text-slate-300">
+                  Security, compliance, QA discipline, and structured data governance are built into every system we deliver.
                 </p>
-              </Card>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -199,9 +227,9 @@ export default function Services() {
               Frequently Asked Questions
             </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold">
-              Common{" "}
+              What Clients{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Questions
+                Ask
               </span>
             </h2>
           </motion.div>
@@ -216,73 +244,82 @@ export default function Services() {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    What industries does AURMAK serve?
+                    Can AURMAK work with our existing technology stack?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    AURMAK serves enterprise clients across multiple sectors including real estate and building management, financial services, manufacturing and industrial operations, media and broadcasting, automotive services, telecommunications, and public sector organizations. Our solutions are designed to meet the complex requirements of enterprise-scale operations.
+                    Yes. Most organisations operate complex technology environments, and our work typically involves integrating with existing systems rather than replacing them. Our teams assess current architecture, identify integration points, and design solutions that modernise or extend your systems while maintaining stability, security, and operational continuity.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    How long does a typical AI integration project take?
+                    How does AURMAK approach legacy system modernisation?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    AI integration projects typically range from 3-6 months depending on complexity and scope. Our phased approach includes discovery (2-4 weeks), development and integration (8-12 weeks), testing and validation (2-4 weeks), and deployment (2-3 weeks). This structured timeline ensures thorough implementation with clear review gates and controlled risk.
+                    Modernising legacy systems requires balancing innovation with operational stability. Our teams assess the existing architecture and dependencies, then design a phased modernisation approach that improves reliability, scalability, and integration without disrupting critical operations. This allows organisations to evolve their technology environments while maintaining continuity and control.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    What is your approach to legacy system modernization?
+                    How long does an AI integration project typically take?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    We take a systematic approach to legacy modernization: comprehensive audit of current systems, risk assessment and dependency mapping, phased migration strategy, parallel running where appropriate, and continuous validation. Our goal is to improve security posture, scalability, and operational reliability while minimizing business disruption.
+                    AI integration projects typically take 3-6 months, depending on system complexity and implementation scope. Our teams follow a structured delivery process that covers discovery, architecture, integration, testing, and controlled deployment, ensuring reliable performance within the existing enterprise environment.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-4">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    Do you provide ongoing support after project delivery?
+                    How does AURMAK ensure data security and compliance?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    Yes, we provide comprehensive post-delivery support including maintenance agreements, monitoring services, security updates, performance optimization, and access to our global support network across London, Dubai, and Lahore providing 24/7 coverage. Support packages are tailored to your operational requirements and SLA expectations.
+                    Security and compliance are embedded throughout our delivery process, from system architecture to deployment. Our teams implement structured governance, secure development practices, and rigorous testing to ensure every system meets enterprise standards for reliability, data protection, and regulatory compliance.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-5">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    What makes AURMAK different from other technology consultancies?
+                    Do you work with internal engineering teams?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    AURMAK combines strategic leadership from London and Dubai with disciplined engineering execution from Lahore, providing enterprise-grade delivery at competitive economics. Our model emphasizes clear ownership, defined implementation stages, integrated governance and security from day one, and long-term partnerships rather than project-based engagements. We're backed by an established international technology group providing stability and resources.
+                    Yes. We frequently work alongside internal engineering and technology teams. Our role is to complement existing capabilities, supporting architecture, system development, and complex integrations while collaborating closely with internal stakeholders.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-6">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    How do you ensure data security and compliance?
+                    Do you provide ongoing support after system delivery?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    Security and compliance are integrated into every stage of our delivery framework. We implement formal data handling controls, follow international governance standards anchored in London and Dubai operations, conduct regular security audits, maintain ISO-aligned quality processes, and ensure compliance awareness across all team members. Confidentiality, integrity, and availability are core to our operational discipline.
+                    Yes. Many client partnerships continue beyond the initial system delivery. We provide ongoing system optimisation, maintenance, and operational assistance through structured service arrangements designed to match each organisation’s operational and SLA requirements. Our global team ensures systems remain reliable, secure, and aligned with evolving business needs.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-7">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    Can you work with our existing technology stack?
+                    What makes AURMAK different from other technology partners?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    Yes, we're technology-agnostic and work with diverse technology stacks across cloud platforms (AWS, Azure, GCP), programming languages, databases, and enterprise systems. Our team has experience integrating with existing infrastructure, whether on-premise, cloud, or hybrid environments. We prioritize solutions that align with your current architecture and long-term technology strategy.
+                    AURMAK combines strategic technology consulting with disciplined engineering delivery. Our teams work with leadership to diagnose operational challenges, design the right technology architecture, and deliver enterprise systems through structured, accountable implementation. Alongside client partnerships, our venture-led model keeps our teams closely connected to real product development and emerging technologies.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-8">
                   <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
-                    What is the ROI timeline for AI integration projects?
+                    What industries does AURMAK work with?
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-400">
-                    ROI timelines vary by use case, but most clients see measurable improvements within 6-12 months post-deployment. Benefits typically include reduced operational costs (15-30%), improved decision speed (40-60% faster), enhanced process quality, and reduced error rates. We work with you to define clear KPIs during discovery and track progress against agreed commercial and operational outcomes.
+                    AURMAK supports organisations across sectors, including infrastructure, real estate, energy, and enterprise technology. Our experience in complex operational environments allows us to design and deliver systems that support modern digital operations across multiple industries.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-9">
+                  <AccordionTrigger className="text-left text-slate-100 hover:text-cyan-400">
+                    When can organisations expect ROI from AI initiatives?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-400">
+                    The timeline for measurable return depends on the scope of the implementation and the maturity of existing systems and data. Organisations often begin to see operational improvements early in deployment as automation and better data visibility are introduced. Clear performance indicators are defined during discovery so progress can be measured against agreed operational and commercial outcomes.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
