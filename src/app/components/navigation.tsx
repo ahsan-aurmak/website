@@ -13,7 +13,7 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 36);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -76,10 +76,10 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ease-out ${
         scrolled
-          ? "bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-cyan-500/5"
-          : "bg-transparent"
+          ? "border-slate-800/70 bg-slate-900/72 backdrop-blur-xl shadow-lg shadow-cyan-500/5"
+          : "border-transparent bg-slate-950/12 backdrop-blur-[6px]"
       }`}
     >
       <nav className="container mx-auto px-4 lg:px-8 py-4">
@@ -93,7 +93,7 @@ export function Navigation() {
               <img 
                 src={logo} 
                 alt="AURMAK" 
-                className="h-12 md:h-14 w-auto"
+                className="h-10 md:h-12 w-auto"
               />
             </motion.div>
           </Link>
