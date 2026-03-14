@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import logo from "figma:asset/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import logo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

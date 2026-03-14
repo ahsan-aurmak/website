@@ -1,7 +1,7 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
 import { Brain, Server, Zap, Database, CheckCircle2 } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { GlassCard } from "../components/card";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 

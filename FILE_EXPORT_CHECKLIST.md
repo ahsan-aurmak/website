@@ -65,7 +65,7 @@ Copy these files from Figma Make to your local machine:
 - [ ] `world-map.tsx`
 - [ ] `index.ts`
 
-## ✅ Figma Components (`/src/app/components/figma/`)
+## ✅ Shared Media Components (`/src/app/components/media/`)
 - [ ] `ImageWithFallback.tsx` - **CRITICAL**
 
 ## ✅ UI Components (`/src/app/components/ui/`)

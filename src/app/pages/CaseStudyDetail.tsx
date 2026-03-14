@@ -10,75 +10,75 @@ import { X } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 // Metrikus case study images
-import metrikusSpaceDashboard from "figma:asset/d4ea28b0c5e977adeccbec0ba6c83e335b3ef577.png";
-import metrikusPersonas from "figma:asset/a263697f651dccad96d8833116332977d000edbe.png";
-import metrikusInfoArch from "figma:asset/049942c89533c87e46d2faff63e498efec77cb36.png";
-import metrikusPriorityMatrix from "figma:asset/1ea2834de457794f026dc83e24d2289f5cf3c1cf.png";
-import metrikusProjectPlan from "figma:asset/439119dfd4f6120275fdad59fae7454434bf6150.png";
-import metrikusDesignSystem from "figma:asset/73ea55960ed3c3fe83ee3b523f04a0fa878c7f68.png";
-import metrikusEnergyDashboard from "figma:asset/918ffa76760b1cd8cbba72d0a7086ccb8360c115.png";
-import metrikusConnectors from "figma:asset/7d6b866440323aa231803beb121b3026f778d87c.png";
-import metrikusAnalytics from "figma:asset/7df5abe64ec075d9121c68f1839c325e5f9197e4.png";
+import metrikusSpaceDashboard from "@assets/d4ea28b0c5e977adeccbec0ba6c83e335b3ef577.png";
+import metrikusPersonas from "@assets/a263697f651dccad96d8833116332977d000edbe.png";
+import metrikusInfoArch from "@assets/049942c89533c87e46d2faff63e498efec77cb36.png";
+import metrikusPriorityMatrix from "@assets/1ea2834de457794f026dc83e24d2289f5cf3c1cf.png";
+import metrikusProjectPlan from "@assets/439119dfd4f6120275fdad59fae7454434bf6150.png";
+import metrikusDesignSystem from "@assets/73ea55960ed3c3fe83ee3b523f04a0fa878c7f68.png";
+import metrikusEnergyDashboard from "@assets/918ffa76760b1cd8cbba72d0a7086ccb8360c115.png";
+import metrikusConnectors from "@assets/7d6b866440323aa231803beb121b3026f778d87c.png";
+import metrikusAnalytics from "@assets/7df5abe64ec075d9121c68f1839c325e5f9197e4.png";
 
 // Orchestration Platform case study images
-import orchestrationWorkspace from "figma:asset/6162f1ef2660eb35c77b3de127222adab44de7d9.png";
-import orchestrationUserFlow from "figma:asset/9a84be5ef9d47266c31ceef448b092f587b6baf7.png";
-import orchestrationPriorityMatrix from "figma:asset/d1067b31712934a35aee6369c1ee171bbbc79660.png";
-import orchestrationRoadmap from "figma:asset/677c28c12f4d3cac56a7ef530ae0d694360a2ab3.png";
-import orchestrationDesignSystem from "figma:asset/fba52a1d3686324954fd454f0b5b62636c8233f1.png";
-import orchestrationUserTesting from "figma:asset/2d1e954fcbd88e4ee712cc4b68ec9f84e472e4c7.png";
+import orchestrationWorkspace from "@assets/6162f1ef2660eb35c77b3de127222adab44de7d9.png";
+import orchestrationUserFlow from "@assets/9a84be5ef9d47266c31ceef448b092f587b6baf7.png";
+import orchestrationPriorityMatrix from "@assets/d1067b31712934a35aee6369c1ee171bbbc79660.png";
+import orchestrationRoadmap from "@assets/677c28c12f4d3cac56a7ef530ae0d694360a2ab3.png";
+import orchestrationDesignSystem from "@assets/fba52a1d3686324954fd454f0b5b62636c8233f1.png";
+import orchestrationUserTesting from "@assets/2d1e954fcbd88e4ee712cc4b68ec9f84e472e4c7.png";
 
 // RBS Travel Portal case study images
-import rbsDesignSystem from "figma:asset/f906ef71703859843ac7a9703df7c2422d0243b8.png";
-import rbsCruiseBooking from "figma:asset/809d51069ee33ae3bb0e20f5113be16c8b5e9cbb.png";
-import rbsUserJourney from "figma:asset/70a5e42d651b2ffa9fe939fd3465396285ffeeab.png";
-import rbsWhiteboard from "figma:asset/475be0b1bc35c9afcf7756027d56ea5b8074600a.png";
-import rbsUxStrategy from "figma:asset/66a86c5d963282cffbdfb13ce737954e746c2472.png";
-import rbsMobileApp from "figma:asset/6a0e4a5d45a628a11479b866a99d744c045eeb96.png";
-import rbsDesktopApp from "figma:asset/369a2b1c35703493e0b406f2d1733feef254a430.png";
-import rbsMobileWebCombined from "figma:asset/05daaa10c1fbd949891a0b67a18f0d926ddd943f.png";
+import rbsDesignSystem from "@assets/f906ef71703859843ac7a9703df7c2422d0243b8.png";
+import rbsCruiseBooking from "@assets/809d51069ee33ae3bb0e20f5113be16c8b5e9cbb.png";
+import rbsUserJourney from "@assets/70a5e42d651b2ffa9fe939fd3465396285ffeeab.png";
+import rbsWhiteboard from "@assets/475be0b1bc35c9afcf7756027d56ea5b8074600a.png";
+import rbsUxStrategy from "@assets/66a86c5d963282cffbdfb13ce737954e746c2472.png";
+import rbsMobileApp from "@assets/6a0e4a5d45a628a11479b866a99d744c045eeb96.png";
+import rbsDesktopApp from "@assets/369a2b1c35703493e0b406f2d1733feef254a430.png";
+import rbsMobileWebCombined from "@assets/05daaa10c1fbd949891a0b67a18f0d926ddd943f.png";
 
 // Cisco Stealthwatch case study images
-import ciscoFinalUI from "figma:asset/397ee6a4afdcc25e3320da55007954bab70728f5.png";
-import ciscoPersonas from "figma:asset/4e82495360ecee8d4018e67a4a5aeb29faa187e1.png";
-import ciscoWireframe from "figma:asset/abfba96ea7b38afd66a05cdff90a72a61d1dbd33.png";
-import ciscoPrototype from "figma:asset/a1768bb07eb952d4fabc65351abd7f52b3ef1eb8.png";
-import ciscoUsabilityTest from "figma:asset/1649601cdb5b3fb8aaf72d35ca1730ab5a80aa10.png";
-import ciscoResponsiveDesign from "figma:asset/017cfbda6139031c7482709aa1a73a79f0a6f299.png";
+import ciscoFinalUI from "@assets/397ee6a4afdcc25e3320da55007954bab70728f5.png";
+import ciscoPersonas from "@assets/4e82495360ecee8d4018e67a4a5aeb29faa187e1.png";
+import ciscoWireframe from "@assets/abfba96ea7b38afd66a05cdff90a72a61d1dbd33.png";
+import ciscoPrototype from "@assets/a1768bb07eb952d4fabc65351abd7f52b3ef1eb8.png";
+import ciscoUsabilityTest from "@assets/1649601cdb5b3fb8aaf72d35ca1730ab5a80aa10.png";
+import ciscoResponsiveDesign from "@assets/017cfbda6139031c7482709aa1a73a79f0a6f299.png";
 
 // Al Jazeera ITSM case study images
-import alJazeeraPlatform from "figma:asset/53c28d4ee474defec7699a0281180b673d864b83.png";
-import alJazeeraServiceRequests from "figma:asset/a1bceaf786eb8de62a300a9db0be9a6c9c377fbc.png";
-import alJazeeraProductFlow from "figma:asset/ec53e29634d5b1207443822e8bf5ba626aa30cf2.png";
-import alJazeeraDesignStrategy from "figma:asset/a696c61786559e8d398f1f16791ec0bbecd662d4.png";
-import alJazeeraWorkshop from "figma:asset/69100866bdadfc4554bda11278d0d8ce94aac778.png";
-import alJazeeraWireframes from "figma:asset/cead7cc4983224e7aada14cda64902255937a500.png";
+import alJazeeraPlatform from "@assets/53c28d4ee474defec7699a0281180b673d864b83.png";
+import alJazeeraServiceRequests from "@assets/a1bceaf786eb8de62a300a9db0be9a6c9c377fbc.png";
+import alJazeeraProductFlow from "@assets/ec53e29634d5b1207443822e8bf5ba626aa30cf2.png";
+import alJazeeraDesignStrategy from "@assets/a696c61786559e8d398f1f16791ec0bbecd662d4.png";
+import alJazeeraWorkshop from "@assets/69100866bdadfc4554bda11278d0d8ce94aac778.png";
+import alJazeeraWireframes from "@assets/cead7cc4983224e7aada14cda64902255937a500.png";
 
 // Castrol CarLounge case study images
-import castrolMobileJourney from "figma:asset/ce61d2b29d3e1bd37fce75053fb76a17a7f99cf1.png";
-import castrolLegacyPrototypes from "figma:asset/942b3661db58816b3054ef67428eb8df02717202.png";
-import castrolWireframes from "figma:asset/b7ce950d41954f325580d807b50e3765dc8ae29b.png";
-import castrolJourneyMaps from "figma:asset/7ba797da29cd69d7332139356208505ac9d4228c.png";
-import castrolDesignSprint from "figma:asset/03bd9c02901cf6bc1429441c0c47a84a22e52e5f.png";
-import castrolFinalUI from "figma:asset/dfdd35f85c1d5f9b282283e9ee22ecb9a1515881.png";
+import castrolMobileJourney from "@assets/ce61d2b29d3e1bd37fce75053fb76a17a7f99cf1.png";
+import castrolLegacyPrototypes from "@assets/942b3661db58816b3054ef67428eb8df02717202.png";
+import castrolWireframes from "@assets/b7ce950d41954f325580d807b50e3765dc8ae29b.png";
+import castrolJourneyMaps from "@assets/7ba797da29cd69d7332139356208505ac9d4228c.png";
+import castrolDesignSprint from "@assets/03bd9c02901cf6bc1429441c0c47a84a22e52e5f.png";
+import castrolFinalUI from "@assets/dfdd35f85c1d5f9b282283e9ee22ecb9a1515881.png";
 
 // GTT SaaS/IaaS case study images
-import gttDashboard from "figma:asset/e8769ae731a359c2b321aa48dd2841488439f606.png";
-import gttStyleGuide from "figma:asset/fe573c7b69a6f9cfe1dbc4ab2225e7b14b28ccad.png";
-import gttUsabilityTesting from "figma:asset/06b08157430a98b1a60e618fa7f24a3f70237df8.png";
-import gttAxurePrototype from "figma:asset/99aa771a2294608695d0b8ae1318e5a1d89b372d.png";
-import gttInformationArchitecture from "figma:asset/aac0a0454d52e8577a8441f8279e5fa1331f4a40.png";
-import gttUserJourney from "figma:asset/e0b1a5750e850b379b5efc936847cd51ef96e99d.png";
-import gttExperienceMap from "figma:asset/c894e83a9a847e2dcd5405dfce8a8ece6c4c5f24.png";
-import gttFinalUI from "figma:asset/bab8d92cef219c667065d26edf83c03a2b7534c6.png";
+import gttDashboard from "@assets/e8769ae731a359c2b321aa48dd2841488439f606.png";
+import gttStyleGuide from "@assets/fe573c7b69a6f9cfe1dbc4ab2225e7b14b28ccad.png";
+import gttUsabilityTesting from "@assets/06b08157430a98b1a60e618fa7f24a3f70237df8.png";
+import gttAxurePrototype from "@assets/99aa771a2294608695d0b8ae1318e5a1d89b372d.png";
+import gttInformationArchitecture from "@assets/aac0a0454d52e8577a8441f8279e5fa1331f4a40.png";
+import gttUserJourney from "@assets/e0b1a5750e850b379b5efc936847cd51ef96e99d.png";
+import gttExperienceMap from "@assets/c894e83a9a847e2dcd5405dfce8a8ece6c4c5f24.png";
+import gttFinalUI from "@assets/bab8d92cef219c667065d26edf83c03a2b7534c6.png";
 
 // Dubai Trade case study images
-import dubaiTradeWireframes from "figma:asset/d144c36802ce21984618f6e39f9d4394ad55e930.png";
-import dubaiTradePlanning from "figma:asset/e85bf9e2b503b617c9ad15d65b08415e9674e2f0.png";
-import dubaiTradeCXMap from "figma:asset/b02ca459800c29da8161e3708c563262ea786827.png";
-import dubaiTradeUserJourney from "figma:asset/0f10321af59c970f693e1e8f60df50c982b10bf6.png";
-import dubaiTradeServiceGrouping from "figma:asset/bf0e7ff74e7c0be3404ba0b46a1420bd8a6538be.png";
-import dubaiTradeResponsive from "figma:asset/89db7fc6177a0497a7cbfa544a106a6bb52f0e2b.png";
+import dubaiTradeWireframes from "@assets/d144c36802ce21984618f6e39f9d4394ad55e930.png";
+import dubaiTradePlanning from "@assets/e85bf9e2b503b617c9ad15d65b08415e9674e2f0.png";
+import dubaiTradeCXMap from "@assets/b02ca459800c29da8161e3708c563262ea786827.png";
+import dubaiTradeUserJourney from "@assets/0f10321af59c970f693e1e8f60df50c982b10bf6.png";
+import dubaiTradeServiceGrouping from "@assets/bf0e7ff74e7c0be3404ba0b46a1420bd8a6538be.png";
+import dubaiTradeResponsive from "@assets/89db7fc6177a0497a7cbfa544a106a6bb52f0e2b.png";
 
 export default function CaseStudyDetail() {
   const location = useLocation();
@@ -167,7 +167,7 @@ export default function CaseStudyDetail() {
           "Role-based access controls and customizable reporting for different stakeholder needs"
         ]
       },
-      heroImage: "figma:asset/8387f2bcefb42e32701683dac3b0db4c90924950.png"
+      heroImage: "@assets/8387f2bcefb42e32701683dac3b0db4c90924950.png"
     },
     "case-study-cutover-orchestration": {
       kicker: "United Kingdom · B2B SaaS · UX Transformation Programme",

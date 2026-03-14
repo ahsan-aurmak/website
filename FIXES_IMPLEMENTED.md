@@ -310,7 +310,7 @@ const baseStyles = "inline-flex items-center justify-center px-6 py-3... w-full 
 ---
 
 ### ✅ M5: Lazy Loading Added to All Images - FIXED
-**File:** `/src/app/components/figma/ImageWithFallback.tsx` (Lines 21, 25)
+**File:** `/src/app/components/media/ImageWithFallback.tsx` (Lines 21, 25)
 
 **Problem:**
 - All images loaded immediately

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "motion/react";
-import logo from "figma:asset/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import logo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 
 export function Footer() {
   const footerLinks = [

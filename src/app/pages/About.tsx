@@ -1,7 +1,7 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
 import { Globe2, Award, Code2, Heart } from "lucide-react";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function About() {

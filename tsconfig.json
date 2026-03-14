@@ -24,7 +24,7 @@
       "@/*": [
         "./src/*"
       ],
-      "figma:asset/*": [
+      "@assets/*": [
         "./src/assets/*"
       ]
     }

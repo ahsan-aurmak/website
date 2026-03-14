@@ -378,7 +378,7 @@ Long-tail (for AI search):
 **Status:** ⚠️ NEEDS IMPROVEMENT
 
 **Issues:**
-- Images use `figma:asset` scheme (unclear if alt tags included)
+- Images use a custom asset alias scheme (alt tags should be reviewed)
 - No visible image naming strategy
 - Missing image schema markup
 

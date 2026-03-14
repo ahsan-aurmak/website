@@ -5,7 +5,7 @@ import { Linkedin } from "lucide-react";
 import { Link } from "react-router";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
-import masoodPhoto from "figma:asset/179a43f3ad15df719e7ed737dee335f392a63f77.png";
+import masoodPhoto from "@assets/179a43f3ad15df719e7ed737dee335f392a63f77.png";
 import khurramPhoto from "../../assets/khurram.jpeg";
 
 export default function Team() {

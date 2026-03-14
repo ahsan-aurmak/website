@@ -2,7 +2,7 @@ import { Hero } from "../components/hero";
 import { motion } from "motion/react";
 import { Cpu, Zap, Eye, CheckCircle2 } from "lucide-react";
 import { GlassCard } from "../components/card";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 
 export default function Lab() {

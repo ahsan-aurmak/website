@@ -52,9 +52,9 @@ Red Blue Blur Ideas (RBBi) · ContractRed Blue Blur Ideas (RBBi) · Contract
 Oct 2019 - Dec 2019 · 3 mosOct 2019 to Dec 2019 · 3 mos
 Dubai, United Arab Emirates · On-siteDubai, United Arab Emirates · On-site
 • Managed a cross-functional design and development team to create a mobile-responsive trade and logistics portal.
-• Developed and tested prototypes using Figma, ensuring seamless usability across global markets.
+• Developed and tested prototypes using modern collaborative design tooling, ensuring seamless usability across global markets.
 • Delivered a refined UX strategy that improved engagement for millions of users worldwide.
-• Managed a cross-functional design and development team to create a mobile-responsive trade and logistics portal. • Developed and tested prototypes using Figma, ensuring seamless usability across global markets. • Delivered a refined UX strategy that improved engagement for millions of users worldwide.
+• Managed a cross-functional design and development team to create a mobile-responsive trade and logistics portal. • Developed and tested prototypes using modern collaborative design tooling, ensuring seamless usability across global markets. • Delivered a refined UX strategy that improved engagement for millions of users worldwide.
 Cisco logo
 UX Lead
 UX Lead
