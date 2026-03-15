@@ -90,7 +90,7 @@ export function HeroGradientMesh() {
           ease: "easeInOut",
         }}
       />
-      
+
       {/* Moving light streaks */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"

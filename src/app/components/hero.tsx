@@ -38,10 +38,10 @@ export function Hero({
       <AnimatedBackground />
       
       {/* Accent gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-[#27aae1]/25 dark:bg-[#27aae1]/35" />
       
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-radial from-cyan-500/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-radial from-[#2CB5E3]/8 via-transparent to-transparent dark:from-cyan-500/10" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <motion.div
@@ -55,9 +55,9 @@ export function Hero({
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium backdrop-blur-sm"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#27aae1]/20 bg-white/80 px-4 py-2 text-sm font-medium text-[#27aae1] backdrop-blur-sm dark:bg-[#1B2A6B]/40"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="h-4 w-4" strokeWidth={2} />
               {eyebrowText}
             </motion.div>
           )}
@@ -75,7 +75,7 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className={`text-xl md:text-2xl text-slate-300 leading-relaxed mb-8 ${align === "center" ? "max-w-4xl mx-auto" : "max-w-3xl"}`}
+            className={`mb-8 text-xl leading-relaxed text-[#5f6b8e] dark:text-slate-300 md:text-2xl ${align === "center" ? "max-w-4xl mx-auto" : "max-w-3xl"}`}
           >
             {lead}
           </motion.p>
@@ -101,7 +101,7 @@ export function Hero({
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-500/30 rounded-full text-cyan-300 text-sm font-medium shadow-lg shadow-cyan-500/20"
+            className="rounded-full border border-[#27aae1]/20 bg-white/90 px-6 py-3 text-sm font-medium text-[#27aae1] shadow-lg shadow-slate-950/5 backdrop-blur-xl dark:border-cyan-500/30 dark:bg-[#1B2A6B]/75 dark:text-cyan-300 dark:shadow-cyan-500/10"
           >
             {badge || "🚀 Innovation at Scale"}
           </motion.div>

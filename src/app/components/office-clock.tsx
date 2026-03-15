@@ -108,7 +108,7 @@ export function OfficeClock({ offsetHours, gradient }: OfficeClockProps) {
       {/* Digital time display */}
       <div className="text-center">
         <div className="text-xs text-slate-500 mb-1">Local Time</div>
-        <div className={`text-xl font-mono font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent tabular-nums`}>
+        <div className="text-xl font-mono font-bold text-[#2CB5E3] tabular-nums">
           {time}
         </div>
       </div>

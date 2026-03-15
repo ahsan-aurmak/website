@@ -31,7 +31,7 @@ export default function Privacy() {
           >
             <Card>
               <h2 className="text-2xl font-bold mb-4">Information We Collect</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   We collect personal information that you voluntarily provide when using our website, including:
                 </p>
@@ -47,7 +47,7 @@ export default function Privacy() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">How We Use Information</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   We use the collected information for the following purposes:
                 </p>
@@ -66,7 +66,7 @@ export default function Privacy() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Storage and Security</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, alteration, disclosure, or destruction. This includes:
                 </p>
@@ -84,14 +84,14 @@ export default function Privacy() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Contact</h2>
-              <div className="text-slate-400">
+              <div className="text-[#5f6b8e] dark:text-slate-400">
                 <p>
                   For privacy requests, questions, or to exercise your data protection rights, contact:{" "}
-                  <a href="mailto:info@aurmak.com" className="text-cyan-400 hover:underline">
+                  <a href="mailto:info@aurmak.com" className="text-[#27aae1] hover:underline dark:text-cyan-400">
                     info@aurmak.com
                   </a>
                 </p>
-                <p className="mt-4 text-slate-500 text-sm">
+                <p className="mt-4 text-[#5f6b8e] dark:text-slate-500 text-sm">
                   Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>

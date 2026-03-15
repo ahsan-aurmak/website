@@ -83,11 +83,11 @@ export default function Careers() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Open{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#2CB5E3]">
                 Positions
               </span>
             </h2>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Current openings include a dedicated role detail page and direct application submission.
             </p>
           </motion.div>
@@ -102,15 +102,15 @@ export default function Careers() {
                 transition={{ delay: index * 0.1 }}
               >
                 <GlassCard className="h-full flex flex-col">
-                  <div className="text-cyan-400 text-sm font-medium mb-3">{role.code}</div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-4">{role.title}</h3>
+                  <div className="mb-3 text-sm font-medium text-[#27aae1] dark:text-cyan-400">{role.code}</div>
+                  <h3 className="mb-4 text-xl font-bold text-slate-900 dark:text-slate-100">{role.title}</h3>
                   <div className="space-y-2 mb-6 flex-1">
-                    <div className="flex items-center text-slate-400 text-sm">
-                      <MapPin className="w-4 h-4 mr-2 text-cyan-400" />
+                    <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
+                      <MapPin className="mr-2 h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
                       {role.location}
                     </div>
-                    <div className="flex items-center text-slate-400 text-sm">
-                      <Briefcase className="w-4 h-4 mr-2 text-cyan-400" />
+                    <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
+                      <Briefcase className="mr-2 h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
                       {role.model}
                     </div>
                   </div>
@@ -135,15 +135,15 @@ export default function Careers() {
               viewport={{ once: true }}
             >
               <Card className="h-full">
-                <h2 className="text-2xl font-bold text-slate-100 mb-6">Why Join AURMAK</h2>
-                <p className="text-slate-400 mb-6">
+                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Why Join AURMAK</h2>
+                <p className="mb-6 text-slate-600 dark:text-slate-400">
                   Contribute to enterprise delivery while building practical product capability through our innovation model.
                 </p>
                 <ul className="space-y-3">
                   {whyJoin.map((point, i) => (
                     <li key={i} className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-slate-300">{point}</span>
+                      <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                      <span className="text-slate-700 dark:text-slate-300">{point}</span>
                     </li>
                   ))}
                 </ul>
@@ -157,17 +157,17 @@ export default function Careers() {
               transition={{ delay: 0.1 }}
             >
               <Card className="h-full">
-                <h2 className="text-2xl font-bold text-slate-100 mb-6">Hiring Pipeline</h2>
-                <p className="text-slate-400 mb-6">
+                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Hiring Pipeline</h2>
+                <p className="mb-6 text-slate-600 dark:text-slate-400">
                   Apply through the job detail form with CV upload. Every application is reviewed through a defined evaluation process.
                 </p>
                 <ul className="space-y-3">
                   {hiringPipeline.map((step, i) => (
                     <li key={i} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400 text-sm font-medium flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-[#eef7fc] flex items-center justify-center text-[#27aae1] text-sm font-medium flex-shrink-0 dark:bg-cyan-500/20 dark:text-cyan-400">
                         {i + 1}
                       </div>
-                      <span className="text-slate-300">{step}</span>
+                      <span className="text-slate-700 dark:text-slate-300">{step}</span>
                     </li>
                   ))}
                 </ul>

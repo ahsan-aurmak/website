@@ -25,7 +25,7 @@ export function StatCallout({
       <div className="grid gap-5 border-l border-slate-700/80 pl-5 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-8 sm:pl-6">
         <div className="relative">
           <div className={`mb-4 h-px w-16 bg-gradient-to-r ${accent}`} />
-          <div className={`text-3xl font-semibold leading-none sm:text-4xl bg-gradient-to-r ${accent} bg-clip-text text-transparent`}>
+          <div className="text-3xl font-semibold leading-none text-[#2CB5E3] sm:text-4xl">
             {value}
           </div>
         </div>

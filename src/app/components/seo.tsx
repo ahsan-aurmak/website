@@ -180,3 +180,101 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
     }))
   };
 }
+
+export function generateFAQSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": items.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    })),
+  };
+}
+
+interface JobPostingInput {
+  title: string;
+  description: string;
+  identifier: string;
+  employmentType: string;
+  location: string;
+  validThrough?: string;
+}
+
+export function generateJobPostingSchema(job: JobPostingInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": job.title,
+    "description": job.description,
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": SITE_NAME,
+      "value": job.identifier,
+    },
+    "datePosted": "2026-03-15",
+    "validThrough": job.validThrough || "2026-09-30T23:59:00+01:00",
+    "employmentType": job.employmentType,
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": SITE_NAME,
+      "sameAs": buildCanonicalUrl("/"),
+      "logo": buildCanonicalUrl("/aurmak-logo.svg"),
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": job.location,
+      },
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": job.location,
+    },
+    "directApply": true,
+  };
+}
+
+interface CaseStudySchemaInput {
+  title: string;
+  description: string;
+  slug: string;
+  image?: string;
+  client?: string;
+  industry?: string;
+}
+
+export function generateCaseStudySchema(caseStudy: CaseStudySchemaInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": caseStudy.title,
+    "description": caseStudy.description,
+    "author": {
+      "@type": "Organization",
+      "name": SITE_NAME,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": SITE_NAME,
+      "logo": {
+        "@type": "ImageObject",
+        "url": buildCanonicalUrl("/aurmak-logo.svg"),
+      },
+    },
+    "mainEntityOfPage": buildCanonicalUrl(`/${caseStudy.slug}`),
+    "image": caseStudy.image,
+    "about": [
+      caseStudy.client,
+      caseStudy.industry,
+      "Enterprise systems delivery",
+      "Digital transformation",
+    ].filter(Boolean),
+    "articleSection": "Case Studies",
+  };
+}

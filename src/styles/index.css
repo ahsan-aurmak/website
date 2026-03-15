@@ -34,3 +34,64 @@
 .calendly-overlay .calendly-popup iframe::-webkit-scrollbar {
   display: none !important;
 }
+
+@layer utilities {
+  html:not(.dark) .text-\[\#2CB5E3\],
+  html:not(.dark) .text-cyan-500,
+  html:not(.dark) .text-cyan-600 {
+    color: #27aae1 !important;
+  }
+
+  html:not(.dark) .bg-\[\#2CB5E3\] {
+    background-color: #27aae1 !important;
+  }
+
+  html:not(.dark) .border-\[\#2CB5E3\] {
+    border-color: #27aae1 !important;
+  }
+
+  html:not(.dark) .text-slate-900,
+  html:not(.dark) .text-slate-800,
+  html:not(.dark) .text-slate-700 {
+    color: #282973 !important;
+  }
+
+  html:not(.dark) .text-slate-600,
+  html:not(.dark) .text-slate-500 {
+    color: #5f6b8e !important;
+  }
+
+  html:not(.dark) .hover\:text-slate-700:hover,
+  html:not(.dark) .hover\:text-slate-300:hover {
+    color: #282973 !important;
+  }
+
+  html:not(.dark) .group:hover .group-hover\:text-cyan-500,
+  html:not(.dark) .hover\:text-cyan-500:hover {
+    color: #27aae1 !important;
+  }
+
+  html:not(.dark) .text-\[\#27aae1\] {
+    color: #27aae1 !important;
+  }
+
+  html:not(.dark) .hover\:text-\[\#27aae1\]:hover,
+  html:not(.dark) .group:hover .group-hover\:text-\[\#27aae1\] {
+    color: #27aae1 !important;
+  }
+
+  html:not(.dark) .brand-surface {
+    background-color: var(--surface-soft) !important;
+    border-color: rgba(40, 41, 115, 0.12) !important;
+  }
+
+  html:not(.dark) .brand-surface-strong {
+    background-color: var(--surface-strong) !important;
+    border-color: rgba(40, 41, 115, 0.12) !important;
+  }
+
+  html:not(.dark) .brand-surface-muted {
+    background-color: var(--surface-muted) !important;
+    border-color: rgba(39, 170, 225, 0.16) !important;
+  }
+}

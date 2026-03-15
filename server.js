@@ -47,6 +47,12 @@ const knownCareerRoutes = new Set([
   "/careers/enterprise-solutions-architect",
   "/careers/full-stack-product-engineer",
 ]);
+const knownInsightRoutes = new Set([
+  "/insights/scaling-enterprise-saas-design-patterns",
+  "/insights/ux-barriers-saas-revenue-growth",
+  "/insights/integrating-ux-into-agile-delivery",
+  "/insights/ux-testing-business-risk",
+]);
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
@@ -62,8 +68,51 @@ function isKnownAppRoute(pathname) {
   return (
     knownStaticRoutes.has(pathname) ||
     knownCaseStudyRoutes.has(pathname) ||
-    knownCareerRoutes.has(pathname)
+    knownCareerRoutes.has(pathname) ||
+    knownInsightRoutes.has(pathname)
   );
+}
+
+function getSitemapEntries() {
+  return [
+    { path: "/", changefreq: "weekly", priority: "1.0" },
+    { path: "/about", changefreq: "monthly", priority: "0.9" },
+    { path: "/services", changefreq: "monthly", priority: "0.9" },
+    { path: "/solutions", changefreq: "monthly", priority: "0.8" },
+    { path: "/how-we-work", changefreq: "monthly", priority: "0.8" },
+    { path: "/case-studies", changefreq: "weekly", priority: "0.9" },
+    ...Array.from(knownCaseStudyRoutes).map((path) => ({ path, changefreq: "monthly", priority: "0.7" })),
+    { path: "/team", changefreq: "monthly", priority: "0.7" },
+    { path: "/careers", changefreq: "weekly", priority: "0.8" },
+    ...Array.from(knownCareerRoutes).map((path) => ({ path, changefreq: "weekly", priority: "0.6" })),
+    { path: "/insights", changefreq: "weekly", priority: "0.7" },
+    ...Array.from(knownInsightRoutes).map((path) => ({ path, changefreq: "monthly", priority: "0.6" })),
+    { path: "/lab", changefreq: "monthly", priority: "0.6" },
+    { path: "/contact", changefreq: "yearly", priority: "0.8" },
+    { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+    { path: "/cookies", changefreq: "yearly", priority: "0.3" },
+    { path: "/terms", changefreq: "yearly", priority: "0.3" },
+  ];
+}
+
+function buildSitemapXml() {
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const entries = getSitemapEntries()
+    .map(
+      ({ path: routePath, changefreq, priority }) => `  <url>
+    <loc>https://www.aurmak.com${routePath}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+    )
+    .join("\n\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
 }
 
 function isHtmlRoute(pathname) {
@@ -292,12 +341,7 @@ app.get("/sitemap.xml", async (_req, res, next) => {
   }
 
   try {
-    const sitemapPath = isProduction
-      ? path.join(distDir, "sitemap.xml")
-      : path.join(publicDir, "sitemap.xml");
-    const sitemap = await fs.readFile(sitemapPath, "utf8");
-
-    res.type("application/xml").send(sitemap);
+    res.type("application/xml").send(buildSitemapXml());
   } catch (error) {
     next(error);
   }

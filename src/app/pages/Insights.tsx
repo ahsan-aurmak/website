@@ -19,8 +19,8 @@ export default function Insights() {
   return (
     <div>
       <SEO
-        title="Insights"
-        description="Browse AURMAK's selected insights on enterprise SaaS, UX strategy, design validation, and delivery practices."
+        title="Enterprise Systems Insights, Strategy, and Delivery Thinking"
+        description="Browse AURMAK insights on enterprise SaaS, product strategy, validation, delivery practices, and business-focused digital modernisation."
         canonical="https://www.aurmak.com/insights"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -49,8 +49,8 @@ export default function Insights() {
                 onClick={() => setActiveFilter(filter.toLowerCase())}
                 className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
                   activeFilter === filter.toLowerCase()
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/30"
-                    : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+                    ? "border border-[#27aae1]/30 bg-[#eef7fc] text-[#282973] shadow-sm dark:border-white dark:bg-white dark:text-slate-950 dark:shadow-lg dark:shadow-white/10"
+                    : "border border-slate-200 bg-white text-[#5f6b8e] hover:border-[#27aae1]/20 hover:bg-slate-100 hover:text-[#282973] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                 }`}
                 aria-pressed={activeFilter === filter.toLowerCase()}
               >
@@ -74,14 +74,14 @@ export default function Insights() {
               >
                 <Link to={`/insights/${insight.slug}`} className="block h-full">
                   <Card className="h-full group flex flex-col">
-                    <div className="text-cyan-400 text-xs uppercase tracking-wide font-medium mb-3">
+                    <div className="mb-3 text-xs font-medium uppercase tracking-wide text-cyan-500 dark:text-cyan-400">
                       {insight.topic}
                     </div>
-                    <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
+                    <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-cyan-500 dark:text-slate-100 dark:group-hover:text-cyan-400">
                       {insight.title}
                     </h3>
-                    <p className="text-slate-400 mb-4 flex-1">{insight.excerpt}</p>
-                    <div className="mt-auto flex items-center justify-between text-slate-500 text-sm border-t border-slate-800 pt-4">
+                    <p className="mb-4 flex-1 text-slate-600 dark:text-slate-400">{insight.excerpt}</p>
+                    <div className="mt-auto flex items-center justify-between border-t border-slate-200 pt-4 text-sm text-slate-500 dark:border-slate-800">
                       <span>{insight.meta}</span>
                       <ArrowRight className="w-4 h-4 group-hover:text-cyan-400 transition-colors" />
                     </div>

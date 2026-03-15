@@ -47,8 +47,8 @@ export default function Solutions() {
   return (
     <div>
       <SEO
-        title="Solutions"
-        description="AURMAK builds industrial digitisation, real estate, and enterprise operations platforms that improve visibility, control, and delivery outcomes."
+        title="Enterprise Solutions for Operations, Infrastructure, and Real Estate"
+        description="Explore AURMAK solutions for industrial digitisation, real estate platforms, and enterprise operations systems that improve visibility, control, and performance."
         canonical="https://www.aurmak.com/solutions"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -75,11 +75,15 @@ export default function Solutions() {
                 transition={{ delay: index * 0.15 }}
               >
                 <GlassCard className="h-full">
-                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
-                    <domain.icon className="w-7 h-7 text-white" />
+                  <div className="flex items-start gap-5">
+                    <div className="flex h-18 w-18 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
+                      <domain.icon className="h-9 w-9 text-white" strokeWidth={1.75} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-3 text-xl font-bold text-slate-900 dark:text-slate-100">{domain.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400">{domain.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-3">{domain.title}</h3>
-                  <p className="text-slate-400">{domain.description}</p>
                 </GlassCard>
               </motion.div>
             ))}
@@ -98,7 +102,7 @@ export default function Solutions() {
           >
             <h2 className="text-3xl md:text-4xl font-bold">
               Three Outcome{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Pillars
               </span>
             </h2>
@@ -113,12 +117,12 @@ export default function Solutions() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
               >
-                <GlassCard className="text-center h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <pillar.icon className="w-8 h-8 text-white" />
+                <GlassCard className="h-full text-center">
+                  <div className="mx-auto mb-6 flex h-18 w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
+                    <pillar.icon className="h-9 w-9 text-white" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-3">{pillar.title}</h3>
-                  <p className="text-slate-400">{pillar.description}</p>
+                  <h3 className="mb-3 text-xl font-bold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400">{pillar.description}</p>
                 </GlassCard>
               </motion.div>
             ))}
@@ -136,7 +140,7 @@ export default function Solutions() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Deployment{" "}
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-[#27aae1]">
                   Contexts
                 </span>
               </h2>
@@ -150,8 +154,8 @@ export default function Solutions() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start space-x-3"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300">{context}</p>
+                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
+                    <p className="text-slate-700 dark:text-slate-300">{context}</p>
                   </motion.div>
                 ))}
               </div>
@@ -163,7 +167,7 @@ export default function Solutions() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
+              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
                   alt="AURMAK Deployment Contexts - Cloud, Edge, and Data Center Infrastructure"

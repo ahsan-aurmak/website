@@ -31,7 +31,7 @@ export default function Cookies() {
           >
             <Card>
               <h2 className="text-2xl font-bold mb-4">Essential Cookies</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   Essential cookies are necessary for the website to function properly. These cookies enable core functionality such as:
                 </p>
@@ -49,7 +49,7 @@ export default function Cookies() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Analytics Cookies</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   Analytics cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This information helps us:
                 </p>
@@ -67,7 +67,7 @@ export default function Cookies() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Managing Cookies</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   You can control and manage cookies in your browser settings. Most browsers allow you to:
                 </p>
@@ -87,13 +87,13 @@ export default function Cookies() {
                     href="https://www.aboutcookies.org"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-cyan-400 hover:underline"
+                    className="text-[#27aae1] hover:underline dark:text-cyan-400"
                   >
                     aboutcookies.org
                   </a>
                   .
                 </p>
-                <p className="mt-6 text-slate-500 text-sm">
+                <p className="mt-6 text-[#5f6b8e] dark:text-slate-500 text-sm">
                   Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>

@@ -21,13 +21,13 @@ export default function NotFound() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="text-9xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
+          <div className="mb-4 text-9xl font-bold text-[#27aae1]">
             404
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-100">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#282973] dark:text-slate-100">
             Page Not Found
           </h1>
-          <p className="text-slate-400 text-lg mb-8">
+          <p className="text-[#5f6b8e] dark:text-slate-400 text-lg mb-8">
             The page you're looking for doesn't exist or has been moved.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

@@ -93,8 +93,8 @@ export default function CaseStudies() {
   return (
     <div>
       <SEO
-        title="Case Studies"
-        description="Review AURMAK case studies across enterprise technology, financial services, public sector, and automotive programmes with measurable delivery outcomes."
+        title="Enterprise Technology Case Studies and Delivery Outcomes"
+        description="Review AURMAK case studies across SaaS, financial services, public sector, infrastructure, and operations programmes with measurable delivery outcomes."
         canonical="https://www.aurmak.com/case-studies"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -123,8 +123,8 @@ export default function CaseStudies() {
                 onClick={() => setActiveFilter(filter.toLowerCase())}
                 className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
                   activeFilter === filter.toLowerCase()
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/30"
-                    : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+                    ? "border border-[#27aae1]/30 bg-[#eef7fc] text-[#282973] shadow-sm dark:border-white dark:bg-white dark:text-slate-950 dark:shadow-lg dark:shadow-white/10"
+                    : "border border-slate-200 bg-white text-[#5f6b8e] hover:border-[#27aae1]/20 hover:bg-slate-100 hover:text-[#282973] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                 }`}
                 aria-pressed={activeFilter === filter.toLowerCase()}
               >
@@ -148,18 +148,18 @@ export default function CaseStudies() {
               >
                 <Card className="h-full flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-cyan-400 text-sm font-medium">{caseStudy.meta}</div>
-                    <div className="text-xs font-semibold bg-slate-700 border border-slate-600 text-slate-200 px-3 py-1 rounded-full">
+                    <div className="text-sm font-medium text-cyan-500 dark:text-cyan-400">{caseStudy.meta}</div>
+                    <div className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200">
                       {caseStudy.client}
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-100 mb-3">{caseStudy.title}</h3>
-                  <p className="text-slate-400 mb-4 flex-1">{caseStudy.summary}</p>
-                  <div className="space-y-2 mb-6 pb-6 border-b border-slate-800">
+                  <h3 className="mb-3 text-2xl font-bold text-slate-900 dark:text-slate-100">{caseStudy.title}</h3>
+                  <p className="mb-4 flex-1 text-slate-600 dark:text-slate-400">{caseStudy.summary}</p>
+                  <div className="mb-6 space-y-2 border-b border-slate-200 pb-6 dark:border-slate-800">
                     {caseStudy.kpis.map((kpi, i) => (
                       <div key={i} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
-                        <span className="text-slate-300 text-sm">{kpi}</span>
+                        <span className="text-sm text-slate-700 dark:text-slate-300">{kpi}</span>
                       </div>
                     ))}
                   </div>
@@ -187,7 +187,7 @@ export default function CaseStudies() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Need Similar Results in Your Operating Context?
             </h2>
-            <p className="text-slate-400 text-lg mb-8">
+            <p className="mb-8 text-lg text-slate-600 dark:text-slate-400">
               We can map your current systems, identify delivery priorities, and define a practical implementation roadmap.
             </p>
             <Button to="/contact">

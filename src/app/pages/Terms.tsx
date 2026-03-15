@@ -31,7 +31,7 @@ export default function Terms() {
           >
             <Card>
               <h2 className="text-2xl font-bold mb-4">Use of Website</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. The materials contained on this website are provided for general information only.
                 </p>
@@ -53,7 +53,7 @@ export default function Terms() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Intellectual Property</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   All content, materials, information, and intellectual property on this website, including but not limited to text, graphics, logos, images, software, and design, are owned by or licensed to AURMAK and are protected by copyright, trademark, and other intellectual property laws.
                 </p>
@@ -74,7 +74,7 @@ export default function Terms() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Liability</h2>
-              <div className="text-slate-400 space-y-4">
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
                   The information on this website is provided on an "as is" basis. To the fullest extent permitted by law, AURMAK:
                 </p>
@@ -92,14 +92,14 @@ export default function Terms() {
 
             <Card>
               <h2 className="text-2xl font-bold mb-4">Contact</h2>
-              <div className="text-slate-400">
+              <div className="text-[#5f6b8e] dark:text-slate-400">
                 <p>
                   For legal enquiries or questions about these terms, contact:{" "}
-                  <a href="mailto:info@aurmak.com" className="text-cyan-400 hover:underline">
+                  <a href="mailto:info@aurmak.com" className="text-[#27aae1] hover:underline dark:text-cyan-400">
                     info@aurmak.com
                   </a>
                 </p>
-                <p className="mt-4 text-slate-500 text-sm">
+                <p className="mt-4 text-[#5f6b8e] dark:text-slate-500 text-sm">
                   Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>

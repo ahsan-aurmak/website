@@ -1,9 +1,12 @@
 import { Link } from "react-router";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "motion/react";
-import logo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import { useTheme } from "./theme-provider";
 
 export function Footer() {
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/aurmak-logo-lightmode.svg" : darkLogo;
   const footerLinks = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -33,9 +36,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-slate-900 border-t border-slate-800">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
+    <footer className="relative border-t border-slate-200 bg-white transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
+      <div className="pointer-events-none absolute inset-0 bg-[#2CB5E3]/[0.02] dark:bg-[#2CB5E3]/[0.03]" />
       
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -46,7 +48,7 @@ export function Footer() {
               className="mb-4"
             >
               <img 
-                src={logo} 
+                src={logoSrc}
                 alt="AURMAK" 
                 className="h-10 w-auto"
               />
@@ -55,13 +57,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-slate-200 font-semibold mb-4">Quick Links</h3>
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">Quick Links</h3>
             <ul className="space-y-2">
               {footerLinks.slice(0, 6).map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
+                    className="text-sm text-[#5f6b8e] transition-colors hover:text-[#27aae1] dark:text-slate-400 dark:hover:text-cyan-400"
                   >
                     {link.label}
                   </Link>
@@ -72,13 +74,13 @@ export function Footer() {
 
           {/* More Links */}
           <div>
-            <h3 className="text-slate-200 font-semibold mb-4">More</h3>
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">More</h3>
             <ul className="space-y-2">
               {footerLinks.slice(6).map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
+                    className="text-sm text-[#5f6b8e] transition-colors hover:text-[#27aae1] dark:text-slate-400 dark:hover:text-cyan-400"
                   >
                     {link.label}
                   </Link>
@@ -89,7 +91,7 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="text-slate-200 font-semibold mb-4">Connect</h3>
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">Connect</h3>
             <div className="flex space-x-3 mb-6">
               {socialLinks.map((social) => (
                 <motion.a
@@ -98,7 +100,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="min-w-[44px] min-h-[44px] w-11 h-11 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:bg-slate-700 transition-all duration-200"
+                  className="flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-all duration-200 hover:bg-slate-200 hover:text-cyan-500 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -109,8 +111,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-slate-500 text-sm">
+        <div className="flex flex-col items-center justify-between space-y-4 border-t border-slate-200 pt-8 dark:border-slate-800 md:flex-row md:space-y-0">
+          <p className="text-sm text-slate-500">
             © {currentYear} AURMAK. All rights reserved.
           </p>
           <div className="flex space-x-6">
@@ -118,7 +120,7 @@ export function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-slate-500 hover:text-slate-400 transition-colors text-sm"
+                className="text-sm text-slate-500 transition-colors hover:text-slate-700 dark:hover:text-slate-400"
               >
                 {link.label}
               </Link>

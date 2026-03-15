@@ -33,8 +33,8 @@ export default function About() {
   return (
     <div>
       <SEO
-        title="About AURMAK - Global Vision & Leadership"
-        description="AURMAK combines strategic leadership in London and Dubai with disciplined engineering execution from Lahore for enterprise AI integration, product delivery, and industrial digitisation."
+        title="About AURMAK | Global Enterprise Systems Partner"
+        description="Learn how AURMAK combines strategic leadership, regional delivery, and disciplined engineering to build and modernise enterprise systems."
         canonical="https://www.aurmak.com/about"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -59,7 +59,7 @@ export default function About() {
           >
             <h2 className="text-3xl md:text-4xl font-bold">
               Three Centres.{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 One Vision.
               </span>
             </h2>
@@ -75,11 +75,11 @@ export default function About() {
                 transition={{ delay: index * 0.15 }}
               >
                 <div className="h-full text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <office.icon className="w-8 h-8 text-white" />
+                  <div className="mx-auto mb-6 flex h-18 w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
+                    <office.icon className="h-9 w-9 text-white" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-100 mb-4">{office.city}</h3>
-                  <p className="text-slate-400">{office.description}</p>
+                  <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-100">{office.city}</h3>
+                  <p className="text-slate-600 dark:text-slate-400">{office.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -98,7 +98,7 @@ export default function About() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Global HQ /{" "}
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-[#27aae1]">
                   Local Delivery
                 </span>
               </h2>
@@ -112,8 +112,8 @@ export default function About() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start space-x-3"
                   >
-                    <Heart className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300">{point}</p>
+                    <Heart className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
+                    <p className="text-slate-700 dark:text-slate-300">{point}</p>
                   </motion.div>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export default function About() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
+              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}global_hq_futuristic.png`}
                   alt="AURMAK Global Command Center connecting London, Dubai, and Lahore"

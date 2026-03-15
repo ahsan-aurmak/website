@@ -60,7 +60,7 @@ export default function Lab() {
           >
             <h2 className="text-3xl md:text-4xl font-bold">
               Our{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Principles
               </span>
             </h2>
@@ -75,12 +75,12 @@ export default function Lab() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
               >
-                <GlassCard className="text-center h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <principle.icon className="w-8 h-8 text-white" />
+                <GlassCard className="h-full text-center">
+                  <div className="mx-auto mb-6 flex h-18 w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
+                    <principle.icon className="h-9 w-9 text-white" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-3">{principle.title}</h3>
-                  <p className="text-slate-400">{principle.description}</p>
+                  <h3 className="mb-3 text-xl font-bold text-slate-900 dark:text-slate-100">{principle.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400">{principle.description}</p>
                 </GlassCard>
               </motion.div>
             ))}
@@ -99,7 +99,7 @@ export default function Lab() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Current Focus{" "}
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-[#27aae1]">
                   Areas
                 </span>
               </h2>
@@ -113,8 +113,8 @@ export default function Lab() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start space-x-3"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300">{area}</p>
+                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
+                    <p className="text-slate-700 dark:text-slate-300">{area}</p>
                   </motion.div>
                 ))}
               </div>
@@ -126,7 +126,7 @@ export default function Lab() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-cyan-500/10">
+              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.png`}
                   alt="AURMAK Venture Lab - Research and Development Focus Areas"
@@ -138,38 +138,6 @@ export default function Lab() {
         </div>
       </section>
 
-      {/* Innovation Stats */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {[
-              { value: "5+", label: "Active Research Projects" },
-              { value: "3", label: "Product Experiments" },
-              { value: "100%", label: "Client-Informed" },
-              { value: "2024", label: "Lab Established" }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-slate-400">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

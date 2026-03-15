@@ -71,8 +71,8 @@ export default function Contact() {
   return (
     <div>
       <SEO
-        title="Contact Us - Start Your Project"
-        description="Contact AURMAK to discuss your AI integration, SaaS development, or industrial automation project. Offices in London, Dubai, and Lahore. Start the conversation today."
+        title="Contact AURMAK | Start an Enterprise Systems Conversation"
+        description="Contact AURMAK to discuss enterprise systems, AI integration, SaaS platforms, and digital modernisation with our London, Dubai, and Lahore teams."
         canonical="https://www.aurmak.com/contact"
         keywords="contact AURMAK, enterprise technology consultation, AI integration inquiry, project discussion, London Dubai Lahore offices"
         schema={generateBreadcrumbSchema([
@@ -98,7 +98,7 @@ export default function Contact() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Offices
               </span>
             </h2>
@@ -113,10 +113,16 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-center h-full bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300">
-                  <MapPin className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-bold text-slate-100 mb-2">{office.country}</h3>
-                  <p className="text-slate-400 text-sm">{office.address}</p>
+                <div className="brand-surface h-full rounded-2xl border border-slate-200 bg-white/88 p-8 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/30 dark:border-slate-700/50 dark:bg-gradient-to-br dark:from-slate-800/60 dark:to-slate-900/60 dark:shadow-none">
+                  <div className="flex items-start gap-5">
+                    <div className="flex h-18 w-18 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
+                      <MapPin className="h-9 w-9 text-white" strokeWidth={1.75} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-2 text-lg font-bold text-slate-900 dark:text-slate-100">{office.country}</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{office.address}</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -133,17 +139,17 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-2 mb-6">
-              <Calendar className="w-4 h-4 text-cyan-400" />
-              <span className="text-cyan-400 text-sm font-medium">Prefer to talk first?</span>
+            <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
+              <Calendar className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" strokeWidth={1.75} />
+              <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">Prefer to talk first?</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Book a{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Discovery Call
               </span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
               30 minutes with a senior team member. No sales pitch — just a structured conversation about your priorities and how we can help.
             </p>
           </motion.div>
@@ -152,7 +158,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden border border-slate-700/50 px-2 md:px-0"
+            className="brand-surface-strong overflow-hidden rounded-2xl border border-slate-200 bg-white px-2 shadow-sm dark:border-slate-700/50 dark:bg-transparent dark:shadow-none md:px-0"
           >
             <InlineWidget
               url="https://calendly.com/ahsan-jalil-aurmak/30min"
@@ -172,9 +178,9 @@ export default function Contact() {
       {/* Divider */}
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center gap-6 py-4">
-          <div className="flex-1 h-px bg-slate-800" />
-          <span className="text-slate-500 text-sm font-medium">or send us a message</span>
-          <div className="flex-1 h-px bg-slate-800" />
+          <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+          <span className="text-sm font-medium text-slate-500">or send us a message</span>
+          <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
         </div>
       </div>
 
@@ -191,11 +197,11 @@ export default function Contact() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Discuss Your{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Requirement
               </span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
               Provide your requirements and we will connect you with the appropriate regional lead and delivery team.
             </p>
           </motion.div>
@@ -206,12 +212,12 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="border border-slate-700/50 rounded-2xl p-8 lg:p-12">
+            <div className="brand-surface rounded-2xl border border-slate-200 bg-white/88 p-8 shadow-sm dark:border-slate-700/50 dark:bg-transparent dark:shadow-none lg:p-12">
               {status === "success" ? (
                 <div className="text-center py-12">
-                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                  <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-400" strokeWidth={1.75} />
                   <h3 className="text-xl font-bold text-green-400 mb-2">Enquiry Submitted Successfully</h3>
-                  <p className="text-slate-400">Our team will contact you shortly.</p>
+                  <p className="text-slate-600 dark:text-slate-400">Our team will contact you shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -231,7 +237,7 @@ export default function Contact() {
                   {/* Row 1: Name + Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="fullName" className="block text-slate-300 text-sm font-medium mb-2">
+                      <label htmlFor="fullName" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Full Name *
                       </label>
                       <input
@@ -240,14 +246,14 @@ export default function Contact() {
                         name="fullName"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
                         placeholder="John Doe"
                         required
                         autoComplete="name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-slate-300 text-sm font-medium mb-2">
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Email Address *
                       </label>
                       <input
@@ -256,7 +262,7 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
                         placeholder="john@company.com"
                         required
                         autoComplete="email"
@@ -268,7 +274,7 @@ export default function Contact() {
                   {/* Row 2: Company + Service */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="company" className="block text-slate-300 text-sm font-medium mb-2">
+                      <label htmlFor="company" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Company Name
                       </label>
                       <input
@@ -277,13 +283,13 @@ export default function Contact() {
                         name="company"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
                         placeholder="Your Company"
                         autoComplete="organization"
                       />
                     </div>
                     <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">
+                      <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Service Requirement *
                       </label>
                       <div className="relative">
@@ -291,7 +297,7 @@ export default function Contact() {
                           required
                           value={formData.service}
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                          className="w-full px-4 py-3 pr-10 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors appearance-none cursor-pointer"
+                          className="w-full cursor-pointer appearance-none rounded-lg border border-slate-300 bg-white px-4 py-3 pr-10 text-slate-900 transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         >
                           <option value="">Select a service</option>
                           {services.map((service) => (
@@ -301,7 +307,7 @@ export default function Contact() {
                           ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                          <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </div>
@@ -311,7 +317,7 @@ export default function Contact() {
 
                   {/* Row 3: Message full-width */}
                   <div>
-                    <label className="block text-slate-300 text-sm font-medium mb-2">
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
                       Message *
                     </label>
                     <textarea
@@ -320,7 +326,7 @@ export default function Contact() {
                       value={formData.brief}
                       onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
                       placeholder="Tell us about your business, what you're looking to achieve, and any timelines or constraints."
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                      className="w-full resize-none rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                     />
                   </div>
 

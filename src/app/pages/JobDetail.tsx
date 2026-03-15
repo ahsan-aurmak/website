@@ -5,7 +5,7 @@ import { Button } from "../components/button";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowLeft, Upload, CheckCircle } from "lucide-react";
-import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { SEO, generateBreadcrumbSchema, generateJobPostingSchema } from "../components/seo";
 
 export default function JobDetail() {
   const { jobSlug: routeJobSlug } = useParams();
@@ -129,7 +129,7 @@ export default function JobDetail() {
 
   if (!job) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <SEO
           title="Role Not Found"
           description="The requested role could not be found."
@@ -138,7 +138,7 @@ export default function JobDetail() {
         />
         <div className="text-center max-w-md">
           <h1 className="text-3xl font-bold mb-4">Role Not Found</h1>
-          <p className="text-slate-400 mb-6">
+          <p className="text-[#5f6b8e] dark:text-slate-400 mb-6">
             The job you're looking for doesn't exist or has been removed.
           </p>
           <Button to="/careers">Return to Careers</Button>
@@ -150,13 +150,20 @@ export default function JobDetail() {
   return (
     <div>
       <SEO
-        title={`${job.title} Careers`}
-        description={job.lead}
-        canonical={`https://www.aurmak.com/careers/${jobSlug}`}
-        schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Careers", url: "/careers" },
-          { name: job.title, url: `/careers/${jobSlug}` }
+      title={`${job.title} Careers`}
+      description={job.lead}
+      canonical={`https://www.aurmak.com/careers/${jobSlug}`}
+      schema={generateJobPostingSchema({
+        title: job.title,
+        description: `${job.summary} Responsibilities: ${job.responsibilities.join(" ")} Requirements: ${job.requirements.join(" ")}`,
+        identifier: job.code,
+        employmentType: job.workModel.includes("Full-time") ? "FULL_TIME" : job.workModel,
+        location: job.location,
+      })}
+      breadcrumbSchema={generateBreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Careers", url: "/careers" },
+        { name: job.title, url: `/careers/${jobSlug}` }
         ])}
       />
       <Hero
@@ -185,23 +192,23 @@ export default function JobDetail() {
                 <Card>
                   <dl className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <dt className="text-cyan-400 text-sm font-medium mb-1">Job Code</dt>
-                      <dd className="text-slate-200">{job.code}</dd>
+                      <dt className="text-[#27aae1] dark:text-cyan-400 text-sm font-medium mb-1">Job Code</dt>
+                      <dd className="text-[#282973] dark:text-slate-200">{job.code}</dd>
                     </div>
                     <div>
-                      <dt className="text-cyan-400 text-sm font-medium mb-1">Location</dt>
-                      <dd className="text-slate-200">{job.location}</dd>
+                      <dt className="text-[#27aae1] dark:text-cyan-400 text-sm font-medium mb-1">Location</dt>
+                      <dd className="text-[#282973] dark:text-slate-200">{job.location}</dd>
                     </div>
                     <div>
-                      <dt className="text-cyan-400 text-sm font-medium mb-1">Work Model</dt>
-                      <dd className="text-slate-200">{job.workModel}</dd>
+                      <dt className="text-[#27aae1] dark:text-cyan-400 text-sm font-medium mb-1">Work Model</dt>
+                      <dd className="text-[#282973] dark:text-slate-200">{job.workModel}</dd>
                     </div>
                     <div>
-                      <dt className="text-cyan-400 text-sm font-medium mb-1">Experience</dt>
-                      <dd className="text-slate-200">{job.experience}</dd>
+                      <dt className="text-[#27aae1] dark:text-cyan-400 text-sm font-medium mb-1">Experience</dt>
+                      <dd className="text-[#282973] dark:text-slate-200">{job.experience}</dd>
                     </div>
                   </dl>
-                  <p className="text-slate-400">{job.summary}</p>
+                  <p className="text-[#5f6b8e] dark:text-slate-400">{job.summary}</p>
                 </Card>
               </motion.div>
 
@@ -215,8 +222,8 @@ export default function JobDetail() {
                   <ul className="space-y-3">
                     {job.responsibilities.map((item: string, i: number) => (
                       <li key={i} className="flex items-start space-x-3">
-                        <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-slate-300">{item}</span>
+                        <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-[#5f6b8e] dark:text-slate-300">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -233,8 +240,8 @@ export default function JobDetail() {
                   <ul className="space-y-3">
                     {job.requirements.map((item: string, i: number) => (
                       <li key={i} className="flex items-start space-x-3">
-                        <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-slate-300">{item}</span>
+                        <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-[#5f6b8e] dark:text-slate-300">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -250,9 +257,9 @@ export default function JobDetail() {
                 viewport={{ once: true }}
                 className="sticky top-24"
               >
-                <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60">
+                <Card className="brand-surface-strong">
                   <h2 className="text-2xl font-bold mb-4">Submit Application</h2>
-                  <p className="text-slate-400 text-sm mb-6">
+                  <p className="text-[#5f6b8e] dark:text-slate-400 text-sm mb-6">
                     Submit your application details below. Your CV will be attached to the review email.
                   </p>
 
@@ -260,14 +267,14 @@ export default function JobDetail() {
                     <div className="text-center py-8">
                       <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
                       <p className="text-green-400 font-medium mb-2">Application submitted successfully!</p>
-                      <p className="text-slate-400 text-sm">
+                      <p className="text-[#5f6b8e] dark:text-slate-400 text-sm">
                         Our team will review your profile and respond shortly.
                       </p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Full Name *
                         </label>
                         <input
@@ -275,12 +282,12 @@ export default function JobDetail() {
                           required
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Work Email *
                         </label>
                         <input
@@ -288,12 +295,12 @@ export default function JobDetail() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Phone Number *
                         </label>
                         <input
@@ -301,48 +308,48 @@ export default function JobDetail() {
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Current Location
                         </label>
                         <input
                           type="text"
                           value={formData.location}
                           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Portfolio or LinkedIn
                         </label>
                         <input
                           type="url"
                           value={formData.portfolio}
                           onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Application Note
                         </label>
                         <textarea
                           rows={3}
                           value={formData.note}
                           onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                          className="w-full px-4 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                          className="w-full resize-none rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-slate-300 text-sm font-medium mb-2">
+                        <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Upload CV * (PDF, DOC, DOCX, max 5MB)
                         </label>
                         <div className="relative">
@@ -356,7 +363,7 @@ export default function JobDetail() {
                           />
                           <label
                             htmlFor="cv-upload"
-                            className="flex items-center justify-center w-full px-4 py-3 bg-slate-900/50 border-2 border-dashed border-slate-700 rounded-lg text-slate-400 hover:border-cyan-500 hover:text-cyan-400 cursor-pointer transition-colors"
+                            className="flex w-full items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-white px-4 py-3 text-[#5f6b8e] transition-colors hover:border-cyan-500 hover:text-[#27aae1] cursor-pointer dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-400 dark:hover:text-cyan-400"
                           >
                             <Upload className="w-5 h-5 mr-2" />
                             {formData.cv ? formData.cv.name : "Choose file"}
@@ -368,7 +375,7 @@ export default function JobDetail() {
                         <p className="text-red-400 text-sm">{errorMessage}</p>
                       )}
 
-                      <p className="text-slate-500 text-xs">
+                      <p className="text-[#5f6b8e] dark:text-slate-500 text-xs">
                         Your CV is sent as an attachment to info@aurmak.com for review.
                       </p>
 

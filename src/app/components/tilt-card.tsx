@@ -1,6 +1,7 @@
 import { useRef, useState, ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Link } from "react-router";
+import type { LucideIcon } from "lucide-react";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -82,7 +83,7 @@ export function TiltCard({ children, className = "", tiltAmount = 15 }: TiltCard
 interface Feature3DCardProps {
   title: string;
   description: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: LucideIcon;
   gradient?: string;
   image?: string;
   badge?: string;
@@ -93,13 +94,13 @@ export function Feature3DCard({
   title,
   description,
   icon: Icon,
-  gradient = "from-cyan-500 to-blue-600",
+  gradient = "from-[#2CB5E3] to-[#1B2A6B]",
   image,
   badge,
   to,
 }: Feature3DCardProps) {
   const cardContent = (
-    <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 relative overflow-hidden h-full">
+    <div className="brand-surface relative h-full overflow-hidden rounded-2xl border border-slate-200 bg-white/88 p-8 backdrop-blur-md transition-all duration-300 hover:border-cyan-500/30 dark:border-slate-700/55 dark:bg-slate-900/88 dark:hover:border-cyan-500/40">
       {/* Background image if provided */}
       {image && (
         <div className="absolute inset-0 opacity-10">
@@ -107,8 +108,7 @@ export function Feature3DCard({
         </div>
       )}
 
-      {/* Gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`} />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(39,170,225,0.04),transparent_28%,transparent_100%)] dark:bg-[linear-gradient(180deg,rgba(39,170,225,0.03),transparent_28%,transparent_100%)]" />
 
       <div className="relative z-10 flex h-full flex-col">
         {badge && (
@@ -119,27 +119,29 @@ export function Feature3DCard({
           </div>
         )}
 
-        {/* Icon */}
-        <div
-          className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
-          style={{ transform: "translateZ(80px)" }}
-        >
-          <Icon className="w-8 h-8 text-white" />
-        </div>
+        <div className="flex h-full items-start gap-5">
+          <div
+            className={`flex h-18 w-18 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient}`}
+            style={{ transform: "translateZ(80px)" }}
+          >
+            <Icon className="h-9 w-9 text-white" strokeWidth={1.75} />
+          </div>
 
-        {/* Content */}
-        <h3
-          className="text-2xl font-bold text-slate-100 mb-3"
-          style={{ transform: "translateZ(60px)" }}
-        >
-          {title}
-        </h3>
-        <p
-          className="text-slate-400 leading-relaxed flex-1"
-          style={{ transform: "translateZ(40px)" }}
-        >
-          {description}
-        </p>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <h3
+              className="mb-3 min-h-[3.75rem] text-2xl font-bold text-slate-900 dark:text-slate-100"
+              style={{ transform: "translateZ(60px)" }}
+            >
+              {title}
+            </h3>
+            <p
+              className="flex-1 leading-relaxed text-slate-600 dark:text-slate-400"
+              style={{ transform: "translateZ(40px)" }}
+            >
+              {description}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

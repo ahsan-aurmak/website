@@ -23,12 +23,12 @@ export function Button({
   disabled = false,
   className = ""
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group whitespace-nowrap w-full sm:w-auto";
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative whitespace-nowrap w-full sm:w-auto";
   
   const variants = {
-    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-xl hover:shadow-cyan-500/30",
-    secondary: "bg-slate-800 text-slate-100 border border-slate-700 hover:bg-slate-700 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10",
-    ghost: "text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50"
+    primary: "border border-[#27aae1] bg-[#27aae1] text-slate-950 shadow-[0_10px_28px_rgba(39,170,225,0.22)] hover:border-[#43b8e7] hover:bg-[#43b8e7] hover:shadow-[0_12px_32px_rgba(39,170,225,0.16)]",
+    secondary: "border border-slate-300 bg-white/90 text-[#282973] hover:border-[#27aae1]/40 hover:bg-[#eef7fc] dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white",
+    ghost: "text-[#282973] hover:text-[#27aae1] hover:bg-[#eef7fc] dark:text-slate-300 dark:hover:bg-slate-800/50 dark:hover:text-[#27aae1]"
   };
   const sizes = {
     default: "px-6 py-3",
@@ -38,14 +38,7 @@ export function Button({
   const combinedClassName = `${baseStyles} ${sizes[size]} ${variants[variant]} ${className}`;
 
   const ButtonContent = ({ children }: { children: ReactNode }) => (
-    <>
-      {variant === "primary" && (
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        />
-      )}
-      <span className="relative z-10 flex items-center whitespace-nowrap">{children}</span>
-    </>
+    <span className="relative z-10 flex items-center whitespace-nowrap">{children}</span>
   );
 
   if (to) {

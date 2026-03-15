@@ -5,6 +5,7 @@ import { CursorFollower, ScrollProgress } from "../components/cursor-follower";
 import { StagingBanner } from "../components/staging-banner";
 import { CookieConsent } from "../components/cookie-consent";
 import { useEffect } from "react";
+import { ThemeProvider } from "../components/theme-provider";
 
 export default function Root() {
   const location = useLocation();
@@ -15,37 +16,40 @@ export default function Root() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Scroll Progress Bar */}
-      <ScrollProgress />
-      
-      {/* Custom Cursor */}
-      <CursorFollower />
-      
-      {/* Animated background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
+    <ThemeProvider>
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+        <ScrollProgress />
+        <CursorFollower />
+
+        <div className="pointer-events-none fixed inset-0 overflow-hidden">
+          <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-[#27aae1]/8 blur-3xl animate-pulse dark:bg-cyan-500/10" />
+          <div
+            className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-[#1B2A6B]/8 blur-3xl animate-pulse dark:bg-blue-500/10"
+            style={{ animationDelay: "1s" }}
+          />
+          <div
+            className="absolute left-1/2 top-1/2 h-96 w-96 rounded-full bg-white/40 blur-3xl animate-pulse dark:bg-blue-500/10"
+            style={{ animationDelay: "2s" }}
+          />
+        </div>
+
+        <div
+          className="pointer-events-none fixed inset-0 opacity-[0.03] transition-opacity duration-300 dark:opacity-[0.015]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "50px 50px",
+          }}
+        />
+
+        <Navigation />
+        <main className="relative z-10 pt-20">
+          <StagingBanner />
+          <Outlet />
+        </main>
+        <Footer />
+        <CookieConsent />
       </div>
-
-      {/* Grid pattern overlay */}
-      <div
-        className="fixed inset-0 opacity-[0.015] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)`,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      <Navigation />
-      <main className="relative z-10 pt-20">
-        <StagingBanner />
-        <Outlet />
-      </main>
-      <Footer />
-      <CookieConsent />
-    </div>
+    </ThemeProvider>
   );
 }

@@ -1,8 +1,8 @@
 import { Hero } from "../components/hero";
 import { GlassCard } from "../components/card";
+import { Button } from "../components/button";
 import { motion } from "motion/react";
 import { Linkedin } from "lucide-react";
-import { Link } from "react-router";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
 import masoodPhoto from "@assets/179a43f3ad15df719e7ed737dee335f392a63f77.png";
@@ -63,7 +63,7 @@ export default function Team() {
           >
             <h2 className="text-3xl md:text-4xl font-bold">
               Board &{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Leadership
               </span>
             </h2>
@@ -78,7 +78,7 @@ export default function Team() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <GlassCard className="h-full">
+                <GlassCard className="h-full dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
                   <div className="flex items-start gap-6 mb-4">
                     {/* Profile Photo */}
                     <img
@@ -91,15 +91,15 @@ export default function Team() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
                         <div>
-                          <div className="text-cyan-400 text-sm font-medium mb-2">{member.role}</div>
-                          <h3 className="text-2xl font-bold text-slate-100">{member.name}</h3>
+                          <div className="mb-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400">{member.role}</div>
+                          <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
                         </div>
                         <motion.a
                           href={member.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1, y: -2 }}
-                          className="min-w-[44px] min-h-[44px] w-11 h-11 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:bg-slate-700 transition-all duration-200"
+                          className="flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-[#5f6b8e] transition-all duration-200 hover:bg-[#eef7fc] hover:text-[#27aae1] dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
                           aria-label={`${member.name} on LinkedIn`}
                         >
                           <Linkedin size={18} />
@@ -107,7 +107,7 @@ export default function Team() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-slate-400">{member.bio}</p>
+                  <p className="text-slate-600 dark:text-slate-400">{member.bio}</p>
                 </GlassCard>
               </motion.div>
             ))}
@@ -123,35 +123,29 @@ export default function Team() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <GlassCard className="text-center py-12 px-6 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 pointer-events-none" />
+            <GlassCard className="relative overflow-hidden px-6 py-12 text-center dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
+              <div className="pointer-events-none absolute inset-0 bg-[#27aae1]/6 dark:bg-[#27aae1]/8" />
               <div className="relative z-10">
                 <motion.div
                   initial={{ scale: 0.9 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
-                  className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium mb-6"
+                  className="mb-6 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400"
                 >
                   We're Hiring
                 </motion.div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Join Our{" "}
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  <span className="text-[#27aae1]">
                     Growing Team
                   </span>
                 </h2>
-                <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
                   We're building the future of AI and industrial automation. If you're passionate about solving complex challenges and driving innovation, we'd love to hear from you.
                 </p>
-                <Link to="/careers">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200"
-                  >
-                    View Open Positions
-                  </motion.button>
-                </Link>
+                <Button to="/careers" size="large">
+                  View Open Positions
+                </Button>
               </div>
             </GlassCard>
           </motion.div>

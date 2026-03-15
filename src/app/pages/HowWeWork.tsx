@@ -1,6 +1,6 @@
 import { Hero } from "../components/hero";
 import { Button } from "../components/button";
-import { Card, GlassCard } from "../components/card";
+import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowRight, Shield, FileCheck, GitBranch, Users, TestTube, Database } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
@@ -81,8 +81,8 @@ export default function HowWeWork() {
   return (
     <div>
       <SEO
-        title="How We Work"
-        description="Learn AURMAK's seven-stage delivery model covering discovery, audit, roadmap, pilot, rollout, governance, and long-term support."
+        title="Enterprise Delivery Model and Implementation Approach"
+        description="Learn how AURMAK delivers enterprise systems through a structured model covering discovery, audit, roadmap, pilot, rollout, governance, and long-term support."
         canonical="https://www.aurmak.com/how-we-work"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -105,45 +105,55 @@ export default function HowWeWork() {
             viewport={{ once: true }}
             className="text-center mb-4"
           >
-            <div className="inline-block mb-4 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-medium">
+            <div className="mb-4 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400">
               Seven-stage execution model
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Delivery{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Lifecycle
               </span>
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-400">
               Each stage has clear outputs, review checks, and named owners before we move ahead.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {stages.map((stage, index) => (
-              <motion.div
-                key={stage.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <GlassCard className="h-full relative overflow-hidden">
-                  <div className="absolute top-0 right-0 text-7xl font-bold text-cyan-500/5">
-                    {stage.number}
-                  </div>
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                      <stage.icon className="w-6 h-6 text-white" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 overflow-hidden rounded-[32px] border border-slate-200/80 bg-white/40 p-6 dark:border-slate-800/70 dark:bg-transparent md:p-8 lg:p-10"
+          >
+            <div className="relative mx-auto max-w-4xl">
+              <div
+                className="absolute bottom-3 left-7 top-3 w-px bg-[#27aae1]/25 dark:bg-slate-700"
+                aria-hidden="true"
+              />
+              <div className="space-y-12 md:space-y-14">
+                {stages.map((stage, index) => (
+                  <motion.div
+                    key={`${stage.number}-${stage.title}-timeline`}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className="relative flex items-start gap-8"
+                  >
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#27aae1]/30 bg-[#eef7fc] text-lg font-semibold text-[#27aae1] shadow-sm dark:border-cyan-400/20 dark:bg-slate-900 dark:text-cyan-400 dark:shadow-none">
+                      {stage.number}
                     </div>
-                    <div className="text-cyan-400 text-sm font-medium mb-2">Stage {stage.number}</div>
-                    <h3 className="text-xl font-bold text-slate-100 mb-3">{stage.title}</h3>
-                    <p className="text-slate-400 text-sm">{stage.description}</p>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </div>
+                    <div className="min-w-0 pt-1 text-left">
+                      <h3 className="text-2xl font-semibold">{stage.title}</h3>
+                      <p className="mt-3 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+                        {stage.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
       {/* Trust Markers */}
@@ -157,11 +167,11 @@ export default function HowWeWork() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Trust{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-[#27aae1]">
                 Markers
               </span>
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto mb-8">
+            <p className="mx-auto mb-8 max-w-2xl text-slate-600 dark:text-slate-400">
               We don't believe in fragmented delivery. Every engagement follows a defined method covering discovery, audit, roadmap, pilot, rollout, governance, and long-term support.
             </p>
             <Button to="/contact">
@@ -180,8 +190,8 @@ export default function HowWeWork() {
                 transition={{ delay: index * 0.08 }}
               >
                 <Card hover={false} className="h-full border-slate-700/50">
-                  <h3 className="text-lg font-semibold text-slate-100 mb-2">{marker.title}</h3>
-                  <p className="text-slate-400 text-sm">{marker.description}</p>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100">{marker.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{marker.description}</p>
                 </Card>
               </motion.div>
             ))}

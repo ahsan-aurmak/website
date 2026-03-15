@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router";
+import { useLocation } from "react-router";
 import { Hero } from "../components/hero";
 import { Button } from "../components/button";
 import { GlassCard } from "../components/card";
@@ -7,7 +7,7 @@ import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp } from "lucid
 import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { X } from "lucide-react";
-import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { SEO, generateBreadcrumbSchema, generateCaseStudySchema } from "../components/seo";
 
 // Metrikus case study images
 import metrikusSpaceDashboard from "@assets/d4ea28b0c5e977adeccbec0ba6c83e335b3ef577.png";
@@ -650,7 +650,7 @@ export default function CaseStudyDetail() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-slate-50 to-slate-100 text-[#282973] dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
         <SEO
           title="Case Study Not Found"
           description="The requested case study could not be found."
@@ -659,22 +659,28 @@ export default function CaseStudyDetail() {
         />
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Case Study Not Found</h1>
-          <Link to="/case-studies">
-            <Button variant="primary">Back to Case Studies</Button>
-          </Link>
+          <Button to="/case-studies" variant="primary">Back to Case Studies</Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-slate-100 text-[#282973] dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-white">
       <SEO
         title={data.title}
         description={data.lead}
         canonical={`https://www.aurmak.com/${slug}`}
         ogImage={data.images?.[0]?.src}
-        schema={generateBreadcrumbSchema([
+        schema={generateCaseStudySchema({
+          title: data.title,
+          description: data.lead,
+          slug,
+          image: data.images?.[0]?.src,
+          client: data.snapshot?.find((item: any) => item.label === "Client")?.value,
+          industry: data.snapshot?.find((item: any) => item.label === "Industry")?.value,
+        })}
+        breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Case Studies", url: "/case-studies" },
           { name: data.title, url: `/${slug}` }
@@ -691,10 +697,10 @@ export default function CaseStudyDetail() {
         <div className="flex flex-wrap gap-8 justify-center mt-8">
           {data.metrics.map((metric: any, i: number) => (
             <div key={i} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+              <div className="text-4xl md:text-5xl font-bold text-[#2CB5E3]">
                 {metric.value}
               </div>
-              <div className="text-slate-400 mt-2">{metric.label}</div>
+              <div className="mt-2 text-[#5f6b8e] dark:text-slate-400">{metric.label}</div>
             </div>
           ))}
         </div>
@@ -713,7 +719,7 @@ export default function CaseStudyDetail() {
                 {data.snapshot.map((item: any, i: number) => (
                   <div key={i}>
                     <div className="text-slate-500 text-sm mb-1">{item.label}</div>
-                    <div className="text-slate-200 font-medium">{item.value}</div>
+                    <div className="font-medium text-[#282973] dark:text-slate-200">{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -732,7 +738,7 @@ export default function CaseStudyDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-bold mb-4 text-cyan-400">The Challenge</h2>
-              <p className="text-slate-300 leading-relaxed">{data.challenge}</p>
+              <p className="leading-relaxed text-[#5f6b8e] dark:text-slate-300">{data.challenge}</p>
             </motion.div>
 
             <motion.div
@@ -741,14 +747,14 @@ export default function CaseStudyDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-bold mb-4 text-cyan-400">Our Solution</h2>
-              <p className="text-slate-300 leading-relaxed">{data.solution}</p>
+              <p className="leading-relaxed text-[#5f6b8e] dark:text-slate-300">{data.solution}</p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Business Outcomes */}
-      <section className="py-12 relative bg-gradient-to-br from-cyan-900/10 to-blue-900/10">
+      <section className="relative bg-[#eef7fc] py-12 dark:bg-slate-950/70">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -758,9 +764,9 @@ export default function CaseStudyDetail() {
             <h2 className="text-3xl font-bold mb-8 text-center">Business Impact</h2>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {data.businessOutcomes.map((outcome: string, i: number) => (
-                <div key={i} className="flex items-start space-x-3 bg-slate-900/50 rounded-xl p-4 border border-slate-800">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <p className="text-slate-300">{outcome}</p>
+                <div key={i} className="flex items-start space-x-3 rounded-xl border border-slate-200 bg-white/90 p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#27aae1] dark:text-cyan-400" />
+                  <p className="text-[#5f6b8e] dark:text-slate-300">{outcome}</p>
                 </div>
               ))}
             </div>
@@ -783,7 +789,7 @@ export default function CaseStudyDetail() {
                   className="group cursor-pointer"
                   onClick={() => setSelectedImage(image)}
                 >
-                  <div className="bg-slate-900/30 rounded-xl overflow-hidden border border-slate-800 hover:border-cyan-800/50 transition-colors">
+                  <div className="overflow-hidden rounded-xl border border-slate-200 bg-white/90 shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/30 dark:shadow-none dark:hover:border-cyan-800/50">
                     <div className="aspect-video bg-white overflow-hidden">
                       <img
                         src={image.src}
@@ -792,7 +798,7 @@ export default function CaseStudyDetail() {
                       />
                     </div>
                     <div className="p-3">
-                      <p className="text-slate-400 text-sm text-center">{image.caption}</p>
+                      <p className="text-center text-sm text-[#5f6b8e] dark:text-slate-400">{image.caption}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -813,14 +819,14 @@ export default function CaseStudyDetail() {
           >
             <button
               onClick={() => setShowProjectDetails(!showProjectDetails)}
-              className="w-full bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-cyan-800/50 transition-colors text-left"
+              className="w-full rounded-xl border border-slate-200 bg-white/90 p-6 text-left shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none dark:hover:border-cyan-800/50"
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-cyan-400">Project Details</h2>
                 {showProjectDetails ? (
-                  <ChevronUp className="w-6 h-6 text-slate-400" />
+                  <ChevronUp className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                 ) : (
-                  <ChevronDown className="w-6 h-6 text-slate-400" />
+                  <ChevronDown className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                 )}
               </div>
             </button>
@@ -830,21 +836,21 @@ export default function CaseStudyDetail() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-4 bg-slate-900/30 border border-slate-800 rounded-xl p-6"
+                className="mt-4 rounded-xl border border-slate-200 bg-white/90 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/30 dark:shadow-none"
               >
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-3 text-slate-200">Project Scope</h3>
-                    <p className="text-slate-300 leading-relaxed">{data.projectDetails.scope}</p>
+                    <h3 className="mb-3 text-lg font-semibold text-[#282973] dark:text-slate-200">Project Scope</h3>
+                    <p className="leading-relaxed text-[#5f6b8e] dark:text-slate-300">{data.projectDetails.scope}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-3 text-slate-200">Our Approach</h3>
+                    <h3 className="mb-3 text-lg font-semibold text-[#282973] dark:text-slate-200">Our Approach</h3>
                     <ul className="space-y-2">
                       {data.projectDetails.approach.map((item: string, i: number) => (
                         <li key={i} className="flex items-start space-x-3">
-                          <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-slate-300">{item}</span>
+                          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#27aae1] dark:text-cyan-400" />
+                          <span className="text-[#5f6b8e] dark:text-slate-300">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -868,23 +874,21 @@ export default function CaseStudyDetail() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Transform Your Operations?
             </h2>
-            <p className="text-slate-300 text-lg mb-8">
+            <p className="mb-8 text-lg text-[#5f6b8e] dark:text-slate-300">
               Let's discuss how we can deliver similar results for your organization.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <button
                 onClick={() => setIsCalendlyOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-cyan-500/25"
+                className="inline-flex items-center gap-2 rounded-lg border border-[#2CB5E3] bg-[#2CB5E3] px-6 py-3 font-semibold text-slate-950 shadow-[0_10px_30px_rgba(44,181,227,0.24)] transition-all duration-200 hover:border-[#58C7EC] hover:bg-[#58C7EC] hover:shadow-[0_12px_34px_rgba(44,181,227,0.18)]"
               >
                 <Calendar className="w-5 h-5" />
                 Book 30 Min Discovery Call
               </button>
-              <Link to="/case-studies">
-                <Button variant="secondary" size="large">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  View All Case Studies
-                </Button>
-              </Link>
+              <Button to="/case-studies" variant="secondary" size="large">
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                View All Case Studies
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -903,7 +907,7 @@ export default function CaseStudyDetail() {
             {/* Close button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 p-2 rounded-full bg-slate-800/50 hover:bg-slate-700 transition-colors z-10"
+              className="absolute -top-12 right-0 z-10 rounded-full bg-slate-800/50 p-2 transition-colors hover:bg-slate-700"
               aria-label="Close modal"
             >
               <X className="w-6 h-6 text-white" />
@@ -921,9 +925,9 @@ export default function CaseStudyDetail() {
                 alt={selectedImage.alt}
                 className="w-full h-auto max-h-[80vh] object-contain"
               />
-              <div className="p-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+              <div className="bg-white p-6 text-[#282973] dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 dark:text-white">
                 <p className="text-lg font-semibold">{selectedImage.caption}</p>
-                <p className="text-slate-400 text-sm mt-2">{selectedImage.alt}</p>
+                <p className="mt-2 text-sm text-[#5f6b8e] dark:text-slate-400">{selectedImage.alt}</p>
               </div>
             </motion.div>
           </div>
