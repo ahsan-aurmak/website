@@ -179,7 +179,7 @@ export function HeroCaseShowcase() {
       <div className="relative w-full max-w-md">
 
         {/* Live indicator */}
-        <div className="absolute -top-3 left-6 z-30 flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-full px-3 py-1.5">
+        <div className="absolute left-4 right-4 -top-3 z-30 flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 sm:left-6 sm:right-auto">
           <span className="relative flex h-2 w-2">
             <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${current.dot} opacity-75`} />
             <span className={`relative inline-flex rounded-full h-2 w-2 ${current.dot}`} />
@@ -264,20 +264,20 @@ export function HeroCaseShowcase() {
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-5 -left-4 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl px-5 py-3 shadow-xl shadow-purple-500/30 z-30 lg:-left-12"
+          className="absolute -bottom-5 left-4 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 px-4 py-3 shadow-xl shadow-purple-500/30 z-30 sm:px-5 lg:-left-12"
         >
           <div className="text-purple-100 text-[10px] uppercase tracking-widest mb-0.5">Offices in</div>
-          <div className="text-white text-sm font-bold leading-tight whitespace-nowrap">London · Dubai · Lahore</div>
+          <div className="text-sm font-bold leading-tight text-white">London · Dubai · Lahore</div>
         </motion.div>
 
         {/* ── Top-right badge: clients ── */}
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute top-32 -right-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl px-5 py-3 shadow-xl shadow-cyan-500/30 z-30 lg:top-12 lg:-right-12"
+          className="absolute right-4 top-32 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 px-4 py-3 shadow-xl shadow-cyan-500/30 z-30 sm:px-5 lg:top-12 lg:-right-12"
         >
           <div className="text-cyan-100 text-[10px] uppercase tracking-widest mb-0.5">Clients include</div>
-          <div className="text-white text-sm font-bold leading-tight whitespace-nowrap">Cisco · Castrol · Al Jazeera</div>
+          <div className="text-sm font-bold leading-tight text-white">Cisco · Castrol · Al Jazeera</div>
         </motion.div>
       </div>
     </motion.div>

@@ -162,7 +162,7 @@ export default function Contact() {
           >
             <InlineWidget
               url="https://calendly.com/ahsan-jalil-aurmak/30min"
-              styles={{ height: "700px", minWidth: "320px" }}
+              styles={{ height: "700px", minWidth: "100%", width: "100%" }}
               pageSettings={{
                 backgroundColor: '0f172a',
                 hideEventTypeDetails: false,

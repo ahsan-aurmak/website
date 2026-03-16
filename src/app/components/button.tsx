@@ -23,7 +23,7 @@ export function Button({
   disabled = false,
   className = ""
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative whitespace-nowrap w-full sm:w-auto";
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative w-full sm:w-auto";
   
   const variants = {
     primary: "border border-[#27aae1] bg-[#27aae1] text-slate-950 shadow-[0_10px_28px_rgba(39,170,225,0.22)] hover:border-[#43b8e7] hover:bg-[#43b8e7] hover:shadow-[0_12px_32px_rgba(39,170,225,0.16)]",
@@ -38,7 +38,7 @@ export function Button({
   const combinedClassName = `${baseStyles} ${sizes[size]} ${variants[variant]} ${className}`;
 
   const ButtonContent = ({ children }: { children: ReactNode }) => (
-    <span className="relative z-10 flex items-center whitespace-nowrap">{children}</span>
+    <span className="relative z-10 flex items-center justify-center text-center sm:text-left">{children}</span>
   );
 
   if (to) {

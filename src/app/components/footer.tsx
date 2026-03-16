@@ -115,7 +115,7 @@ export function Footer() {
           <p className="text-sm text-slate-500">
             © {currentYear} AURMAK. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-end">
             {legalLinks.map((link) => (
               <Link
                 key={link.path}
