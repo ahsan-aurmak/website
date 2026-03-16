@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import lightLogo from "@assets/branding/aurmak-logo-lightmode.svg";
 import { useTheme } from "./theme-provider";
 
 export function Navigation() {
@@ -12,7 +13,7 @@ export function Navigation() {
   const [showArabicMessage, setShowArabicMessage] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const logoSrc = theme === "light" ? "/aurmak-logo-lightmode.svg" : darkLogo;
+  const logoSrc = theme === "light" ? lightLogo : darkLogo;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,9 +103,10 @@ export function Navigation() {
               className="flex items-center"
             >
               <img 
+                key={logoSrc}
                 src={logoSrc}
                 alt="AURMAK" 
-                className="h-10 md:h-12 w-auto"
+                className="h-10 w-auto shrink-0 md:h-12"
               />
             </motion.div>
           </Link>

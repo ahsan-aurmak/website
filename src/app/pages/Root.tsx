@@ -17,7 +17,7 @@ export default function Root() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+      <div className="min-h-screen overflow-x-hidden bg-background text-foreground transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
         <ScrollProgress />
         <CursorFollower />
 
@@ -43,7 +43,7 @@ export default function Root() {
         />
 
         <Navigation />
-        <main className="relative z-10 pt-20">
+        <main className="relative z-10 overflow-x-hidden pt-20">
           <StagingBanner />
           <Outlet />
         </main>

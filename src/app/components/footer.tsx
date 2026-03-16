@@ -2,11 +2,12 @@ import { Link } from "react-router";
 import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "motion/react";
 import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
+import lightLogo from "@assets/branding/aurmak-logo-lightmode.svg";
 import { useTheme } from "./theme-provider";
 
 export function Footer() {
   const { theme } = useTheme();
-  const logoSrc = theme === "light" ? "/aurmak-logo-lightmode.svg" : darkLogo;
+  const logoSrc = theme === "light" ? lightLogo : darkLogo;
   const footerLinks = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -48,9 +49,10 @@ export function Footer() {
               className="mb-4"
             >
               <img 
+                key={logoSrc}
                 src={logoSrc}
                 alt="AURMAK" 
-                className="h-10 w-auto"
+                className="h-10 w-auto shrink-0"
               />
             </motion.div>
           </div>
