@@ -37,6 +37,14 @@ export function Navigation() {
     }
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { label: "Home", path: "/" },
     { 
@@ -220,19 +228,19 @@ export function Navigation() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-white/80 backdrop-blur-sm dark:bg-slate-900/80 lg:hidden"
-                style={{ top: 0, left: 0, right: 0, bottom: 0, zIndex: 40 }}
+                className="fixed inset-x-0 bottom-0 top-[72px] bg-white/80 backdrop-blur-sm dark:bg-slate-900/80 lg:hidden"
+                style={{ zIndex: 40 }}
                 onClick={() => setMobileMenuOpen(false)}
               />
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                exit={{ opacity: 0, y: -12 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="absolute left-4 right-4 top-full mt-4 overflow-hidden rounded-lg border border-slate-200 bg-white/95 shadow-xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-800/95"
+                className="fixed inset-x-4 top-[88px] z-50 max-h-[calc(100vh-104px)] overflow-y-auto rounded-2xl border border-slate-200 bg-white/95 shadow-xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-800/95"
                 style={{ zIndex: 50 }}
               >
-                <div className="p-4 space-y-2">
+                <div className="space-y-2 p-4">
                   <div className="mb-3 flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50/90 p-3 dark:border-slate-700 dark:bg-slate-900/70">
                     <div className="flex items-center gap-2">
                       <button
