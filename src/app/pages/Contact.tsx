@@ -5,8 +5,11 @@ import { useState } from "react";
 import { Button } from "../components/button";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { InlineWidget } from "react-calendly";
+import { useTheme } from "../components/theme-provider";
+import { GlassCard } from "../components/card";
 
 export default function Contact() {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -32,6 +35,23 @@ export default function Contact() {
     "Building Management Systems",
     "General Advisory"
   ];
+
+  const calendlyPageSettings =
+    theme === "dark"
+      ? {
+          backgroundColor: "0f172a",
+          hideEventTypeDetails: false,
+          hideLandingPageDetails: false,
+          primaryColor: "06b6d4",
+          textColor: "f1f5f9",
+        }
+      : {
+          backgroundColor: "ffffff",
+          hideEventTypeDetails: false,
+          hideLandingPageDetails: false,
+          primaryColor: "27aae1",
+          textColor: "282973",
+        };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,7 +133,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="brand-surface h-full rounded-2xl border border-slate-200 bg-white/88 p-8 shadow-sm backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/30 dark:border-slate-700/50 dark:bg-gradient-to-br dark:from-slate-800/60 dark:to-slate-900/60 dark:shadow-none">
+                <GlassCard className="h-full p-8 shadow-sm">
                   <div className="flex items-start gap-5">
                     <div className="flex h-18 w-18 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
                       <MapPin className="h-9 w-9 text-white" strokeWidth={1.75} />
@@ -123,7 +143,7 @@ export default function Contact() {
                       <p className="text-sm text-slate-600 dark:text-slate-400">{office.address}</p>
                     </div>
                   </div>
-                </div>
+                </GlassCard>
               </motion.div>
             ))}
           </div>
@@ -131,13 +151,13 @@ export default function Contact() {
       </section>
 
       {/* Calendly Booking */}
-      <section id="book-call" className="py-16 relative">
+      <section id="book-call" className="py-12 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
             <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
               <Calendar className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" strokeWidth={1.75} />
@@ -158,18 +178,11 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="brand-surface-strong overflow-hidden rounded-2xl border border-slate-200 bg-white px-2 shadow-sm dark:border-slate-700/50 dark:bg-transparent dark:shadow-none md:px-0"
           >
             <InlineWidget
               url="https://calendly.com/ahsan-jalil-aurmak/30min"
               styles={{ height: "700px", minWidth: "100%", width: "100%" }}
-              pageSettings={{
-                backgroundColor: '0f172a',
-                hideEventTypeDetails: false,
-                hideLandingPageDetails: false,
-                primaryColor: '06b6d4',
-                textColor: 'f1f5f9'
-              }}
+              pageSettings={calendlyPageSettings}
             />
           </motion.div>
         </div>
@@ -177,7 +190,7 @@ export default function Contact() {
 
       {/* Divider */}
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center gap-6 py-4">
+        <div className="flex items-center gap-6 py-2">
           <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
           <span className="text-sm font-medium text-slate-500">or send us a message</span>
           <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />

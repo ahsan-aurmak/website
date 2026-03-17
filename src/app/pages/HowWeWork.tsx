@@ -10,43 +10,43 @@ export default function HowWeWork() {
     {
       number: "01",
       title: "Discovery",
-      description: "Define business priorities, decision constraints, and success criteria with key stakeholders.",
+      description: "Define operational goals, constraints, and success metrics with leadership and technical stakeholders.",
       icon: Users
     },
     {
       number: "02",
-      title: "Audit",
-      description: "Assess architecture, data quality, integrations, and process risk before technical decisions are locked.",
+      title: "Assessment",
+      description: "Evaluate existing architecture, data environments, integrations, and operational risks.",
       icon: FileCheck
     },
     {
       number: "03",
-      title: "Roadmap",
-      description: "Translate findings into phased scope, ownership, milestones, and measurable delivery outcomes.",
+      title: "Architecture",
+      description: "Design the system architecture and define the phased delivery roadmap.",
       icon: GitBranch
     },
     {
       number: "04",
       title: "Pilot",
-      description: "Validate assumptions with a controlled deployment, baseline metrics, and rapid iteration loops.",
+      description: "Validate system assumptions through controlled deployment and early operational testing.",
       icon: TestTube
     },
     {
       number: "05",
       title: "Rollout",
-      description: "Roll out in planned waves with release checks, environment controls, and adoption planning.",
+      description: "Deploy the system through controlled release stages with stability and adoption monitoring.",
       icon: ArrowRight
     },
     {
       number: "06",
       title: "Governance",
-      description: "Run regular operating reviews covering delivery cadence, quality signals, and commercial performance.",
+      description: "Run structured operating reviews tracking delivery progress, system performance, and commercial outcomes.",
       icon: Shield
     },
     {
       number: "07",
-      title: "Support",
-      description: "Provide ongoing optimisation, incident response, and enhancement planning to maintain performance over time.",
+      title: "Support & Optimisation",
+      description: "Provide ongoing system optimisation, enhancements, and operational support.",
       icon: Database
     }
   ];
@@ -54,27 +54,27 @@ export default function HowWeWork() {
   const trustMarkers = [
     {
       title: "Security Practices",
-      description: "Principle-of-least-privilege access, environment isolation, and controlled credential handling."
+      description: "Secure development processes and infrastructure standards are embedded throughout system design and deployment."
     },
     {
-      title: "Compliance Awareness",
-      description: "Delivery aligned to sector obligations, audit readiness, and documented decision trails."
+      title: "Compliance Standards",
+      description: "Delivery processes align with recognised security, data protection, and operational compliance requirements."
     },
     {
       title: "Contract Model",
-      description: "Clear scope definitions, change-control process, and stage-gated commercial accountability."
+      description: "Engagements operate under clearly defined delivery scopes, milestones, and accountability frameworks."
     },
     {
-      title: "Delivery Governance",
-      description: "Fixed review cadence, escalation pathways, and transparent milestone reporting."
+      title: "Governance Cadence",
+      description: "Regular operating reviews track delivery progress, system performance, and key programme risks."
     },
     {
-      title: "QA Approach",
-      description: "Structured test coverage, regression control, and release sign-off before production rollout."
+      title: "QA Discipline",
+      description: "Structured testing and quality assurance ensure system stability, performance, and reliability before release."
     },
     {
       title: "Data Handling",
-      description: "Defined retention boundaries, role-based access, and secure transfer protocols."
+      description: "Clear data governance frameworks protect system integrity, access control, and operational transparency."
     }
   ];
 
@@ -91,10 +91,15 @@ export default function HowWeWork() {
       />
       <Hero
         eyebrow="Delivery Framework"
-        title="How We Work."
-        lead="We deliver with a structured model that balances speed, control, and accountability from first briefing through long-term support."
-        badge="⚙️ Proven Process"
-      />
+        title="Structured Delivery for Complex Systems"
+        lead="Every engagement follows a defined execution model from discovery and architecture through deployment and long-term system optimisation."
+        badge="⚙️ Structured Delivery"
+      >
+        <Button to="/contact">
+          Start a Conversation
+          <ArrowRight className="ml-2 w-4 h-4" />
+        </Button>
+      </Hero>
 
       {/* Delivery Lifecycle */}
       <section className="py-16 relative">
@@ -105,17 +110,14 @@ export default function HowWeWork() {
             viewport={{ once: true }}
             className="text-center mb-4"
           >
-            <div className="mb-4 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400">
-              Seven-stage execution model
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Delivery{" "}
+              Our Delivery{" "}
               <span className="text-[#27aae1]">
-                Lifecycle
+                Framework
               </span>
             </h2>
             <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-400">
-              Each stage has clear outputs, review checks, and named owners before we move ahead.
+              Each engagement follows defined stages with clear outputs, review checkpoints, and accountable ownership.
             </p>
           </motion.div>
 
@@ -166,18 +168,14 @@ export default function HowWeWork() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Trust{" "}
+              Enterprise Delivery{" "}
               <span className="text-[#27aae1]">
-                Markers
+                Standards
               </span>
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-slate-600 dark:text-slate-400">
-              We don't believe in fragmented delivery. Every engagement follows a defined method covering discovery, audit, roadmap, pilot, rollout, governance, and long-term support.
+              Structured safeguards ensure systems are delivered securely, reliably, and in alignment with enterprise operational standards.
             </p>
-            <Button to="/contact">
-              Start a Project
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -195,6 +193,13 @@ export default function HowWeWork() {
                 </Card>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button to="/contact">
+              Start a Conversation
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
