@@ -1,71 +1,98 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { Brain, Server, Zap, Database, CheckCircle2 } from "lucide-react";
+import { Brain, Server, Zap, Database, CheckCircle2, ArrowRight, Building2 } from "lucide-react";
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { GlassCard } from "../components/card";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Button } from "../components/button";
 
 export default function Solutions() {
   const domains = [
     {
       icon: Zap,
-      title: "Power & Construction Systems",
-      description: "Operational platforms for power and construction contexts requiring controlled delivery and real-time visibility."
+      title: "Infrastructure Operations",
+      description:
+        "Platforms designed for environments where infrastructure, facilities, or equipment must be monitored and managed in real time.",
     },
     {
       icon: Server,
-      title: "Real Estate & Industrial Platforms",
-      description: "Enterprise dashboards, ERP systems, and automation layers designed around measurable business outcomes."
-    }
+      title: "Asset & Portfolio Management",
+      description:
+        "Systems that connect operational dashboards, performance data, and reporting environments across complex asset portfolios.",
+    },
+    {
+      icon: Building2,
+      title: "Enterprise Operations",
+      description:
+        "Integrated operational systems that bring together data, workflows, and decision environments across complex organisations.",
+    },
   ];
 
   const pillars = [
     {
       icon: Brain,
-      title: "Single Pane",
-      description: "Operational and executive visibility in one interface."
+      title: "Single Pane Visibility",
+      description: "A unified operational view across systems, assets, and performance data.",
     },
     {
       icon: Database,
       title: "Data Integrity",
-      description: "Consistent metrics with auditable lineage across systems."
+      description: "Reliable, governed data that supports accurate reporting and confident decisions.",
     },
     {
       icon: Zap,
       title: "Operational Pace",
-      description: "Faster decisions with context-rich, live reporting."
-    }
+      description: "Faster operational decisions enabled by integrated systems and real-time visibility.",
+    },
   ];
 
   const contexts = [
-    "Production oversight and operations intelligence.",
-    "Facilities and estate performance monitoring.",
-    "Portfolio-level reporting and project control environments.",
-    "Regional command views for distributed operations teams."
+    "Operational monitoring and performance intelligence",
+    "Facilities and estate performance monitoring",
+    "Portfolio-level reporting across projects and assets",
+    "Regional operational dashboards for multi-region teams",
   ];
 
   return (
     <div>
       <SEO
-        title="Enterprise Solutions for Operations, Infrastructure, and Real Estate"
-        description="Explore AURMAK solutions for industrial digitisation, real estate platforms, and enterprise operations systems that improve visibility, control, and performance."
+        title="Operational Solutions for Complex Enterprise Environments"
+        description="AURMAK designs and delivers enterprise systems that improve visibility, strengthen operational control, and support faster decision-making across complex environments."
         canonical="https://www.aurmak.com/solutions"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
-          { name: "Solutions", url: "/solutions" }
+          { name: "Solutions", url: "/solutions" },
         ])}
       />
       <Hero
         eyebrow="Solutions"
-        title="Industrial Digitisation."
-        lead="We build systems that give teams clearer operational visibility, tighter execution control, and faster decisions."
-        badge="🏭 Digital Transformation"
-      />
+        title="Operational Solutions. Built for Complex Environments."
+        lead="We design and deliver enterprise systems that improve visibility, strengthen operational control, and support faster decision-making across complex environments."
+        badge="🏭 Operational Systems"
+      >
+        <Button to="/contact">
+          Start a Conversation
+          <ArrowRight className="ml-2 w-4 h-4" />
+        </Button>
+      </Hero>
 
-      {/* Solution Domains */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Where Our{" "}
+              <span className="text-[#27aae1]">
+                Systems Operate
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {domains.map((domain, index) => (
               <motion.div
                 key={domain.title}
@@ -91,7 +118,55 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* Outcome Pillars */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Operational{" "}
+                <span className="text-[#27aae1]">
+                  Environments
+                </span>
+              </h2>
+              <div className="space-y-4">
+                {contexts.map((context, index) => (
+                  <motion.div
+                    key={context}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
+                    <p className="text-slate-700 dark:text-slate-300">{context}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
+                <ImageWithFallback
+                  src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
+                  alt="AURMAK operational environments across infrastructure, estate, and portfolio reporting systems"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -101,9 +176,9 @@ export default function Solutions() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold">
-              Three Outcome{" "}
+              Operational{" "}
               <span className="text-[#27aae1]">
-                Pillars
+                Outcomes
               </span>
             </h2>
           </motion.div>
@@ -127,55 +202,23 @@ export default function Solutions() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-      {/* Deployment Contexts */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Deployment{" "}
-                <span className="text-[#27aae1]">
-                  Contexts
-                </span>
-              </h2>
-              <div className="space-y-4">
-                {contexts.map((context, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start space-x-3"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
-                    <p className="text-slate-700 dark:text-slate-300">{context}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
-                <ImageWithFallback
-                  src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
-                  alt="AURMAK Deployment Contexts - Cloud, Edge, and Data Center Infrastructure"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-16 max-w-4xl text-center"
+          >
+            <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
+              Enterprise systems require careful planning and structured delivery. Our teams work with organisations to design technology solutions aligned with operational goals and long-term performance.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Button to="/contact">
+                Start a Conversation
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
