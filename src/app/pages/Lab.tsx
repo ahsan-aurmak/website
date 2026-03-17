@@ -44,7 +44,12 @@ export default function Lab() {
       />
       <Hero
         eyebrow="The Lab"
-        title="The Venture Lab."
+        title={
+          <>
+            The Venture{" "}
+            <span className="text-[#27aae1]">Lab.</span>
+          </>
+        }
         lead="The Lab converts internal product thinking into practical delivery capability. We test, refine, and operationalise ideas using the same discipline applied to client programmes."
         badge="🔬 Innovation Lab"
       />

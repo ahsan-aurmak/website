@@ -91,7 +91,14 @@ export default function HowWeWork() {
       />
       <Hero
         eyebrow="Delivery Framework"
-        title="Structured Delivery for Complex Systems"
+        title={
+          <>
+            Structured Delivery{" "}
+            <span className="text-[#27aae1]">
+              for Complex Systems
+            </span>
+          </>
+        }
         lead="Every engagement follows a defined execution model from discovery and architecture through deployment and long-term system optimisation."
         badge="⚙️ Structured Delivery"
       >

@@ -66,7 +66,14 @@ export default function Solutions() {
       />
       <Hero
         eyebrow="Solutions"
-        title="Operational Solutions. Built for Complex Environments."
+        title={
+          <>
+            Operational Solutions.{" "}
+            <span className="text-[#27aae1]">
+              Built for Complex Environments.
+            </span>
+          </>
+        }
         lead="We design and deliver enterprise systems that improve visibility, strengthen operational control, and support faster decision-making across complex environments."
         badge="🏭 Operational Systems"
       >

@@ -57,7 +57,12 @@ export default function Careers() {
       />
       <Hero
         eyebrow="Careers"
-        title="Careers at AURMAK."
+        title={
+          <>
+            Careers at{" "}
+            <span className="text-[#27aae1]">AURMAK.</span>
+          </>
+        }
         lead="Join a team where commercial clarity, technical discipline, and accountable delivery define how work gets done."
         badge="🚀 Join Us"
       >

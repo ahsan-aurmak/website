@@ -88,9 +88,9 @@ export default function Home() {
                   transition={{ delay: 0.2 }}
                   className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-[1.1]"
                 >
-                  Built to{" "}
+                  Built to Think{" "}
                   <span className="block mt-2 text-[#27aae1]">
-                    Think and Deliver.
+                    and Deliver.
                   </span>
                 </motion.h1>
                 
@@ -246,9 +246,9 @@ export default function Home() {
               className="mb-10"
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-5">
-                Global{" "}
+                Global Delivery.{" "}
                 <span className="text-[#2CB5E3]">
-                  Delivery. Proven Execution.
+                  Proven Execution.
                 </span>
               </h2>
               <p className="max-w-none text-lg leading-8 text-slate-600 dark:text-slate-400">

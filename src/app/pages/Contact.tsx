@@ -102,7 +102,12 @@ export default function Contact() {
       />
       <Hero
         eyebrow="Contact"
-        title="Start the Conversation."
+        title={
+          <>
+            Start the{" "}
+            <span className="text-[#27aae1]">Conversation.</span>
+          </>
+        }
         lead="Share your commercial priorities and operational constraints. We will respond with a structured path to execution."
         badge="📞 Get in Touch"
       />

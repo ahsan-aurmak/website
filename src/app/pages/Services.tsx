@@ -101,7 +101,12 @@ export default function Services() {
 
       <Hero
         eyebrow="Services"
-        title="Enterprise Systems. Built and Delivered."
+        title={
+          <>
+            Enterprise Systems.{" "}
+            <span className="text-[#27aae1]">Built and Delivered.</span>
+          </>
+        }
         lead="Our teams design, build, and modernise the technology platforms organisations rely on to operate, scale, and make decisions, from SaaS and AI integration to digital infrastructure and operational intelligence."
       >
         <Button to="/contact">

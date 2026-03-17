@@ -47,7 +47,12 @@ export default function Team() {
       />
       <Hero
         eyebrow="Team"
-        title="Leadership Team."
+        title={
+          <>
+            Leadership{" "}
+            <span className="text-[#27aae1]">Team.</span>
+          </>
+        }
         lead="Our leadership team aligns product strategy, operational control, and engineering delivery to ensure disciplined execution across all engagements."
         badge="👥 Expert Team"
       />
