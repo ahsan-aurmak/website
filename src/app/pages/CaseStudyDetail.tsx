@@ -8,6 +8,8 @@ import { useState } from "react";
 import { PopupModal } from "react-calendly";
 import { X } from "lucide-react";
 import { SEO, generateBreadcrumbSchema, generateCaseStudySchema } from "../components/seo";
+import { useTheme } from "../components/theme-provider";
+import { getCalendlyPageSettings } from "../lib/calendly";
 
 // Metrikus case study images
 import metrikusSpaceDashboard from "@assets/d4ea28b0c5e977adeccbec0ba6c83e335b3ef577.png";
@@ -83,6 +85,7 @@ import dubaiTradeResponsive from "@assets/89db7fc6177a0497a7cbfa544a106a6bb52f0e
 export default function CaseStudyDetail() {
   const location = useLocation();
   const slug = location.pathname.replace("/", "");
+  const { theme } = useTheme();
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -697,7 +700,7 @@ export default function CaseStudyDetail() {
         <div className="flex flex-wrap gap-8 justify-center mt-8">
           {data.metrics.map((metric: any, i: number) => (
             <div key={i} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-[#2CB5E3]">
+              <div className="text-4xl md:text-5xl font-bold text-[#27aae1]">
                 {metric.value}
               </div>
               <div className="mt-2 text-[#5f6b8e] dark:text-slate-400">{metric.label}</div>
@@ -880,7 +883,7 @@ export default function CaseStudyDetail() {
             <div className="flex flex-wrap gap-4 justify-center">
               <button
                 onClick={() => setIsCalendlyOpen(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-[#2CB5E3] bg-[#2CB5E3] px-6 py-3 font-semibold text-slate-950 shadow-[0_10px_30px_rgba(44,181,227,0.24)] transition-all duration-200 hover:border-[#58C7EC] hover:bg-[#58C7EC] hover:shadow-[0_12px_34px_rgba(44,181,227,0.18)]"
+                className="inline-flex items-center gap-2 rounded-lg border border-[#27aae1] bg-[#27aae1] px-6 py-3 font-semibold text-slate-950 shadow-[0_10px_30px_rgba(39,170,225,0.24)] transition-all duration-200 hover:border-[#43b8e7] hover:bg-[#43b8e7] hover:shadow-[0_12px_34px_rgba(39,170,225,0.18)]"
               >
                 <Calendar className="w-5 h-5" />
                 Book 30 Min Discovery Call
@@ -939,11 +942,7 @@ export default function CaseStudyDetail() {
           onModalClose={() => setIsCalendlyOpen(false)}
           open={isCalendlyOpen}
           rootElement={document.body}
-          pageSettings={{
-            backgroundColor: '0f172a',
-            primaryColor: '06b6d4',
-            textColor: 'f1f5f9'
-          }}
+          pageSettings={getCalendlyPageSettings(theme)}
         />
       )}
     </div>

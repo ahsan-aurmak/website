@@ -103,7 +103,7 @@ export function StatCard({
             </motion.div>
           )}
           
-          <div className="mb-2 text-5xl font-bold text-[#2CB5E3] md:text-6xl">
+          <div className="mb-2 text-5xl font-bold text-[#27aae1] md:text-6xl">
             <AnimatedCounter end={value} suffix={suffix} prefix={prefix} />
           </div>
           

@@ -74,10 +74,10 @@ export default function Insights() {
               >
                 <Link to={`/insights/${insight.slug}`} className="block h-full">
                   <Card className="h-full group flex flex-col">
-                    <div className="mb-3 text-xs font-medium uppercase tracking-wide text-cyan-500 dark:text-cyan-400">
+                    <div className="mb-3 text-xs font-medium uppercase tracking-wide text-[#27aae1] dark:text-cyan-400">
                       {insight.topic}
                     </div>
-                    <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-cyan-500 dark:text-slate-100 dark:group-hover:text-cyan-400">
+                    <h3 className="mb-3 text-xl font-bold text-slate-900 transition-colors group-hover:text-[#27aae1] dark:text-slate-100 dark:group-hover:text-cyan-400">
                       {insight.title}
                     </h3>
                     <p className="mb-4 flex-1 text-slate-600 dark:text-slate-400">{insight.excerpt}</p>

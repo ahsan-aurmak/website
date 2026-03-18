@@ -38,7 +38,7 @@ export function OfficeClock({ offsetHours, gradient }: OfficeClockProps) {
           {/* Gradient definition */}
           <defs>
             <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" className={`text-cyan-500`} stopColor="currentColor" />
+              <stop offset="0%" className={`text-[#27aae1]`} stopColor="currentColor" />
               <stop offset="100%" className={`text-blue-600`} stopColor="currentColor" />
             </linearGradient>
           </defs>
@@ -108,7 +108,7 @@ export function OfficeClock({ offsetHours, gradient }: OfficeClockProps) {
       {/* Digital time display */}
       <div className="text-center">
         <div className="text-xs text-slate-500 mb-1">Local Time</div>
-        <div className="text-xl font-mono font-bold text-[#2CB5E3] tabular-nums">
+        <div className="text-xl font-mono font-bold text-[#27aae1] tabular-nums">
           {time}
         </div>
       </div>

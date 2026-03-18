@@ -169,7 +169,7 @@ export default function InsightArticle() {
                               key={item}
                               className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-[#5f6b8e] dark:border-slate-800 dark:bg-slate-950/75 dark:text-slate-300"
                             >
-                              <div className="mb-3 h-1.5 w-12 rounded-full bg-[#2CB5E3]" />
+                              <div className="mb-3 h-1.5 w-12 rounded-full bg-[#27aae1]" />
                               {item}
                             </div>
                           ))}

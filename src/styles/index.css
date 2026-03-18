@@ -36,20 +36,6 @@
 }
 
 @layer utilities {
-  html:not(.dark) .text-\[\#2CB5E3\],
-  html:not(.dark) .text-cyan-500,
-  html:not(.dark) .text-cyan-600 {
-    color: #27aae1 !important;
-  }
-
-  html:not(.dark) .bg-\[\#2CB5E3\] {
-    background-color: #27aae1 !important;
-  }
-
-  html:not(.dark) .border-\[\#2CB5E3\] {
-    border-color: #27aae1 !important;
-  }
-
   html:not(.dark) .text-slate-900,
   html:not(.dark) .text-slate-800,
   html:not(.dark) .text-slate-700 {
@@ -64,20 +50,6 @@
   html:not(.dark) .hover\:text-slate-700:hover,
   html:not(.dark) .hover\:text-slate-300:hover {
     color: #282973 !important;
-  }
-
-  html:not(.dark) .group:hover .group-hover\:text-cyan-500,
-  html:not(.dark) .hover\:text-cyan-500:hover {
-    color: #27aae1 !important;
-  }
-
-  html:not(.dark) .text-\[\#27aae1\] {
-    color: #27aae1 !important;
-  }
-
-  html:not(.dark) .hover\:text-\[\#27aae1\]:hover,
-  html:not(.dark) .group:hover .group-hover\:text-\[\#27aae1\] {
-    color: #27aae1 !important;
   }
 
   html:not(.dark) .brand-surface {

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-type Theme = "dark" | "light";
+export type Theme = "dark" | "light";
 
 interface ThemeContextValue {
   theme: Theme;
@@ -15,16 +15,23 @@ const STORAGE_KEY = "aurmak-theme";
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY);
-    if (storedTheme === "dark" || storedTheme === "light") {
-      setThemeState(storedTheme);
-    } else {
-      setThemeState("dark");
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof document !== "undefined") {
+      const documentTheme = document.documentElement.dataset.theme;
+      if (documentTheme === "light" || documentTheme === "dark") {
+        return documentTheme;
+      }
     }
-  }, []);
+
+    if (typeof window !== "undefined") {
+      const storedTheme = window.localStorage.getItem(STORAGE_KEY);
+      if (storedTheme === "dark" || storedTheme === "light") {
+        return storedTheme;
+      }
+    }
+
+    return "dark";
+  });
 
   useEffect(() => {
     const root = document.documentElement;

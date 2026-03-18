@@ -10,7 +10,6 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [showArabicMessage, setShowArabicMessage] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const logoSrc = theme === "light" ? lightLogo : darkLogo;
@@ -76,11 +75,6 @@ export function Navigation() {
   const isParentActive = (link: typeof navLinks[0]) => {
     if (!link.submenu) return location.pathname === link.path;
     return link.submenu.some(sublink => location.pathname === sublink.path);
-  };
-
-  const handleArabicClick = () => {
-    setShowArabicMessage(true);
-    setTimeout(() => setShowArabicMessage(false), 3000);
   };
 
   return (
@@ -189,26 +183,22 @@ export function Navigation() {
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <div className="flex items-center rounded-full border border-slate-200 bg-white/80 p-1 backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-              <button className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
+              <button type="button" className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
                 EN
               </button>
               <button
-                onClick={handleArabicClick}
-                className="rounded-full px-3 py-1.5 text-sm font-medium text-[#282973] transition-colors hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
+                type="button"
+                disabled
+                aria-disabled="true"
+                title="Arabic is not available yet"
+                className="cursor-not-allowed rounded-full px-3 py-1.5 text-sm font-medium text-slate-400 opacity-70 dark:text-slate-500"
               >
                 العربية
               </button>
             </div>
-            {showArabicMessage && (
-              <motion.p
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="text-xs text-slate-500 dark:text-slate-400"
-              >
-                Arabic version coming soon.
-              </motion.p>
-            )}
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Arabic unavailable
+            </p>
           </div>
 
           {/* Mobile Menu Button */}
@@ -253,22 +243,23 @@ export function Navigation() {
                         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                       </button>
                       <div className="flex items-center rounded-full border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-800/80">
-                      <button className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
+                      <button type="button" className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
                         EN
                       </button>
                       <button
-                        onClick={handleArabicClick}
-                        className="rounded-full px-3 py-1.5 text-sm font-medium text-[#282973] transition-colors hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
+                        type="button"
+                        disabled
+                        aria-disabled="true"
+                        title="Arabic is not available yet"
+                        className="cursor-not-allowed rounded-full px-3 py-1.5 text-sm font-medium text-slate-400 opacity-70 dark:text-slate-500"
                       >
                         العربية
                       </button>
                       </div>
                     </div>
-                    {showArabicMessage && (
-                      <span className="ml-3 text-right text-xs text-slate-500 dark:text-slate-400">
-                        Coming soon
-                      </span>
-                    )}
+                    <span className="ml-3 text-right text-xs text-slate-500 dark:text-slate-400">
+                      Unavailable
+                    </span>
                   </div>
                   {navLinks.map((link) => (
                     <div key={link.label}>

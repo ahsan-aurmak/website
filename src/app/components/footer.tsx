@@ -38,7 +38,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-slate-200 bg-white transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
-      <div className="pointer-events-none absolute inset-0 bg-[#2CB5E3]/[0.02] dark:bg-[#2CB5E3]/[0.03]" />
+      <div className="pointer-events-none absolute inset-0 bg-[#27aae1]/[0.02] dark:bg-[#27aae1]/[0.03]" />
       
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -102,7 +102,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-all duration-200 hover:bg-slate-200 hover:text-cyan-500 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
+                  className="flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-all duration-200 hover:bg-slate-200 hover:text-[#27aae1] dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />

@@ -12,7 +12,6 @@ const isProduction = process.env.NODE_ENV === "production";
 const host = process.env.HOST || "127.0.0.1";
 const port = Number(process.env.PORT || 4173);
 const distDir = path.resolve(__dirname, "dist");
-const publicDir = path.resolve(__dirname, "public");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const defaultContactTo = "info@aurmak.com";
 const liveHostnames = new Set(["aurmak.com", "www.aurmak.com"]);

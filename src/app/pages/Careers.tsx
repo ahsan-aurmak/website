@@ -88,7 +88,7 @@ export default function Careers() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Open{" "}
-              <span className="text-[#2CB5E3]">
+              <span className="text-[#27aae1]">
                 Positions
               </span>
             </h2>

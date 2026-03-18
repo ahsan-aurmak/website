@@ -148,7 +148,7 @@ export default function CaseStudies() {
               >
                 <Card className="h-full flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-sm font-medium text-cyan-500 dark:text-cyan-400">{caseStudy.meta}</div>
+                    <div className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">{caseStudy.meta}</div>
                     <div className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200">
                       {caseStudy.client}
                     </div>

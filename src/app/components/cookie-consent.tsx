@@ -92,7 +92,7 @@ export function CookieConsent() {
 
             {/* Ambient pattern */}
             <div className="absolute -bottom-8 -right-8 opacity-10 pointer-events-none">
-              <Cookie className="h-24 w-24 text-cyan-500 rotate-12" />
+              <Cookie className="h-24 w-24 text-[#27aae1] rotate-12" />
             </div>
           </div>
         </motion.div>

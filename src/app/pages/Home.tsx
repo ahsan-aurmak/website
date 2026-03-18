@@ -247,7 +247,7 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-5">
                 Global Delivery.{" "}
-                <span className="text-[#2CB5E3]">
+                <span className="text-[#27aae1]">
                   Proven Execution.
                 </span>
               </h2>
@@ -289,7 +289,7 @@ export default function Home() {
                     <div className="pt-1 text-sm uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
                       {item.title}
                     </div>
-                    <div className="text-5xl md:text-6xl font-bold leading-none text-[#2CB5E3]">
+                    <div className="text-5xl md:text-6xl font-bold leading-none text-[#27aae1]">
                       {item.value}
                     </div>
                     <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
@@ -314,7 +314,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Partnering with{" "}
-              <span className="text-[#2CB5E3]">
+              <span className="text-[#27aae1]">
                 Industry Leaders
               </span>
             </h2>
@@ -371,10 +371,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="brand-surface rounded-[32px] border border-slate-200 bg-white/82 px-8 py-8 backdrop-blur-sm dark:border-slate-800/70 dark:bg-transparent md:px-10 md:py-10"
             >
-              <div className="mb-5 h-px w-20 bg-[#2CB5E3]" />
+              <div className="mb-5 h-px w-20 bg-[#27aae1]" />
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Beyond Delivery.{" "}
-                <span className="text-[#2CB5E3]">
+                <span className="text-[#27aae1]">
                   Building What Comes Next.
                 </span>
               </h2>
@@ -398,7 +398,7 @@ export default function Home() {
       {/* CTA Section - More Dynamic */}
       <section className="py-32 relative overflow-visible">
         <div className="absolute -inset-y-16 inset-x-0 overflow-visible pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 h-[600px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2CB5E3]/12 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 h-[600px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#27aae1]/12 blur-3xl" />
         </div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -409,7 +409,7 @@ export default function Home() {
             className="brand-surface-strong relative mx-auto overflow-hidden rounded-3xl border border-slate-200 bg-white/92 p-12 text-center shadow-xl backdrop-blur-xl dark:border-slate-700/50 dark:bg-slate-900/85 dark:shadow-none md:p-16"
           >
             {/* Animated gradient overlay */}
-            <div className="absolute inset-0 bg-[#2CB5E3]/6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:bg-[#2CB5E3]/8" />
+            <div className="absolute inset-0 bg-[#27aae1]/6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:bg-[#27aae1]/8" />
             
             {/* Grid pattern overlay */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDMiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-50" />
@@ -422,7 +422,7 @@ export default function Home() {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
               >
                 Planning Your Next{" "}
-                <span className="text-[#2CB5E3]">
+                <span className="text-[#27aae1]">
                   Enterprise System?
                 </span>
               </motion.h2>

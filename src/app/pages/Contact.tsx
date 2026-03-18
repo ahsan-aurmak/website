@@ -7,6 +7,7 @@ import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { InlineWidget } from "react-calendly";
 import { useTheme } from "../components/theme-provider";
 import { GlassCard } from "../components/card";
+import { getCalendlyPageSettings } from "../lib/calendly";
 
 export default function Contact() {
   const { theme } = useTheme();
@@ -36,22 +37,7 @@ export default function Contact() {
     "General Advisory"
   ];
 
-  const calendlyPageSettings =
-    theme === "dark"
-      ? {
-          backgroundColor: "0f172a",
-          hideEventTypeDetails: false,
-          hideLandingPageDetails: false,
-          primaryColor: "06b6d4",
-          textColor: "f1f5f9",
-        }
-      : {
-          backgroundColor: "ffffff",
-          hideEventTypeDetails: false,
-          hideLandingPageDetails: false,
-          primaryColor: "27aae1",
-          textColor: "282973",
-        };
+  const calendlyPageSettings = getCalendlyPageSettings(theme);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
