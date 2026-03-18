@@ -20,7 +20,8 @@ export default function JobDetail() {
     location: "",
     portfolio: "",
     note: "",
-    cv: null as File | null
+    cv: null as File | null,
+    website: "",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -121,10 +122,48 @@ export default function JobDetail() {
     setStatus("loading");
     setErrorMessage("");
 
-    // Mock submission
-    setTimeout(() => {
+    try {
+      const payload = new FormData();
+      payload.append("fullName", formData.fullName);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("location", formData.location);
+      payload.append("portfolio", formData.portfolio);
+      payload.append("note", formData.note);
+      payload.append("website", formData.website);
+      payload.append("jobTitle", job.title);
+      payload.append("jobCode", job.code);
+
+      if (formData.cv) {
+        payload.append("cv", formData.cv);
+      }
+
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        body: payload,
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Unable to submit your application right now.");
+      }
+
       setStatus("success");
-    }, 2000);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        location: "",
+        portfolio: "",
+        note: "",
+        cv: null,
+        website: "",
+      });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Unable to submit your application right now.");
+    }
   };
 
   if (!job) {
@@ -273,6 +312,18 @@ export default function JobDetail() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="sr-only" aria-hidden="true">
+                        <label htmlFor="website">Website</label>
+                        <input
+                          type="text"
+                          id="website"
+                          name="website"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={formData.website}
+                          onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                        />
+                      </div>
                       <div>
                         <label className="block text-[#282973] dark:text-slate-300 text-sm font-medium mb-2">
                           Full Name *
@@ -376,7 +427,7 @@ export default function JobDetail() {
                       )}
 
                       <p className="text-[#5f6b8e] dark:text-slate-500 text-xs">
-                        Your CV is sent as an attachment to info@aurmak.com for review.
+                        Your CV is sent as an attachment to the AURMAK careers inbox for review.
                       </p>
 
                       <Button

@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import nodemailer from "nodemailer";
 import { createServer as createViteServer } from "vite";
 import fs from "node:fs/promises";
@@ -14,7 +15,14 @@ const port = Number(process.env.PORT || 4173);
 const distDir = path.resolve(__dirname, "dist");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const defaultContactTo = "info@aurmak.com";
+const defaultCareersTo = "careers@aurmak.com";
 const liveHostnames = new Set(["aurmak.com", "www.aurmak.com"]);
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+});
 const knownStaticRoutes = new Set([
   "/",
   "/about",
@@ -169,6 +177,20 @@ function getContactPayload(body) {
   };
 }
 
+function getApplicationPayload(body) {
+  return {
+    fullName: cleanField(body.fullName, 120),
+    email: cleanField(body.email, 160).toLowerCase(),
+    phone: cleanField(body.phone, 40),
+    location: cleanField(body.location, 120),
+    portfolio: cleanField(body.portfolio, 240),
+    note: cleanField(body.note, 4000),
+    website: cleanField(body.website, 120),
+    jobTitle: cleanField(body.jobTitle, 160),
+    jobCode: cleanField(body.jobCode, 40),
+  };
+}
+
 function validateContactPayload(payload) {
   if (payload.website) {
     return "Submission rejected.";
@@ -188,6 +210,30 @@ function validateContactPayload(payload) {
 
   if (!payload.brief) {
     return "Please enter a project brief.";
+  }
+
+  return null;
+}
+
+function validateApplicationPayload(payload, file) {
+  if (payload.website) {
+    return "Submission rejected.";
+  }
+
+  if (!payload.fullName) {
+    return "Full name is required.";
+  }
+
+  if (!payload.email || !emailPattern.test(payload.email)) {
+    return "A valid work email is required.";
+  }
+
+  if (!payload.phone) {
+    return "Phone number is required.";
+  }
+
+  if (!file) {
+    return "A CV file is required.";
   }
 
   return null;
@@ -238,6 +284,59 @@ function buildContactHtml(payload, submittedAt) {
 </html>`;
 }
 
+function buildApplicationText(payload, submittedAt, file) {
+  return [
+    "AURMAK careers application",
+    "",
+    `Role: ${payload.jobTitle || "Not provided"}`,
+    `Job Code: ${payload.jobCode || "Not provided"}`,
+    `Full Name: ${payload.fullName}`,
+    `Email: ${payload.email}`,
+    `Phone: ${payload.phone}`,
+    `Current Location: ${payload.location || "Not provided"}`,
+    `Portfolio or LinkedIn: ${payload.portfolio || "Not provided"}`,
+    `Application Note: ${payload.note || "Not provided"}`,
+    `CV Filename: ${file?.originalname || "Not provided"}`,
+    `Submitted At (Europe/London): ${submittedAt}`,
+  ].join("\n");
+}
+
+function buildApplicationHtml(payload, submittedAt, file) {
+  const rows = [
+    ["Role", payload.jobTitle || "Not provided"],
+    ["Job Code", payload.jobCode || "Not provided"],
+    ["Full Name", payload.fullName],
+    ["Email", payload.email],
+    ["Phone", payload.phone],
+    ["Current Location", payload.location || "Not provided"],
+    ["Portfolio or LinkedIn", payload.portfolio || "Not provided"],
+    ["Application Note", payload.note || "Not provided"],
+    ["CV Filename", file?.originalname || "Not provided"],
+    ["Submitted At (Europe/London)", submittedAt],
+  ];
+
+  const tableRows = rows
+    .map(
+      ([label, value]) =>
+        `<tr><th align="left" style="padding:12px;border:1px solid #dbe4f0;background:#f4f7fb;">${escapeHtml(label)}</th><td style="padding:12px;border:1px solid #dbe4f0;">${escapeHtml(value).replace(/\n/g, "<br />")}</td></tr>`
+    )
+    .join("");
+
+  return `<!doctype html>
+<html lang="en">
+  <body style="margin:0;padding:24px;background:#eef3f8;font-family:Arial,sans-serif;color:#0f172a;">
+    <div style="max-width:720px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #dbe4f0;">
+      <div style="padding:24px 28px;background:#0f172a;color:#f8fafc;">
+        <h1 style="margin:0;font-size:22px;">AURMAK Careers Application</h1>
+      </div>
+      <div style="padding:24px 28px;">
+        <table style="width:100%;border-collapse:collapse;">${tableRows}</table>
+      </div>
+    </div>
+  </body>
+</html>`;
+}
+
 function getMailerConfig() {
   const smtpHost = process.env.SMTP_HOST;
   const smtpUser = process.env.SMTP_USER;
@@ -257,6 +356,7 @@ function getMailerConfig() {
       from: process.env.CONTACT_FROM || smtpUser,
       to: process.env.CONTACT_TO || defaultContactTo,
       mode: "smtp",
+      careersTo: process.env.CAREERS_TO || process.env.CONTACT_TO || defaultCareersTo,
     };
   }
 
@@ -270,6 +370,7 @@ function getMailerConfig() {
       from: process.env.CONTACT_FROM || "local@aurmak.test",
       to: process.env.CONTACT_TO || defaultContactTo,
       mode: "log",
+      careersTo: process.env.CAREERS_TO || process.env.CONTACT_TO || defaultCareersTo,
     };
   }
 
@@ -309,6 +410,52 @@ app.post("/api/contact", async (req, res) => {
     console.error("Contact submission failed", error);
     res.status(500).json({
       message: "Unable to submit your enquiry right now. Please email info@aurmak.com.",
+    });
+  }
+});
+
+app.post("/api/apply", upload.single("cv"), async (req, res) => {
+  const payload = getApplicationPayload(req.body ?? {});
+  const validationMessage = validateApplicationPayload(payload, req.file);
+
+  if (validationMessage) {
+    res.status(400).json({ message: validationMessage });
+    return;
+  }
+
+  try {
+    const submittedAt = getLondonTimestamp();
+    const { transporter, from, careersTo, mode } = getMailerConfig();
+
+    const info = await transporter.sendMail({
+      from,
+      to: careersTo,
+      replyTo: payload.email,
+      subject: `AURMAK Application | ${payload.jobTitle || "General"} | ${payload.fullName}`,
+      text: buildApplicationText(payload, submittedAt, req.file),
+      html: buildApplicationHtml(payload, submittedAt, req.file),
+      attachments: req.file
+        ? [
+            {
+              filename: req.file.originalname,
+              content: req.file.buffer,
+              contentType: req.file.mimetype,
+            },
+          ]
+        : [],
+    });
+
+    if (mode === "log" && info.message) {
+      console.log("Careers application email preview\n%s", info.message.toString());
+    }
+
+    res.status(200).json({
+      message: "Application submitted successfully. Our team will review your profile and respond shortly.",
+    });
+  } catch (error) {
+    console.error("Application submission failed", error);
+    res.status(500).json({
+      message: "Unable to submit your application right now. Please email careers@aurmak.com.",
     });
   }
 });
