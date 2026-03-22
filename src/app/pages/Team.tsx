@@ -5,39 +5,46 @@ import { motion } from "motion/react";
 import { Linkedin } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
-import masoodPhoto from "@assets/179a43f3ad15df719e7ed737dee335f392a63f77.png";
 import khurramPhoto from "../../assets/khurram.jpeg";
+import ahsanPhoto from "../../assets/ahsan.jpg";
 
 export default function Team() {
   const team = [
     {
-      role: "Chief Executive Officer",
+      role: "Co-founder",
       name: "Masood Zafar",
-      bio: "Veteran engineering executive with 30 years of leadership experience including full P&L responsibility across power generation, manufacturing operations, and large-scale infrastructure projects.",
+      bio: "Engineering executive with more than 30 years of leadership experience across power generation, manufacturing operations, and large-scale infrastructure programmes. Masood provides operational leadership and strategic oversight across AURMAK’s enterprise engagements.",
       linkedin: "https://www.linkedin.com/in/masood-zafar-7b45582a/",
-      photo: masoodPhoto
+      photo: "/masood.jpeg"
     },
     {
       role: "Chief Operating Officer",
       name: "Umer Jalil",
-      bio: "Project management executive with 15+ years executing complex, critical projects across oil & gas and manufacturing sectors, specializing in end-to-end delivery governance, stakeholder engagement, and supply chain operations.",
+      bio: "Programme delivery leader with more than 15 years of experience managing complex projects across manufacturing, oil and gas environments. Umer specialises in delivery governance, stakeholder coordination, and operational execution across large-scale initiatives.",
       linkedin: "https://www.linkedin.com/in/umar-jalil/",
       photo: umerPhoto
     },
     {
       role: "Managing Director",
       name: "Khurram Sultan",
-      bio: "Business development and operations transformation consultant with 12+ years of UK leadership experience across logistics, construction, and professional services, specializing in operational excellence and sustainable growth strategies.",
+      bio: "Operations and business transformation consultant with more than 12 years of leadership experience across logistics, construction, and professional services. Khurram focuses on operational performance, commercial strategy, and sustainable growth initiatives.",
       linkedin: "https://www.linkedin.com/in/khuram-sultan-555a893a4/",
       photo: khurramPhoto
+    },
+    {
+      role: "Chief Product Officer",
+      name: "Ahsan Jalil",
+      bio: "Product and design leader with more than 18 years of experience developing enterprise SaaS platforms and complex digital systems. Ahsan specialises in product strategy, user experience architecture, and translating operational requirements into scalable technology solutions.",
+      linkedin: "https://www.linkedin.com/in/ahsanjalil/",
+      photo: ahsanPhoto
     }
   ];
 
   return (
     <div>
       <SEO
-        title="Leadership Team"
-        description="Meet the AURMAK leadership team overseeing product strategy, operational delivery, and engineering execution across London, Ajman, and Lahore."
+        title="Leadership"
+        description="Meet AURMAK’s leadership team guiding technology strategy, engineering delivery, and operational execution across global enterprise engagements."
         canonical="https://www.aurmak.com/team"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -47,17 +54,11 @@ export default function Team() {
       />
       <Hero
         eyebrow="Team"
-        title={
-          <>
-            Leadership{" "}
-            <span className="text-[#27aae1]">Team.</span>
-          </>
-        }
-        lead="Our leadership team aligns product strategy, operational control, and engineering delivery to ensure disciplined execution across all engagements."
-        badge="👥 Expert Team"
+        title="Leadership"
+        lead="Guiding AURMAK’s technology strategy, engineering delivery, and operational execution across global enterprise engagements."
+        badge="👥 Leadership"
       />
 
-      {/* Board & Leadership */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -67,52 +68,61 @@ export default function Team() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold">
-              Board &{" "}
-              <span className="text-[#27aae1]">
-                Leadership
-              </span>
+              Leadership{" "}
+              <span className="text-[#27aae1]">Team</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
               >
-                <GlassCard className="h-full dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
-                  <div className="flex items-start gap-6 mb-4">
-                    {/* Profile Photo */}
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-300 ring-2 ring-slate-700 hover:ring-cyan-500"
-                    />
-                    
-                    {/* Name, Role, LinkedIn */}
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="mb-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400">{member.role}</div>
-                          <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
-                        </div>
-                        <motion.a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1, y: -2 }}
-                          className="flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-[#5f6b8e] transition-all duration-200 hover:bg-[#eef7fc] hover:text-[#27aae1] dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
-                          aria-label={`${member.name} on LinkedIn`}
-                        >
-                          <Linkedin size={18} />
-                        </motion.a>
+                <GlassCard className="h-full p-8 dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
+                  <div
+                    className="items-start"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "150px minmax(0, 1fr)",
+                      gap: "1.5rem",
+                    }}
+                  >
+                    <div className="flex flex-col items-center gap-5">
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className={`rounded-2xl object-cover grayscale transition-all duration-300 hover:grayscale-0 ring-2 ring-slate-700 hover:ring-cyan-500 ${
+                          member.name === "Masood Zafar" ? "object-top" : ""
+                        }`}
+                        style={{ width: 150, height: 190 }}
+                      />
+                      <motion.a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.02, y: -1 }}
+                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-[#5f6b8e] transition-all duration-200 hover:bg-[#eef7fc] hover:text-[#27aae1] dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
+                        aria-label={`${member.name} on LinkedIn`}
+                      >
+                        <Linkedin size={18} />
+                      </motion.a>
+                    </div>
+
+                    <div className="flex min-w-0 flex-col">
+                      <div
+                        className="text-sm uppercase text-slate-500 dark:text-slate-400"
+                        style={{ letterSpacing: "0.18em" }}
+                      >
+                        {member.role}
                       </div>
+                      <h3 className="mt-3 text-3xl font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
+                      <p className="mt-5 max-w-xl text-lg leading-9 text-slate-700 dark:text-slate-300">{member.bio}</p>
                     </div>
                   </div>
-                  <p className="text-slate-600 dark:text-slate-400">{member.bio}</p>
                 </GlassCard>
               </motion.div>
             ))}
@@ -120,7 +130,30 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Careers Banner */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-5xl"
+          >
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              Global Expert{" "}
+              <span className="text-[#27aae1]">Network</span>
+            </h2>
+            <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
+              <p>
+                Alongside its leadership team, AURMAK works with a global network of specialist engineers, architects, and delivery partners supporting enterprise programmes across infrastructure systems, data platforms, and AI-enabled solutions.
+              </p>
+              <p>
+                This model enables AURMAK to assemble the right expertise for each engagement while maintaining disciplined programme oversight and strategic leadership.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -131,25 +164,15 @@ export default function Team() {
             <GlassCard className="relative overflow-hidden px-6 py-12 text-center dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
               <div className="pointer-events-none absolute inset-0 bg-[#27aae1]/6 dark:bg-[#27aae1]/8" />
               <div className="relative z-10">
-                <motion.div
-                  initial={{ scale: 0.9 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  className="mb-6 inline-block rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-[#27aae1] dark:text-cyan-400"
-                >
-                  We're Hiring
-                </motion.div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Join Our{" "}
-                  <span className="text-[#27aae1]">
-                    Growing Team
-                  </span>
+                <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+                  Careers at{" "}
+                  <span className="text-[#27aae1]">AURMAK</span>
                 </h2>
                 <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-                  We're building the future of AI and industrial automation. If you're passionate about solving complex challenges and driving innovation, we'd love to hear from you.
+                  We design and build technology systems for real operational environments. If you’re motivated by solving complex technical challenges, we’d like to hear from you.
                 </p>
                 <Button to="/careers" size="large">
-                  View Open Positions
+                  Explore Opportunities
                 </Button>
               </div>
             </GlassCard>
