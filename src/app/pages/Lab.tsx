@@ -10,32 +10,32 @@ export default function Lab() {
     {
       icon: Cpu,
       title: "Human-Led Diagnostics",
-      description: "We begin with commercial and operational diagnosis before defining what should be built."
+      description: "We begin by analysing operational problems and commercial needs before defining what should be built."
     },
     {
       icon: Zap,
       title: "Structured Build Cycles",
-      description: "Product experiments are developed through controlled cycles with clear checkpoints and technical governance."
+      description: "Product concepts are developed through controlled build cycles with clear checkpoints and technical governance."
     },
     {
       icon: Eye,
       title: "Scalability Readiness",
-      description: "Outputs are designed to scale, informing both client delivery and future venture opportunities."
+      description: "Every output is designed to scale, informing both client delivery and future venture opportunities."
     }
   ];
 
   const focusAreas = [
-    "Predictive maintenance workflows for industrial reliability.",
-    "Governed AI interfaces for enterprise reporting systems.",
-    "Facility performance modelling for building operations.",
-    "Integration accelerators for legacy modernisation programmes."
+    "Predictive Maintenance Workflows\nAnticipating equipment issues through AI-driven operational intelligence.",
+    "Governed AI Interfaces\nSecure AI interaction layers for enterprise systems.",
+    "Facility Performance Modelling\nSimulating infrastructure performance and optimisation.",
+    "Integration Accelerators\nReusable frameworks for faster enterprise system integration."
   ];
 
   return (
     <div>
       <SEO
         title="Venture Lab"
-        description="The AURMAK Lab develops practical experiments in predictive maintenance, enterprise AI interfaces, facility performance modelling, and integration accelerators."
+        description="The Venture Lab turns internal product ideas into real technology capability through disciplined build cycles, scalable experimentation, and operationally grounded innovation."
         canonical="https://www.aurmak.com/lab"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -47,10 +47,10 @@ export default function Lab() {
         title={
           <>
             The Venture{" "}
-            <span className="text-[#27aae1]">Lab.</span>
+            <span className="text-[#27aae1]">Lab</span>
           </>
         }
-        lead="The Lab converts internal product thinking into practical delivery capability. We test, refine, and operationalise ideas using the same discipline applied to client programmes."
+        lead="Where internal product ideas become real technology capability. Concepts are tested, refined, and built using the same engineering discipline that powers our client systems."
         badge="🔬 Innovation Lab"
       />
 
@@ -64,9 +64,9 @@ export default function Lab() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold">
-              Our{" "}
+              How the Lab{" "}
               <span className="text-[#27aae1]">
-                Principles
+                Operates
               </span>
             </h2>
           </motion.div>
@@ -93,7 +93,33 @@ export default function Lab() {
         </div>
       </section>
 
-      {/* Current Focus Areas */}
+      {/* Current Exploration Areas */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-5xl"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Innovation That{" "}
+              <span className="text-[#27aae1]">
+                Strengthens Delivery
+              </span>
+            </h2>
+            <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
+              <p>
+                The Venture Studio exists to explore new technology approaches that may influence how enterprise systems are designed, built, and operated.
+              </p>
+              <p>
+                Insights from these initiatives inform AURMAK’s delivery capability, ensuring our teams remain closely connected to emerging platforms, architectures, and operational models.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -103,7 +129,7 @@ export default function Lab() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Current Focus{" "}
+                Current Exploration{" "}
                 <span className="text-[#27aae1]">
                   Areas
                 </span>
@@ -119,7 +145,10 @@ export default function Lab() {
                     className="flex items-start space-x-3"
                   >
                     <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
-                    <p className="text-slate-700 dark:text-slate-300">{area}</p>
+                    <div className="text-slate-700 dark:text-slate-300">
+                      <p className="font-semibold">{area.split("\n")[0]}</p>
+                      <p className="mt-1">{area.split("\n")[1]}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
