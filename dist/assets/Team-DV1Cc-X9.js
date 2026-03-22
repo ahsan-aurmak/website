@@ -5,9 +5,8 @@ import { S as c, g as d } from "./seo-Dq-mFtqA.js";
 import "./router-BeOmqb5k.js";
 
 const m = "/assets/umar-95dUT1cL.jpeg";
-const x = "/masood.jpeg";
+const x = "/assets/masood.jpeg";
 const h = "/assets/khurram-BPi9PlS-.jpeg";
-const u = "/assets/ahsan.jpg";
 
 function j() {
   const n = [
@@ -31,13 +30,6 @@ function j() {
       bio: "Operations and business transformation consultant with more than 12 years of leadership experience across logistics, construction, and professional services. Khurram focuses on operational performance, commercial strategy, and sustainable growth initiatives.",
       linkedin: "https://www.linkedin.com/in/khuram-sultan-555a893a4/",
       photo: h
-    },
-    {
-      role: "Chief Product Officer",
-      name: "Ahsan Jalil",
-      bio: "Product and design leader with more than 18 years of experience developing enterprise SaaS platforms and complex digital systems. Ahsan specialises in product strategy, user experience architecture, and translating operational requirements into scalable technology solutions.",
-      linkedin: "https://www.linkedin.com/in/ahsanjalil/",
-      photo: u
     }
   ];
 

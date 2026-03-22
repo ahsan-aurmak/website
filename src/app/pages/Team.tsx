@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 import { Linkedin } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
+import masoodPhoto from "../../assets/masood.jpeg";
 import khurramPhoto from "../../assets/khurram.jpeg";
-import ahsanPhoto from "../../assets/ahsan.jpg";
 
 export default function Team() {
   const team = [
@@ -15,7 +15,7 @@ export default function Team() {
       name: "Masood Zafar",
       bio: "Engineering executive with more than 30 years of leadership experience across power generation, manufacturing operations, and large-scale infrastructure programmes. Masood provides operational leadership and strategic oversight across AURMAK’s enterprise engagements.",
       linkedin: "https://www.linkedin.com/in/masood-zafar-7b45582a/",
-      photo: "/masood.jpeg"
+      photo: masoodPhoto
     },
     {
       role: "Chief Operating Officer",
@@ -31,13 +31,6 @@ export default function Team() {
       linkedin: "https://www.linkedin.com/in/khuram-sultan-555a893a4/",
       photo: khurramPhoto
     },
-    {
-      role: "Chief Product Officer",
-      name: "Ahsan Jalil",
-      bio: "Product and design leader with more than 18 years of experience developing enterprise SaaS platforms and complex digital systems. Ahsan specialises in product strategy, user experience architecture, and translating operational requirements into scalable technology solutions.",
-      linkedin: "https://www.linkedin.com/in/ahsanjalil/",
-      photo: ahsanPhoto
-    }
   ];
 
   return (
