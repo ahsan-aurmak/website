@@ -19,7 +19,7 @@ export function SEO({
   canonical = '',
   ogImage = buildCanonicalUrl('/global_hq_futuristic.png'),
   ogType = 'website',
-  keywords = 'AI integration, industrial automation, SaaS development, building management systems, legacy modernization, enterprise technology',
+  keywords = 'enterprise systems, digital infrastructure, legacy modernisation, AI-enabled operational intelligence, enterprise technology',
   schema,
   breadcrumbSchema,
   noIndex = false,
@@ -88,7 +88,7 @@ export const organizationSchema = {
   "name": SITE_NAME,
   "url": buildCanonicalUrl("/"),
   "logo": buildCanonicalUrl("/aurmak-logo.svg"),
-  "description": "Enterprise AI integration, SaaS development, and industrial automation solutions provider",
+  "description": "AURMAK designs and delivers enterprise systems, digital infrastructure, legacy modernisation, and AI-enabled operational intelligence for complex operations.",
   "slogan": "Partnerships Built to Last",
   "foundingDate": "2001",
   "numberOfEmployees": {
@@ -127,6 +127,12 @@ export const organizationSchema = {
     "contactType": "Business Inquiries",
     "availableLanguage": ["English"]
   },
+  "areaServed": [
+    "United Kingdom",
+    "United Arab Emirates",
+    "Saudi Arabia",
+    "Pakistan"
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Enterprise Technology Services",
@@ -135,32 +141,32 @@ export const organizationSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "AI Integration",
-          "description": "Custom AI models and automation solutions for enterprise systems"
+          "name": "Enterprise Systems",
+          "description": "Enterprise systems designed to improve operational control, visibility, and delivery governance."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "SaaS Development",
-          "description": "Enterprise SaaS product development through defined delivery models"
+          "name": "Digital Infrastructure",
+          "description": "Digital infrastructure supporting system scalability, integration architecture, and operational resilience."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Legacy System Modernization",
-          "description": "Modernizing legacy environments to improve security and scalability"
+          "name": "Legacy System Modernisation",
+          "description": "Legacy modernisation improving security, data governance, and system scalability."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Building Management Systems",
-          "description": "Intelligent building automation systems powered by IoT and AI"
+          "name": "AI-Enabled Operational Intelligence",
+          "description": "AI-enabled operational intelligence aligned to commercial priorities, governed delivery, and operational ROI."
         }
       }
     ]
@@ -273,7 +279,8 @@ export function generateCaseStudySchema(caseStudy: CaseStudySchemaInput) {
       caseStudy.client,
       caseStudy.industry,
       "Enterprise systems delivery",
-      "Digital transformation",
+      "Digital infrastructure",
+      "Legacy modernisation",
     ].filter(Boolean),
     "articleSection": "Case Studies",
   };

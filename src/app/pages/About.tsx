@@ -5,6 +5,7 @@ import { Button } from "../components/button";
 import { GlassCard } from "../components/card";
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Link } from "react-router";
 
 export default function About() {
   const centres = [
@@ -36,8 +37,9 @@ export default function About() {
     <div>
       <SEO
         title="About AURMAK | Global Technology Leadership"
-        description="AURMAK combines strategic leadership in London and Dubai with engineering delivery in Lahore to execute complex enterprise technology programmes."
+        description="AURMAK combines UK and UAE leadership with Lahore engineering delivery to execute enterprise systems with governance, clarity, and accountability."
         canonical="https://www.aurmak.com/about"
+        keywords="enterprise systems, global technology leadership, digital infrastructure, legacy modernisation, operational governance"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "About", url: "/about" }
@@ -80,6 +82,19 @@ export default function About() {
                 </p>
                 <p>
                   Our international footprint strengthens delivery oversight, infrastructure awareness, and the ability to support organisations operating across multiple markets.
+                </p>
+                <p>
+                  Explore our{" "}
+                  <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                    services
+                  </Link>,{" "}
+                  <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
+                    solutions
+                  </Link>, and{" "}
+                  <Link to="/lab" className="font-medium text-[#27aae1] hover:underline">
+                    venture lab
+                  </Link>{" "}
+                  to see how this model translates into delivery capability.
                 </p>
               </div>
             </GlassCard>
@@ -162,7 +177,7 @@ export default function About() {
                   <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                     <ImageWithFallback
                       src={`${import.meta.env.BASE_URL}global_hq_futuristic.png`}
-                      alt="AURMAK Global Command Center connecting London, Dubai, and Lahore"
+                      alt="Visual showing AURMAK's London, Dubai, and Lahore delivery model"
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -186,10 +201,21 @@ export default function About() {
                 Focused on Enterprise{" "}
                 <span className="text-[#27aae1]">Systems</span>
               </h2>
-              <p className="text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
-                AURMAK designs and delivers enterprise technology systems that power modern operations, from SaaS platforms and digital infrastructure to AI-enabled operational intelligence.
-              </p>
-            </motion.div>
+            <p className="text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
+              AURMAK designs and delivers enterprise technology systems that power modern operations, from SaaS platforms and digital infrastructure to AI-enabled operational intelligence.
+            </p>
+            <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
+              View our{" "}
+              <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
+                case studies
+              </Link>{" "}
+              or{" "}
+              <Link to="/contact" className="font-medium text-[#27aae1] hover:underline">
+                start a conversation
+              </Link>{" "}
+              with the team.
+            </p>
+          </motion.div>
             <div className="hidden lg:block" />
           </div>
         </div>

@@ -5,6 +5,7 @@ import { HeroGradientMesh } from "../components/gradient-mesh";
 import { Button } from "../components/button";
 import { SEO, organizationSchema } from "../components/seo";
 import { HeroCaseShowcase } from "../components/hero-case-showcase";
+import { Link } from "react-router";
 
 export default function Home() {
   const services = [
@@ -64,9 +65,9 @@ export default function Home() {
     <div className="relative overflow-hidden">
       <SEO
         title="Enterprise Systems, AI Integration, and Digital Modernisation"
-        description="AURMAK designs, builds, and modernises enterprise systems across SaaS platforms, digital infrastructure, AI-enabled automation, and operational intelligence."
+        description="AURMAK designs enterprise systems, digital infrastructure, and AI-enabled operational intelligence for complex operations across key regional markets."
         canonical="https://www.aurmak.com/"
-        keywords="AI integration, industrial automation, SaaS development, building management systems, legacy modernization, enterprise technology, smart BMS, system modernization"
+        keywords="enterprise systems, digital infrastructure, legacy modernisation, AI-enabled operational intelligence, proptech, industrial operations, real estate technology"
         schema={organizationSchema}
       />
       {/* Hero Section with Mesh */}
@@ -155,6 +156,16 @@ export default function Home() {
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-500 dark:text-slate-500">
               Our work combines strategic consulting with hands-on engineering. We help organisations move from concept to reliable enterprise execution.
+            </p>
+            <p className="mx-auto mt-6 max-w-3xl text-base text-slate-600 dark:text-slate-400">
+              See how this works in practice through our{" "}
+              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                services
+              </Link>{" "}
+              and{" "}
+              <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
+                case studies
+              </Link>.
             </p>
           </motion.div>
 

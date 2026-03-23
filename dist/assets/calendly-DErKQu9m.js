@@ -1,1 +1,0 @@
-function a(e){return e==="dark"?{backgroundColor:"0f172a",hideEventTypeDetails:!1,hideLandingPageDetails:!1,primaryColor:"06b6d4",textColor:"f1f5f9"}:{backgroundColor:"ffffff",hideEventTypeDetails:!1,hideLandingPageDetails:!1,primaryColor:"27aae1",textColor:"282973"}}export{a as g};

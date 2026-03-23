@@ -7,6 +7,7 @@ import { CheckCircle2, ChevronDown, ChevronUp, X } from "lucide-react";
 import { useState } from "react";
 import { SEO, generateBreadcrumbSchema, generateCaseStudySchema } from "../components/seo";
 import { caseStudyData } from "../lib/case-study-data";
+import { Link } from "react-router";
 
 export default function CaseStudyDetail() {
   const location = useLocation();
@@ -263,6 +264,17 @@ export default function CaseStudyDetail() {
             </h2>
             <p className="mb-8 text-lg text-[#5f6b8e] dark:text-slate-300">
               We help organisations simplify complex systems, define clear delivery priorities, and build structured, scalable solutions aligned to real operational needs.
+            </p>
+            <p className="mb-8 text-base text-slate-500 dark:text-slate-500">
+              Explore our{" "}
+              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                services
+              </Link>{" "}
+              and{" "}
+              <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
+                solutions
+              </Link>{" "}
+              for related delivery approaches.
             </p>
             <Button to="/contact" size="large">
               Start a Conversation

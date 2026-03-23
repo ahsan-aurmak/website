@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Link } from "react-router";
 
 export default function CaseStudies() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -184,6 +185,17 @@ export default function CaseStudies() {
             </h2>
             <p className="mb-8 text-lg text-slate-600 dark:text-slate-400">
               We can map your current systems, identify delivery priorities, and define a practical implementation roadmap.
+            </p>
+            <p className="mb-8 text-base text-slate-500 dark:text-slate-500">
+              You can also review our{" "}
+              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                services
+              </Link>{" "}
+              and{" "}
+              <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
+                operational solutions
+              </Link>{" "}
+              for a broader view of delivery capability.
             </p>
             <Button to="/contact">
               Arrange a Consultation

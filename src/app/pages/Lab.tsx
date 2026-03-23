@@ -4,6 +4,7 @@ import { Cpu, Zap, Eye, CheckCircle2 } from "lucide-react";
 import { GlassCard } from "../components/card";
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Link } from "react-router";
 
 export default function Lab() {
   const principles = [
@@ -34,9 +35,10 @@ export default function Lab() {
   return (
     <div>
       <SEO
-        title="Venture Lab"
-        description="The Venture Lab turns internal product ideas into real technology capability through disciplined build cycles, scalable experimentation, and operationally grounded innovation."
+        title="Venture Lab for Enterprise Technology Capability"
+        description="The Venture Lab strengthens AURMAK’s enterprise systems, AI-enabled operational intelligence, and delivery model through disciplined product exploration."
         canonical="https://www.aurmak.com/lab"
+        keywords="venture studio, enterprise systems, AI-enabled operational intelligence, integration architecture, digital infrastructure"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Lab", url: "/lab" }
@@ -115,6 +117,18 @@ export default function Lab() {
               <p>
                 Insights from these initiatives inform AURMAK’s delivery capability, ensuring our teams remain closely connected to emerging platforms, architectures, and operational models.
               </p>
+              <p>
+                This work directly supports our{" "}
+                <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                  services
+                </Link>,{" "}
+                <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
+                  solutions
+                </Link>, and selected{" "}
+                <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
+                  case studies
+                </Link>.
+              </p>
             </div>
           </motion.div>
         </div>
@@ -163,7 +177,7 @@ export default function Lab() {
               <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.png`}
-                  alt="AURMAK Venture Lab - Research and Development Focus Areas"
+                  alt="Illustration of venture lab exploration areas across predictive maintenance, governed AI, and integration accelerators"
                   className="w-full h-full object-cover"
                 />
               </div>

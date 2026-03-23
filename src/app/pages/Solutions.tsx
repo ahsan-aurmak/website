@@ -5,6 +5,7 @@ import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { GlassCard } from "../components/card";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { Button } from "../components/button";
+import { Link } from "react-router";
 
 export default function Solutions() {
   const domains = [
@@ -57,8 +58,9 @@ export default function Solutions() {
     <div>
       <SEO
         title="Operational Solutions for Complex Enterprise Environments"
-        description="AURMAK designs and delivers enterprise systems that improve visibility, strengthen operational control, and support faster decision-making across complex environments."
+        description="AURMAK delivers enterprise systems that improve operational control, data governance, and decision-making across complex operational environments."
         canonical="https://www.aurmak.com/solutions"
+        keywords="enterprise systems, digital infrastructure, operational reporting, data governance, system scalability, operational ROI"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Solutions", url: "/solutions" },
@@ -165,7 +167,7 @@ export default function Solutions() {
               <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
-                  alt="AURMAK operational environments across infrastructure, estate, and portfolio reporting systems"
+                  alt="Diagram showing infrastructure operations, estate monitoring, and portfolio reporting environments"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -218,6 +220,20 @@ export default function Solutions() {
           >
             <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
               Enterprise systems require careful planning and structured delivery. Our teams work with organisations to design technology solutions aligned with operational goals and long-term performance.
+            </p>
+            <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
+              Explore related proof in the{" "}
+              <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
+                Metrikus
+              </Link>{" "}
+              and{" "}
+              <Link to="/case-study-dubai-trade" className="font-medium text-[#27aae1] hover:underline">
+                Dubai Trade
+              </Link>{" "}
+              case studies, or review our{" "}
+              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
+                services
+              </Link>.
             </p>
             <div className="mt-8 flex justify-center">
               <Button to="/contact">

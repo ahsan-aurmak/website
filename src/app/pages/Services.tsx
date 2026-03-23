@@ -6,6 +6,7 @@ import { Cloud, RefreshCw, Brain, Building, CheckCircle2, ArrowRight, HelpCircle
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema, generateFAQSchema } from "../components/seo";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion";
+import { Link } from "react-router";
 
 export default function Services() {
   const services = [
@@ -90,8 +91,9 @@ export default function Services() {
     <div>
       <SEO
         title="Enterprise Systems Development, AI Integration, and Modernisation"
-        description="AURMAK designs, builds, and modernises enterprise systems across SaaS platforms, AI integration, digital infrastructure, and operational intelligence."
+        description="AURMAK designs enterprise systems, digital infrastructure, and AI integration with delivery governance, data governance, and system scalability built in."
         canonical="https://www.aurmak.com/services"
+        keywords="enterprise systems, digital infrastructure, legacy modernisation, AI-enabled operational intelligence, data governance, system scalability, operational ROI"
         schema={generateFAQSchema(faqs)}
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -132,6 +134,21 @@ export default function Services() {
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-slate-600 dark:text-slate-400">
               Our engineering capabilities focus on building, modernising, and integrating enterprise technology systems.
+            </p>
+            <p className="mt-4 max-w-3xl mx-auto text-base text-slate-500 dark:text-slate-500">
+              Proof points include{" "}
+              <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
+                Metrikus
+              </Link>,{" "}
+              <Link to="/case-study-cutover-orchestration" className="font-medium text-[#27aae1] hover:underline">
+                Cutover
+              </Link>,{" "}
+              <Link to="/case-study-al-jazeera-itsm" className="font-medium text-[#27aae1] hover:underline">
+                Al Jazeera
+              </Link>, and{" "}
+              <Link to="/case-study-dubai-trade" className="font-medium text-[#27aae1] hover:underline">
+                Dubai Trade
+              </Link>.
             </p>
           </motion.div>
 
@@ -202,7 +219,7 @@ export default function Services() {
               <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}delivery_discipline_futuristic.png`}
-                  alt="AURMAK Disciplined Project Delivery Dashboard"
+                  alt="Illustration of structured enterprise delivery stages, review gates, and governance checkpoints"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -224,6 +241,16 @@ export default function Services() {
                 <h2 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-100 md:text-3xl">Our Delivery Approach</h2>
                 <p className="mb-8 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-400">
                   Projects move through structured stages: discovery, architecture, pilot, rollout, and long-term support, with clear accountability at every step.
+                </p>
+                <p className="mb-8 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-500">
+                  For delivery examples, review the{" "}
+                  <Link to="/case-study-al-jazeera-itsm" className="font-medium text-[#27aae1] hover:underline">
+                    Al Jazeera ITSM case study
+                  </Link>{" "}
+                  and the{" "}
+                  <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
+                    Metrikus platform case study
+                  </Link>.
                 </p>
                 <div className="mb-8 flex flex-wrap gap-3 text-sm text-slate-500">
                   {["Discovery", "Architecture", "Pilot", "Rollout", "Long-Term Support"].map((stage) => (
