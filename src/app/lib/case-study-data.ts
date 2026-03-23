@@ -71,7 +71,8 @@ import dubaiTradeResponsive from "@assets/89db7fc6177a0497a7cbfa544a106a6bb52f0e
 
 export const caseStudyData: Record<string, any> = {
   "case-study-metrikus-smart-building": {
-    kicker: "United Kingdom · 16-Week Programme · B2B SaaS Platform Design",
+    clientName: "Metrikus",
+    kicker: "United Kingdom · B2B SaaS Platform Design",
     title: "Smart Building Platform",
     lead: "A proptech startup needed a comprehensive B2B SaaS platform to help building managers make data-driven decisions about space efficiency, energy optimization, and occupant productivity. We designed and built an end-to-end analytics platform from concept to launch.",
     metrics: [
@@ -82,7 +83,6 @@ export const caseStudyData: Record<string, any> = {
     snapshot: [
       { label: "Client", value: "PropTech B2B SaaS Startup" },
       { label: "Location", value: "United Kingdom" },
-      { label: "Timeline", value: "16 weeks" },
       { label: "Industry", value: "Commercial Real Estate & Building Intelligence" }
     ],
     challenge: "Building managers lacked unified visibility across occupancy, energy consumption, and environmental data. Existing tools were fragmented, requiring manual correlation between multiple systems. Decision-makers needed actionable insights, not just raw data dashboards.",
@@ -126,7 +126,7 @@ export const caseStudyData: Record<string, any> = {
       },
       {
         src: metrikusProjectPlan,
-        alt: "16-week project plan and delivery timeline",
+        alt: "Project plan and delivery framework",
         caption: "Project Plan"
       },
       {
@@ -152,6 +152,7 @@ export const caseStudyData: Record<string, any> = {
     heroImage: "@assets/8387f2bcefb42e32701683dac3b0db4c90924950.png"
   },
   "case-study-cutover-orchestration": {
+    clientName: "Cutover",
     kicker: "United Kingdom · B2B SaaS · UX Transformation Programme",
     title: "Orchestration and Execution Management Platform",
     lead: "A B2B SaaS work orchestration platform needed to transform from an engineer-built tool into a user-centered product. We were brought in as the first product and UX designer to simplify complex workflows and establish a design-led product culture.",
@@ -217,6 +218,7 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-rbs-travel-portal": {
+    clientName: "Royal Bank of Scotland",
     kicker: "United Kingdom · Financial Services · B2C Travel Booking Platform",
     title: "Premium Customer Travel Bookings Portal",
     lead: "Premium banking customers of RBS and NatWest needed a modern travel booking experience with discounted rates on flights, hotels, holidays, and cruises. We enhanced the outdated web portal and designed the first mobile-responsive experience.",
@@ -292,6 +294,7 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-cisco-stealthwatch": {
+    clientName: "Cisco",
     kicker: "United States · Enterprise Cybersecurity · Educational Web Portal",
     title: "Cisco Stealthwatch Educational Portal",
     lead: "Cisco needed a web portal to educate CIO/CTO-level users about the Stealthwatch product, which allows customers to track network anomalies. We led the design to encourage webinar signups and newsletter subscriptions, helping users gain confidence before purchasing.",
@@ -357,6 +360,7 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-al-jazeera-itsm": {
+    clientName: "Al Jazeera",
     kicker: "Qatar · Media & Broadcasting · Enterprise IT Service Management",
     title: "Al Jazeera ITSM Platform",
     lead: "Al Jazeera Media Network needed a comprehensive IT Service Management platform to handle over 500 service requests across their global broadcasting operations. We designed an end-to-end solution supporting multiple request types, workflow automation, and stakeholder collaboration.",
@@ -422,12 +426,13 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-castrol-carlounge": {
+    clientName: "Castrol",
     kicker: "United Arab Emirates · Automotive Services · Customer Service Platform",
     title: "Castrol CarLounge Customer Experience",
     lead: "Castrol needed to transform their automotive service experience across the Middle East. We designed an end-to-end customer platform covering service booking, vehicle maintenance tracking, and premium customer service delivery for their CarLounge network.",
     metrics: [
       { value: "End-to-end", label: "mobile experience" },
-      { value: "5-day", label: "design sprint" },
+      { value: "Rapid", label: "design sprint" },
       { value: "Complete", label: "customer journey" }
     ],
     snapshot: [
@@ -437,10 +442,10 @@ export const caseStudyData: Record<string, any> = {
       { label: "Platform", value: "Mobile Customer Experience" }
     ],
     challenge: "Castrol's CarLounge network needed a modern digital experience to match their premium service offering. Customers required easy service booking, vehicle maintenance tracking, and seamless communication with service centers while on the go.",
-    solution: "We conducted a focused 5-day design sprint to rapidly prototype and validate the complete customer journey. The solution included mobile-first design, comprehensive journey mapping, and end-to-end service workflows from booking through completion.",
+    solution: "We conducted a focused design sprint to rapidly prototype and validate the complete customer journey. The solution included mobile-first design, comprehensive journey mapping, and end-to-end service workflows from booking through completion.",
     businessOutcomes: [
       "Complete end-to-end mobile customer experience",
-      "5-day design sprint delivering validated prototypes",
+      "Rapid design sprint delivering validated prototypes",
       "Journey mapping from current to proposed customer experience",
       "Mobile-first design supporting on-the-go service management"
     ],
@@ -467,7 +472,7 @@ export const caseStudyData: Record<string, any> = {
       },
       {
         src: castrolDesignSprint,
-        alt: "5-day design sprint process and deliverables",
+        alt: "Design sprint process and deliverables",
         caption: "Design Sprint Process"
       },
       {
@@ -479,7 +484,7 @@ export const caseStudyData: Record<string, any> = {
     projectDetails: {
       scope: "Mobile customer experience design for automotive service network including rapid design sprint, journey mapping, legacy system audit, and complete prototype development.",
       approach: [
-        "5-day design sprint for rapid prototyping and validation",
+        "Design sprint for rapid prototyping and validation",
         "Journey mapping from current to proposed customer experience",
         "Legacy system audit (CustomerVue) informing new design direction",
         "Complete end-to-end mobile experience design"
@@ -487,6 +492,7 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-gtt-saas-iaas": {
+    clientName: "GTT Communications",
     kicker: "United States · Cloud Infrastructure · Enterprise SaaS/IaaS Platform",
     title: "GTT Cloud Infrastructure Platform",
     lead: "GTT Communications needed a comprehensive SaaS/IaaS platform for enterprise customers to manage virtual data centers, cloud resources, and network infrastructure. We designed an end-to-end solution from initial strategy through final implementation using Google Material Design.",
@@ -562,6 +568,7 @@ export const caseStudyData: Record<string, any> = {
     }
   },
   "case-study-dubai-trade": {
+    clientName: "Dubai Trade",
     kicker: "United Arab Emirates · E-Government · Smart Government Portal",
     title: "Dubai Trade Smart Government Portal",
     lead: "Dubai Trade needed to optimize their government portal serving over 700+ services across cargo operations, customs clearance, and trade facilitation. We conducted comprehensive user research including stakeholder mapping, customer experience mapping, user shadowing, and information architecture to group services and design mobile-responsive wireframes.",

@@ -3,21 +3,16 @@ import { Hero } from "../components/hero";
 import { Button } from "../components/button";
 import { GlassCard } from "../components/card";
 import { motion } from "motion/react";
-import { ArrowLeft, Calendar, CheckCircle2, ChevronDown, ChevronUp, X } from "lucide-react";
+import { CheckCircle2, ChevronDown, ChevronUp, X } from "lucide-react";
 import { useState } from "react";
-import { PopupModal } from "react-calendly";
 import { SEO, generateBreadcrumbSchema, generateCaseStudySchema } from "../components/seo";
-import { useTheme } from "../components/theme-provider";
-import { getCalendlyPageSettings } from "../lib/calendly";
 import { caseStudyData } from "../lib/case-study-data";
 
 export default function CaseStudyDetail() {
   const location = useLocation();
   const slug = location.pathname.replace("/", "");
-  const { theme } = useTheme();
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const data = caseStudyData[slug] || caseStudyData["case-study-al-jazeera-itsm"];
 
@@ -50,7 +45,7 @@ export default function CaseStudyDetail() {
           description: data.lead,
           slug,
           image: data.images?.[0]?.src,
-          client: data.snapshot?.find((item: any) => item.label === "Client")?.value,
+          client: data.clientName || data.snapshot?.find((item: any) => item.label === "Client")?.value,
           industry: data.snapshot?.find((item: any) => item.label === "Industry")?.value,
         })}
         breadcrumbSchema={generateBreadcrumbSchema([
@@ -91,7 +86,9 @@ export default function CaseStudyDetail() {
                 {data.snapshot.map((item: any, i: number) => (
                   <div key={i}>
                     <div className="mb-1 text-sm text-slate-500">{item.label}</div>
-                    <div className="font-medium text-[#282973] dark:text-slate-200">{item.value}</div>
+                    <div className="font-medium text-[#282973] dark:text-slate-200">
+                      {item.label === "Client" ? (data.clientName || item.value) : item.value}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -121,6 +118,29 @@ export default function CaseStudyDetail() {
               <p className="leading-relaxed text-[#5f6b8e] dark:text-slate-300">{data.solution}</p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="relative py-8">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-4xl"
+          >
+            <GlassCard>
+              <h2 className="mb-6 text-2xl font-bold text-cyan-400">Execution</h2>
+              <div className="space-y-3">
+                {data.projectDetails.approach.map((item: string, i: number) => (
+                  <div key={i} className="flex items-start space-x-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#27aae1] dark:text-cyan-400" />
+                    <p className="text-[#5f6b8e] dark:text-slate-300">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
         </div>
       </section>
 
@@ -187,10 +207,10 @@ export default function CaseStudyDetail() {
           >
             <button
               onClick={() => setShowProjectDetails(!showProjectDetails)}
-              className="w-full rounded-xl border border-slate-200 bg-white/90 p-6 text-left shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none dark:hover:border-cyan-800/50"
+                className="w-full rounded-xl border border-slate-200 bg-white/90 p-6 text-left shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none dark:hover:border-cyan-800/50"
             >
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-cyan-400">Project Details</h2>
+                <h2 className="text-2xl font-bold text-cyan-400">Project Overview</h2>
                 {showProjectDetails ? (
                   <ChevronUp className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                 ) : (
@@ -213,7 +233,7 @@ export default function CaseStudyDetail() {
                   </div>
 
                   <div>
-                    <h3 className="mb-3 text-lg font-semibold text-[#282973] dark:text-slate-200">Our Approach</h3>
+                    <h3 className="mb-3 text-lg font-semibold text-[#282973] dark:text-slate-200">Key Activities</h3>
                     <ul className="space-y-2">
                       {data.projectDetails.approach.map((item: string, i: number) => (
                         <li key={i} className="flex items-start space-x-3">
@@ -239,24 +259,14 @@ export default function CaseStudyDetail() {
             className="mx-auto max-w-3xl text-center"
           >
             <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-              Ready to Transform Your Operations?
+              Ready to Move Your Operations Forward?
             </h2>
             <p className="mb-8 text-lg text-[#5f6b8e] dark:text-slate-300">
-              Let's discuss how we can deliver similar results for your organization.
+              We help organisations simplify complex systems, define clear delivery priorities, and build structured, scalable solutions aligned to real operational needs.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => setIsCalendlyOpen(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-[#27aae1] bg-[#27aae1] px-6 py-3 font-semibold text-slate-950 shadow-[0_10px_30px_rgba(39,170,225,0.24)] transition-all duration-200 hover:border-[#43b8e7] hover:bg-[#43b8e7] hover:shadow-[0_12px_34px_rgba(39,170,225,0.18)]"
-              >
-                <Calendar className="h-5 w-5" />
-                Book 30 Min Discovery Call
-              </button>
-              <Button to="/case-studies" variant="secondary" size="large">
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                View All Case Studies
-              </Button>
-            </div>
+            <Button to="/contact" size="large">
+              Start a Conversation
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -298,15 +308,6 @@ export default function CaseStudyDetail() {
         </motion.div>
       )}
 
-      {isCalendlyOpen && (
-        <PopupModal
-          url="https://calendly.com/ahsan-jalil-aurmak/30min"
-          onModalClose={() => setIsCalendlyOpen(false)}
-          open={isCalendlyOpen}
-          rootElement={document.body}
-          pageSettings={getCalendlyPageSettings(theme)}
-        />
-      )}
     </div>
   );
 }

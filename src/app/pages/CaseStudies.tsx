@@ -147,12 +147,7 @@ export default function CaseStudies() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="h-full flex flex-col">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">{caseStudy.meta}</div>
-                    <div className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200">
-                      {caseStudy.client}
-                    </div>
-                  </div>
+                  <div className="mb-3 text-sm font-medium text-[#27aae1] dark:text-cyan-400">{caseStudy.meta}</div>
                   <h3 className="mb-3 text-2xl font-bold text-slate-900 dark:text-slate-100">{caseStudy.title}</h3>
                   <p className="mb-4 flex-1 text-slate-600 dark:text-slate-400">{caseStudy.summary}</p>
                   <div className="mb-6 space-y-2 border-b border-slate-200 pb-6 dark:border-slate-800">

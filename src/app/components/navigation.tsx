@@ -56,7 +56,7 @@ export function Navigation() {
         { label: "How We Work", path: "/how-we-work" },
       ]
     },
-    { label: "Work", path: "/case-studies" },
+    { label: "Case Studies", path: "/case-studies" },
     { 
       label: "Company", 
       path: "/about",

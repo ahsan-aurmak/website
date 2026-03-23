@@ -1,6 +1,6 @@
 import { Hero } from "../components/hero";
 import { motion } from "motion/react";
-import { MapPin, CheckCircle, Calendar } from "lucide-react";
+import { MapPin, CheckCircle, Calendar, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../components/button";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
@@ -24,9 +24,21 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const offices = [
-    { country: "United Kingdom", address: "124 City Road, London, EC1V 2NX." },
-    { country: "United Arab Emirates", address: "BLA-507, Block A, Ajman Main Boulevard." },
-    { country: "Pakistan", address: "306 Tipu Block, Bahria Town, Lahore." }
+    {
+      country: "United Kingdom",
+      address: "124 City Road, London, EC1V 2NX",
+      focus: "Client strategy & delivery"
+    },
+    {
+      country: "United Arab Emirates",
+      address: "BLA-507, Block A, Ajman Main Boulevard",
+      focus: "Regional delivery & coordination"
+    },
+    {
+      country: "Pakistan",
+      address: "306 Tipu Block, Bahria Town, Lahore",
+      focus: "Engineering & platform development"
+    }
   ];
 
   const services = [
@@ -90,13 +102,15 @@ export default function Contact() {
         eyebrow="Contact"
         title={
           <>
-            Start the{" "}
-            <span className="text-[#27aae1]">Conversation.</span>
+            Start the Conversation That Moves{" "}
+            <span className="text-[#27aae1]">Your Operations Forward.</span>
           </>
         }
-        lead="Share your commercial priorities and operational constraints. We will respond with a structured path to execution."
+        lead="Tell us where your systems are slowing you down or limiting scale. We’ll help you define a clear, structured path forward."
         badge="📞 Get in Touch"
-      />
+      >
+        <Button to="/contact#message">Start a Conversation</Button>
+      </Hero>
 
       {/* Office Addresses */}
       <section className="py-16 relative">
@@ -108,10 +122,8 @@ export default function Contact() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our{" "}
-              <span className="text-[#27aae1]">
-                Offices
-              </span>
+              Global Presence.{" "}
+              <span className="text-[#27aae1]">Local Understanding.</span>
             </h2>
           </motion.div>
 
@@ -131,12 +143,20 @@ export default function Contact() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="mb-2 text-lg font-bold text-slate-900 dark:text-slate-100">{office.country}</h3>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{office.address}</p>
+                      <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">{office.address}</p>
+                      <p className="text-sm font-medium text-[#282973] dark:text-slate-200">{office.focus}</p>
                     </div>
                   </div>
                 </GlassCard>
               </motion.div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Button to="/contact#message" variant="ghost" className="gap-2">
+              Speak with our team directly
+              <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+            </Button>
           </div>
         </div>
       </section>
@@ -152,16 +172,14 @@ export default function Contact() {
           >
             <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
               <Calendar className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" strokeWidth={1.75} />
-              <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">Prefer to talk first?</span>
+              <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">Calendly</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Book a{" "}
-              <span className="text-[#27aae1]">
-                Discovery Call
-              </span>
+              Start with a{" "}
+              <span className="text-[#27aae1]">Focused Conversation</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              30 minutes with a senior team member. No sales pitch — just a structured conversation about your priorities and how we can help.
+              30 minutes with a senior team member to understand your current systems, challenges, and priorities and outline a clear path forward.
             </p>
           </motion.div>
 
@@ -189,7 +207,7 @@ export default function Contact() {
       </div>
 
       {/* Contact Form */}
-      <section className="py-16 relative">
+      <section id="message" className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
 
           {/* Heading */}
@@ -200,13 +218,11 @@ export default function Contact() {
             className="text-center mb-10"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Discuss Your{" "}
-              <span className="text-[#27aae1]">
-                Requirement
-              </span>
+              Send a{" "}
+              <span className="text-[#27aae1]">Message</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Provide your requirements and we will connect you with the appropriate regional lead and delivery team.
+              Share a brief outline of your current priorities — we’ll respond with a clear next step.
             </p>
           </motion.div>
 
