@@ -71,8 +71,9 @@ export default function InsightArticle() {
         ])}
       />
 
-      <section className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24">
+      <section className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(39,170,225,0.12),_transparent_34%),radial-gradient(circle_at_85%_20%,_rgba(40,41,115,0.08),_transparent_28%),linear-gradient(180deg,_rgba(255,255,255,0.96),_rgba(248,250,252,1))] dark:bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_34%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.14),_transparent_28%),linear-gradient(180deg,_rgba(15,23,42,0.96),_rgba(2,6,23,1))]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950" />
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -116,7 +117,7 @@ export default function InsightArticle() {
         </div>
       </section>
 
-      <section className="relative pt-10 sm:pt-14">
+      <section className="relative pt-4 sm:pt-6">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl">
               <div className="rounded-[32px] border border-slate-200 bg-white/92 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950/75 dark:shadow-none sm:p-8 lg:p-10">
