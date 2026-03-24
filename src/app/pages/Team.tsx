@@ -104,7 +104,12 @@ export default function Team() {
                         className={`rounded-2xl object-cover grayscale transition-all duration-300 hover:grayscale-0 ring-2 ring-slate-700 hover:ring-cyan-500 ${
                           member.name === "Masood Zafar" ? "object-top" : ""
                         }`}
-                        style={{ width: 150, height: 190 }}
+                        style={{
+                          width: 150,
+                          height: 190,
+                          transform: member.name === "Khurram Sultan" ? "scale(1.035)" : undefined,
+                          transformOrigin: member.name === "Khurram Sultan" ? "center center" : undefined,
+                        }}
                       />
                       <motion.a
                         href={member.linkedin}
