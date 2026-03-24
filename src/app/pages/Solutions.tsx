@@ -223,11 +223,11 @@ export default function Solutions() {
             </p>
             <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
               Explore related proof in the{" "}
-              <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
+              <Link to="/smart-building-platform" className="font-medium text-[#27aae1] hover:underline">
                 Metrikus
               </Link>{" "}
               and{" "}
-              <Link to="/case-study-dubai-trade" className="font-medium text-[#27aae1] hover:underline">
+              <Link to="/government-services-portal" className="font-medium text-[#27aae1] hover:underline">
                 Dubai Trade
               </Link>{" "}
               case studies, or review our{" "}

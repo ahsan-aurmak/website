@@ -47,14 +47,14 @@ const knownStaticRoutes = new Set([
   "/terms",
 ]);
 const knownCaseStudyRoutes = new Set([
-  "/case-study-metrikus-smart-building",
-  "/case-study-cutover-orchestration",
-  "/case-study-rbs-travel-portal",
-  "/case-study-cisco-stealthwatch",
-  "/case-study-al-jazeera-itsm",
-  "/case-study-castrol-carlounge",
-  "/case-study-gtt-saas-iaas",
-  "/case-study-dubai-trade",
+  "/smart-building-platform",
+  "/orchestration-management-platform",
+  "/premium-travel-portal",
+  "/stealthwatch-educational-portal",
+  "/it-service-management-platform",
+  "/carlounge-experience",
+  "/enterprise-saas-iaas-platform",
+  "/government-services-portal",
 ]);
 const knownCareerRoutes = new Set([
   "/careers/senior-ai-product-engineer",

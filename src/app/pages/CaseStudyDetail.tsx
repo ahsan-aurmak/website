@@ -15,7 +15,7 @@ export default function CaseStudyDetail() {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
-  const data = caseStudyData[slug] || caseStudyData["case-study-al-jazeera-itsm"];
+  const data = caseStudyData[slug] || caseStudyData["it-service-management-platform"];
 
   if (!data) {
     return (

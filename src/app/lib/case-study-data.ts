@@ -70,7 +70,7 @@ import dubaiTradeServiceGrouping from "@assets/bf0e7ff74e7c0be3404ba0b46a1420bd8
 import dubaiTradeResponsive from "@assets/89db7fc6177a0497a7cbfa544a106a6bb52f0e2b.png";
 
 export const caseStudyData: Record<string, any> = {
-  "case-study-metrikus-smart-building": {
+  "smart-building-platform": {
     clientName: "Metrikus",
     kicker: "United Kingdom · B2B SaaS Platform Design",
     title: "Smart Building Platform",
@@ -151,7 +151,7 @@ export const caseStudyData: Record<string, any> = {
     },
     heroImage: "@assets/8387f2bcefb42e32701683dac3b0db4c90924950.png"
   },
-  "case-study-cutover-orchestration": {
+  "orchestration-management-platform": {
     clientName: "Cutover",
     kicker: "United Kingdom · B2B SaaS · UX Transformation Programme",
     title: "Orchestration and Execution Management Platform",
@@ -217,7 +217,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-rbs-travel-portal": {
+  "premium-travel-portal": {
     clientName: "Royal Bank of Scotland",
     kicker: "United Kingdom · Financial Services · B2C Travel Booking Platform",
     title: "Premium Customer Travel Bookings Portal",
@@ -293,7 +293,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-cisco-stealthwatch": {
+  "stealthwatch-educational-portal": {
     clientName: "Cisco",
     kicker: "United States · Enterprise Cybersecurity · Educational Web Portal",
     title: "Cisco Stealthwatch Educational Portal",
@@ -359,7 +359,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-al-jazeera-itsm": {
+  "it-service-management-platform": {
     clientName: "Al Jazeera",
     kicker: "Qatar · Media & Broadcasting · Enterprise IT Service Management",
     title: "Al Jazeera ITSM Platform",
@@ -425,7 +425,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-castrol-carlounge": {
+  "carlounge-experience": {
     clientName: "Castrol",
     kicker: "United Arab Emirates · Automotive Services · Customer Service Platform",
     title: "Castrol CarLounge Customer Experience",
@@ -491,7 +491,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-gtt-saas-iaas": {
+  "enterprise-saas-iaas-platform": {
     clientName: "GTT Communications",
     kicker: "United States · Cloud Infrastructure · Enterprise SaaS/IaaS Platform",
     title: "GTT Cloud Infrastructure Platform",
@@ -567,7 +567,7 @@ export const caseStudyData: Record<string, any> = {
       ]
     }
   },
-  "case-study-dubai-trade": {
+  "government-services-portal": {
     clientName: "Dubai Trade",
     kicker: "United Arab Emirates · E-Government · Smart Government Portal",
     title: "Dubai Trade Smart Government Portal",

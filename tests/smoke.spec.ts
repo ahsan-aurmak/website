@@ -52,7 +52,7 @@ test("contact form submits successfully", async ({ page }) => {
 });
 
 test("case study discovery call modal opens", async ({ page }) => {
-  await page.goto("/case-study-metrikus-smart-building");
+  await page.goto("/smart-building-platform");
   await dismissCookieBanner(page);
 
   await page.getByRole("button", { name: "Book 30 Min Discovery Call" }).click();

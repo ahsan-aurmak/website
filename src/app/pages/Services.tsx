@@ -137,17 +137,17 @@ export default function Services() {
             </p>
             <p className="mt-4 max-w-3xl mx-auto text-base text-slate-500 dark:text-slate-500">
               Proof points include{" "}
-              <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
-                Metrikus
+              <Link to="/premium-travel-portal" className="font-medium text-[#27aae1] hover:underline">
+                Royal Bank of Scotland
               </Link>,{" "}
-              <Link to="/case-study-cutover-orchestration" className="font-medium text-[#27aae1] hover:underline">
-                Cutover
+              <Link to="/carlounge-experience" className="font-medium text-[#27aae1] hover:underline">
+                CarLounge Garage Experience
               </Link>,{" "}
-              <Link to="/case-study-al-jazeera-itsm" className="font-medium text-[#27aae1] hover:underline">
+              <Link to="/it-service-management-platform" className="font-medium text-[#27aae1] hover:underline">
                 Al Jazeera
               </Link>, and{" "}
-              <Link to="/case-study-dubai-trade" className="font-medium text-[#27aae1] hover:underline">
-                Dubai Trade
+              <Link to="/stealthwatch-educational-portal" className="font-medium text-[#27aae1] hover:underline">
+                Cisco
               </Link>.
             </p>
           </motion.div>
@@ -244,12 +244,12 @@ export default function Services() {
                 </p>
                 <p className="mb-8 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-500">
                   For delivery examples, review the{" "}
-                  <Link to="/case-study-al-jazeera-itsm" className="font-medium text-[#27aae1] hover:underline">
+                  <Link to="/it-service-management-platform" className="font-medium text-[#27aae1] hover:underline">
                     Al Jazeera ITSM case study
                   </Link>{" "}
                   and the{" "}
-                  <Link to="/case-study-metrikus-smart-building" className="font-medium text-[#27aae1] hover:underline">
-                    Metrikus platform case study
+                  <Link to="/carlounge-experience" className="font-medium text-[#27aae1] hover:underline">
+                    CarLounge Garage Experience case study
                   </Link>.
                 </p>
                 <div className="mb-8 flex flex-wrap gap-3 text-sm text-slate-500">

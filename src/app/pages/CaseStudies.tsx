@@ -20,7 +20,7 @@ export default function CaseStudies() {
       title: "Smart Building Platform",
       summary: "Building efficiency B2B SaaS platform delivering actionable insights to make commercial spaces efficient, productive and sustainable.",
       kpis: ["45% Faster space utilization insights", "62% Increase in user engagement"],
-      path: "/case-study-metrikus-smart-building"
+      path: "/smart-building-platform"
     },
     {
       client: "Cutover",
@@ -29,7 +29,7 @@ export default function CaseStudies() {
       title: "Orchestration and Execution Management Platform",
       summary: "Transformed engineer-built platform into user-centered product through comprehensive UX programme. First product designer hire establishing design culture and achieving 100% task success rate.",
       kpis: ["100% Task success rate", "44 Participants tested"],
-      path: "/case-study-cutover-orchestration"
+      path: "/orchestration-management-platform"
     },
     {
       client: "Royal Bank of Scotland",
@@ -38,7 +38,7 @@ export default function CaseStudies() {
       title: "Premium Customer Travel Bookings Portal",
       summary: "B2C web and mobile app enabling premium banking customers to book travel at discounted rates. Enhanced outdated web experience and launched first mobile app with responsive design.",
       kpis: ["Multiple travel categories: flights, hotels, holidays, cruises", "Mobile-first responsive design"],
-      path: "/case-study-rbs-travel-portal"
+      path: "/premium-travel-portal"
     },
     {
       client: "Cisco",
@@ -47,7 +47,7 @@ export default function CaseStudies() {
       title: "Stealthwatch Educational Portal",
       summary: "B2B educational web portal designed to educate CIO/CTO-level users about network threat detection. Conducted focus groups with enterprise decision-makers and created innovative UI increasing engagement by 3x.",
       kpis: ["10 CIO/CTO-level focus group participants", "75%+ Usability success rate", "3x Above-fold real estate increase"],
-      path: "/case-study-cisco-stealthwatch"
+      path: "/stealthwatch-educational-portal"
     },
     {
       client: "Al Jazeera",
@@ -56,7 +56,7 @@ export default function CaseStudies() {
       title: "IT Service Management (ITSM) Platform",
       summary: "Migrated from ServiceNow to Jira Service Desk with complete UX redesign. Led stakeholder workshops and delivered intuitive platform design resulting in 50% signup increase in first month.",
       kpis: ["50% Signup increase first month", "100% Clutter removal", "ServiceNow to Jira SD migration"],
-      path: "/case-study-al-jazeera-itsm"
+      path: "/it-service-management-platform"
     },
     {
       client: "Castrol",
@@ -65,7 +65,7 @@ export default function CaseStudies() {
       title: "CarLounge Garage Experience",
       summary: "End-to-end consumer and garage platform introducing UX to the company. Conducted design sprints, created comprehensive journey maps, and delivered platform securing £4.5m funding.",
       kpis: ["2,000+ Garages signed up globally", "80% Customer satisfaction increase", "£4.5m Funding secured"],
-      path: "/case-study-castrol-carlounge"
+      path: "/carlounge-experience"
     },
     {
       client: "GTT Communications",
@@ -74,7 +74,7 @@ export default function CaseStudies() {
       title: "Virtual Data Centre (VDC) SaaS/IaaS Platform",
       summary: "AWS/Azure-like cloud infrastructure platform designed to be user-friendly for non-technical users. Conducted 4 rounds of usability testing reaching 80% approval and attracting users from competitor platforms.",
       kpis: ["4 Usability testing rounds", "80% Approval rate achieved", "AWS/Azure users attracted"],
-      path: "/case-study-gtt-saas-iaas"
+      path: "/enterprise-saas-iaas-platform"
     },
     {
       client: "Dubai Trade",
@@ -83,7 +83,7 @@ export default function CaseStudies() {
       title: "Smart Government Portal",
       summary: "Research-led UX for Dubai Smart Government unifying Dubai Customs, DP World, and JAFZA services. Grouped 700+ services into 5 primary categories through card sorting and user shadowing.",
       kpis: ["700+ Services unified", "5 User personas identified", "100% Stakeholder sign-off"],
-      path: "/case-study-dubai-trade"
+      path: "/government-services-portal"
     }
   ];
 

@@ -15,7 +15,7 @@ const cases = [
     glow: "shadow-emerald-500/40",
     dot: "bg-emerald-400",
     emoji: "🏢",
-    path: "/case-study-metrikus-smart-building",
+    path: "/smart-building-platform",
   },
   {
     client: "Cutover",
@@ -28,7 +28,7 @@ const cases = [
     glow: "shadow-blue-500/40",
     dot: "bg-blue-400",
     emoji: "⚙️",
-    path: "/case-study-cutover-orchestration",
+    path: "/orchestration-management-platform",
   },
   {
     client: "RBS",
@@ -41,7 +41,7 @@ const cases = [
     glow: "shadow-blue-600/40",
     dot: "bg-blue-500",
     emoji: "🏦",
-    path: "/case-study-rbs-travel-portal",
+    path: "/premium-travel-portal",
   },
   {
     client: "Cisco",
@@ -54,7 +54,7 @@ const cases = [
     glow: "shadow-cyan-500/40",
     dot: "bg-cyan-400",
     emoji: "🔐",
-    path: "/case-study-cisco-stealthwatch",
+    path: "/stealthwatch-educational-portal",
   },
   {
     client: "Al Jazeera",
@@ -67,7 +67,7 @@ const cases = [
     glow: "shadow-violet-500/40",
     dot: "bg-violet-400",
     emoji: "📡",
-    path: "/case-study-al-jazeera-itsm",
+    path: "/it-service-management-platform",
   },
   {
     client: "Castrol",
@@ -80,7 +80,7 @@ const cases = [
     glow: "shadow-emerald-500/40",
     dot: "bg-emerald-400",
     emoji: "🚗",
-    path: "/case-study-castrol-carlounge",
+    path: "/carlounge-experience",
   },
   {
     client: "GTT",
@@ -93,7 +93,7 @@ const cases = [
     glow: "shadow-orange-500/40",
     dot: "bg-orange-400",
     emoji: "☁️",
-    path: "/case-study-gtt-saas-iaas",
+    path: "/enterprise-saas-iaas-platform",
   },
   {
     client: "Dubai Trade",
@@ -106,7 +106,7 @@ const cases = [
     glow: "shadow-blue-500/40",
     dot: "bg-blue-400",
     emoji: "🏛️",
-    path: "/case-study-dubai-trade",
+    path: "/government-services-portal",
   },
 ];
 
