@@ -17,6 +17,13 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const defaultContactTo = "info@aurmak.com";
 const defaultCareersTo = "careers@aurmak.com";
 const liveHostnames = new Set(["aurmak.com", "www.aurmak.com"]);
+const allowedCvExtensions = new Set([".pdf", ".doc", ".docx"]);
+const allowedCvMimeTypes = new Set([
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+]);
+const rateLimitStore = new Map();
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
@@ -144,6 +151,15 @@ function cleanField(value, maxLength) {
   return stripAngles(value).slice(0, maxLength);
 }
 
+function normaliseFilename(value) {
+  const cleaned = String(value ?? "")
+    .replace(/[^a-zA-Z0-9._-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  return cleaned || "attachment";
+}
+
 function escapeHtml(value) {
   return value
     .replace(/&/g, "&amp;")
@@ -190,6 +206,84 @@ function getApplicationPayload(body) {
     jobCode: cleanField(body.jobCode, 40),
   };
 }
+
+function getRequestKey(req) {
+  const forwardedFor = String(req.headers["x-forwarded-for"] || "")
+    .split(",")[0]
+    .trim();
+
+  return forwardedFor || req.ip || "unknown";
+}
+
+function createRateLimiter({ bucket, windowMs, maxRequests, message }) {
+  return (req, res, next) => {
+    const key = `${bucket}:${getRequestKey(req)}`;
+    const now = Date.now();
+    const entry = rateLimitStore.get(key);
+
+    if (!entry || entry.expiresAt <= now) {
+      rateLimitStore.set(key, { count: 1, expiresAt: now + windowMs });
+      next();
+      return;
+    }
+
+    if (entry.count >= maxRequests) {
+      res.status(429).json({ message });
+      return;
+    }
+
+    entry.count += 1;
+    next();
+  };
+}
+
+function validateCvFile(file) {
+  if (!file) {
+    return "A CV file is required.";
+  }
+
+  const extension = path.extname(file.originalname || "").toLowerCase();
+
+  if (!allowedCvExtensions.has(extension)) {
+    return "CV must be PDF, DOC, or DOCX format.";
+  }
+
+  if (!allowedCvMimeTypes.has(file.mimetype)) {
+    return "CV file type is not supported.";
+  }
+
+  return null;
+}
+
+function applyUploadMiddleware(req, res, next) {
+  upload.single("cv")(req, res, (error) => {
+    if (error instanceof multer.MulterError && error.code === "LIMIT_FILE_SIZE") {
+      res.status(400).json({ message: "CV file must be less than 5MB." });
+      return;
+    }
+
+    if (error) {
+      next(error);
+      return;
+    }
+
+    next();
+  });
+}
+
+const contactRateLimiter = createRateLimiter({
+  bucket: "contact",
+  windowMs: 15 * 60 * 1000,
+  maxRequests: 8,
+  message: "Too many contact submissions. Please wait a few minutes and try again.",
+});
+
+const applyRateLimiter = createRateLimiter({
+  bucket: "apply",
+  windowMs: 60 * 60 * 1000,
+  maxRequests: 4,
+  message: "Too many application attempts. Please wait and try again later.",
+});
 
 function validateContactPayload(payload) {
   if (payload.website) {
@@ -377,7 +471,7 @@ function getMailerConfig() {
   throw new Error("Contact email transport is not configured.");
 }
 
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", contactRateLimiter, async (req, res) => {
   const payload = getContactPayload(req.body ?? {});
   const validationMessage = validateContactPayload(payload);
 
@@ -414,12 +508,18 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-app.post("/api/apply", upload.single("cv"), async (req, res) => {
+app.post("/api/apply", applyRateLimiter, applyUploadMiddleware, async (req, res) => {
   const payload = getApplicationPayload(req.body ?? {});
   const validationMessage = validateApplicationPayload(payload, req.file);
+  const cvValidationMessage = validateCvFile(req.file);
 
   if (validationMessage) {
     res.status(400).json({ message: validationMessage });
+    return;
+  }
+
+  if (cvValidationMessage) {
+    res.status(400).json({ message: cvValidationMessage });
     return;
   }
 
@@ -437,7 +537,7 @@ app.post("/api/apply", upload.single("cv"), async (req, res) => {
       attachments: req.file
         ? [
             {
-              filename: req.file.originalname,
+              filename: normaliseFilename(req.file.originalname),
               content: req.file.buffer,
               contentType: req.file.mimetype,
             },
