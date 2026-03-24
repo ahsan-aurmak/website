@@ -6,6 +6,7 @@ import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowLeft, Upload, CheckCircle } from "lucide-react";
 import { SEO, generateBreadcrumbSchema, generateJobPostingSchema } from "../components/seo";
+import { Turnstile } from "../components/turnstile";
 
 export default function JobDetail() {
   const { jobSlug: routeJobSlug } = useParams();
@@ -26,69 +27,84 @@ export default function JobDetail() {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const jobData: Record<string, any> = {
-    "senior-ai-product-engineer": {
+    "tech-lead-backend-ai": {
       code: "AUR-ENG-001",
-      title: "Senior AI Product Engineer",
-      lead: "Lead implementation of production AI workflows in enterprise SaaS and industrial systems.",
-      location: "Lahore, Pakistan (with Dubai collaboration)",
+      title: "Tech Lead (Backend/AI)",
+      lead: "Lead the Lahore engineering hub and build the scalable systems that power modern operations, from SaaS platforms to AI-enabled automation.",
+      location: "Lahore, Pakistan (with London and Dubai collaboration)",
       workModel: "Hybrid, Full-time",
       experience: "5+ years",
-      summary: "You will own AI-enabled product features from architecture to deployment and work directly with product and delivery leadership.",
+      summary: "We are seeking an enterprise-grade architect to lead our engineering hub in Lahore. You will balance high-level architecture with AI-accelerated execution across client delivery and internal product incubation.",
       responsibilities: [
-        "Design, build, and deploy AI-powered modules for enterprise products.",
-        "Integrate LLM and data pipelines into secure, production-ready services.",
-        "Collaborate with UX, backend, and DevOps teams on release delivery.",
-        "Improve model performance, observability, and inference cost efficiency."
+        "System Architecture: Design and maintain robust backend environments using PostgreSQL and Supabase.",
+        "AI-Accelerated Development: Lead development cycles using Cursor to maintain high velocity without compromising enterprise-grade quality.",
+        "Dual-Track Execution: Manage technical delivery for both high-end client services and internal product incubation.",
+        "Enterprise Standards: Ensure all systems meet strict standards for security, governance, and data integrity."
       ],
       requirements: [
-        "Strong experience in Python or TypeScript backend engineering.",
-        "Hands-on experience with modern AI APIs and vector data workflows.",
-        "Solid understanding of cloud deployment and CI/CD practices.",
-        "Ability to communicate technical trade-offs with clarity."
+        "Expertise in PostgreSQL and modern backend architecture.",
+        "Proficiency in Supabase and AI-assisted coding workflows, specifically Cursor.",
+        "Experience modernizing legacy systems and building reliable digital infrastructure."
+      ],
+      benefits: [
+        "Opportunity to work from AURMAK's Dubai and London offices.",
+        "Long-term team members may be offered a permanent role in an AURMAK international office.",
+        "After successful completion of probation, eligibility for a company car.",
+        "After successful completion of probation, eligibility for medical insurance and paid holidays."
       ]
     },
-    "enterprise-solutions-architect": {
-      code: "AUR-SOL-002",
-      title: "Enterprise Solutions Architect",
-      lead: "Design scalable architectures for industrial digitisation and multi-system integrations.",
-      location: "Dubai, UAE (regional travel as required)",
+    "product-owner-delivery-lead": {
+      code: "AUR-DEL-002",
+      title: "Product Owner (Delivery Lead)",
+      lead: "Bridge strategic leadership in London and Dubai with daily engineering execution in Lahore while maintaining disciplined delivery against commercial goals.",
+      location: "Lahore, Pakistan",
       workModel: "Hybrid, Full-time",
-      experience: "7+ years",
-      summary: "You will define technical solution blueprints for enterprise dashboards, ERP modernisation, and automation programmes.",
+      experience: "5+ years",
+      summary: "As the primary on-ground commander in Lahore, you will enforce AURMAK’s delivery model, maintain the 50/50 workflow, and keep engineering execution aligned with strategic leadership.",
       responsibilities: [
-        "Lead architecture design for client platforms across multiple sectors.",
-        "Define integration standards, data contracts, and security baselines.",
-        "Translate business goals into practical technical roadmaps.",
-        "Support pre-sales technical workshops and implementation planning."
+        "Workflow Management: Strictly enforce the 50/50 Rule, with Monday to Wednesday focused on client projects and Thursday to Friday reserved for internal SaaS products.",
+        "Stakeholder Coordination: Act as the primary link between the engineering team and the Dubai front office for requirements and reporting.",
+        "Structured Delivery: Oversee the full lifecycle from discovery and architecture to pilot and rollout.",
+        "Diagnostic Leadership: Facilitate human-led diagnostics to ensure technology is an outcome of clear problem definition."
       ],
       requirements: [
-        "Proven experience in enterprise solution architecture roles.",
-        "Deep understanding of APIs, event-driven systems, and data platforms.",
-        "Experience with cloud infrastructure and governance controls.",
-        "Strong stakeholder communication and documentation discipline."
+        "Strong background in ticket management, sprint planning, and client reporting.",
+        "Ability to manage complex transformations without allowing tech-for-tech's-sake.",
+        "Experience in a proxy model of management, ensuring execution while partners are engaged globally."
+      ],
+      benefits: [
+        "Opportunity to work from AURMAK's Dubai and London offices.",
+        "Long-term team members may be offered a permanent role in an AURMAK international office.",
+        "After successful completion of probation, eligibility for a company car.",
+        "After successful completion of probation, eligibility for medical insurance and paid holidays."
       ]
     },
-    "full-stack-product-engineer": {
-      code: "AUR-ENG-003",
-      title: "Full Stack Product Engineer",
-      lead: "Build and modernise web applications for enterprise operations and analytics use cases.",
+    "frontend-developer-saas-modern-ui": {
+      code: "AUR-FE-003",
+      title: "Frontend Developer (SaaS & Modern UI)",
+      lead: "Build minimalist, high-performance interfaces that bring engineering clarity to complex enterprise systems and operational dashboards.",
       location: "Lahore, Pakistan",
       workModel: "On-site / Hybrid, Full-time",
       experience: "3+ years",
-      summary: "You will ship frontend and backend features for internal products and client delivery projects with measurable business outcomes.",
+      summary: "You will use modern boilerplates to accelerate delivery while maintaining AURMAK’s corporate, high-tech aesthetic across SaaS products and client systems.",
       responsibilities: [
-        "Develop robust web interfaces and APIs for B2B products.",
-        "Implement secure authentication, role management, and reporting features.",
-        "Write maintainable tests and support production troubleshooting.",
-        "Collaborate with product teams to iterate quickly and safely."
+        "Rapid Implementation: Build responsive UIs using React or Vue, leveraging Antigravity or similar boilerplates to test ideas quickly.",
+        "Visual Precision: Implement clean, grid-based layouts inspired by Palantir's design language.",
+        "Performance Dashboards: Create unified operational views that provide single-pane visibility across assets and data."
       ],
       requirements: [
-        "Strong JavaScript or TypeScript across frontend and backend.",
-        "Experience with modern component-based frontend frameworks.",
-        "Comfort with relational databases and REST API design.",
-        "Clear communication and ownership mindset."
+        "Mastery of React or Vue.js and Tailwind CSS.",
+        "Ability to work with Ant Design 6.3.0 and the 8-point grid system.",
+        "Focus on visual explanation over long text, utilising diagrams and system flows."
+      ],
+      benefits: [
+        "Opportunity to work from AURMAK's Dubai and London offices.",
+        "Long-term team members may be offered a permanent role in an AURMAK international office.",
+        "After successful completion of probation, eligibility for a company car.",
+        "After successful completion of probation, eligibility for medical insurance and paid holidays."
       ]
     }
   };
@@ -133,6 +149,7 @@ export default function JobDetail() {
       payload.append("website", formData.website);
       payload.append("jobTitle", job.title);
       payload.append("jobCode", job.code);
+      payload.append("turnstileToken", turnstileToken);
 
       if (formData.cv) {
         payload.append("cv", formData.cv);
@@ -160,6 +177,7 @@ export default function JobDetail() {
         cv: null,
         website: "",
       });
+      setTurnstileToken("");
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Unable to submit your application right now.");
@@ -278,6 +296,24 @@ export default function JobDetail() {
                 <Card>
                   <ul className="space-y-3">
                     {job.requirements.map((item: string, i: number) => (
+                      <li key={i} className="flex items-start space-x-3">
+                        <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-[#5f6b8e] dark:text-slate-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl font-bold mb-4">Benefits</h2>
+                <Card>
+                  <ul className="space-y-3">
+                    {job.benefits.map((item: string, i: number) => (
                       <li key={i} className="flex items-start space-x-3">
                         <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
                         <span className="text-[#5f6b8e] dark:text-slate-300">{item}</span>
@@ -426,13 +462,30 @@ export default function JobDetail() {
                         <p className="text-red-400 text-sm">{errorMessage}</p>
                       )}
 
+                      <div className="space-y-2">
+                        <Turnstile
+                          onVerify={(token) => {
+                            setTurnstileToken(token);
+                            setErrorMessage("");
+                          }}
+                          onExpire={() => {
+                            setTurnstileToken("");
+                          }}
+                        />
+                        {import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken && (
+                          <p className="text-xs text-[#5f6b8e] dark:text-slate-400">
+                            Please complete the security check before submitting.
+                          </p>
+                        )}
+                      </div>
+
                       <p className="text-[#5f6b8e] dark:text-slate-500 text-xs">
                         Your CV is sent as an attachment to the AURMAK careers inbox for review.
                       </p>
 
                       <Button
                         type="submit"
-                        disabled={status === "loading" || !formData.cv}
+                        disabled={status === "loading" || !formData.cv || (!!import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken)}
                         className="w-full"
                       >
                         {status === "loading" ? "Submitting..." : "Submit Application"}

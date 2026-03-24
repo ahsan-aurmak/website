@@ -8,6 +8,7 @@ import { InlineWidget } from "react-calendly";
 import { useTheme } from "../components/theme-provider";
 import { GlassCard } from "../components/card";
 import { getCalendlyPageSettings } from "../lib/calendly";
+import { Turnstile } from "../components/turnstile";
 
 export default function Contact() {
   const { theme } = useTheme();
@@ -22,6 +23,7 @@ export default function Contact() {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const offices = [
     {
@@ -62,7 +64,10 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken,
+        })
       });
 
       const data = await response.json().catch(() => null);
@@ -80,6 +85,7 @@ export default function Contact() {
         brief: "",
         website: ""
       });
+      setTurnstileToken("");
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Unable to submit your enquiry right now.");
@@ -356,10 +362,28 @@ export default function Contact() {
                     </div>
                   )}
 
+                  <div className="space-y-2">
+                    <Turnstile
+                      theme={theme === "dark" ? "dark" : "light"}
+                      onVerify={(token) => {
+                        setTurnstileToken(token);
+                        setErrorMessage("");
+                      }}
+                      onExpire={() => {
+                        setTurnstileToken("");
+                      }}
+                    />
+                    {import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken && (
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        Please complete the security check before submitting.
+                      </p>
+                    )}
+                  </div>
+
                   <div className="flex justify-end">
                     <Button
                       type="submit"
-                      disabled={status === "loading"}
+                      disabled={status === "loading" || (!!import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken)}
                       className="px-12"
                     >
                       {status === "loading" ? "Submitting..." : "Submit Enquiry"}

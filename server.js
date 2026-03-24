@@ -16,6 +16,7 @@ const distDir = path.resolve(__dirname, "dist");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const defaultContactTo = "info@aurmak.com";
 const defaultCareersTo = "careers@aurmak.com";
+const turnstileSecretKey = process.env.TURNSTILE_SECRET_KEY || "";
 const liveHostnames = new Set(["aurmak.com", "www.aurmak.com"]);
 const allowedCvExtensions = new Set([".pdf", ".doc", ".docx"]);
 const allowedCvMimeTypes = new Set([
@@ -79,6 +80,13 @@ const knownInsightRoutes = new Set([
 ]);
 
 app.disable("x-powered-by");
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  next();
+});
 app.use(express.json({ limit: "1mb" }));
 
 app.use((req, res, next) => {
@@ -247,6 +255,11 @@ function createRateLimiter({ bucket, windowMs, maxRequests, message }) {
     }
 
     if (entry.count >= maxRequests) {
+      console.warn(`[rate-limit] ${bucket} blocked`, {
+        ip: getRequestKey(req),
+        path: req.originalUrl,
+        at: getLondonTimestamp(),
+      });
       res.status(429).json({ message });
       return;
     }
@@ -277,6 +290,11 @@ function validateCvFile(file) {
 function applyUploadMiddleware(req, res, next) {
   upload.single("cv")(req, res, (error) => {
     if (error instanceof multer.MulterError && error.code === "LIMIT_FILE_SIZE") {
+      console.warn("[upload] oversized CV rejected", {
+        ip: getRequestKey(req),
+        path: req.originalUrl,
+        at: getLondonTimestamp(),
+      });
       res.status(400).json({ message: "CV file must be less than 5MB." });
       return;
     }
@@ -288,6 +306,59 @@ function applyUploadMiddleware(req, res, next) {
 
     next();
   });
+}
+
+function getTurnstileToken(body) {
+  return cleanField(body?.turnstileToken, 2048);
+}
+
+async function verifyTurnstileToken(token, remoteip) {
+  if (!turnstileSecretKey) {
+    return { ok: true, skipped: true };
+  }
+
+  if (!token) {
+    return { ok: false, message: "Please complete the security check before submitting." };
+  }
+
+  try {
+    const params = new URLSearchParams({
+      secret: turnstileSecretKey,
+      response: token,
+    });
+
+    if (remoteip) {
+      params.append("remoteip", remoteip);
+    }
+
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: params.toString(),
+    });
+
+    if (!response.ok) {
+      return { ok: false, message: "Unable to verify the security check right now." };
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      console.warn("[turnstile] verification failed", {
+        ip: remoteip || "unknown",
+        errors: data["error-codes"] || [],
+        at: getLondonTimestamp(),
+      });
+      return { ok: false, message: "Please complete the security check before submitting." };
+    }
+
+    return { ok: true };
+  } catch (error) {
+    console.error("Turnstile verification failed", error);
+    return { ok: false, message: "Unable to verify the security check right now." };
+  }
 }
 
 const contactRateLimiter = createRateLimiter({
@@ -492,10 +563,22 @@ function getMailerConfig() {
 
 app.post("/api/contact", contactRateLimiter, async (req, res) => {
   const payload = getContactPayload(req.body ?? {});
+  const turnstileToken = getTurnstileToken(req.body ?? {});
   const validationMessage = validateContactPayload(payload);
 
   if (validationMessage) {
+    console.warn("[contact] validation failed", {
+      ip: getRequestKey(req),
+      reason: validationMessage,
+      at: getLondonTimestamp(),
+    });
     res.status(400).json({ message: validationMessage });
+    return;
+  }
+
+  const turnstileResult = await verifyTurnstileToken(turnstileToken, getRequestKey(req));
+  if (!turnstileResult.ok) {
+    res.status(400).json({ message: turnstileResult.message });
     return;
   }
 
@@ -529,16 +612,33 @@ app.post("/api/contact", contactRateLimiter, async (req, res) => {
 
 app.post("/api/apply", applyRateLimiter, applyUploadMiddleware, async (req, res) => {
   const payload = getApplicationPayload(req.body ?? {});
+  const turnstileToken = getTurnstileToken(req.body ?? {});
   const validationMessage = validateApplicationPayload(payload, req.file);
   const cvValidationMessage = validateCvFile(req.file);
 
   if (validationMessage) {
+    console.warn("[apply] validation failed", {
+      ip: getRequestKey(req),
+      reason: validationMessage,
+      at: getLondonTimestamp(),
+    });
     res.status(400).json({ message: validationMessage });
     return;
   }
 
   if (cvValidationMessage) {
+    console.warn("[apply] CV validation failed", {
+      ip: getRequestKey(req),
+      reason: cvValidationMessage,
+      at: getLondonTimestamp(),
+    });
     res.status(400).json({ message: cvValidationMessage });
+    return;
+  }
+
+  const turnstileResult = await verifyTurnstileToken(turnstileToken, getRequestKey(req));
+  if (!turnstileResult.ok) {
+    res.status(400).json({ message: turnstileResult.message });
     return;
   }
 
@@ -666,6 +766,7 @@ if (isProduction) {
   const vite = await createViteServer({
     server: {
       middlewareMode: true,
+      hmr: false,
     },
     appType: "custom",
   });

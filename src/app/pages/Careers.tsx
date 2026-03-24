@@ -9,24 +9,24 @@ export default function Careers() {
   const roles = [
     {
       code: "AUR-ENG-001",
-      title: "Senior AI Product Engineer",
+      title: "Tech Lead (Backend/AI)",
       location: "Lahore, Pakistan",
       model: "Hybrid, Full-time",
-      slug: "senior-ai-product-engineer"
+      slug: "tech-lead-backend-ai"
     },
     {
-      code: "AUR-SOL-002",
-      title: "Enterprise Solutions Architect",
-      location: "Dubai, UAE",
+      code: "AUR-DEL-002",
+      title: "Product Owner (Delivery Lead)",
+      location: "Lahore, Pakistan",
       model: "Hybrid, Full-time",
-      slug: "enterprise-solutions-architect"
+      slug: "product-owner-delivery-lead"
     },
     {
-      code: "AUR-ENG-003",
-      title: "Full Stack Product Engineer",
+      code: "AUR-FE-003",
+      title: "Frontend Developer (SaaS & Modern UI)",
       location: "Lahore, Pakistan",
       model: "On-site / Hybrid, Full-time",
-      slug: "full-stack-product-engineer"
+      slug: "frontend-developer-saas-modern-ui"
     }
   ];
 
@@ -37,18 +37,18 @@ export default function Careers() {
     "Clear ownership, governance, and measurable outcomes."
   ];
 
-  const hiringPipeline = [
-    "Select a role and submit your application profile.",
-    "Include portfolio or project links where relevant.",
-    "Applications are reviewed by engineering and operations leads.",
-    "Shortlisted candidates receive a structured interview plan."
+  const benefits = [
+    "Opportunity to work from AURMAK's Dubai and London offices.",
+    "Long-term team members may be offered a permanent role in an AURMAK international office.",
+    "After successful completion of probation, eligibility for a company car.",
+    "After successful completion of probation, eligibility for medical insurance and paid holidays."
   ];
 
   return (
     <div>
       <SEO
         title="Careers at AURMAK"
-        description="Explore current AURMAK roles across product engineering and enterprise architecture, with structured application details and regional location information."
+        description="Explore current AURMAK roles across engineering, delivery, frontend development, and rapid prototyping within our global delivery model."
         canonical="https://www.aurmak.com/careers"
         schema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -107,7 +107,6 @@ export default function Careers() {
                 transition={{ delay: index * 0.1 }}
               >
                 <GlassCard className="h-full flex flex-col">
-                  <div className="mb-3 text-sm font-medium text-[#27aae1] dark:text-cyan-400">{role.code}</div>
                   <h3 className="mb-4 text-xl font-bold text-slate-900 dark:text-slate-100">{role.title}</h3>
                   <div className="space-y-2 mb-6 flex-1">
                     <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
@@ -130,7 +129,7 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Why Join / Hiring Pipeline */}
+      {/* Why Join / Benefits */}
       <section className="py-16 relative">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -162,17 +161,15 @@ export default function Careers() {
               transition={{ delay: 0.1 }}
             >
               <Card className="h-full">
-                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Hiring Pipeline</h2>
+                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Company Benefits</h2>
                 <p className="mb-6 text-slate-600 dark:text-slate-400">
-                  Apply through the job detail form with CV upload. Every application is reviewed through a defined evaluation process.
+                  We invest in long-term team development with international exposure and structured benefits after probation.
                 </p>
                 <ul className="space-y-3">
-                  {hiringPipeline.map((step, i) => (
+                  {benefits.map((item, i) => (
                     <li key={i} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 rounded-full bg-[#eef7fc] flex items-center justify-center text-[#27aae1] text-sm font-medium flex-shrink-0 dark:bg-cyan-500/20 dark:text-cyan-400">
-                        {i + 1}
-                      </div>
-                      <span className="text-slate-700 dark:text-slate-300">{step}</span>
+                      <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                      <span className="text-slate-700 dark:text-slate-300">{item}</span>
                     </li>
                   ))}
                 </ul>

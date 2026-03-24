@@ -86,6 +86,7 @@ interface Feature3DCardProps {
   icon: LucideIcon;
   gradient?: string;
   image?: string;
+  imageAlt?: string;
   badge?: string;
   to?: string;
 }
@@ -96,6 +97,7 @@ export function Feature3DCard({
   icon: Icon,
   gradient = "from-[#2CB5E3] to-[#1B2A6B]",
   image,
+  imageAlt,
   badge,
   to,
 }: Feature3DCardProps) {
@@ -104,7 +106,11 @@ export function Feature3DCard({
       {/* Background image if provided */}
       {image && (
         <div className="absolute inset-0 opacity-10">
-          <img src={image} alt="" className="w-full h-full object-cover" />
+          <img
+            src={image}
+            alt={imageAlt ?? `${title} background visual`}
+            className="w-full h-full object-cover"
+          />
         </div>
       )}
 
