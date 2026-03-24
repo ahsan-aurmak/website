@@ -17,7 +17,7 @@ export function SEO({
   title,
   description,
   canonical = '',
-  ogImage = buildCanonicalUrl('/global_hq_futuristic.png'),
+  ogImage = buildCanonicalUrl('/global_hq_futuristic.jpg'),
   ogType = 'website',
   keywords = 'enterprise systems, digital infrastructure, legacy modernisation, AI-enabled operational intelligence, enterprise technology',
   schema,

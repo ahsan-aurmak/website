@@ -176,7 +176,7 @@ export default function Lab() {
             >
               <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
-                  src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.png`}
+                  src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.jpg`}
                   alt="Illustration of venture lab exploration areas across predictive maintenance, governed AI, and integration accelerators"
                   className="w-full h-full object-cover"
                 />

@@ -14,22 +14,22 @@ import orchestrationWorkspace from "@assets/6162f1ef2660eb35c77b3de127222adab44d
 import orchestrationUserFlow from "@assets/9a84be5ef9d47266c31ceef448b092f587b6baf7.png";
 import orchestrationPriorityMatrix from "@assets/d1067b31712934a35aee6369c1ee171bbbc79660.png";
 import orchestrationRoadmap from "@assets/677c28c12f4d3cac56a7ef530ae0d694360a2ab3.png";
-import orchestrationDesignSystem from "@assets/fba52a1d3686324954fd454f0b5b62636c8233f1.png";
+import orchestrationDesignSystem from "@assets/fba52a1d3686324954fd454f0b5b62636c8233f1.jpg";
 import orchestrationUserTesting from "@assets/2d1e954fcbd88e4ee712cc4b68ec9f84e472e4c7.png";
 
 // RBS Travel Portal case study images
 import rbsDesignSystem from "@assets/f906ef71703859843ac7a9703df7c2422d0243b8.png";
 import rbsCruiseBooking from "@assets/809d51069ee33ae3bb0e20f5113be16c8b5e9cbb.png";
 import rbsUserJourney from "@assets/70a5e42d651b2ffa9fe939fd3465396285ffeeab.png";
-import rbsWhiteboard from "@assets/475be0b1bc35c9afcf7756027d56ea5b8074600a.png";
+import rbsWhiteboard from "@assets/475be0b1bc35c9afcf7756027d56ea5b8074600a.jpg";
 import rbsUxStrategy from "@assets/66a86c5d963282cffbdfb13ce737954e746c2472.png";
 import rbsMobileApp from "@assets/6a0e4a5d45a628a11479b866a99d744c045eeb96.png";
 import rbsDesktopApp from "@assets/369a2b1c35703493e0b406f2d1733feef254a430.png";
-import rbsMobileWebCombined from "@assets/05daaa10c1fbd949891a0b67a18f0d926ddd943f.png";
+import rbsMobileWebCombined from "@assets/05daaa10c1fbd949891a0b67a18f0d926ddd943f.jpg";
 
 // Cisco Stealthwatch case study images
 import ciscoFinalUI from "@assets/397ee6a4afdcc25e3320da55007954bab70728f5.png";
-import ciscoPersonas from "@assets/4e82495360ecee8d4018e67a4a5aeb29faa187e1.png";
+import ciscoPersonas from "@assets/4e82495360ecee8d4018e67a4a5aeb29faa187e1.jpg";
 import ciscoWireframe from "@assets/abfba96ea7b38afd66a05cdff90a72a61d1dbd33.png";
 import ciscoPrototype from "@assets/a1768bb07eb952d4fabc65351abd7f52b3ef1eb8.png";
 import ciscoUsabilityTest from "@assets/1649601cdb5b3fb8aaf72d35ca1730ab5a80aa10.png";
@@ -45,25 +45,25 @@ import alJazeeraWireframes from "@assets/cead7cc4983224e7aada14cda64902255937a50
 
 // Castrol CarLounge case study images
 import castrolMobileJourney from "@assets/ce61d2b29d3e1bd37fce75053fb76a17a7f99cf1.png";
-import castrolLegacyPrototypes from "@assets/942b3661db58816b3054ef67428eb8df02717202.png";
+import castrolLegacyPrototypes from "@assets/942b3661db58816b3054ef67428eb8df02717202.jpg";
 import castrolWireframes from "@assets/b7ce950d41954f325580d807b50e3765dc8ae29b.png";
 import castrolJourneyMaps from "@assets/7ba797da29cd69d7332139356208505ac9d4228c.png";
-import castrolDesignSprint from "@assets/03bd9c02901cf6bc1429441c0c47a84a22e52e5f.png";
+import castrolDesignSprint from "@assets/03bd9c02901cf6bc1429441c0c47a84a22e52e5f.jpg";
 import castrolFinalUI from "@assets/dfdd35f85c1d5f9b282283e9ee22ecb9a1515881.png";
 
 // GTT SaaS/IaaS case study images
 import gttDashboard from "@assets/e8769ae731a359c2b321aa48dd2841488439f606.png";
 import gttStyleGuide from "@assets/fe573c7b69a6f9cfe1dbc4ab2225e7b14b28ccad.png";
-import gttUsabilityTesting from "@assets/06b08157430a98b1a60e618fa7f24a3f70237df8.png";
+import gttUsabilityTesting from "@assets/06b08157430a98b1a60e618fa7f24a3f70237df8.jpg";
 import gttAxurePrototype from "@assets/99aa771a2294608695d0b8ae1318e5a1d89b372d.png";
 import gttInformationArchitecture from "@assets/aac0a0454d52e8577a8441f8279e5fa1331f4a40.png";
-import gttUserJourney from "@assets/e0b1a5750e850b379b5efc936847cd51ef96e99d.png";
+import gttUserJourney from "@assets/e0b1a5750e850b379b5efc936847cd51ef96e99d.jpg";
 import gttExperienceMap from "@assets/c894e83a9a847e2dcd5405dfce8a8ece6c4c5f24.png";
 import gttFinalUI from "@assets/bab8d92cef219c667065d26edf83c03a2b7534c6.png";
 
 // Dubai Trade case study images
-import dubaiTradeWireframes from "@assets/d144c36802ce21984618f6e39f9d4394ad55e930.png";
-import dubaiTradePlanning from "@assets/e85bf9e2b503b617c9ad15d65b08415e9674e2f0.png";
+import dubaiTradeWireframes from "@assets/d144c36802ce21984618f6e39f9d4394ad55e930.jpg";
+import dubaiTradePlanning from "@assets/e85bf9e2b503b617c9ad15d65b08415e9674e2f0.jpg";
 import dubaiTradeCXMap from "@assets/b02ca459800c29da8161e3708c563262ea786827.png";
 import dubaiTradeUserJourney from "@assets/0f10321af59c970f693e1e8f60df50c982b10bf6.png";
 import dubaiTradeServiceGrouping from "@assets/bf0e7ff74e7c0be3404ba0b46a1420bd8a6538be.png";

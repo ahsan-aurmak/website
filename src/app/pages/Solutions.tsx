@@ -166,7 +166,7 @@ export default function Solutions() {
             >
               <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-slate-800 dark:shadow-2xl dark:shadow-cyan-500/10">
                 <ImageWithFallback
-                  src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.png`}
+                  src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.jpg`}
                   alt="Diagram showing infrastructure operations, estate monitoring, and portfolio reporting environments"
                   className="w-full h-full object-cover"
                 />
