@@ -37,7 +37,7 @@ export default function Team() {
     <div>
       <SEO
         title="Leadership"
-        description="Meet AURMAK’s leadership team guiding technology strategy, engineering delivery, and operational execution across global enterprise engagements."
+        description="AURMAK’s leadership brings extensive experience across complex global enterprise engagements, guiding technology strategy, engineering delivery, and operational execution."
         canonical="https://www.aurmak.com/team"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -48,7 +48,7 @@ export default function Team() {
       <Hero
         eyebrow="Team"
         title="Leadership"
-        lead="Guiding AURMAK’s technology strategy, engineering delivery, and operational execution across global enterprise engagements."
+        lead="AURMAK’s leadership brings extensive experience across complex global enterprise engagements, guiding technology strategy, engineering delivery, and operational execution."
         badge="👥 Leadership"
       />
 

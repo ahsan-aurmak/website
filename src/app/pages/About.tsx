@@ -54,7 +54,7 @@ export default function About() {
             <span className="text-[#27aae1]">Leadership</span>
           </>
         }
-        lead="Strategic leadership in London and Dubai works alongside engineering teams in Lahore to deliver complex enterprise technology programmes with clear accountability."
+        lead="Strategic leadership in London and Dubai works alongside engineering teams in Lahore to deliver complex enterprise technology programmes with clear accountability across global engagements."
         badge="🌍 Global Presence"
       >
         <Button to="/contact">Start a Conversation</Button>
@@ -135,6 +135,15 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-10 max-w-4xl text-center text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300"
+          >
+            We operate as a unified global team and can deploy engineering capability locally as required, based on project scope and operational needs.
+          </motion.p>
         </div>
       </section>
 
