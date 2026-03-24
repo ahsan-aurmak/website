@@ -10,10 +10,10 @@ import metrikusConnectors from "@assets/7d6b866440323aa231803beb121b3026f778d87c
 import metrikusAnalytics from "@assets/7df5abe64ec075d9121c68f1839c325e5f9197e4.png";
 
 // Orchestration Platform case study images
-import orchestrationWorkspace from "@assets/6162f1ef2660eb35c77b3de127222adab44de7d9.png";
+import orchestrationWorkspace from "@assets/6162f1ef2660eb35c77b3de127222adab44de7d9.jpg";
 import orchestrationUserFlow from "@assets/9a84be5ef9d47266c31ceef448b092f587b6baf7.png";
 import orchestrationPriorityMatrix from "@assets/d1067b31712934a35aee6369c1ee171bbbc79660.png";
-import orchestrationRoadmap from "@assets/677c28c12f4d3cac56a7ef530ae0d694360a2ab3.png";
+import orchestrationRoadmap from "@assets/677c28c12f4d3cac56a7ef530ae0d694360a2ab3.jpg";
 import orchestrationDesignSystem from "@assets/fba52a1d3686324954fd454f0b5b62636c8233f1.jpg";
 import orchestrationUserTesting from "@assets/2d1e954fcbd88e4ee712cc4b68ec9f84e472e4c7.png";
 
@@ -36,20 +36,20 @@ import ciscoUsabilityTest from "@assets/1649601cdb5b3fb8aaf72d35ca1730ab5a80aa10
 import ciscoResponsiveDesign from "@assets/017cfbda6139031c7482709aa1a73a79f0a6f299.png";
 
 // Al Jazeera ITSM case study images
-import alJazeeraPlatform from "@assets/53c28d4ee474defec7699a0281180b673d864b83.png";
+import alJazeeraPlatform from "@assets/53c28d4ee474defec7699a0281180b673d864b83.jpg";
 import alJazeeraServiceRequests from "@assets/a1bceaf786eb8de62a300a9db0be9a6c9c377fbc.png";
 import alJazeeraProductFlow from "@assets/ec53e29634d5b1207443822e8bf5ba626aa30cf2.png";
-import alJazeeraDesignStrategy from "@assets/a696c61786559e8d398f1f16791ec0bbecd662d4.png";
+import alJazeeraDesignStrategy from "@assets/a696c61786559e8d398f1f16791ec0bbecd662d4.jpg";
 import alJazeeraWorkshop from "@assets/69100866bdadfc4554bda11278d0d8ce94aac778.png";
 import alJazeeraWireframes from "@assets/cead7cc4983224e7aada14cda64902255937a500.png";
 
 // Castrol CarLounge case study images
-import castrolMobileJourney from "@assets/ce61d2b29d3e1bd37fce75053fb76a17a7f99cf1.png";
+import castrolMobileJourney from "@assets/ce61d2b29d3e1bd37fce75053fb76a17a7f99cf1.jpg";
 import castrolLegacyPrototypes from "@assets/942b3661db58816b3054ef67428eb8df02717202.jpg";
 import castrolWireframes from "@assets/b7ce950d41954f325580d807b50e3765dc8ae29b.png";
 import castrolJourneyMaps from "@assets/7ba797da29cd69d7332139356208505ac9d4228c.png";
 import castrolDesignSprint from "@assets/03bd9c02901cf6bc1429441c0c47a84a22e52e5f.jpg";
-import castrolFinalUI from "@assets/dfdd35f85c1d5f9b282283e9ee22ecb9a1515881.png";
+import castrolFinalUI from "@assets/dfdd35f85c1d5f9b282283e9ee22ecb9a1515881.jpg";
 
 // GTT SaaS/IaaS case study images
 import gttDashboard from "@assets/e8769ae731a359c2b321aa48dd2841488439f606.png";
