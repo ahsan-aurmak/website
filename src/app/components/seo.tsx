@@ -120,7 +120,9 @@ export const organizationSchema = {
     }
   ],
   "sameAs": [
-    "https://www.linkedin.com/company/aurmak"
+    "https://www.linkedin.com/company/aurmak",
+    "https://x.com/aurmakdigital",
+    "https://www.youtube.com/@Aurmak"
   ],
   "contactPoint": {
     "@type": "ContactPoint",

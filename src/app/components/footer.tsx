@@ -1,9 +1,50 @@
 import { Link } from "react-router";
-import { Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "motion/react";
 import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 import lightLogo from "@assets/branding/aurmak-logo-lightmode.svg";
 import { useTheme } from "./theme-provider";
+
+function LinkedInIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M4.983 3.5C4.983 4.88 3.869 6 2.492 6A2.49 2.49 0 0 1 0 3.5C0 2.12 1.115 1 2.492 1a2.49 2.49 0 0 1 2.491 2.5ZM.395 8h4.194v13.5H.395V8ZM8.36 8h4.02v1.845h.057c.56-1.062 1.93-2.182 3.972-2.182 4.246 0 5.03 2.8 5.03 6.44V21.5h-4.19v-6.555c0-1.564-.028-3.575-2.18-3.575-2.184 0-2.518 1.705-2.518 3.462V21.5H8.36V8Z" />
+    </svg>
+  );
+}
+
+function XIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M18.244 2H21.5l-7.117 8.134L22.75 22h-6.555l-5.133-6.71L5.19 22H1.93l7.61-8.7L1.25 2h6.721l4.64 6.13L18.244 2Zm-1.141 18h1.804L6.998 3.895H5.062L17.103 20Z" />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M23.499 6.203a2.98 2.98 0 0 0-2.098-2.11C19.548 3.6 12 3.6 12 3.6s-7.548 0-9.401.493A2.98 2.98 0 0 0 .5 6.203C0 8.068 0 12 0 12s0 3.932.5 5.797a2.98 2.98 0 0 0 2.099 2.11C4.452 20.4 12 20.4 12 20.4s7.548 0 9.401-.493a2.98 2.98 0 0 0 2.098-2.11C24 15.932 24 12 24 12s0-3.932-.501-5.797ZM9.6 15.6V8.4l6 3.6-6 3.6Z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   const { theme } = useTheme();
@@ -29,9 +70,9 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, url: "https://www.linkedin.com/company/aurmak", label: "LinkedIn" },
-    { icon: Twitter, url: "https://x.com/aurmak", label: "X" },
-    { icon: Youtube, url: "https://www.youtube.com/@aurmak", label: "YouTube" },
+    { icon: LinkedInIcon, url: "https://www.linkedin.com/company/aurmak", label: "LinkedIn" },
+    { icon: XIcon, url: "https://x.com/aurmakdigital", label: "X" },
+    { icon: YouTubeIcon, url: "https://www.youtube.com/@Aurmak", label: "YouTube" },
   ];
 
   const currentYear = new Date().getFullYear();

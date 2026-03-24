@@ -18,7 +18,7 @@ export default function Cookies() {
       <Hero
         eyebrow="Legal"
         title="Cookies Policy"
-        lead="This website may use essential cookies for site functionality and analytics cookies for usage insights."
+        lead="This policy explains how AURMAK uses essential cookies, analytics cookies, and local storage preferences on this website."
       />
 
       <section className="py-16 relative">
@@ -36,10 +36,10 @@ export default function Cookies() {
                   Essential cookies are necessary for the website to function properly. These cookies enable core functionality such as:
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Navigation and access to secure areas</li>
-                  <li>Session management and authentication</li>
-                  <li>Language preferences and regional settings</li>
+                  <li>Navigation and core site functionality</li>
                   <li>Form submission and validation</li>
+                  <li>Cookie consent preferences</li>
+                  <li>Display and interface preferences where applicable</li>
                 </ul>
                 <p>
                   Essential cookies do not require user consent as they are strictly necessary for the operation of the website.
@@ -60,7 +60,19 @@ export default function Cookies() {
                   <li>Understand visitor demographics and interests</li>
                 </ul>
                 <p>
-                  We use aggregated analytics data to make informed decisions about website improvements and content strategy.
+                  We use aggregated analytics data to make informed decisions about website improvements, content performance, and user experience.
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <h2 className="text-2xl font-bold mb-4">Consent Choices</h2>
+              <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
+                <p>
+                  When you first visit the website, AURMAK may present a cookie consent notice allowing you to accept optional cookies or continue with essential-only settings.
+                </p>
+                <p>
+                  Your cookie preference may be stored in your browser using local storage so that the notice does not reappear on every visit.
                 </p>
               </div>
             </Card>
@@ -92,9 +104,6 @@ export default function Cookies() {
                     aboutcookies.org
                   </a>
                   .
-                </p>
-                <p className="mt-6 text-[#5f6b8e] dark:text-slate-500 text-sm">
-                  Arabic version available through language switch (العربية) in the footer.
                 </p>
               </div>
             </Card>

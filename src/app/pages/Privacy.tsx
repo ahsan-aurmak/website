@@ -2,6 +2,7 @@ import { Hero } from "../components/hero";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Link } from "react-router";
 
 export default function Privacy() {
   return (
@@ -18,7 +19,7 @@ export default function Privacy() {
       <Hero
         eyebrow="Legal"
         title="Privacy Policy"
-        lead="This policy describes how AURMAK collects, processes, and protects personal data submitted via this website."
+        lead="This policy explains how AURMAK collects, uses, stores, and protects personal data submitted through this website."
       />
 
       <section className="py-16 relative">
@@ -41,6 +42,7 @@ export default function Privacy() {
                   <li>Professional information and CVs for job applications</li>
                   <li>Project requirements and business enquiries</li>
                   <li>Portfolio links and professional profiles</li>
+                  <li>Booking details submitted through our scheduling tools</li>
                 </ul>
               </div>
             </Card>
@@ -54,12 +56,13 @@ export default function Privacy() {
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>Responding to enquiries and consultation requests</li>
                   <li>Processing job applications and recruitment activities</li>
+                  <li>Managing scheduling requests and discovery calls</li>
                   <li>Providing information about our services and solutions</li>
                   <li>Improving our website and user experience</li>
                   <li>Complying with legal obligations and contractual requirements</li>
                 </ul>
                 <p>
-                  We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as required by law or as necessary to provide our services.
+                  We do not sell your personal information. We may share limited information with service providers that help us operate the website, process enquiries, manage recruitment submissions, or provide scheduling and analytics tools, where that is necessary to operate our services.
                 </p>
               </div>
             </Card>
@@ -77,7 +80,7 @@ export default function Privacy() {
                   <li>Data retention policies aligned with legal requirements</li>
                 </ul>
                 <p>
-                  Personal data is retained only for as long as necessary to fulfil the purposes outlined in this policy or as required by applicable law.
+                  Personal data is retained only for as long as necessary to handle enquiries, recruitment submissions, and related business communications, or as required by applicable law.
                 </p>
               </div>
             </Card>
@@ -86,13 +89,11 @@ export default function Privacy() {
               <h2 className="text-2xl font-bold mb-4">Contact</h2>
               <div className="text-[#5f6b8e] dark:text-slate-400">
                 <p>
-                  For privacy requests, questions, or to exercise your data protection rights, contact:{" "}
-                  <a href="mailto:info@aurmak.com" className="text-[#27aae1] hover:underline dark:text-cyan-400">
-                    info@aurmak.com
-                  </a>
-                </p>
-                <p className="mt-4 text-[#5f6b8e] dark:text-slate-500 text-sm">
-                  Arabic version available through language switch (العربية) in the footer.
+                  For privacy requests, questions, or to exercise your data protection rights, please use our{" "}
+                  <Link to="/contact" className="text-[#27aae1] hover:underline dark:text-cyan-400">
+                    contact form
+                  </Link>
+                  .
                 </p>
               </div>
             </Card>

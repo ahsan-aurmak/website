@@ -2,11 +2,24 @@ import { Hero } from "../components/hero";
 import { GlassCard } from "../components/card";
 import { Button } from "../components/button";
 import { motion } from "motion/react";
-import { Linkedin } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
 import masoodPhoto from "../../assets/masood.jpeg";
 import khurramPhoto from "../../assets/khurram.jpeg";
+
+function LinkedInIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M4.983 3.5C4.983 4.88 3.869 6 2.492 6A2.49 2.49 0 0 1 0 3.5C0 2.12 1.115 1 2.492 1a2.49 2.49 0 0 1 2.491 2.5ZM.395 8h4.194v13.5H.395V8ZM8.36 8h4.02v1.845h.057c.56-1.062 1.93-2.182 3.972-2.182 4.246 0 5.03 2.8 5.03 6.44V21.5h-4.19v-6.555c0-1.564-.028-3.575-2.18-3.575-2.184 0-2.518 1.705-2.518 3.462V21.5H8.36V8Z" />
+    </svg>
+  );
+}
 
 export default function Team() {
   const team = [
@@ -101,7 +114,7 @@ export default function Team() {
                         className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-[#5f6b8e] transition-all duration-200 hover:bg-[#eef7fc] hover:text-[#27aae1] dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-cyan-400"
                         aria-label={`${member.name} on LinkedIn`}
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </motion.a>
                     </div>
 

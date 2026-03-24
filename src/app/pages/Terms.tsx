@@ -2,6 +2,7 @@ import { Hero } from "../components/hero";
 import { Card } from "../components/card";
 import { motion } from "motion/react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { Link } from "react-router";
 
 export default function Terms() {
   return (
@@ -18,7 +19,7 @@ export default function Terms() {
       <Hero
         eyebrow="Legal"
         title="Terms & Conditions"
-        lead="By using this website, you agree to these terms and applicable laws and regulations."
+        lead="By using this website, you agree to these terms governing access to AURMAK’s content, communications, and online services."
       />
 
       <section className="py-16 relative">
@@ -33,7 +34,7 @@ export default function Terms() {
               <h2 className="text-2xl font-bold mb-4">Use of Website</h2>
               <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
-                  By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. The materials contained on this website are provided for general information only.
+                  By accessing and using this website, you agree to these terms. The materials on this website are provided for general information about AURMAK, its services, its case studies, its careers opportunities, and related business enquiries.
                 </p>
                 <p>
                   You may not:
@@ -46,7 +47,7 @@ export default function Terms() {
                   <li>Use automated systems or software to extract data from this website (screen scraping)</li>
                 </ul>
                 <p>
-                  We reserve the right to refuse service, terminate accounts, or remove or edit content in our sole discretion.
+                  We reserve the right to restrict or suspend access to the website where necessary to protect the website, our users, or our legal rights.
                 </p>
               </div>
             </Card>
@@ -55,7 +56,7 @@ export default function Terms() {
               <h2 className="text-2xl font-bold mb-4">Intellectual Property</h2>
               <div className="text-[#5f6b8e] dark:text-slate-400 space-y-4">
                 <p>
-                  All content, materials, information, and intellectual property on this website, including but not limited to text, graphics, logos, images, software, and design, are owned by or licensed to AURMAK and are protected by copyright, trademark, and other intellectual property laws.
+                  All content, materials, information, and intellectual property on this website, including text, graphics, logos, images, case study materials, software, and design, are owned by or licensed to AURMAK and are protected by copyright, trademark, and other intellectual property laws.
                 </p>
                 <p>
                   Unless otherwise stated, AURMAK and/or its licensors own the intellectual property rights for all material on this website. You may view, download, and print pages from the website for your own personal use, subject to restrictions set in these terms and conditions.
@@ -94,13 +95,11 @@ export default function Terms() {
               <h2 className="text-2xl font-bold mb-4">Contact</h2>
               <div className="text-[#5f6b8e] dark:text-slate-400">
                 <p>
-                  For legal enquiries or questions about these terms, contact:{" "}
-                  <a href="mailto:info@aurmak.com" className="text-[#27aae1] hover:underline dark:text-cyan-400">
-                    info@aurmak.com
-                  </a>
-                </p>
-                <p className="mt-4 text-[#5f6b8e] dark:text-slate-500 text-sm">
-                  Arabic version available through language switch (العربية) in the footer.
+                  For legal enquiries or questions about these terms, please use our{" "}
+                  <Link to="/contact" className="text-[#27aae1] hover:underline dark:text-cyan-400">
+                    contact form
+                  </Link>
+                  .
                 </p>
               </div>
             </Card>
