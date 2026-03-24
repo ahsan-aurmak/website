@@ -4,7 +4,7 @@ import { buildCanonicalUrl, isIndexingEnabled, SITE_NAME } from "../lib/site";
 interface SEOProps {
   title: string;
   description: string;
-  canonical?: string;
+  canonical?: string | null;
   ogImage?: string;
   ogType?: string;
   keywords?: string;
@@ -25,7 +25,7 @@ export function SEO({
   noIndex = false,
 }: SEOProps) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-  const canonicalUrl = canonical || buildCanonicalUrl('/');
+  const canonicalUrl = canonical === null ? null : (canonical || buildCanonicalUrl('/'));
   const effectiveNoIndex = noIndex || !isIndexingEnabled();
   const schemas = [schema, breadcrumbSchema].filter(Boolean);
 
@@ -38,7 +38,7 @@ export function SEO({
       <meta name="keywords" content={keywords} />
 
       {/* Canonical URL */}
-      <link rel="canonical" href={canonicalUrl} />
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
       {/* Staging remains blocked until the live domain is explicitly enabled. */}
       {effectiveNoIndex && (
@@ -57,7 +57,7 @@ export function SEO({
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={canonicalUrl} />
+      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
@@ -66,7 +66,7 @@ export function SEO({
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={canonicalUrl} />
+      {canonicalUrl && <meta property="twitter:url" content={canonicalUrl} />}
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage} />
@@ -141,16 +141,8 @@ export const organizationSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Enterprise Systems",
-          "description": "Enterprise systems designed to improve operational control, visibility, and delivery governance."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Digital Infrastructure",
-          "description": "Digital infrastructure supporting system scalability, integration architecture, and operational resilience."
+          "name": "SaaS Product Development",
+          "description": "Scalable SaaS platforms designed to support enterprise operations, delivery governance, and system scalability."
         }
       },
       {
@@ -158,15 +150,23 @@ export const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Legacy System Modernisation",
-          "description": "Legacy modernisation improving security, data governance, and system scalability."
+          "description": "Legacy modernisation improving reliability, data governance, integration architecture, and operational resilience."
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "AI-Enabled Operational Intelligence",
-          "description": "AI-enabled operational intelligence aligned to commercial priorities, governed delivery, and operational ROI."
+          "name": "AI Integration",
+          "description": "AI integration aligned to commercial priorities, operational visibility, governed delivery, and operational ROI."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Building Management Systems",
+          "description": "Intelligent building systems that improve infrastructure performance, operational visibility, and connected reporting environments."
         }
       }
     ]

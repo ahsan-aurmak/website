@@ -172,7 +172,7 @@ export default function JobDetail() {
         <SEO
           title="Role Not Found"
           description="The requested role could not be found."
-          canonical="https://www.aurmak.com/careers"
+          canonical={null}
           noIndex
         />
         <div className="text-center max-w-md">

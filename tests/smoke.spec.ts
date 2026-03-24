@@ -51,10 +51,11 @@ test("contact form submits successfully", async ({ page }) => {
   await expect(page.getByText("Our team will contact you shortly.")).toBeVisible();
 });
 
-test("case study discovery call modal opens", async ({ page }) => {
+test("case study CTA routes users into contact flow", async ({ page }) => {
   await page.goto("/smart-building-platform");
   await dismissCookieBanner(page);
 
-  await page.getByRole("button", { name: "Book 30 Min Discovery Call" }).click();
-  await expect(page.locator(".calendly-overlay")).toBeVisible();
+  await page.getByRole("link", { name: "Start a Conversation" }).click();
+  await expect(page).toHaveURL(/\/contact$/);
+  await expect(page.getByRole("heading", { name: /Start the Conversation/, level: 1 })).toBeVisible();
 });

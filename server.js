@@ -56,6 +56,16 @@ const knownCaseStudyRoutes = new Set([
   "/enterprise-saas-iaas-platform",
   "/government-services-portal",
 ]);
+const legacyCaseStudyRedirects = new Map([
+  ["/case-study-metrikus-smart-building", "/smart-building-platform"],
+  ["/case-study-cutover-orchestration", "/orchestration-management-platform"],
+  ["/case-study-rbs-travel-portal", "/premium-travel-portal"],
+  ["/case-study-cisco-stealthwatch", "/stealthwatch-educational-portal"],
+  ["/case-study-al-jazeera-itsm", "/it-service-management-platform"],
+  ["/case-study-castrol-carlounge", "/carlounge-experience"],
+  ["/case-study-gtt-saas-iaas", "/enterprise-saas-iaas-platform"],
+  ["/case-study-dubai-trade", "/government-services-portal"],
+]);
 const knownCareerRoutes = new Set([
   "/careers/senior-ai-product-engineer",
   "/careers/enterprise-solutions-architect",
@@ -70,6 +80,15 @@ const knownInsightRoutes = new Set([
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+
+app.use((req, res, next) => {
+  const redirectTarget = legacyCaseStudyRedirects.get(req.path);
+  if (redirectTarget) {
+    res.redirect(301, redirectTarget);
+    return;
+  }
+  next();
+});
 
 function isIndexingEnabledForHost(hostname = "") {
   const normalizedHostname = hostname.toLowerCase();

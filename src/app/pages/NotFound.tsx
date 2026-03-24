@@ -12,7 +12,7 @@ export default function NotFound() {
       <SEO
         title="Page Not Found"
         description="The page you requested could not be found."
-        canonical="https://www.aurmak.com/404"
+        canonical={null}
         noIndex
       />
       <div className="text-center max-w-2xl">

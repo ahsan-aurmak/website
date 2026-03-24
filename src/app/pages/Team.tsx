@@ -36,8 +36,8 @@ export default function Team() {
   return (
     <div>
       <SEO
-        title="Leadership"
-        description="AURMAK’s leadership brings extensive experience across complex global enterprise engagements, guiding technology strategy, engineering delivery, and operational execution."
+        title="AURMAK Leadership Team"
+        description="Meet the AURMAK leadership team guiding technology strategy, engineering delivery, and operational execution across global enterprise engagements."
         canonical="https://www.aurmak.com/team"
         breadcrumbSchema={generateBreadcrumbSchema([
           { name: "Home", url: "/" },

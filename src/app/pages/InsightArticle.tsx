@@ -40,7 +40,7 @@ export default function InsightArticle() {
         <SEO
           title="Insight Not Found"
           description="The requested insight could not be found."
-          canonical="https://www.aurmak.com/insights"
+          canonical={null}
           noIndex
         />
         <div className="text-center max-w-xl">

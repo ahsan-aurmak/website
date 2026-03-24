@@ -15,7 +15,7 @@ export default function CaseStudyDetail() {
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
-  const data = caseStudyData[slug] || caseStudyData["it-service-management-platform"];
+  const data = caseStudyData[slug];
 
   if (!data) {
     return (
@@ -23,7 +23,7 @@ export default function CaseStudyDetail() {
         <SEO
           title="Case Study Not Found"
           description="The requested case study could not be found."
-          canonical="https://www.aurmak.com/case-studies"
+          canonical={null}
           noIndex
         />
         <div className="text-center">
