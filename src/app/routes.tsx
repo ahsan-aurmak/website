@@ -1,15 +1,30 @@
 import { createBrowserRouter } from "react-router";
 import type { ComponentType } from "react";
 import Root from "./pages/Root";
+import RouteError from "./pages/RouteError";
+import { recoverFromStaleChunk } from "./lib/chunk-recovery";
 
-const lazyPage = (importer: () => Promise<{ default: ComponentType }>) => async () => ({
-  Component: (await importer()).default,
-});
+const lazyPage = (importer: () => Promise<{ default: ComponentType }>) => async () => {
+  try {
+    return {
+      Component: (await importer()).default,
+    };
+  } catch (error) {
+    if (!recoverFromStaleChunk(error)) {
+      throw error;
+    }
+
+    return {
+      Component: () => null,
+    };
+  }
+};
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <RouteError />,
     children: [
       { index: true, lazy: lazyPage(() => import("./pages/Home")) },
       { path: "about", lazy: lazyPage(() => import("./pages/About")) },
