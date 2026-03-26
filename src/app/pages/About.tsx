@@ -11,24 +11,21 @@ export default function About() {
   const centres = [
     {
       icon: Globe2,
-      city: "London",
-      description: "Strategic leadership, governance oversight, and enterprise programme direction."
+      city: "London"
     },
     {
       icon: Building2,
-      city: "Dubai",
-      description: "Regional coordination and client engagement across international markets."
+      city: "Dubai"
     },
     {
       icon: Code2,
-      city: "Lahore",
-      description: "Engineering delivery, system development, and platform integration."
+      city: "Lahore"
     }
   ];
 
   const modelPoints = [
     "International governance standards anchored in London and Dubai",
-    "Disciplined engineering delivery led from Lahore",
+    "Disciplined engineering delivery executed across globally distributed teams",
     "Integrated strategy and execution under shared leadership",
     "Operational maturity supported by established UK and UAE parent foundations"
   ];
@@ -54,7 +51,7 @@ export default function About() {
             <span className="text-[#27aae1]">Leadership</span>
           </>
         }
-        lead="Strategic leadership in London and Dubai works alongside engineering teams in Lahore to deliver complex enterprise technology programmes with clear accountability across global engagements."
+        lead="Strategic leadership in London and Dubai works alongside globally distributed engineering teams to deliver complex enterprise technology programmes with clear accountability across international engagements."
         badge="🌍 Global Presence"
       >
         <Button to="/contact">Start a Conversation</Button>
@@ -129,8 +126,7 @@ export default function About() {
                   <div className="mx-auto mb-6 flex h-18 w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2CB5E3] to-[#1B2A6B]">
                     <centre.icon className="h-9 w-9 text-white" strokeWidth={1.75} />
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-100">{centre.city}</h3>
-                  <p className="text-slate-600 dark:text-slate-400">{centre.description}</p>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{centre.city}</h3>
                 </GlassCard>
               </motion.div>
             ))}
@@ -142,7 +138,7 @@ export default function About() {
             viewport={{ once: true }}
             className="mx-auto mt-10 max-w-4xl text-center text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300"
           >
-            We operate as a unified global team and can deploy engineering capability locally as required, based on project scope and operational needs.
+            London, Dubai, and Lahore form AURMAK’s integrated global delivery network, combining strategic leadership, engineering capability, and operational execution. Our teams operate as a unified system, with the flexibility to deploy engineering and delivery capability across regions based on project requirements, regulatory needs, and client preferences.
           </motion.p>
         </div>
       </section>
