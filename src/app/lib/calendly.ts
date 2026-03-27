@@ -19,3 +19,8 @@ export function getCalendlyPageSettings(theme: Theme) {
     textColor: "282973",
   };
 }
+
+export function getCalendlyEmbedUrl(theme: Theme) {
+  void theme;
+  return "https://calendly.com/ahsan-jalil-aurmak/30min";
+}

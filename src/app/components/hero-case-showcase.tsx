@@ -123,7 +123,7 @@ export function HeroCaseShowcase() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((prev: number) => (prev + 1) % cases.length);
-    }, 3800);
+    }, 5200);
     return () => clearInterval(interval);
   }, []);
 
@@ -177,15 +177,6 @@ export function HeroCaseShowcase() {
 
       {/* ── Main showcase card ── */}
       <div className="relative w-full max-w-md">
-
-        {/* Live indicator */}
-        <div className="absolute left-4 right-4 -top-3 z-30 flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 sm:left-6 sm:right-auto">
-          <span className="relative flex h-2 w-2">
-            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${current.dot} opacity-75`} />
-            <span className={`relative inline-flex rounded-full h-2 w-2 ${current.dot}`} />
-          </span>
-          <span className="text-slate-300 text-xs font-medium">Live results</span>
-        </div>
 
         {/* Card */}
         <AnimatePresence mode="wait">

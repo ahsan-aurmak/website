@@ -5,7 +5,6 @@ import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { GlassCard } from "../components/card";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { Button } from "../components/button";
-import { Link } from "react-router";
 
 export default function Solutions() {
   const domains = [
@@ -220,20 +219,6 @@ export default function Solutions() {
           >
             <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
               Enterprise systems require careful planning and structured delivery. Our teams work with organisations to design technology solutions aligned with operational goals and long-term performance.
-            </p>
-            <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
-              Explore related proof in the{" "}
-              <Link to="/smart-building-platform" className="font-medium text-[#27aae1] hover:underline">
-                Metrikus
-              </Link>{" "}
-              and{" "}
-              <Link to="/government-services-portal" className="font-medium text-[#27aae1] hover:underline">
-                Dubai Trade
-              </Link>{" "}
-              case studies, or review our{" "}
-              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
-                services
-              </Link>.
             </p>
             <div className="mt-8 flex justify-center">
               <Button to="/contact">

@@ -190,9 +190,11 @@ export default function Contact() {
           </motion.div>
 
           <motion.div
+            key={`calendly-${theme}`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mx-auto w-full max-w-[1120px]"
           >
             <InlineWidget
               url="https://calendly.com/ahsan-jalil-aurmak/30min"

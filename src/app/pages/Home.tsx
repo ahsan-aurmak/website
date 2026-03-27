@@ -5,7 +5,6 @@ import { HeroGradientMesh } from "../components/gradient-mesh";
 import { Button } from "../components/button";
 import { SEO, organizationSchema } from "../components/seo";
 import { HeroCaseShowcase } from "../components/hero-case-showcase";
-import { Link } from "react-router";
 
 export default function Home() {
   const services = [
@@ -156,16 +155,6 @@ export default function Home() {
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-500 dark:text-slate-500">
               Our work combines strategic consulting with hands-on engineering. We help organisations move from concept to reliable enterprise execution.
-            </p>
-            <p className="mx-auto mt-6 max-w-3xl text-base text-slate-600 dark:text-slate-400">
-              See how this works in practice through our{" "}
-              <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
-                services
-              </Link>{" "}
-              and{" "}
-              <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
-                case studies
-              </Link>.
             </p>
           </motion.div>
 
@@ -330,7 +319,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="mx-auto max-w-none text-lg text-slate-600 dark:text-slate-400">
-              Selected experience across enterprise SaaS, infrastructure, media, operations, and digital platforms.
+              Enterprise systems delivered across SaaS, infrastructure, media, operations, and digital platforms.
             </p>
           </motion.div>
 
