@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import { useLanguage } from "../components/language-provider";
 
 export default function Terms() {
-  const { localizePath, t } = useLanguage();
+  const { direction, localizePath, t } = useLanguage();
 
   return (
     <div>
@@ -29,7 +29,7 @@ export default function Terms() {
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.termsSection1Body1")}</p>
                 <p>{t("legal.termsSection1Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4, 5].map((i) => (
                     <li key={i}>{t(`legal.termsUse${i}`)}</li>
                   ))}
@@ -44,7 +44,7 @@ export default function Terms() {
                 <p>{t("legal.termsSection2Body1")}</p>
                 <p>{t("legal.termsSection2Body2")}</p>
                 <p>{t("legal.termsSection2Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4].map((i) => (
                     <li key={i}>{t(`legal.termsIp${i}`)}</li>
                   ))}
@@ -56,7 +56,7 @@ export default function Terms() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.termsSection3Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.termsSection3Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4].map((i) => (
                     <li key={i}>{t(`legal.termsLiability${i}`)}</li>
                   ))}

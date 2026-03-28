@@ -10,7 +10,7 @@ import { Link } from "react-router";
 import { useLanguage } from "../components/language-provider";
 
 export default function Services() {
-  const { localizePath, t } = useLanguage();
+  const { direction, localizePath, t } = useLanguage();
 
   const services = [
     {
@@ -296,7 +296,7 @@ export default function Services() {
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
                   <AccordionItem key={faq.question} value={`item-${index + 1}`}>
-                    <AccordionTrigger className="text-left text-[#282973] hover:text-[#27aae1] dark:text-slate-100 dark:hover:text-cyan-400">
+                    <AccordionTrigger className={`${direction === "rtl" ? "text-right" : "text-left"} text-[#282973] hover:text-[#27aae1] dark:text-slate-100 dark:hover:text-cyan-400`}>
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-[#5f6b8e] dark:text-slate-400">

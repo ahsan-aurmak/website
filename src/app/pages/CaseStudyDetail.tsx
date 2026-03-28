@@ -11,7 +11,7 @@ import { useLanguage } from "../components/language-provider";
 
 export default function CaseStudyDetail() {
   const location = useLocation();
-  const { language, localizePath, t } = useLanguage();
+  const { direction, language, localizePath, t } = useLanguage();
   const slug = location.pathname.replace(/^\/ar/, "").replace("/", "");
   const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption: string } | null>(null);
@@ -168,7 +168,7 @@ export default function CaseStudyDetail() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mx-auto max-w-4xl">
             <button
               onClick={() => setShowProjectDetails(!showProjectDetails)}
-              className="w-full rounded-xl border border-slate-200 bg-white/90 p-6 text-left shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none dark:hover:border-cyan-800/50"
+              className={`w-full rounded-xl border border-slate-200 bg-white/90 p-6 shadow-sm transition-colors hover:border-cyan-400/40 dark:border-slate-800 dark:bg-slate-900/50 dark:shadow-none dark:hover:border-cyan-800/50 ${direction === "rtl" ? "text-right" : "text-left"}`}
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-cyan-400">{t("caseStudyDetail.projectOverview")}</h2>

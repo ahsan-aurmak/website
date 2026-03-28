@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import { useLanguage } from "../components/language-provider";
 
 export default function Privacy() {
-  const { localizePath, t } = useLanguage();
+  const { direction, localizePath, t } = useLanguage();
 
   return (
     <div>
@@ -28,7 +28,7 @@ export default function Privacy() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.privacySection1Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.privacySection1Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4, 5, 6].map((i) => (
                     <li key={i}>{t(`legal.privacyItem${i}`)}</li>
                   ))}
@@ -40,7 +40,7 @@ export default function Privacy() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.privacySection2Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.privacySection2Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4, 5, 6].map((i) => (
                     <li key={i}>{t(`legal.privacyUse${i}`)}</li>
                   ))}
@@ -53,7 +53,7 @@ export default function Privacy() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.privacySection3Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.privacySection3Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4].map((i) => (
                     <li key={i}>{t(`legal.privacySecurity${i}`)}</li>
                   ))}

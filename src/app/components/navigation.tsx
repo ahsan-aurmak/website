@@ -13,7 +13,7 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const { language, switchLanguage, t, localizePath } = useLanguage();
+  const { direction, language, switchLanguage, t, localizePath } = useLanguage();
   const logoSrc = theme === "light" ? lightLogo : darkLogo;
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export function Navigation() {
       <nav className="container mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to={localizePath("/")} className="flex items-center space-x-2 group">
+          <Link to={localizePath("/")} className="group flex items-center gap-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
@@ -109,7 +109,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <div key={link.label} className="relative group">
                     {link.submenu ? (
@@ -118,7 +118,7 @@ export function Navigation() {
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
                     <button 
-                      className={`flex items-center space-x-1 transition-colors duration-200 font-medium relative ${
+                      className={`relative flex items-center gap-1 font-medium transition-colors duration-200 ${
                         isParentActive(link) ? "text-[#27aae1] dark:text-cyan-400" : "text-[#282973] hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
                       }`}
                     >
@@ -138,7 +138,7 @@ export function Navigation() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-slate-200 bg-white/95 py-2 shadow-xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-800/95"
+                          className={`absolute top-full mt-2 w-48 rounded-lg border border-slate-200 bg-white/95 py-2 shadow-xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-800/95 ${direction === "rtl" ? "right-0" : "left-0"}`}
                         >
                           {link.submenu.map((sublink) => (
                             <Link
@@ -297,7 +297,7 @@ export function Navigation() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                className="pl-4 space-y-1 overflow-hidden"
+                                className={`${direction === "rtl" ? "pr-4" : "pl-4"} space-y-1 overflow-hidden`}
                               >
                                 {link.submenu.map((sublink) => (
                                   <Link

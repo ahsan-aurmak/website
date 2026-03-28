@@ -28,7 +28,7 @@ function formatPublishedDate(value: string, locale: string) {
 
 export default function InsightArticle() {
   const { slug } = useParams();
-  const { language, localizePath, t } = useLanguage();
+  const { direction, language, localizePath, t } = useLanguage();
   const article = getInsightArticle(slug, language);
 
   const topicLabels = {
@@ -109,7 +109,7 @@ export default function InsightArticle() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="rounded-[32px] border border-slate-200 bg-white/92 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950/75 dark:shadow-none sm:p-8 lg:p-10">
-              <div className="border-l-2 border-cyan-400 pl-6">
+              <div className={`${direction === "rtl" ? "border-r-2 pr-6 text-right" : "border-l-2 pl-6"} border-cyan-400`}>
                 <div className="text-sm font-medium uppercase tracking-[0.24em] text-slate-500">{t("insights.editorialPerspective")}</div>
                 <p className="mt-4 text-xl leading-9 text-[#282973] dark:text-slate-200 sm:text-2xl">{t("insights.editorialQuote")}</p>
               </div>

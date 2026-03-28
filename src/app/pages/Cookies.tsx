@@ -5,7 +5,7 @@ import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { useLanguage } from "../components/language-provider";
 
 export default function Cookies() {
-  const { localizePath, t } = useLanguage();
+  const { direction, localizePath, t } = useLanguage();
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function Cookies() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.cookiesSection1Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.cookiesSection1Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4].map((i) => (
                     <li key={i}>{t(`legal.cookiesEssential${i}`)}</li>
                   ))}
@@ -40,7 +40,7 @@ export default function Cookies() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.cookiesSection2Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.cookiesSection2Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4].map((i) => (
                     <li key={i}>{t(`legal.cookiesAnalytics${i}`)}</li>
                   ))}
@@ -61,7 +61,7 @@ export default function Cookies() {
               <h2 className="mb-4 text-2xl font-bold">{t("legal.cookiesSection4Title")}</h2>
               <div className="space-y-4 text-[#5f6b8e] dark:text-slate-400">
                 <p>{t("legal.cookiesSection4Lead")}</p>
-                <ul className="ml-4 list-inside list-disc space-y-2">
+                <ul className={`${direction === "rtl" ? "mr-4 text-right" : "ml-4"} list-inside list-disc space-y-2`}>
                   {[1, 2, 3, 4, 5].map((i) => (
                     <li key={i}>{t(`legal.cookiesManage${i}`)}</li>
                   ))}

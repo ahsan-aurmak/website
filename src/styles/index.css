@@ -33,6 +33,16 @@ html[lang="ar"] select {
   font-family: "Noto Sans Arabic", var(--font-family-sans);
 }
 
+html[lang="ar"] [data-slot="accordion-trigger"] {
+  text-align: right;
+}
+
+html[lang="ar"] [data-slot="accordion-content"] > div {
+  padding-right: 0;
+  padding-left: 3rem;
+  text-align: right;
+}
+
 /* Fix: remove unwanted scrollbar inside Calendly popup modal */
 .calendly-overlay {
   background-color: rgba(0, 0, 0, 0.85) !important;

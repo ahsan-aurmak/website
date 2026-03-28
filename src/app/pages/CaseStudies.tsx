@@ -154,7 +154,7 @@ export default function CaseStudies() {
                   <p className="mb-4 flex-1 text-slate-600 dark:text-slate-400">{caseStudy.summary}</p>
                   <div className="mb-6 space-y-2 border-b border-slate-200 pb-6 dark:border-slate-800">
                     {caseStudy.kpis.map((kpi) => (
-                      <div key={kpi} className="flex items-center space-x-2">
+                      <div key={kpi} className="flex items-center gap-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                         <span className="text-sm text-slate-700 dark:text-slate-300">{kpi}</span>
                       </div>

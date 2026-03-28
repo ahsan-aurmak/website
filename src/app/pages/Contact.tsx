@@ -174,7 +174,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="mb-6 text-center"
           >
-            <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
               <Calendar className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" strokeWidth={1.75} />
               <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">{t("contact.calendlyLabel")}</span>
             </div>

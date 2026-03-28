@@ -146,7 +146,7 @@ export default function Lab() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start space-x-3"
+                    className="flex items-start gap-3"
                   >
                     <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
                     <div className="text-slate-700 dark:text-slate-300">

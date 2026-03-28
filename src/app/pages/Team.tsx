@@ -17,7 +17,7 @@ function LinkedInIcon({ size = 18 }: { size?: number }) {
 }
 
 export default function Team() {
-  const { localizePath, t } = useLanguage();
+  const { direction, localizePath, t } = useLanguage();
 
   const team = [
     {
@@ -112,7 +112,7 @@ export default function Team() {
                       </motion.a>
                     </div>
 
-                    <div className="flex min-w-0 flex-col text-center lg:text-left">
+                    <div className={`flex min-w-0 flex-col text-center ${direction === "rtl" ? "lg:text-right" : "lg:text-left"}`}>
                       <div className="text-sm uppercase text-slate-500 dark:text-slate-400" style={{ letterSpacing: "0.18em" }}>
                         {member.role}
                       </div>
