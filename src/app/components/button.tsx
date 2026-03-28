@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
+import { useLocalizedPath } from "./language-provider";
 
 interface ButtonProps {
   children: ReactNode;
@@ -23,6 +24,7 @@ export function Button({
   disabled = false,
   className = ""
 }: ButtonProps) {
+  const localizePath = useLocalizedPath();
   const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium normal-case transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed relative w-full sm:w-auto";
   
   const variants = {
@@ -38,12 +40,13 @@ export function Button({
   const combinedClassName = `${baseStyles} ${sizes[size]} ${variants[variant]} ${className}`;
 
   const ButtonContent = ({ children }: { children: ReactNode }) => (
-    <span className="relative z-10 flex items-center justify-center text-center sm:text-left">{children}</span>
+    <span className="relative z-10 flex items-center justify-center gap-2 text-center sm:text-left">{children}</span>
   );
 
   if (to) {
     // Use anchor tag for hash links, React Router Link for internal routes
     const isHashLink = to.startsWith('#');
+    const localizedTo = isHashLink ? to : localizePath(to);
     
     return (
       <motion.div 
@@ -56,7 +59,7 @@ export function Button({
             <ButtonContent>{children}</ButtonContent>
           </a>
         ) : (
-          <Link to={to} className={combinedClassName}>
+          <Link to={localizedTo} className={combinedClassName}>
             <ButtonContent>{children}</ButtonContent>
           </Link>
         )}

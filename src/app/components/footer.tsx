@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 import lightLogo from "@assets/branding/aurmak-logo-lightmode.svg";
 import { useTheme } from "./theme-provider";
+import { useLanguage } from "./language-provider";
 
 function LinkedInIcon({ size = 18 }: { size?: number }) {
   return (
@@ -48,25 +49,26 @@ function YouTubeIcon({ size = 18 }: { size?: number }) {
 
 export function Footer() {
   const { theme } = useTheme();
+  const { language, localizePath, t } = useLanguage();
   const logoSrc = theme === "light" ? lightLogo : darkLogo;
   const footerLinks = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Services", path: "/services" },
-    { label: "How We Work", path: "/how-we-work" },
-    { label: "Solutions", path: "/solutions" },
-    { label: "Case Studies", path: "/case-studies" },
-    { label: "Insights", path: "/insights" },
-    { label: "The Lab", path: "/lab" },
-    { label: "Team", path: "/team" },
-    { label: "Careers", path: "/careers" },
-    { label: "Contact", path: "/contact" },
+    { label: t("navigation.home"), path: "/" },
+    { label: t("navigation.about"), path: "/about" },
+    { label: t("navigation.services"), path: "/services" },
+    { label: t("navigation.howWeWork"), path: "/how-we-work" },
+    { label: t("navigation.solutions"), path: "/solutions" },
+    { label: t("navigation.caseStudies"), path: "/case-studies" },
+    { label: t("navigation.insights"), path: "/insights" },
+    { label: t("navigation.lab"), path: "/lab" },
+    { label: t("navigation.team"), path: "/team" },
+    { label: t("navigation.careers"), path: "/careers" },
+    { label: t("navigation.contact"), path: "/contact" },
   ];
 
   const legalLinks = [
-    { label: "Privacy Policy", path: "/privacy" },
-    { label: "Cookies Policy", path: "/cookies" },
-    { label: "Terms & Conditions", path: "/terms" },
+    { label: t("footer.privacy"), path: "/privacy" },
+    { label: t("footer.cookies"), path: "/cookies" },
+    { label: t("footer.terms"), path: "/terms" },
   ];
 
   const socialLinks = [
@@ -81,7 +83,7 @@ export function Footer() {
     <footer className="relative border-t border-slate-200 bg-white transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[#27aae1]/[0.02] dark:bg-[#27aae1]/[0.03]" />
       
-      <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
+      <div className="container relative z-10 mx-auto px-4 py-12 lg:px-8" dir={language === "ar" ? "rtl" : "ltr"}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
@@ -100,12 +102,12 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">Quick Links</h3>
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">{t("footer.quickLinks")}</h3>
             <ul className="space-y-2">
               {footerLinks.slice(0, 6).map((link) => (
                 <li key={link.path}>
                   <Link
-                    to={link.path}
+                    to={localizePath(link.path)}
                     className="text-sm text-[#5f6b8e] transition-colors hover:text-[#27aae1] dark:text-slate-400 dark:hover:text-cyan-400"
                   >
                     {link.label}
@@ -117,12 +119,12 @@ export function Footer() {
 
           {/* More Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">More</h3>
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">{t("footer.more")}</h3>
             <ul className="space-y-2">
               {footerLinks.slice(6).map((link) => (
                 <li key={link.path}>
                   <Link
-                    to={link.path}
+                    to={localizePath(link.path)}
                     className="text-sm text-[#5f6b8e] transition-colors hover:text-[#27aae1] dark:text-slate-400 dark:hover:text-cyan-400"
                   >
                     {link.label}
@@ -134,8 +136,8 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">Connect</h3>
-            <div className="flex space-x-3 mb-6">
+            <h3 className="mb-4 font-semibold text-[#282973] dark:text-slate-200">{t("footer.connect")}</h3>
+            <div className="mb-6 flex space-x-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
@@ -156,13 +158,13 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between space-y-4 border-t border-slate-200 pt-8 dark:border-slate-800 md:flex-row md:space-y-0">
           <p className="text-sm text-slate-500">
-            © {currentYear} AURMAK. All rights reserved.
+            © {currentYear} AURMAK. {t("footer.rightsReserved")}
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-end">
             {legalLinks.map((link) => (
               <Link
                 key={link.path}
-                to={link.path}
+                to={localizePath(link.path)}
                 className="text-sm text-slate-500 transition-colors hover:text-slate-700 dark:hover:text-slate-400"
               >
                 {link.label}

@@ -5,102 +5,93 @@ import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { GlassCard } from "../components/card";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { Button } from "../components/button";
+import { useLanguage } from "../components/language-provider";
 
 export default function Solutions() {
+  const { localizePath, t } = useLanguage();
+
   const domains = [
     {
       icon: Zap,
-      title: "Infrastructure Operations",
-      description:
-        "Platforms designed for environments where infrastructure, facilities, or equipment must be monitored and managed in real time.",
+      title: t("solutions.domain1Title"),
+      description: t("solutions.domain1Description"),
     },
     {
       icon: Server,
-      title: "Asset & Portfolio Management",
-      description:
-        "Systems that connect operational dashboards, performance data, and reporting environments across complex asset portfolios.",
+      title: t("solutions.domain2Title"),
+      description: t("solutions.domain2Description"),
     },
     {
       icon: Building2,
-      title: "Enterprise Operations",
-      description:
-        "Integrated operational systems that bring together data, workflows, and decision environments across complex organisations.",
+      title: t("solutions.domain3Title"),
+      description: t("solutions.domain3Description"),
     },
   ];
 
   const pillars = [
     {
       icon: Brain,
-      title: "Single Pane Visibility",
-      description: "A unified operational view across systems, assets, and performance data.",
+      title: t("solutions.pillar1Title"),
+      description: t("solutions.pillar1Description"),
     },
     {
       icon: Database,
-      title: "Data Integrity",
-      description: "Reliable, governed data that supports accurate reporting and confident decisions.",
+      title: t("solutions.pillar2Title"),
+      description: t("solutions.pillar2Description"),
     },
     {
       icon: Zap,
-      title: "Operational Pace",
-      description: "Faster operational decisions enabled by integrated systems and real-time visibility.",
+      title: t("solutions.pillar3Title"),
+      description: t("solutions.pillar3Description"),
     },
   ];
 
-  const contexts = [
-    "Operational monitoring and performance intelligence",
-    "Facilities and estate performance monitoring",
-    "Portfolio-level reporting across projects and assets",
-    "Regional operational dashboards for multi-region teams",
-  ];
+  const contexts = [t("solutions.context1"), t("solutions.context2"), t("solutions.context3"), t("solutions.context4")];
 
   return (
     <div>
       <SEO
-        title="Operational Solutions for Complex Enterprise Environments"
-        description="AURMAK delivers enterprise systems that improve operational control, data governance, and decision-making across complex operational environments."
-        canonical="https://www.aurmak.com/solutions"
+        title={t("solutions.seoTitle")}
+        description={t("solutions.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/solutions")}`}
         keywords="enterprise systems, digital infrastructure, operational reporting, data governance, system scalability, operational ROI"
         schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Solutions", url: "/solutions" },
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.solutions"), url: localizePath("/solutions") },
         ])}
       />
       <Hero
-        eyebrow="Solutions"
+        eyebrow={t("solutions.eyebrow")}
         title={
           <>
-            Operational Solutions.{" "}
-            <span className="text-[#27aae1]">
-              Built for Complex Environments.
-            </span>
+            {t("solutions.heroTitleLead")}{" "}
+            <span className="text-[#27aae1]">{t("solutions.heroTitleHighlight")}</span>
           </>
         }
-        lead="We design and deliver enterprise systems that improve visibility, strengthen operational control, and support faster decision-making across complex environments."
-        badge="🏭 Operational Systems"
+        lead={t("solutions.heroLead")}
+        badge={t("solutions.heroBadge")}
       >
         <Button to="/contact">
-          Start a Conversation
-          <ArrowRight className="ml-2 w-4 h-4" />
+          {t("solutions.startConversation")}
+          <ArrowRight className="rtl-arrow h-4 w-4" />
         </Button>
       </Hero>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Where Our{" "}
-              <span className="text-[#27aae1]">
-                Systems Operate
-              </span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {t("solutions.domainsTitleLead")}{" "}
+              <span className="text-[#27aae1]">{t("solutions.domainsTitleHighlight")}</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {domains.map((domain, index) => (
               <motion.div
                 key={domain.title}
@@ -126,19 +117,17 @@ export default function Solutions() {
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Operational{" "}
-                <span className="text-[#27aae1]">
-                  Environments
-                </span>
+              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+                {t("solutions.contextsTitleLead")}{" "}
+                <span className="text-[#27aae1]">{t("solutions.contextsTitleHighlight")}</span>
               </h2>
               <div className="space-y-4">
                 {contexts.map((context, index) => (
@@ -148,7 +137,7 @@ export default function Solutions() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start space-x-3"
+                    className="flex items-start gap-3"
                   >
                     <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
                     <p className="text-slate-700 dark:text-slate-300">{context}</p>
@@ -167,7 +156,7 @@ export default function Solutions() {
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}deployment_contexts_futuristic.jpg`}
                   alt="Diagram showing infrastructure operations, estate monitoring, and portfolio reporting environments"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </motion.div>
@@ -175,23 +164,21 @@ export default function Solutions() {
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Operational{" "}
-              <span className="text-[#27aae1]">
-                Outcomes
-              </span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {t("solutions.outcomesTitleLead")}{" "}
+              <span className="text-[#27aae1]">{t("solutions.outcomesTitleHighlight")}</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {pillars.map((pillar, index) => (
               <motion.div
                 key={pillar.title}
@@ -217,13 +204,11 @@ export default function Solutions() {
             viewport={{ once: true }}
             className="mx-auto mt-16 max-w-4xl text-center"
           >
-            <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">
-              Enterprise systems require careful planning and structured delivery. Our teams work with organisations to design technology solutions aligned with operational goals and long-term performance.
-            </p>
+            <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 md:text-xl">{t("solutions.finalBody")}</p>
             <div className="mt-8 flex justify-center">
               <Button to="/contact">
-                Start a Conversation
-                <ArrowRight className="ml-2 w-4 h-4" />
+                {t("solutions.startConversation")}
+                <ArrowRight className="rtl-arrow h-4 w-4" />
               </Button>
             </div>
           </motion.div>

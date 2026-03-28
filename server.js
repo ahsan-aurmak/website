@@ -79,6 +79,18 @@ const knownInsightRoutes = new Set([
   "/insights/ux-testing-business-risk",
 ]);
 
+function withArabicVariants(routes) {
+  return new Set([
+    ...routes,
+    ...Array.from(routes, (route) => (route === "/" ? "/ar" : `/ar${route}`)),
+  ]);
+}
+
+const localizedStaticRoutes = withArabicVariants(knownStaticRoutes);
+const localizedCaseStudyRoutes = withArabicVariants(knownCaseStudyRoutes);
+const localizedCareerRoutes = withArabicVariants(knownCareerRoutes);
+const localizedInsightRoutes = withArabicVariants(knownInsightRoutes);
+
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -107,10 +119,10 @@ function isIndexingEnabledForHost(hostname = "") {
 
 function isKnownAppRoute(pathname) {
   return (
-    knownStaticRoutes.has(pathname) ||
-    knownCaseStudyRoutes.has(pathname) ||
-    knownCareerRoutes.has(pathname) ||
-    knownInsightRoutes.has(pathname)
+    localizedStaticRoutes.has(pathname) ||
+    localizedCaseStudyRoutes.has(pathname) ||
+    localizedCareerRoutes.has(pathname) ||
+    localizedInsightRoutes.has(pathname)
   );
 }
 

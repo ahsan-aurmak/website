@@ -4,81 +4,68 @@ import { Card, GlassCard } from "../components/card";
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Briefcase } from "lucide-react";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
+import { useLanguage } from "../components/language-provider";
 
 export default function Careers() {
+  const { localizePath, t } = useLanguage();
+
   const roles = [
     {
-      code: "AUR-ENG-001",
-      title: "Tech Lead (Backend/AI)",
-      location: "Lahore, Pakistan",
-      model: "Hybrid, Full-time",
-      slug: "tech-lead-backend-ai"
+      title: t("careers.role1Title"),
+      location: t("careers.roleLocation"),
+      model: t("careers.roleModel1"),
+      slug: "tech-lead-backend-ai",
     },
     {
-      code: "AUR-DEL-002",
-      title: "Product Owner (Delivery Lead)",
-      location: "Lahore, Pakistan",
-      model: "Hybrid, Full-time",
-      slug: "product-owner-delivery-lead"
+      title: t("careers.role2Title"),
+      location: t("careers.roleLocation"),
+      model: t("careers.roleModel2"),
+      slug: "product-owner-delivery-lead",
     },
     {
-      code: "AUR-FE-003",
-      title: "Frontend Developer (SaaS & Modern UI)",
-      location: "Lahore, Pakistan",
-      model: "On-site / Hybrid, Full-time",
-      slug: "frontend-developer-saas-modern-ui"
-    }
+      title: t("careers.role3Title"),
+      location: t("careers.roleLocation"),
+      model: t("careers.roleModel3"),
+      slug: "frontend-developer-saas-modern-ui",
+    },
   ];
 
-  const whyJoin = [
-    "Disciplined engineering culture with leadership accountability.",
-    "Cross-regional collaboration across London, Dubai, and Lahore teams.",
-    "Balanced exposure to client delivery and internal product development.",
-    "Clear ownership, governance, and measurable outcomes."
-  ];
-
-  const benefits = [
-    "Opportunity to work from AURMAK's Dubai and London offices.",
-    "Long-term team members may be offered a permanent role in an AURMAK international office.",
-    "After successful completion of probation, eligibility for a company car.",
-    "After successful completion of probation, eligibility for medical insurance and paid holidays."
-  ];
+  const whyJoin = [t("careers.whyJoin1"), t("careers.whyJoin2"), t("careers.whyJoin3"), t("careers.whyJoin4")];
+  const benefits = [t("careers.benefit1"), t("careers.benefit2"), t("careers.benefit3"), t("careers.benefit4")];
 
   return (
     <div>
       <SEO
-        title="Careers at AURMAK"
-        description="Explore current AURMAK roles across engineering, delivery, frontend development, and rapid prototyping within our global delivery model."
-        canonical="https://www.aurmak.com/careers"
+        title={t("careers.seoTitle")}
+        description={t("careers.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/careers")}`}
         schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Careers", url: "/careers" }
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.careers"), url: localizePath("/careers") },
         ])}
       />
       <Hero
-        eyebrow="Careers"
+        eyebrow={t("careers.eyebrow")}
         title={
           <>
-            Careers at{" "}
-            <span className="text-[#27aae1]">AURMAK.</span>
+            {t("careers.heroTitleLead")} <span className="text-[#27aae1]">{t("careers.heroTitleHighlight")}</span>
           </>
         }
-        lead="Join a team where commercial clarity, technical discipline, and accountable delivery define how work gets done."
-        badge="🚀 Join Us"
+        lead={t("careers.heroLead")}
+        badge={t("careers.heroBadge")}
       >
         <div className="flex flex-wrap gap-4">
           <Button to="#open-positions">
-            View Open Roles
-            <ArrowRight className="ml-2 w-4 h-4" />
+            {t("careers.viewOpenRoles")}
+            <ArrowRight className="rtl-arrow h-4 w-4" />
           </Button>
           <Button to="/contact" variant="secondary">
-            Get in Touch
+            {t("careers.getInTouch")}
           </Button>
         </div>
       </Hero>
 
-      {/* Open Positions */}
-      <section id="open-positions" className="py-16 relative">
+      <section id="open-positions" className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,41 +73,36 @@ export default function Careers() {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Open{" "}
-              <span className="text-[#27aae1]">
-                Positions
-              </span>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              {t("careers.openTitleLead")} <span className="text-[#27aae1]">{t("careers.openTitleHighlight")}</span>
             </h2>
-            <p className="text-slate-600 dark:text-slate-400">
-              Current openings include a dedicated role detail page and direct application submission.
-            </p>
+            <p className="text-slate-600 dark:text-slate-400">{t("careers.openIntro")}</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {roles.map((role, index) => (
               <motion.div
-                key={role.code}
+                key={role.slug}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <GlassCard className="h-full flex flex-col">
+                <GlassCard className="flex h-full flex-col">
                   <h3 className="mb-4 text-xl font-bold text-slate-900 dark:text-slate-100">{role.title}</h3>
-                  <div className="space-y-2 mb-6 flex-1">
+                  <div className="mb-6 flex-1 space-y-2">
                     <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                      <MapPin className="mr-2 h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
+                      <MapPin className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
                       {role.location}
                     </div>
                     <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                      <Briefcase className="mr-2 h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
+                      <Briefcase className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" />
                       {role.model}
                     </div>
                   </div>
                   <Button to={`/careers/${role.slug}`} variant="ghost" className="w-full justify-between">
-                    View Role & Apply
-                    <ArrowRight className="w-4 h-4" />
+                    {t("careers.viewRoleApply")}
+                    <ArrowRight className="rtl-arrow h-4 w-4" />
                   </Button>
                 </GlassCard>
               </motion.div>
@@ -129,24 +111,21 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Why Join / Benefits */}
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <Card className="h-full">
-                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Why Join AURMAK</h2>
-                <p className="mb-6 text-slate-600 dark:text-slate-400">
-                  Contribute to enterprise delivery while building practical product capability through our innovation model.
-                </p>
+                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">{t("careers.whyJoinTitle")}</h2>
+                <p className="mb-6 text-slate-600 dark:text-slate-400">{t("careers.whyJoinLead")}</p>
                 <ul className="space-y-3">
-                  {whyJoin.map((point, i) => (
-                    <li key={i} className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                  {whyJoin.map((point) => (
+                    <li key={point} className="flex items-start gap-3">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#27aae1]" />
                       <span className="text-slate-700 dark:text-slate-300">{point}</span>
                     </li>
                   ))}
@@ -161,14 +140,12 @@ export default function Careers() {
               transition={{ delay: 0.1 }}
             >
               <Card className="h-full">
-                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">Company Benefits</h2>
-                <p className="mb-6 text-slate-600 dark:text-slate-400">
-                  We invest in long-term team development with international exposure and structured benefits after probation.
-                </p>
+                <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">{t("careers.benefitsTitle")}</h2>
+                <p className="mb-6 text-slate-600 dark:text-slate-400">{t("careers.benefitsLead")}</p>
                 <ul className="space-y-3">
-                  {benefits.map((item, i) => (
-                    <li key={i} className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-[#27aae1] rounded-full mt-2 flex-shrink-0" />
+                  {benefits.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#27aae1]" />
                       <span className="text-slate-700 dark:text-slate-300">{item}</span>
                     </li>
                   ))}

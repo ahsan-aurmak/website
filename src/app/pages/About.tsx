@@ -6,58 +6,61 @@ import { GlassCard } from "../components/card";
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { Link } from "react-router";
+import { useLanguage } from "../components/language-provider";
 
 export default function About() {
+  const { direction, localizePath, t } = useLanguage();
+
   const centres = [
     {
       icon: Globe2,
-      city: "London"
+      city: t("about.london"),
     },
     {
       icon: Building2,
-      city: "Dubai"
+      city: t("about.dubai"),
     },
     {
       icon: Code2,
-      city: "Lahore"
-    }
+      city: t("about.lahore"),
+    },
   ];
 
   const modelPoints = [
-    "International governance standards anchored in London and Dubai",
-    "Disciplined engineering delivery executed across globally distributed teams",
-    "Integrated strategy and execution under shared leadership",
-    "Operational maturity supported by established UK and UAE parent foundations"
+    t("about.modelPoint1"),
+    t("about.modelPoint2"),
+    t("about.modelPoint3"),
+    t("about.modelPoint4"),
   ];
 
   return (
     <div>
       <SEO
-        title="About AURMAK | Global Technology Leadership"
-        description="AURMAK combines UK and UAE leadership with Lahore engineering delivery to execute enterprise systems with governance, clarity, and accountability."
-        canonical="https://www.aurmak.com/about"
+        title={t("about.seoTitle")}
+        description={t("about.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/about")}`}
         keywords="enterprise systems, global technology leadership, digital infrastructure, legacy modernisation, operational governance"
         schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "About", url: "/about" }
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.about"), url: localizePath("/about") },
         ])}
       />
 
       <Hero
-        eyebrow="About AURMAK"
+        eyebrow={t("about.eyebrow")}
         title={
           <>
-            Global Technology{" "}
-            <span className="text-[#27aae1]">Leadership</span>
+            {t("about.heroTitleLead")}{" "}
+            <span className="text-[#27aae1]">{t("about.heroTitleHighlight")}</span>
           </>
         }
-        lead="Strategic leadership in London and Dubai works alongside globally distributed engineering teams to deliver complex enterprise technology programmes with clear accountability across international engagements."
-        badge="🌍 Global Presence"
+        lead={t("about.heroLead")}
+        badge={t("about.heroBadge")}
       >
-        <Button to="/contact">Start a Conversation</Button>
+        <Button to="/contact">{t("about.startConversation")}</Button>
       </Hero>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,31 +70,27 @@ export default function About() {
           >
             <GlassCard className="p-8 lg:p-10">
               <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                Built on International{" "}
-                <span className="text-[#27aae1]">Foundations</span>
+                {t("about.builtTitleLead")}{" "}
+                <span className="text-[#27aae1]">{t("about.builtTitleHighlight")}</span>
               </h2>
               <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
+                <p>{t("about.builtBody1")}</p>
+                <p>{t("about.builtBody2")}</p>
+                <p>{t("about.builtBody3")}</p>
                 <p>
-                  AURMAK represents a new technology brand built on the foundations of an established international technology group with operations in the UK and UAE.
-                </p>
-                <p>
-                  This heritage provides the operational maturity, governance standards, and cross-regional experience required to deliver complex enterprise technology programmes.
-                </p>
-                <p>
-                  Our international footprint strengthens delivery oversight, infrastructure awareness, and the ability to support organisations operating across multiple markets.
-                </p>
-                <p>
-                  Explore our{" "}
-                  <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
-                    services
-                  </Link>,{" "}
-                  <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
-                    solutions
-                  </Link>, and{" "}
-                  <Link to="/lab" className="font-medium text-[#27aae1] hover:underline">
-                    venture lab
-                  </Link>{" "}
-                  to see how this model translates into delivery capability.
+                  {t("about.builtBody4BeforeServices")}
+                  <Link to={localizePath("/services")} className="font-medium text-[#27aae1] hover:underline">
+                    {t("navigation.services")}
+                  </Link>
+                  {t("about.builtBody4BetweenServicesAndSolutions")}
+                  <Link to={localizePath("/solutions")} className="font-medium text-[#27aae1] hover:underline">
+                    {t("navigation.solutions")}
+                  </Link>
+                  {t("about.builtBody4BetweenSolutionsAndLab")}
+                  <Link to={localizePath("/lab")} className="font-medium text-[#27aae1] hover:underline">
+                    {t("navigation.lab")}
+                  </Link>
+                  {t("about.builtBody4AfterLab")}
                 </p>
               </div>
             </GlassCard>
@@ -99,17 +98,17 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Three Centres.{" "}
-              <span className="text-[#27aae1]">One Vision.</span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {t("about.centresTitleLead")}{" "}
+              <span className="text-[#27aae1]">{t("about.centresTitleHighlight")}</span>
             </h2>
           </motion.div>
 
@@ -138,12 +137,12 @@ export default function About() {
             viewport={{ once: true }}
             className="mx-auto mt-10 max-w-4xl text-center text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300"
           >
-            London, Dubai, and Lahore form AURMAK’s integrated global delivery network, combining strategic leadership, engineering capability, and operational execution. Our teams operate as a unified system, with the flexibility to deploy engineering and delivery capability across regions based on project requirements, regulatory needs, and client preferences.
+            {t("about.centresBody")}
           </motion.p>
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -154,11 +153,11 @@ export default function About() {
               <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
                 <div>
                   <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                    Strategic Leadership.{" "}
-                    <span className="text-[#27aae1]">Engineering Delivery.</span>
+                    {t("about.modelTitleLead")}{" "}
+                    <span className="text-[#27aae1]">{t("about.modelTitleHighlight")}</span>
                   </h2>
                   <p className="mb-8 max-w-3xl text-lg text-[#5f6b8e] dark:text-slate-300">
-                    AURMAK’s delivery model combines international leadership with scalable engineering execution.
+                    {t("about.modelIntro")}
                   </p>
 
                   <div className="space-y-4">
@@ -193,40 +192,38 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-left"
+              className={direction === "rtl" ? "text-right" : "text-left"}
             >
               <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                Focused on Enterprise{" "}
-                <span className="text-[#27aae1]">Systems</span>
+                {t("about.systemsTitleLead")}{" "}
+                <span className="text-[#27aae1]">{t("about.systemsTitleHighlight")}</span>
               </h2>
-            <p className="text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
-              AURMAK designs and delivers enterprise technology systems that power modern operations, from SaaS platforms and digital infrastructure to AI-enabled operational intelligence.
-            </p>
-            <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
-              View our{" "}
-              <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
-                case studies
-              </Link>{" "}
-              or{" "}
-              <Link to="/contact" className="font-medium text-[#27aae1] hover:underline">
-                start a conversation
-              </Link>{" "}
-              with the team.
-            </p>
-          </motion.div>
+              <p className="text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">{t("about.systemsBody")}</p>
+              <p className="mt-6 text-base text-slate-500 dark:text-slate-500">
+                {t("about.systemsBody2BeforeCaseStudies")}
+                <Link to={localizePath("/case-studies")} className="font-medium text-[#27aae1] hover:underline">
+                  {t("navigation.caseStudies")}
+                </Link>
+                {t("about.systemsBody2Between")}
+                <Link to={localizePath("/contact")} className="font-medium text-[#27aae1] hover:underline">
+                  {t("about.startConversation")}
+                </Link>
+                {t("about.systemsBody2AfterContact")}
+              </p>
+            </motion.div>
             <div className="hidden lg:block" />
           </div>
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -235,25 +232,21 @@ export default function About() {
             className="mx-auto max-w-5xl rounded-3xl border border-slate-200 p-8 dark:border-slate-800 lg:p-10"
           >
             <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-              Venture{" "}
-              <span className="text-[#27aae1]">Development</span>
+              {t("about.ventureTitleLead")}{" "}
+              <span className="text-[#27aae1]">{t("about.ventureTitleHighlight")}</span>
             </h2>
             <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
-              <p>
-                Alongside enterprise client partnerships, AURMAK operates a venture studio focused on developing internal SaaS platforms and technology products.
-              </p>
-              <p>
-                This work keeps our teams closely connected to product architecture, infrastructure design, and long-term platform thinking — experience that directly strengthens the systems we deliver for clients.
-              </p>
+              <p>{t("about.ventureBody1")}</p>
+              <p>{t("about.ventureBody2")}</p>
             </div>
             <div className="mt-8">
-              <Button to="/lab">Explore The Lab</Button>
+              <Button to="/lab">{t("about.exploreLab")}</Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,13 +255,11 @@ export default function About() {
             className="mx-auto max-w-5xl text-center"
           >
             <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-              Planning Your Next{" "}
-              <span className="text-[#27aae1]">Enterprise System?</span>
+              {t("about.finalTitleLead")}{" "}
+              <span className="text-[#27aae1]">{t("about.finalTitleHighlight")}</span>
             </h2>
-            <p className="mx-auto mb-8 max-w-3xl text-lg text-[#5f6b8e] dark:text-slate-300">
-              Speak with our team to explore the right technology approach for your organisation.
-            </p>
-            <Button to="/contact">Start a Conversation</Button>
+            <p className="mx-auto mb-8 max-w-3xl text-lg text-[#5f6b8e] dark:text-slate-300">{t("about.finalBody")}</p>
+            <Button to="/contact">{t("about.startConversation")}</Button>
           </motion.div>
         </div>
       </section>

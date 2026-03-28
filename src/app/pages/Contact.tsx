@@ -9,16 +9,18 @@ import { useTheme } from "../components/theme-provider";
 import { GlassCard } from "../components/card";
 import { getCalendlyPageSettings } from "../lib/calendly";
 import { Turnstile } from "../components/turnstile";
+import { useLanguage } from "../components/language-provider";
 
 export default function Contact() {
   const { theme } = useTheme();
+  const { localizePath, t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     company: "",
     service: "",
     brief: "",
-    website: ""
+    website: "",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -27,28 +29,28 @@ export default function Contact() {
 
   const offices = [
     {
-      country: "United Kingdom",
+      country: t("contact.office1Country"),
       address: "124 City Road, London, EC1V 2NX",
-      focus: "Client strategy & delivery"
+      focus: t("contact.office1Focus"),
     },
     {
-      country: "United Arab Emirates",
+      country: t("contact.office2Country"),
       address: "BLA-507, Block A, Ajman Main Boulevard",
-      focus: "Regional delivery & coordination"
+      focus: t("contact.office2Focus"),
     },
     {
-      country: "Pakistan",
+      country: t("contact.office3Country"),
       address: "306 Tipu Block, Bahria Town, Lahore",
-      focus: "Engineering & platform development"
-    }
+      focus: t("contact.office3Focus"),
+    },
   ];
 
   const services = [
-    "SaaS Product Development",
-    "Legacy System Modernisation",
-    "AI Integration",
-    "Building Management Systems",
-    "General Advisory"
+    t("contact.service1"),
+    t("contact.service2"),
+    t("contact.service3"),
+    t("contact.service4"),
+    t("contact.service5"),
   ];
 
   const calendlyPageSettings = getCalendlyPageSettings(theme);
@@ -62,18 +64,18 @@ export default function Contact() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
           turnstileToken,
-        })
+        }),
       });
 
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        throw new Error(data?.message || "Unable to submit your enquiry right now.");
+        throw new Error(data?.message || t("contact.submitErrorGeneric"));
       }
 
       setStatus("success");
@@ -83,57 +85,54 @@ export default function Contact() {
         company: "",
         service: "",
         brief: "",
-        website: ""
+        website: "",
       });
       setTurnstileToken("");
     } catch (error) {
       setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Unable to submit your enquiry right now.");
+      setErrorMessage(error instanceof Error ? error.message : t("contact.submitErrorGeneric"));
     }
   };
 
   return (
     <div>
       <SEO
-        title="Contact AURMAK | Start an Enterprise Systems Conversation"
-        description="Contact AURMAK to discuss enterprise systems, AI integration, SaaS platforms, and digital modernisation with our London, Dubai, and Lahore teams."
-        canonical="https://www.aurmak.com/contact"
+        title={t("contact.seoTitle")}
+        description={t("contact.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/contact")}`}
         keywords="contact AURMAK, enterprise technology consultation, AI integration inquiry, project discussion, London Dubai Lahore offices"
         schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Contact", url: "/contact" }
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.contact"), url: localizePath("/contact") },
         ])}
       />
       <Hero
-        eyebrow="Contact"
+        eyebrow={t("contact.eyebrow")}
         title={
           <>
-            Start the Conversation That Moves{" "}
-            <span className="text-[#27aae1]">Your Operations Forward.</span>
+            {t("contact.heroTitleLead")} <span className="text-[#27aae1]">{t("contact.heroTitleHighlight")}</span>
           </>
         }
-        lead="Tell us where your systems are slowing you down or limiting scale. We’ll help you define a clear, structured path forward."
-        badge="📞 Get in Touch"
+        lead={t("contact.heroLead")}
+        badge={t("contact.heroBadge")}
       >
-        <Button to="/contact#message">Start a Conversation</Button>
+        <Button to="/contact#message">{t("contact.startConversation")}</Button>
       </Hero>
 
-      {/* Office Addresses */}
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Global Presence.{" "}
-              <span className="text-[#27aae1]">Local Understanding.</span>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              {t("contact.officesTitleLead")} <span className="text-[#27aae1]">{t("contact.officesTitleHighlight")}</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {offices.map((office, index) => (
               <motion.div
                 key={office.country}
@@ -160,33 +159,29 @@ export default function Contact() {
 
           <div className="text-center">
             <Button to="/contact#message" variant="ghost" className="gap-2">
-              Speak with our team directly
-              <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+              {t("contact.speakDirectly")}
+              <ArrowRight className="rtl-arrow h-4 w-4" strokeWidth={1.75} />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Calendly Booking */}
-      <section id="book-call" className="py-12 relative">
+      <section id="book-call" className="relative py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-6"
+            className="mb-6 text-center"
           >
             <div className="mb-6 inline-flex items-center space-x-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2">
               <Calendar className="h-4 w-4 text-[#27aae1] dark:text-cyan-400" strokeWidth={1.75} />
-              <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">Calendly</span>
+              <span className="text-sm font-medium text-[#27aae1] dark:text-cyan-400">{t("contact.calendlyLabel")}</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Start with a{" "}
-              <span className="text-[#27aae1]">Focused Conversation</span>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              {t("contact.bookingTitleLead")} <span className="text-[#27aae1]">{t("contact.bookingTitleHighlight")}</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              30 minutes with a senior team member to understand your current systems, challenges, and priorities and outline a clear path forward.
-            </p>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">{t("contact.bookingLead")}</p>
           </motion.div>
 
           <motion.div
@@ -205,47 +200,35 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center gap-6 py-2">
           <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
-          <span className="text-sm font-medium text-slate-500">or send us a message</span>
+          <span className="text-sm font-medium text-slate-500">{t("contact.divider")}</span>
           <div className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
         </div>
       </div>
 
-      {/* Contact Form */}
-      <section id="message" className="py-16 relative">
+      <section id="message" className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
-
-          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="mb-10 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Send a{" "}
-              <span className="text-[#27aae1]">Message</span>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              {t("contact.messageTitleLead")} <span className="text-[#27aae1]">{t("contact.messageTitleHighlight")}</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Share a brief outline of your current priorities — we’ll respond with a clear next step.
-            </p>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">{t("contact.messageLead")}</p>
           </motion.div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="brand-surface rounded-2xl border border-slate-200 bg-white/88 p-8 shadow-sm dark:border-slate-700/50 dark:bg-transparent dark:shadow-none lg:p-12">
               {status === "success" ? (
-                <div className="text-center py-12">
+                <div className="py-12 text-center">
                   <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-400" strokeWidth={1.75} />
-                  <h3 className="text-xl font-bold text-green-400 mb-2">Enquiry Submitted Successfully</h3>
-                  <p className="text-slate-600 dark:text-slate-400">Our team will contact you shortly.</p>
+                  <h3 className="mb-2 text-xl font-bold text-green-400">{t("contact.successTitle")}</h3>
+                  <p className="text-slate-600 dark:text-slate-400">{t("contact.successBody")}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -262,11 +245,10 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Row 1: Name + Email */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div>
                       <label htmlFor="fullName" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Full Name *
+                        {t("contact.fullName")}
                       </label>
                       <input
                         type="text"
@@ -275,14 +257,14 @@ export default function Contact() {
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
-                        placeholder="John Doe"
+                        placeholder={t("contact.fullNamePlaceholder")}
                         required
                         autoComplete="name"
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Email Address *
+                        {t("contact.email")}
                       </label>
                       <input
                         type="email"
@@ -291,7 +273,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
-                        placeholder="john@company.com"
+                        placeholder={t("contact.emailPlaceholder")}
                         required
                         autoComplete="email"
                         inputMode="email"
@@ -299,11 +281,10 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* Row 2: Company + Service */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div>
                       <label htmlFor="company" className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Company Name
+                        {t("contact.company")}
                       </label>
                       <input
                         type="text"
@@ -312,13 +293,13 @@ export default function Contact() {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-all focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100"
-                        placeholder="Your Company"
+                        placeholder={t("contact.companyPlaceholder")}
                         autoComplete="organization"
                       />
                     </div>
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Service Requirement *
+                        {t("contact.serviceRequirement")}
                       </label>
                       <div className="relative">
                         <select
@@ -327,7 +308,7 @@ export default function Contact() {
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="w-full cursor-pointer appearance-none rounded-lg border border-slate-300 bg-white px-4 py-3 pr-10 text-slate-900 transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                         >
-                          <option value="">Select a service</option>
+                          <option value="">{t("contact.selectService")}</option>
                           {services.map((service) => (
                             <option key={service} value={service}>
                               {service}
@@ -343,17 +324,14 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* Row 3: Message full-width */}
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                      Message *
-                    </label>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">{t("contact.message")}</label>
                     <textarea
                       required
                       rows={6}
                       value={formData.brief}
                       onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
-                      placeholder="Tell us about your business, what you're looking to achieve, and any timelines or constraints."
+                      placeholder={t("contact.messagePlaceholder")}
                       className="w-full resize-none rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
                     />
                   </div>
@@ -376,9 +354,7 @@ export default function Contact() {
                       }}
                     />
                     {import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken && (
-                      <p className="text-sm text-slate-500 dark:text-slate-400">
-                        Please complete the security check before submitting.
-                      </p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">{t("contact.securityCheck")}</p>
                     )}
                   </div>
 
@@ -388,7 +364,7 @@ export default function Contact() {
                       disabled={status === "loading" || (!!import.meta.env.VITE_TURNSTILE_SITE_KEY && !turnstileToken)}
                       className="px-12"
                     >
-                      {status === "loading" ? "Submitting..." : "Submit Enquiry"}
+                      {status === "loading" ? t("contact.submitting") : t("contact.submitEnquiry")}
                     </Button>
                   </div>
                 </form>

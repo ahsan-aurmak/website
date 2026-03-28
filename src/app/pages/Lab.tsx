@@ -5,75 +5,73 @@ import { GlassCard } from "../components/card";
 import { ImageWithFallback } from "../components/media/ImageWithFallback";
 import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import { Link } from "react-router";
+import { useLanguage } from "../components/language-provider";
 
 export default function Lab() {
+  const { localizePath, t } = useLanguage();
+
   const principles = [
     {
       icon: Cpu,
-      title: "Human-Led Diagnostics",
-      description: "We begin by analysing operational problems and commercial needs before defining what should be built."
+      title: t("lab.principle1Title"),
+      description: t("lab.principle1Description"),
     },
     {
       icon: Zap,
-      title: "Structured Build Cycles",
-      description: "Product concepts are developed through controlled build cycles with clear checkpoints and technical governance."
+      title: t("lab.principle2Title"),
+      description: t("lab.principle2Description"),
     },
     {
       icon: Eye,
-      title: "Scalability Readiness",
-      description: "Every output is designed to scale, informing both client delivery and future venture opportunities."
-    }
+      title: t("lab.principle3Title"),
+      description: t("lab.principle3Description"),
+    },
   ];
 
   const focusAreas = [
-    "Predictive Maintenance Workflows\nAnticipating equipment issues through AI-driven operational intelligence.",
-    "Governed AI Interfaces\nSecure AI interaction layers for enterprise systems.",
-    "Facility Performance Modelling\nSimulating infrastructure performance and optimisation.",
-    "Integration Accelerators\nReusable frameworks for faster enterprise system integration."
+    { title: t("lab.focus1Title"), description: t("lab.focus1Description") },
+    { title: t("lab.focus2Title"), description: t("lab.focus2Description") },
+    { title: t("lab.focus3Title"), description: t("lab.focus3Description") },
+    { title: t("lab.focus4Title"), description: t("lab.focus4Description") },
   ];
 
   return (
     <div>
       <SEO
-        title="Venture Lab for Enterprise Technology Capability"
-        description="The Venture Lab strengthens AURMAK’s enterprise systems, AI-enabled operational intelligence, and delivery model through disciplined product exploration."
-        canonical="https://www.aurmak.com/lab"
+        title={t("lab.seoTitle")}
+        description={t("lab.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/lab")}`}
         keywords="venture studio, enterprise systems, AI-enabled operational intelligence, integration architecture, digital infrastructure"
         schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Lab", url: "/lab" }
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.lab"), url: localizePath("/lab") },
         ])}
       />
       <Hero
-        eyebrow="The Lab"
+        eyebrow={t("lab.eyebrow")}
         title={
           <>
-            The Venture{" "}
-            <span className="text-[#27aae1]">Lab</span>
+            {t("lab.heroTitleLead")} <span className="text-[#27aae1]">{t("lab.heroTitleHighlight")}</span>
           </>
         }
-        lead="Where internal product ideas become real technology capability. Concepts are tested, refined, and built using the same engineering discipline that powers our client systems."
-        badge="🔬 Innovation Lab"
+        lead={t("lab.heroLead")}
+        badge={t("lab.heroBadge")}
       />
 
-      {/* Principles */}
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              How the Lab{" "}
-              <span className="text-[#27aae1]">
-                Operates
-              </span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {t("lab.principlesTitleLead")} <span className="text-[#27aae1]">{t("lab.principlesTitleHighlight")}</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {principles.map((principle, index) => (
               <motion.div
                 key={principle.title}
@@ -95,8 +93,7 @@ export default function Lab() {
         </div>
       </section>
 
-      {/* Current Exploration Areas */}
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,54 +101,47 @@ export default function Lab() {
             viewport={{ once: true }}
             className="mx-auto max-w-5xl"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Innovation That{" "}
-              <span className="text-[#27aae1]">
-                Strengthens Delivery
-              </span>
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              {t("lab.deliveryTitleLead")} <span className="text-[#27aae1]">{t("lab.deliveryTitleHighlight")}</span>
             </h2>
             <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
+              <p>{t("lab.deliveryBody1")}</p>
+              <p>{t("lab.deliveryBody2")}</p>
               <p>
-                The Venture Studio exists to explore new technology approaches that may influence how enterprise systems are designed, built, and operated.
-              </p>
-              <p>
-                Insights from these initiatives inform AURMAK’s delivery capability, ensuring our teams remain closely connected to emerging platforms, architectures, and operational models.
-              </p>
-              <p>
-                This work directly supports our{" "}
-                <Link to="/services" className="font-medium text-[#27aae1] hover:underline">
-                  services
-                </Link>,{" "}
-                <Link to="/solutions" className="font-medium text-[#27aae1] hover:underline">
-                  solutions
-                </Link>, and selected{" "}
-                <Link to="/case-studies" className="font-medium text-[#27aae1] hover:underline">
-                  case studies
-                </Link>.
+                {t("lab.deliveryBody3BeforeServices")}
+                <Link to={localizePath("/services")} className="font-medium text-[#27aae1] hover:underline">
+                  {t("navigation.services")}
+                </Link>
+                {t("lab.deliveryBody3BetweenServicesAndSolutions")}
+                <Link to={localizePath("/solutions")} className="font-medium text-[#27aae1] hover:underline">
+                  {t("navigation.solutions")}
+                </Link>
+                {t("lab.deliveryBody3BetweenSolutionsAndCaseStudies")}
+                <Link to={localizePath("/case-studies")} className="font-medium text-[#27aae1] hover:underline">
+                  {t("navigation.caseStudies")}
+                </Link>
+                {t("lab.deliveryBody3AfterCaseStudies")}
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Current Exploration{" "}
-                <span className="text-[#27aae1]">
-                  Areas
-                </span>
+              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+                {t("lab.focusTitleLead")} <span className="text-[#27aae1]">{t("lab.focusTitleHighlight")}</span>
               </h2>
               <div className="space-y-4">
                 {focusAreas.map((area, index) => (
                   <motion.div
-                    key={index}
+                    key={area.title}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -160,8 +150,8 @@ export default function Lab() {
                   >
                     <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#27aae1]" strokeWidth={1.75} />
                     <div className="text-slate-700 dark:text-slate-300">
-                      <p className="font-semibold">{area.split("\n")[0]}</p>
-                      <p className="mt-1">{area.split("\n")[1]}</p>
+                      <p className="font-semibold">{area.title}</p>
+                      <p className="mt-1">{area.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -178,14 +168,13 @@ export default function Lab() {
                 <ImageWithFallback
                   src={`${import.meta.env.BASE_URL}lab_focus_areas_futuristic.jpg`}
                   alt="Illustration of venture lab exploration areas across predictive maintenance, governed AI, and integration accelerators"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

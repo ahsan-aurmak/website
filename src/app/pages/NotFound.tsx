@@ -3,41 +3,28 @@ import { motion } from "motion/react";
 import { Home, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router";
 import { SEO } from "../components/seo";
+import { useLanguage } from "../components/language-provider";
 
 export default function NotFound() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <SEO
-        title="Page Not Found"
-        description="The page you requested could not be found."
-        canonical={null}
-        noIndex
-      />
-      <div className="text-center max-w-2xl">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="mb-4 text-9xl font-bold text-[#27aae1]">
-            404
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#282973] dark:text-slate-100">
-            Page Not Found
-          </h1>
-          <p className="text-[#5f6b8e] dark:text-slate-400 text-lg mb-8">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex min-h-screen items-center justify-center px-4">
+      <SEO title={t("notFound.title")} description={t("notFound.description")} canonical={null} noIndex />
+      <div className="max-w-2xl text-center">
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
+          <div className="mb-4 text-9xl font-bold text-[#27aae1]">404</div>
+          <h1 className="mb-4 text-4xl font-bold text-[#282973] dark:text-slate-100 md:text-5xl">{t("notFound.title")}</h1>
+          <p className="mb-8 text-lg text-[#5f6b8e] dark:text-slate-400">{t("notFound.body")}</p>
+          <div className="flex flex-wrap justify-center gap-4">
             <Button to="/">
-              <Home className="mr-2 w-4 h-4" />
-              Go Home
+              <Home className="h-4 w-4" />
+              {t("notFound.goHome")}
             </Button>
             <Button onClick={() => navigate(-1)} variant="secondary">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Go Back
+              <ArrowLeft className="rtl-arrow h-4 w-4" />
+              {t("notFound.goBack")}
             </Button>
           </div>
         </motion.div>

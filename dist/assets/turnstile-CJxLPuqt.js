@@ -1,1 +1,0 @@
-import{r as e}from"./vendor-DYolRmk2.js";function a({onVerify:t,onExpire:r,theme:s="auto"}){const n=e.useId().replace(/:/g,"");return e.useRef(null),e.useRef(!1),e.useEffect(()=>{},[n,r,t,"",s]),null}export{a as T};

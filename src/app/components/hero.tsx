@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { AnimatedBackground, FloatingOrbs, GridPattern } from "./animated-background";
 import { Sparkles } from "lucide-react";
+import { useLanguage } from "./language-provider";
 
 interface HeroProps {
   eyebrow?: string;
@@ -24,6 +25,7 @@ export function Hero({
   align = "left",
   size = "default",
 }: HeroProps) {
+  const { direction } = useLanguage();
   const eyebrowText = eyebrow || kicker;
   const alignmentClassName = align === "center" ? "max-w-5xl mx-auto text-center" : "max-w-4xl";
   const titleClassName = size === "large"
@@ -56,6 +58,7 @@ export function Hero({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#27aae1]/20 bg-white/80 px-4 py-2 text-sm font-medium text-[#27aae1] backdrop-blur-sm dark:bg-[#1B2A6B]/40"
+              style={{ direction }}
             >
               <Sparkles className="h-4 w-4" strokeWidth={2} />
               {eyebrowText}
@@ -92,20 +95,22 @@ export function Hero({
         </motion.div>
         
         {/* Floating badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, type: "spring" }}
-          className="absolute bottom-8 right-8 hidden lg:block"
-        >
+        {badge && (
           <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="rounded-full border border-[#27aae1]/20 bg-white/90 px-6 py-3 text-sm font-medium text-[#27aae1] shadow-lg shadow-slate-950/5 backdrop-blur-xl dark:border-cyan-500/30 dark:bg-[#1B2A6B]/75 dark:text-cyan-300 dark:shadow-cyan-500/10"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8, type: "spring" }}
+            className={`absolute bottom-8 hidden lg:block ${direction === "rtl" ? "left-8" : "right-8"}`}
           >
-            {badge || "🚀 Innovation at Scale"}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-full border border-[#27aae1]/20 bg-white/90 px-6 py-3 text-sm font-medium text-[#27aae1] shadow-lg shadow-slate-950/5 backdrop-blur-xl dark:border-cyan-500/30 dark:bg-[#1B2A6B]/75 dark:text-cyan-300 dark:shadow-cyan-500/10"
+            >
+              {badge}
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </div>
     </section>
   );

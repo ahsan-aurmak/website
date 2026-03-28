@@ -21,6 +21,18 @@
   background-image: radial-gradient(var(--tw-gradient-stops));
 }
 
+.rtl .rtl-arrow {
+  transform: scaleX(-1);
+}
+
+html[lang="ar"] body,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select {
+  font-family: "Noto Sans Arabic", var(--font-family-sans);
+}
+
 /* Fix: remove unwanted scrollbar inside Calendly popup modal */
 .calendly-overlay {
   background-color: rgba(0, 0, 0, 0.85) !important;

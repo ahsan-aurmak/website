@@ -6,80 +6,76 @@ import { SEO, generateBreadcrumbSchema } from "../components/seo";
 import umerPhoto from "../../assets/umar.jpeg";
 import masoodPhoto from "../../assets/masood.jpeg";
 import khurramPhoto from "../../assets/khurram.jpeg";
+import { useLanguage } from "../components/language-provider";
 
 function LinkedInIcon({ size = 18 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M4.983 3.5C4.983 4.88 3.869 6 2.492 6A2.49 2.49 0 0 1 0 3.5C0 2.12 1.115 1 2.492 1a2.49 2.49 0 0 1 2.491 2.5ZM.395 8h4.194v13.5H.395V8ZM8.36 8h4.02v1.845h.057c.56-1.062 1.93-2.182 3.972-2.182 4.246 0 5.03 2.8 5.03 6.44V21.5h-4.19v-6.555c0-1.564-.028-3.575-2.18-3.575-2.184 0-2.518 1.705-2.518 3.462V21.5H8.36V8Z" />
     </svg>
   );
 }
 
 export default function Team() {
+  const { localizePath, t } = useLanguage();
+
   const team = [
     {
-      role: "Co-founder",
+      role: t("team.member1Role"),
       name: "Masood Zafar",
-      bio: "Engineering executive with more than 30 years of leadership experience across power generation, manufacturing operations, and large-scale infrastructure programmes. Masood provides operational leadership and strategic oversight across AURMAK’s enterprise engagements.",
+      bio: t("team.member1Bio"),
       linkedin: "https://www.linkedin.com/in/masood-zafar-7b45582a/",
-      photo: masoodPhoto
+      photo: masoodPhoto,
     },
     {
-      role: "Chief Operating Officer",
+      role: t("team.member2Role"),
       name: "Umer Jalil",
-      bio: "Programme delivery leader with more than 15 years of experience managing complex projects across manufacturing, oil and gas environments. Umer specialises in delivery governance, stakeholder coordination, and operational execution across large-scale initiatives.",
+      bio: t("team.member2Bio"),
       linkedin: "https://www.linkedin.com/in/umar-jalil/",
-      photo: umerPhoto
+      photo: umerPhoto,
     },
     {
-      role: "Managing Director",
+      role: t("team.member3Role"),
       name: "Khurram Sultan",
-      bio: "Operations and business transformation consultant with more than 12 years of leadership experience across logistics, construction, and professional services. Khurram focuses on operational performance, commercial strategy, and sustainable growth initiatives.",
+      bio: t("team.member3Bio"),
       linkedin: "https://www.linkedin.com/in/khuram-sultan-555a893a4/",
-      photo: khurramPhoto
+      photo: khurramPhoto,
     },
   ];
 
   return (
     <div>
       <SEO
-        title="AURMAK Leadership Team"
-        description="Meet the AURMAK leadership team guiding technology strategy, engineering delivery, and operational execution across global enterprise engagements."
-        canonical="https://www.aurmak.com/team"
+        title={t("team.seoTitle")}
+        description={t("team.seoDescription")}
+        canonical={`https://www.aurmak.com${localizePath("/team")}`}
         breadcrumbSchema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "About", url: "/about" },
-          { name: "Team", url: "/team" }
+          { name: t("navigation.home"), url: localizePath("/") },
+          { name: t("navigation.about"), url: localizePath("/about") },
+          { name: t("navigation.team"), url: localizePath("/team") },
         ])}
       />
       <Hero
-        eyebrow="Team"
-        title="Leadership"
-        lead="AURMAK’s leadership brings extensive experience across complex global enterprise engagements, guiding technology strategy, engineering delivery, and operational execution."
-        badge="👥 Leadership"
+        eyebrow={t("team.eyebrow")}
+        title={t("team.heroTitle")}
+        lead={t("team.heroLead")}
+        badge={t("team.heroBadge")}
       />
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Leadership{" "}
-              <span className="text-[#27aae1]">Team</span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              {t("team.sectionTitleLead")} <span className="text-[#27aae1]">{t("team.sectionTitleHighlight")}</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -89,14 +85,7 @@ export default function Team() {
                 transition={{ delay: index * 0.08 }}
               >
                 <GlassCard className="h-full p-8 dark:border-slate-800/70 dark:bg-none dark:bg-slate-900/85 dark:shadow-none">
-                  <div
-                    className="items-start"
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "150px minmax(0, 1fr)",
-                      gap: "1.5rem",
-                    }}
-                  >
+                  <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[150px_minmax(0,1fr)] lg:gap-6">
                     <div className="flex flex-col items-center gap-5">
                       <img
                         src={member.photo}
@@ -123,11 +112,8 @@ export default function Team() {
                       </motion.a>
                     </div>
 
-                    <div className="flex min-w-0 flex-col">
-                      <div
-                        className="text-sm uppercase text-slate-500 dark:text-slate-400"
-                        style={{ letterSpacing: "0.18em" }}
-                      >
+                    <div className="flex min-w-0 flex-col text-center lg:text-left">
+                      <div className="text-sm uppercase text-slate-500 dark:text-slate-400" style={{ letterSpacing: "0.18em" }}>
                         {member.role}
                       </div>
                       <h3 className="mt-3 text-3xl font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
@@ -141,7 +127,7 @@ export default function Team() {
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,22 +136,17 @@ export default function Team() {
             className="mx-auto max-w-5xl"
           >
             <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-              Global Expert{" "}
-              <span className="text-[#27aae1]">Network</span>
+              {t("team.networkTitleLead")} <span className="text-[#27aae1]">{t("team.networkTitleHighlight")}</span>
             </h2>
             <div className="space-y-5 text-lg leading-relaxed text-[#5f6b8e] dark:text-slate-300">
-              <p>
-                Alongside its leadership team, AURMAK works with a global network of specialist engineers, architects, and delivery partners supporting enterprise programmes across infrastructure systems, data platforms, and AI-enabled solutions.
-              </p>
-              <p>
-                This model enables AURMAK to assemble the right expertise for each engagement while maintaining disciplined programme oversight and strategic leadership.
-              </p>
+              <p>{t("team.networkBody1")}</p>
+              <p>{t("team.networkBody2")}</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 relative">
+      <section className="relative py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -176,14 +157,11 @@ export default function Team() {
               <div className="pointer-events-none absolute inset-0 bg-[#27aae1]/6 dark:bg-[#27aae1]/8" />
               <div className="relative z-10">
                 <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                  Careers at{" "}
-                  <span className="text-[#27aae1]">AURMAK</span>
+                  {t("team.careersTitleLead")} <span className="text-[#27aae1]">{t("team.careersTitleHighlight")}</span>
                 </h2>
-                <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-                  We design and build technology systems for real operational environments. If you’re motivated by solving complex technical challenges, we’d like to hear from you.
-                </p>
+                <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-600 dark:text-slate-400">{t("team.careersBody")}</p>
                 <Button to="/careers" size="large">
-                  Explore Opportunities
+                  {t("team.careersCta")}
                 </Button>
               </div>
             </GlassCard>

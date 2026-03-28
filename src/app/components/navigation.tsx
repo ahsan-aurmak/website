@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import darkLogo from "@assets/3cb6cb72c135cbff9f33bf11110879c261fa8882.png";
 import lightLogo from "@assets/branding/aurmak-logo-lightmode.svg";
 import { useTheme } from "./theme-provider";
+import { useLanguage } from "./language-provider";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const { language, switchLanguage, t, localizePath } = useLanguage();
   const logoSrc = theme === "light" ? lightLogo : darkLogo;
 
   useEffect(() => {
@@ -46,35 +48,36 @@ export function Navigation() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: "Home", path: "/" },
+    { label: t("navigation.home"), path: "/" },
     { 
-      label: "What We Do", 
+      label: t("navigation.whatWeDo"), 
       path: "/services",
       submenu: [
-        { label: "Services", path: "/services" },
-        { label: "Solutions", path: "/solutions" },
-        { label: "How We Work", path: "/how-we-work" },
+        { label: t("navigation.services"), path: "/services" },
+        { label: t("navigation.solutions"), path: "/solutions" },
+        { label: t("navigation.howWeWork"), path: "/how-we-work" },
       ]
     },
-    { label: "Case Studies", path: "/case-studies" },
+    { label: t("navigation.caseStudies"), path: "/case-studies" },
     { 
-      label: "Company", 
+      label: t("navigation.company"), 
       path: "/about",
       submenu: [
-        { label: "About", path: "/about" },
-        { label: "Team", path: "/team" },
-        { label: "The Lab", path: "/lab" },
-        { label: "Insights", path: "/insights" },
-        { label: "Careers", path: "/careers" },
+        { label: t("navigation.about"), path: "/about" },
+        { label: t("navigation.team"), path: "/team" },
+        { label: t("navigation.lab"), path: "/lab" },
+        { label: t("navigation.insights"), path: "/insights" },
+        { label: t("navigation.careers"), path: "/careers" },
       ]
     },
-    { label: "Contact", path: "/contact" },
+    { label: t("navigation.contact"), path: "/contact" },
   ];
 
   // Helper function to check if a parent menu item should be highlighted
   const isParentActive = (link: typeof navLinks[0]) => {
-    if (!link.submenu) return location.pathname === link.path;
-    return link.submenu.some(sublink => location.pathname === sublink.path);
+    const currentPath = location.pathname;
+    if (!link.submenu) return currentPath === localizePath(link.path);
+    return link.submenu.some(sublink => currentPath === localizePath(sublink.path));
   };
 
   return (
@@ -91,7 +94,7 @@ export function Navigation() {
       <nav className="container mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to={localizePath("/")} className="flex items-center space-x-2 group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
@@ -109,7 +112,7 @@ export function Navigation() {
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <div key={link.label} className="relative group">
-                {link.submenu ? (
+                    {link.submenu ? (
                   <div
                     onMouseEnter={() => setOpenDropdown(link.label)}
                     onMouseLeave={() => setOpenDropdown(null)}
@@ -140,9 +143,9 @@ export function Navigation() {
                           {link.submenu.map((sublink) => (
                             <Link
                               key={sublink.path}
-                              to={sublink.path}
+                              to={localizePath(sublink.path)}
                               className={`block px-4 py-2 transition-colors duration-200 ${
-                                location.pathname === sublink.path
+                                location.pathname === localizePath(sublink.path)
                                   ? "bg-[#eef7fc] text-[#27aae1] dark:bg-slate-700/50 dark:text-cyan-400"
                                   : "text-[#282973] hover:bg-[#eef7fc] hover:text-[#27aae1] dark:text-slate-300 dark:hover:bg-slate-700/50 dark:hover:text-cyan-400"
                               }`}
@@ -156,13 +159,13 @@ export function Navigation() {
                   </div>
                 ) : (
                   <Link
-                    to={link.path}
+                    to={localizePath(link.path)}
                     className={`font-medium relative transition-colors duration-200 ${
-                      location.pathname === link.path ? "text-[#27aae1] dark:text-cyan-400" : "text-[#282973] hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
+                      location.pathname === localizePath(link.path) ? "text-[#27aae1] dark:text-cyan-400" : "text-[#282973] hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
                     }`}
                   >
                     {link.label}
-                    {location.pathname === link.path && (
+                    {location.pathname === localizePath(link.path) && (
                       <motion.div
                         layoutId="activeNav"
                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#27aae1]"
@@ -178,34 +181,41 @@ export function Navigation() {
             <button
               onClick={toggleTheme}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-[#282973] transition-colors hover:text-[#27aae1] dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:text-cyan-400"
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-label={theme === "dark" ? t("navigation.switchToLight") : t("navigation.switchToDark")}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <div className="flex items-center rounded-full border border-slate-200 bg-white/80 p-1 backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-              <button type="button" className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
-                EN
+              <button
+                type="button"
+                onClick={() => switchLanguage("en")}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                  language === "en"
+                    ? "border border-[#27aae1]/30 bg-[#eef7fc] font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none"
+                    : "text-slate-500 dark:text-slate-400"
+                }`}
+              >
+                {t("navigation.english")}
               </button>
               <button
                 type="button"
-                disabled
-                aria-disabled="true"
-                title="Arabic is not available yet"
-                className="cursor-not-allowed rounded-full px-3 py-1.5 text-sm font-medium text-slate-400 opacity-70 dark:text-slate-500"
+                onClick={() => switchLanguage("ar")}
+                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                  language === "ar"
+                    ? "border border-[#27aae1]/30 bg-[#eef7fc] font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none"
+                    : "text-slate-500 dark:text-slate-400"
+                }`}
               >
-                العربية
+                {t("navigation.arabic")}
               </button>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Arabic unavailable
-            </p>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden text-[#282973] transition-colors hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
-            aria-label="Toggle menu"
+            aria-label={t("navigation.toggleMenu")}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -238,28 +248,35 @@ export function Navigation() {
                       <button
                         onClick={toggleTheme}
                         className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-[#282973] transition-colors hover:text-[#27aae1] dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-300 dark:hover:text-cyan-400"
-                        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                        aria-label={theme === "dark" ? t("navigation.switchToLight") : t("navigation.switchToDark")}
                       >
                         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                       </button>
                       <div className="flex items-center rounded-full border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-800/80">
-                      <button type="button" className="rounded-full border border-[#27aae1]/30 bg-[#eef7fc] px-3 py-1.5 text-sm font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none">
-                        EN
+                      <button
+                        type="button"
+                        onClick={() => switchLanguage("en")}
+                        className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                          language === "en"
+                            ? "border border-[#27aae1]/30 bg-[#eef7fc] font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none"
+                            : "text-slate-500 dark:text-slate-400"
+                        }`}
+                      >
+                        {t("navigation.english")}
                       </button>
                       <button
                         type="button"
-                        disabled
-                        aria-disabled="true"
-                        title="Arabic is not available yet"
-                        className="cursor-not-allowed rounded-full px-3 py-1.5 text-sm font-medium text-slate-400 opacity-70 dark:text-slate-500"
+                        onClick={() => switchLanguage("ar")}
+                        className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                          language === "ar"
+                            ? "border border-[#27aae1]/30 bg-[#eef7fc] font-semibold text-[#282973] shadow-sm dark:border-transparent dark:bg-cyan-500/20 dark:text-cyan-400 dark:shadow-none"
+                            : "text-slate-500 dark:text-slate-400"
+                        }`}
                       >
-                        العربية
+                        {t("navigation.arabic")}
                       </button>
                       </div>
                     </div>
-                    <span className="ml-3 text-right text-xs text-slate-500 dark:text-slate-400">
-                      Unavailable
-                    </span>
                   </div>
                   {navLinks.map((link) => (
                     <div key={link.label}>
@@ -285,9 +302,9 @@ export function Navigation() {
                                 {link.submenu.map((sublink) => (
                                   <Link
                                     key={sublink.path}
-                                    to={sublink.path}
+                                    to={localizePath(sublink.path)}
                                     className={`block transition-colors py-1.5 ${
-                                      location.pathname === sublink.path
+                                      location.pathname === localizePath(sublink.path)
                                         ? "text-cyan-400"
                                         : "text-[#5f6b8e] hover:text-[#27aae1] dark:text-slate-400 dark:hover:text-cyan-400"
                                     }`}
@@ -301,9 +318,9 @@ export function Navigation() {
                         </div>
                       ) : (
                         <Link
-                          to={link.path}
+                          to={localizePath(link.path)}
                           className={`block py-2 font-medium transition-colors ${
-                            location.pathname === link.path ? "text-[#27aae1] dark:text-cyan-400" : "text-[#282973] hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
+                            location.pathname === localizePath(link.path) ? "text-[#27aae1] dark:text-cyan-400" : "text-[#282973] hover:text-[#27aae1] dark:text-slate-300 dark:hover:text-cyan-400"
                           }`}
                         >
                           {link.label}
