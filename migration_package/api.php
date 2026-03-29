@@ -44,7 +44,7 @@ class SimpleSmtp {
         return $res;
     }
     public function send($from, $to, $subject, $body, $html = true, $attachments = [], $replyTo = null) {
-        $this->conn = @fsockopen("tls://".$this->host, $this->port, $errno, $errstr, 10);
+        $this->conn = @fsockopen($this->host, $this->port, $errno, $errstr, 10);
         if (!$this->conn) throw new Exception("Connection failed: $errstr");
         $this->exec(null, 220); 
         $this->exec("EHLO " . ($_SERVER['SERVER_NAME'] ?: 'localhost'), 250);
