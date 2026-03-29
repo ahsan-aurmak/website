@@ -1,47 +1,46 @@
-name: Deploy static content to Pages
+name: Push to Deploy (AURMAK Live)
 
 on:
   push:
     branches: ['main']
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Open codebase
         uses: actions/checkout@v4
+
       - name: Set up pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Build
-        run: BASE_PATH=/website/ pnpm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+
+      - name: Build production site
+        run: pnpm run build
+
+      - name: Prepare Assets
+        run: |
+          cp migration_package/api.php dist/api.php
+          cp migration_package/.htaccess dist/.htaccess
+
+      - name: Deploy to Hestia Server (Like GitHub Pages)
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          server: 88.208.255.166
+          username: webuser
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          port: 22
+          local_path: './dist/'
+          remote_path: 'web/aurmak.com/public_html/'
+          delete_remote_files: false

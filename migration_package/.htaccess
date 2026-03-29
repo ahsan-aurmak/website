@@ -1,0 +1,19 @@
+# AURMAK Website Configuration
+ErrorDocument 404 /index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # 1. Handle API routes - forward /api/contact and /api/apply to api.php
+  # This matches /api/contact -> api.php?route=contact
+  RewriteRule ^api/(.*)$ api.php?route=$1 [L,QSA]
+
+  # 2. Do not rewrite real files or directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. All other routes go to index.html (React handles them)
+  RewriteRule ^ index.html [L]
+</IfModule>

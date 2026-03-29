@@ -1,0 +1,3 @@
+# Default static fallback: keep the site blocked until the live host is explicitly enabled.
+User-agent: *
+Disallow: /

@@ -327,9 +327,17 @@ export default function JobDetail() {
                           type="tel"
                           required
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-100"
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/[^0-9\-\+\(\)\s]/g, "");
+                            setFormData({ ...formData, phone: value });
+                          }}
+                          className={`w-full rounded-lg border bg-white px-4 py-2 text-[#282973] transition-colors focus:border-cyan-500 focus:outline-none dark:bg-slate-900/50 dark:text-slate-100 ${
+                            errorMessage.toLowerCase().includes("phone") ? "border-red-400" : "border-slate-300 dark:border-slate-700"
+                          }`}
                         />
+                        {errorMessage.toLowerCase().includes("phone") && (
+                          <p className="mt-1 text-xs text-red-400">{errorMessage}</p>
+                        )}
                       </div>
 
                       <div>
@@ -376,7 +384,9 @@ export default function JobDetail() {
                         </div>
                       </div>
 
-                      {errorMessage && <p className="text-sm text-red-400">{errorMessage}</p>}
+                      {errorMessage && !errorMessage.toLowerCase().includes("phone") && (
+                        <p className="text-sm text-red-400">{errorMessage}</p>
+                      )}
 
                       <div className="space-y-2">
                         <Turnstile

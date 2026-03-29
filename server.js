@@ -428,6 +428,11 @@ function validateApplicationPayload(payload, file) {
     return "Phone number is required.";
   }
 
+  const phoneRegex = /^[0-9\-\+\(\)\s]{7,25}$/;
+  if (!phoneRegex.test(payload.phone)) {
+    return "Please provide a valid phone number (e.g. +44 123 4567).";
+  }
+
   if (!file) {
     return "A CV file is required.";
   }
