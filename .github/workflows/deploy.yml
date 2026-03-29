@@ -41,7 +41,7 @@ jobs:
           server: 88.208.255.166
           username: webuser
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          port: 22
-          protocol: sftp
+          port: 21
+          protocol: ftp
           local-dir: ./dist/
-          server-dir: /home/webuser/web/aurmak.com/public_html/
+          server-dir: /web/aurmak.com/public_html/
