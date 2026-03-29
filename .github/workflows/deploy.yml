@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -44,3 +44,6 @@ jobs:
           local-dir: ./dist/
           protocol: ftp
           port: 21
+          # Hestia can sometimes trigger timeouts; adding a buffer
+          timeout: 60000 
+          state-name: .ftp-deploy-sync-state.json
