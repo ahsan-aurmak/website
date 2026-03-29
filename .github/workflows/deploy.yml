@@ -29,10 +29,6 @@ jobs:
       - name: Build production site
         run: pnpm run build
 
-      - name: Prepare Assets
-        run: |
-          cp migration_package/api.php dist/api.php
-          cp migration_package/.htaccess dist/.htaccess
 
       - name: Deploy to Hestia Server (Pure SFTP)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
