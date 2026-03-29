@@ -40,6 +40,7 @@ jobs:
           server: 88.208.255.166
           username: webuser
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          server-dir: /web/aurmak.com/public_html/
+          server-dir: web/aurmak.com/public_html/
+          local-dir: ./dist/
           protocol: ftp
           port: 21
