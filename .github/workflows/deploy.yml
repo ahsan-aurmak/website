@@ -34,16 +34,15 @@ jobs:
           cp migration_package/api.php dist/api.php
           cp migration_package/.htaccess dist/.htaccess
 
-      - name: Deploy to Hestia Server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy to Hestia Server (Pure SFTP)
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: 88.208.255.166
           username: webuser
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          server-dir: web/aurmak.com/public_html/
-          local-dir: ./dist/
-          protocol: ftp
-          port: 21
-          # Hestia can sometimes trigger timeouts; adding a buffer
-          timeout: 60000 
-          state-name: .ftp-deploy-sync-state.json
+          port: 22
+          local_path: './dist/'
+          # Using the full absolute path to avoid "550" errors
+          remote_path: '/home/webuser/web/aurmak.com/public_html/'
+          sftp_only: true
+          delete_remote_files: false
