@@ -76,7 +76,7 @@ $route = $_GET['route'] ?? str_replace('/api/', '', $_SERVER['REQUEST_URI']);
 $route = explode('?', $route)[0];
 
 try {
-    $smtp = new SimpleSmtp($smtpHost, $smtpPort, $smtpUser, $smtpPass);
+    $smtp = new SimpleSmtp($smtpConfig['host'], $smtpConfig['port'], $smtpConfig['user'], $smtpConfig['pass']);
     
     if ($route === 'contact') {
         $input = json_decode(file_get_contents('php://input'), true);
