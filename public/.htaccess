@@ -1,6 +1,12 @@
 # AURMAK Website Configuration
 ErrorDocument 404 /index.html
 
+# Security: Deny web access to the SMTP config file
+<Files "smtp_config.php">
+  Order allow,deny
+  Deny from all
+</Files>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /

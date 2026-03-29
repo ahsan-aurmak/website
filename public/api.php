@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 // CONFIGURATION
 // Load local SMTP configuration (DO NOT COMMIT THE CONFIG FILE TO GIT)
-$configPath = __DIR__ . '/../smtp_config.php';
+$configPath = __DIR__ . '/smtp_config.php';
 if (!file_exists($configPath)) {
     header('Content-Type: application/json');
     http_response_code(500);

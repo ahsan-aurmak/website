@@ -29,16 +29,19 @@ jobs:
       - name: Build production site
         run: pnpm run build
 
+      - name: Inject SMTP Config (Zero-Upload System)
+        env:
+          CONFIG_DATA: ${{ secrets.SMTP_CONFIG_CONTENT }}
+        run: |
+          echo "$CONFIG_DATA" > dist/smtp_config.php
 
-      - name: Deploy to Hestia Server (Pure SFTP)
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy to Hestia Server (Strict SFTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: 88.208.255.166
           username: webuser
           password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 22
-          local_path: 'dist/*'
-          # Using the full absolute path to avoid "550" errors
-          remote_path: '/home/webuser/web/aurmak.com/public_html/'
-          sftp_only: true
-          delete_remote_files: true
+          protocol: sftp
+          local-dir: ./dist/
+          server-dir: /home/webuser/web/aurmak.com/public_html/
