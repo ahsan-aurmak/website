@@ -5,3 +5,6 @@ node_modules
 .env.production
 test-results
 playwright-report
+
+smtp_config.php
+migration_package/smtp_config.php

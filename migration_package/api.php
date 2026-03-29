@@ -10,10 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // CONFIGURATION
-$smtpHost = 'smtp.gmail.com';
-$smtpPort = 465;
-$smtpUser = 'ahsan.jalil@aurmak.com';
-$smtpPass = 'bacdsfatkecreeoh'; 
+// Load local SMTP configuration (DO NOT COMMIT THE CONFIG FILE TO GIT)
+$configPath = __DIR__ . '/smtp_config.php';
+if (!file_exists($configPath)) {
+    header('Content-Type: application/json');
+    http_response_code(500);
+    echo json_encode(['message' => 'Server configuration error: SMTP config missing.']);
+    exit;
+}
+$smtpConfig = require($configPath); 
 $contactTo = 'info@aurmak.com'; 
 $careersTo = 'careers@aurmak.com';
 $fromInfo = 'AURMAK <info@aurmak.com>';

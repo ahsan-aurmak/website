@@ -34,14 +34,12 @@ jobs:
           cp migration_package/api.php dist/api.php
           cp migration_package/.htaccess dist/.htaccess
 
-      - name: Deploy to Hestia Server (Strict SFTP)
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy to Hestia Server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: 88.208.255.166
           username: webuser
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          port: 22
-          local_path: './dist/'
-          remote_path: 'web/aurmak.com/public_html/'
-          sftp_only: true
-          delete_remote_files: false
+          server-dir: /web/aurmak.com/public_html/
+          protocol: ftp
+          port: 21
